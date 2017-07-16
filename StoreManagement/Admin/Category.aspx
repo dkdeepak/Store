@@ -5,7 +5,6 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="cphContain" runat="server">
  <div style="width: 100%">
         <div>
-         
             <asp:HiddenField ID="rid" runat="server" />
             <table style="width: 100%">
                 <tr>
