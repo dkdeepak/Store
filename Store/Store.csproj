@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0DCB792B-A61E-4FEB-8D11-D4E21C54A8CE}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Store</RootNamespace>
+    <AssemblyName>Store</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="About.aspx" />
+    <Content Include="Account\ChangePassword.aspx" />
+    <Content Include="Account\ChangePasswordSuccess.aspx" />
+    <Content Include="Account\Login.aspx" />
+    <Content Include="Account\Register.aspx" />
+    <Content Include="packages.config" />
+    <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.6.4.js" />
+    <Content Include="Scripts\jquery-1.6.4.min.js" />
+    <Content Include="Styles\Site.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.designer.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Category\BusinessLogic\BLCategory.cs" />
+    <Compile Include="Category\BusinessObject\BOCategory.cs" />
+    <Compile Include="Category\DataAccessLayer\DLCategory.cs" />
+    <Compile Include="City\BusinessLogic\BLCity.cs" />
+    <Compile Include="City\BusinessObject\BOCity.cs" />
+    <Compile Include="City\DataAccessLayer\DLCity.cs" />
+    <Compile Include="Client\BusinessLogic\BLClient.cs" />
+    <Compile Include="Client\BusinessObject\BOClient.cs" />
+    <Compile Include="Client\DataAccessLayer\DLClient.cs" />
+    <Compile Include="Vendor\BusinessLogic\BLVendor.cs" />
+    <Compile Include="Vendor\BusinessObject\BOVendor.cs" />
+    <Compile Include="Vendor\DataAccessLayer\DLVendor.cs" />
+    <Compile Include="SalesOrderItem\BusinessLogic\BLSalesOrderItem.cs" />
+    <Compile Include="SalesOrderItem\BusinessObject\BOSalesOrderItem.cs" />
+    <Compile Include="SalesOrderItem\DataAccessLayer\DLSalesOrderItem.cs" />
+    <Compile Include="SalesOrder\BusinessLogic\BLSalesOrder.cs" />
+    <Compile Include="SalesOrder\BusinessObject\BOSalesOrder.cs" />
+    <Compile Include="SalesOrder\DataAccessLayer\DLSalesOrder.cs" />
+    <Compile Include="SaleReturnItem\BusinessLogic\BLSaleReturnItem.cs" />
+    <Compile Include="SaleReturnItem\BusinessObject\BOSaleReturnItem.cs" />
+    <Compile Include="SaleReturnItem\DataAccessLayer\DlSaleReturnItem.cs" />
+    <Compile Include="UserInfo\BusinessLogic\BLUserInfo.cs" />
+    <Compile Include="UserInfo\BusinessObject\BOUserInfo.cs" />
+    <Compile Include="UserInfo\DataAccessLayer\DLUserInfo.cs" />
+    <Compile Include="Login\BusinessLogic\BLItemUnit.cs" />
+    <Compile Include="Login\BusinessObject\BOLogin.cs" />
+    <Compile Include="Login\DataAccessLayer\DLLogin.cs" />
+    <Compile Include="PurchaseReceivedItem\BusinessLogic\BLPurchaseReceivedItem.cs" />
+    <Compile Include="PurchaseReceivedItem\BusinessObject\BOPurchaseReceivedItem.cs" />
+    <Compile Include="PurchaseReceivedItem\DataAccessLayer\DLPurchaseReceivedItem.cs" />
+    <Compile Include="PurchaseReceived\BusinessLogic\BLPurchaseReceived.cs" />
+    <Compile Include="PurchaseReceived\BusinessObject\BOPurchaseReceived.cs" />
+    <Compile Include="PurchaseReceived\DataAccessLayer\DLPurchaseReceived.cs" />
+    <Compile Include="Country\BusinessLogic\BLCountry.cs" />
+    <Compile Include="Country\BusinessObject\BOCountry.cs" />
+    <Compile Include="Country\DataAccessLayer\DLCountry.cs" />
+    <Compile Include="DatabaseHelper\DatabaseHelper.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="District\BusinessLogic\BLDistrict.cs" />
+    <Compile Include="District\BusinessObject\BODistrict.cs" />
+    <Compile Include="District\DataAccessLayer\DLDistrict.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPrice\BusinessLogic\BLItemPrice.cs" />
+    <Compile Include="ItemPrice\BusinessObject\BOItemPrice.cs" />
+    <Compile Include="ItemPrice\DataAccessLayer\DLItemPrice.cs" />
+    <Compile Include="ItemUnit\BusinessLogic\BLItemUnit.cs" />
+    <Compile Include="ItemUnit\BusinessObject\BOItemUnit.cs" />
+    <Compile Include="ItemUnit\DataAccessLayer\DLItemUnit.cs" />
+    <Compile Include="Item\BusinessLogic\BLItem.cs" />
+    <Compile Include="Item\BusinessObject\BOItem.cs" />
+    <Compile Include="Item\DataAccessLayer\DLItem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PurchaseOrderItem\BusinessLogic\BLPurchaseOrderItem.cs" />
+    <Compile Include="PurchaseOrderItem\BusinessObject\BOPurchaseOrderItem.cs" />
+    <Compile Include="PurchaseOrderItem\DataAccessLayer\DLPurchaseOrderItem.cs" />
+    <Compile Include="PurchaseOrder\BusinessLogic\BLPurchaseOrder.cs" />
+    <Compile Include="PurchaseOrder\BusinessObject\BOPurchaseOrder.cs" />
+    <Compile Include="PurchaseOrder\DataAccessLayer\DLPurchaseOrder.cs" />
+    <Compile Include="SalesReturned\BusinessLogic\BLSalesReturned.cs" />
+    <Compile Include="SalesReturned\BusinessObject\BOSalesReturned.cs" />
+    <Compile Include="SalesReturned\DataAccessLayer\DLSalesReturned.cs" />
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="State\BusinessLogic\BLState.cs" />
+    <Compile Include="State\BusinessObject\BOState.cs" />
+    <Compile Include="State\DataAcessLayer\DLState.cs" />
+    <Compile Include="Stock\BusinessLogic\BLStock.cs" />
+    <Compile Include="Stock\BusinessObject\BOStock.cs" />
+    <Compile Include="Stock\DataAccessLayer\DLStock.cs" />
+    <Compile Include="Tax\BusinessLogic\BLTax.cs" />
+    <Compile Include="Tax\BusinessObject\BOTax.cs" />
+    <Compile Include="Tax\DataAccessLayer\DLTax.cs" />
+    <Compile Include="TypeOfUser\BusinessLogic\BLTypeOfUser.cs" />
+    <Compile Include="TypeOfUser\BusinessObject\BOTypeOfUser.cs" />
+    <Compile Include="TypeOfUser\DataAccessLayer\DLTypeOfUser.cs" />
+    <Compile Include="_Common\Crypto.cs" />
+    <Compile Include="_Common\Enum.cs" />
+    <Compile Include="_Common\ErrorMessage.cs" />
+    <Compile Include="_Common\GlobalProperties.cs" />
+    <Compile Include="_Common\Utility.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\Web.config" />
+    <Content Include="Site.Master" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1166</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

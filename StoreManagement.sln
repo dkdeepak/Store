@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreManagement", "StoreManagement\StoreManagement.csproj", "{06D7F59D-B091-4B40-947A-99FFB7C786F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store", "Store\Store.csproj", "{0DCB792B-A61E-4FEB-8D11-D4E21C54A8CE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{06D7F59D-B091-4B40-947A-99FFB7C786F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06D7F59D-B091-4B40-947A-99FFB7C786F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06D7F59D-B091-4B40-947A-99FFB7C786F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06D7F59D-B091-4B40-947A-99FFB7C786F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DCB792B-A61E-4FEB-8D11-D4E21C54A8CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DCB792B-A61E-4FEB-8D11-D4E21C54A8CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DCB792B-A61E-4FEB-8D11-D4E21C54A8CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DCB792B-A61E-4FEB-8D11-D4E21C54A8CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
