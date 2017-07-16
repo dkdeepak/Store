@@ -46,7 +46,7 @@ namespace Store.SalesOrder.BusinessLogic
         {
             try
             {
-                return odlSalesOrder.ManageSalesOrderITem(objSalesOrderItem, cmdMode);
+                return odlSalesOrder.ManageSalesOrderItem(objSalesOrderItem, cmdMode);
             }
             catch
             {

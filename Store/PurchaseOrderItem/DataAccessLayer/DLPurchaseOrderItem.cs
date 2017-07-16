@@ -112,7 +112,6 @@ namespace Store.PurchaseOrderItem.DataAccessLayer
         }
         public Store.Common.MessageInfo ManagePurchaseOrder(Store.PurchaseOrderItem.BusinessObject.PurchaseOrderItem objPurchaseOrderItem, CommandMode cmdMode)
         {
-
             string SQL = "";
             ParameterList param = new ParameterList();
             DataTableReader dr;
@@ -121,13 +120,17 @@ namespace Store.PurchaseOrderItem.DataAccessLayer
             try
             {
                 SQL = "USP_ManagePurchaseOrderItem";
-                param.Add(new SQLParameter("@PurchaseOrderItemID", objPurchaseOrderItem.PurchaseOrderItemID));
+
                 param.Add(new SQLParameter("@PurchaseOrderID", objPurchaseOrderItem.PurchaseOrderID));
+                param.Add(new SQLParameter("@PurchaseOrderItemID", objPurchaseOrderItem.PurchaseOrderItemID));
                 param.Add(new SQLParameter("@ItemID", objPurchaseOrderItem.ItemID));
-                param.Add(new SQLParameter("@ItemUnit", objPurchaseOrderItem.ItemUnit));
+                param.Add(new SQLParameter("@ItemPrefix", objPurchaseOrderItem.ItemPrefix));
                 param.Add(new SQLParameter("@Description", objPurchaseOrderItem.Description));
+                param.Add(new SQLParameter("@ItemUnit", objPurchaseOrderItem.ItemUnit));
                 param.Add(new SQLParameter("@ItemPrice", objPurchaseOrderItem.ItemPrice));
                 param.Add(new SQLParameter("@TotalPrice", objPurchaseOrderItem.TotalPrice));
+                param.Add(new SQLParameter("@Discount", objPurchaseOrderItem.Discount));
+                param.Add(new SQLParameter("@DiscountPre", objPurchaseOrderItem.DiscountPre));
                 param.Add(new SQLParameter("@UserId", objPurchaseOrderItem.CreatedBy));
                 param.Add(new SQLParameter("@ReferenceID", objPurchaseOrderItem.ReferenceID));
                 param.Add(new SQLParameter("@IsActive", objPurchaseOrderItem.IsActive));

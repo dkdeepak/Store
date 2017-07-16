@@ -119,14 +119,8 @@
         <div class="row">
         <div class="col-lg-2 col-lg-offset-10"><asp:Button ID="btnSubmit" Text="Submit" CssClass="form-control btn-primary" runat="server" OnClick="btnSubmit_Click" />
          </div>
-        
-</div>
-        <div>
-            <div id="loading" style="display:none;" runat="server" class="loading1"></div>
         </div>
-        </div>
-</div>
-    
+      
     
 
 
@@ -134,6 +128,37 @@
   </asp:UpdatePanel>      
 
 <br />
-    <asp:HiddenField ID="hfpo" Value="0"  runat="server" />
-    <asp:Label ID="lbl1" runat="server"></asp:Label>
+  <asp:UpdatePanel ID="upData" runat="server">
+      <ContentTemplate>
+          <asp:GridView ID="gvPOrder" runat="server"  Width="100%" CssClass="Grid"
+                                    AlternatingRowStyle-CssClass="alt"
+                                    PagerStyle-CssClass="pgr" DataKeyNames="PurchaseOrderID">
+                                    <Columns>
+                                        <asp:TemplateField HeaderText="View" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" HeaderStyle-Width="5%">
+                                            <ItemTemplate>
+                                                <asp:ImageButton ID="imgbtnfrView" ImageUrl="~/Images/view.png" runat="server" Width="20" Height="20" OnClick="imgbtnfrView_Click" />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Edit" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" HeaderStyle-Width="5%">
+                                            <ItemTemplate>
+                                                <asp:ImageButton ID="imgbtn" ImageUrl="~/Images/edit.png" runat="server" Width="25" Height="25" OnClick="imgbtn_Click" />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Delete" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" HeaderStyle-Width="5%">
+                                            <ItemTemplate>
+                                                <asp:ImageButton ID="imgbtnfrDelete" ImageUrl="~/Images/delete.png" runat="server" Width="20" Height="20" OnClick="imgbtnfrDelete_Click" />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField>
+                                            <ItemTemplate>
+                                                <asp:GridView ID="gvPoItem" runat="server"  CssClass="Grid"
+                                    AlternatingRowStyle-CssClass="alt"></asp:GridView>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+
+                                    </Columns>
+                                </asp:GridView>
+          
+      </ContentTemplate>
+  </asp:UpdatePanel>
 </asp:Content>

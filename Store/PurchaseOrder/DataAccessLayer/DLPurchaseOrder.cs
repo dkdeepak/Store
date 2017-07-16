@@ -186,51 +186,9 @@ namespace Store.PurchaseOrder.DataAccessLayer
                 throw;
             }
         }
-        public Store.Common.MessageInfo ManagePurchaseOrder(Store.PurchaseOrderItem.BusinessObject.PurchaseOrderItem objPurchaseOrderItem, int cmdMode)
-        {
-            string SQL = "";
-            ParameterList param = new ParameterList();
-            DataTableReader dr;
-            Store.Common.MessageInfo objMessageInfo = null;
-
-            try
-            {
-                SQL = "USP_ManagePurchaseOrderItem";
-
-                param.Add(new SQLParameter("@PurchaseOrderID", objPurchaseOrderItem.PurchaseOrderID));
-                param.Add(new SQLParameter("@PurchaseOrderItemID", objPurchaseOrderItem.PurchaseOrderItemID));
-                param.Add(new SQLParameter("@ItemID", objPurchaseOrderItem.ItemID));
-                param.Add(new SQLParameter("@ItemPrefix", objPurchaseOrderItem.ItemPrefix));
-                param.Add(new SQLParameter("@Description", objPurchaseOrderItem.Description));
-                param.Add(new SQLParameter("@ItemUnit", objPurchaseOrderItem.ItemUnit));
-                param.Add(new SQLParameter("@ItemPrice", objPurchaseOrderItem.ItemPrice));
-                param.Add(new SQLParameter("@TotalPrice", objPurchaseOrderItem.TotalPrice));
-                param.Add(new SQLParameter("@Discount", objPurchaseOrderItem.Discount));
-                param.Add(new SQLParameter("@DiscountPre", objPurchaseOrderItem.DiscountPre));
-                param.Add(new SQLParameter("@UserId", objPurchaseOrderItem.CreatedBy));
-                param.Add(new SQLParameter("@ReferenceID", objPurchaseOrderItem.ReferenceID));
-                param.Add(new SQLParameter("@IsActive", objPurchaseOrderItem.IsActive));
-                param.Add(new SQLParameter("@CMDMode", cmdMode));
-                dr = ExecuteQuery.ExecuteReader(SQL, param);
-                if (dr.Read())
-                {
-                    objMessageInfo = new Store.Common.MessageInfo();
-                    objMessageInfo.ErrorCode = Convert.ToInt32(dr["ErrorCode"]);
-                    objMessageInfo.ErrorMessage = Convert.ToString(dr["ErrorMessage"]);
-                    objMessageInfo.TranID = Convert.ToInt32(dr["TranID"]);
-                    objMessageInfo.TranCode = Convert.ToString(dr["TranCode"]);
-                    objMessageInfo.TranMessage = Convert.ToString(dr["TranMessage"]);
-                }
-                return objMessageInfo;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
 
 
-        public Store.Common.MessageInfo ManagePurchase(Store.PurchaseOrder.BusinessObject.PurchaseOrder objPOrder, int cmdMode)
+        public Store.Common.MessageInfo ManagePurchase(Store.PurchaseOrder.BusinessObject.PurchaseOrder objPOrder, CommandMode cmdMode)
         {
             string SQL = "";
             ParameterList param = new ParameterList();

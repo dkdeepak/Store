@@ -91,8 +91,6 @@
     <Content Include="Admin\ItemPrice.aspx" />
     <Content Include="Admin\ItemUnit.aspx" />
     <Content Include="Admin\MangePanle.aspx" />
-    <Content Include="Admin\poerder3.aspx" />
-    <Content Include="Admin\POrder2.aspx" />
     <Content Include="Admin\POrder.aspx" />
     <Content Include="Admin\Sales.aspx" />
     <Content Include="Admin\SalesRtn.aspx" />
@@ -174,20 +172,6 @@
     </Compile>
     <Compile Include="Admin\MangePanle.aspx.designer.cs">
       <DependentUpon>MangePanle.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\poerder3.aspx.cs">
-      <DependentUpon>poerder3.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\poerder3.aspx.designer.cs">
-      <DependentUpon>poerder3.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\POrder2.aspx.cs">
-      <DependentUpon>POrder2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\POrder2.aspx.designer.cs">
-      <DependentUpon>POrder2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\POrder.aspx.cs">
       <DependentUpon>POrder.aspx</DependentUpon>
@@ -288,6 +272,7 @@
     <Content Include="Images\grid-header.png" />
     <Content Include="Images\grid-pgr.png" />
     <Content Include="Images\logo.jpg" />
+    <Content Include="Images\view.png" />
     <Content Include="Login.aspx" />
     <Content Include="Scripts\chosen.jquery.js" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />

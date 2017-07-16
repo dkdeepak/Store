@@ -31,18 +31,8 @@ namespace Store.PurchaseOrder.BusinessLogic
                 throw;
             }
         }
-        public Store.Common.MessageInfo ManagePurchaseOrderMaster(Store.PurchaseOrderItem.BusinessObject.PurchaseOrderItem objPurchaseOrderItem, int cmdMode)
-        {
-            try
-            {
-                return odlPurchaseOrder.ManagePurchaseOrder(objPurchaseOrderItem, cmdMode);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-        public Store.Common.MessageInfo ManagePurchaseOrder(Store.PurchaseOrder.BusinessObject.PurchaseOrder objPOrder, int cmdMode)
+        
+        public Store.Common.MessageInfo ManagePurchaseOrder(Store.PurchaseOrder.BusinessObject.PurchaseOrder objPOrder, CommandMode cmdMode)
         {
             try
             {

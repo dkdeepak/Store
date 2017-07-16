@@ -15,22 +15,32 @@ namespace StoreManagement.Admin
 {
     public partial class POrder : System.Web.UI.Page
     {
+        Store.PurchaseOrder.BusinessLogic.PurchaseOrder oblPurchaseOrder = null;
+        Store.PurchaseOrderItem.BusinessLogic.PurchaseOrderItem oblPurchaseOrderItem = null;
+        Store.Common.MessageInfo objMessageInfo = null;
+        Store.PurchaseOrder.BusinessObject.PurchaseOrder objPurchaseOrder = null;
+        Store.PurchaseOrderItem.BusinessObject.PurchaseOrderItem objPurchaseOrderItem = null;
+        Store.PurchaseOrder.BusinessObject.PurchaseOrderList objPurchaseOrderList = null;
+        Store.PurchaseOrderItem.BusinessObject.PurchaseOrderItemList objPurchaseOrderItemList = null;
 
-        Store.Item.BusinessLogic.Item oblItem = new Store.Item.BusinessLogic.Item();
-        Store.Item.BusinessObject.ItemList objItemList = new Store.Item.BusinessObject.ItemList();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
                 SetInitialRow();
+                BindPurchaseOrder();
             }
+        }
+        public Store.Common.CommandMode cmdMode
+        {
+            get { return ViewState["cmdMode"] != null ? (Store.Common.CommandMode)ViewState["cmdMode"] : Store.Common.CommandMode.N; }
+            set { ViewState["cmdMode"] = value; }
         }
         #region Autocompelet
         [System.Web.Services.WebMethod]
         public static string[] GetCompletionList(string prefixText, int count)
         {
-
-
             using (SqlConnection con = new SqlConnection())
             {
                 con.ConnectionString = ConfigurationManager.ConnectionStrings["ShopDB"].ConnectionString;
@@ -255,9 +265,19 @@ namespace StoreManagement.Admin
         #region method
         public  string insertOrder(string subtotal, string dicpre, string dic, string tax, string shc, string misccost, string ttotal)
         {
-            Store.PurchaseOrder.BusinessLogic.PurchaseOrder oblPurchaseOrder = new Store.PurchaseOrder.BusinessLogic.PurchaseOrder();
-            Store.Common.MessageInfo objMessageInfo = new MessageInfo();
-            Store.PurchaseOrder.BusinessObject.PurchaseOrder objPurchaseOrder = new Store.PurchaseOrder.BusinessObject.PurchaseOrder();
+
+            oblPurchaseOrder = new Store.PurchaseOrder.BusinessLogic.PurchaseOrder();
+            objMessageInfo = new MessageInfo();
+            objPurchaseOrder = new Store.PurchaseOrder.BusinessObject.PurchaseOrder();
+            if (cmdMode == Store.Common.CommandMode.M)
+            {
+                objPurchaseOrder.PurchaseOrderID = 1;//PurchaseOrderID which edit from data grid
+
+            }
+            else
+            {
+                objPurchaseOrder.PurchaseOrderID = 0;
+            }
             objPurchaseOrder.PurchaseOrderID = 0;
             objPurchaseOrder.VendorID = 0;
             objPurchaseOrder.PurchaseAmount = Convert.ToDecimal(ttotal);
@@ -267,15 +287,24 @@ namespace StoreManagement.Admin
             objPurchaseOrder.PDiscountPre = Convert.ToDecimal(dicpre);
             objPurchaseOrder.PDiscount = Convert.ToDecimal(dic);
             objPurchaseOrder.IsActive = 1;
-            objMessageInfo = oblPurchaseOrder.ManagePurchaseOrder(objPurchaseOrder, 1);
+            objMessageInfo = oblPurchaseOrder.ManagePurchaseOrder(objPurchaseOrder, cmdMode);
 
             return objMessageInfo.TranID.ToString();
         }
         public  string insertItem(string name, string description, string unitprice, string discountper, string discount, string quantity, string total, string transId)
         {
-            Store.PurchaseOrderItem.BusinessObject.PurchaseOrderItem objPurchaseOrderItem = new Store.PurchaseOrderItem.BusinessObject.PurchaseOrderItem();
-            Store.Common.MessageInfo objMessageInfo = new MessageInfo();
-            Store.PurchaseOrder.BusinessLogic.PurchaseOrder oblPurchaseOrder = new Store.PurchaseOrder.BusinessLogic.PurchaseOrder();
+            objPurchaseOrderItem = new Store.PurchaseOrderItem.BusinessObject.PurchaseOrderItem();
+            objMessageInfo = new MessageInfo();
+            oblPurchaseOrderItem = new Store.PurchaseOrderItem.BusinessLogic.PurchaseOrderItem();
+            if (cmdMode == Store.Common.CommandMode.M)
+            {
+                objPurchaseOrderItem.PurchaseOrderID = 1;//PurchaseOrderID which edit from data grid
+
+            }
+            else
+            {
+                objPurchaseOrderItem.PurchaseOrderItemID = 0;
+            }
             objPurchaseOrderItem.PurchaseOrderItemID = 0;
             objPurchaseOrderItem.PurchaseOrderID = Convert.ToInt32(transId);
             objPurchaseOrderItem.ItemID = 0;
@@ -287,7 +316,7 @@ namespace StoreManagement.Admin
             objPurchaseOrderItem.DiscountPre = Convert.ToDecimal(discountper);
             objPurchaseOrderItem.Discount = Convert.ToDecimal(discount);
             objPurchaseOrderItem.IsActive = 1;
-            objMessageInfo = oblPurchaseOrder.ManagePurchaseOrderMaster(objPurchaseOrderItem, 1);
+            objMessageInfo = oblPurchaseOrderItem.ManageItemMaster(objPurchaseOrderItem, cmdMode);
             return "";
         }
         #endregion
@@ -336,6 +365,113 @@ namespace StoreManagement.Admin
 
                 txtDisPre.Attributes.Add("RowId",e.Row.RowIndex.ToString());
                 txtQut.Attributes.Add("RowId", e.Row.RowIndex.ToString());
+            }
+        }
+        void BindPurchaseOrder()
+        {
+            oblPurchaseOrder = new Store.PurchaseOrder.BusinessLogic.PurchaseOrder();
+
+            try
+            {
+                objPurchaseOrderList = oblPurchaseOrder.GetAllPurchaseOrderList(0, 0, "");
+                if (objPurchaseOrderList != null)
+                {
+                    gvPOrder.DataSource = objPurchaseOrderList;
+                    gvPOrder.DataBind();
+                }
+                else
+                {
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                oblPurchaseOrder = null;
+                objPurchaseOrderList = null;
+            }
+
+        }
+        Store.PurchaseOrderItem.BusinessObject.PurchaseOrderItemList BindPurchaseOrderItem(int id)
+        {
+            oblPurchaseOrderItem = new Store.PurchaseOrderItem.BusinessLogic.PurchaseOrderItem();
+
+            try
+            {
+                objPurchaseOrderItemList = oblPurchaseOrderItem.GetAllPurchaseOrderItemList(id, 0, "");
+                return objPurchaseOrderItemList;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+
+                oblPurchaseOrderItem = null;
+                objPurchaseOrderItemList = null;
+            }
+
+
+        }
+
+        protected void imgbtn_Click(object sender, ImageClickEventArgs e)
+        {
+            reset();
+            ImageButton btndetails = sender as ImageButton;
+            GridViewRow gvrow = (GridViewRow)btndetails.NamingContainer;
+            objPurchaseOrder.PurchaseOrderID = Convert.ToInt32(gvPOrder.DataKeys[gvrow.RowIndex].Value.ToString());
+            //edit logic
+            cmdMode = CommandMode.M;
+        }
+        protected void imgbtnfrDelete_Click(object sender, ImageClickEventArgs e)
+        {
+            cmdMode = CommandMode.D;
+            try
+            {
+                ImageButton btndetails = sender as ImageButton;
+                GridViewRow gvrow = (GridViewRow)btndetails.NamingContainer;
+                objPurchaseOrder.PurchaseOrderID = Convert.ToInt32(gvPOrder.DataKeys[gvrow.RowIndex].Value.ToString());
+                //delete logic
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alert", "alert('" + objMessageInfo.TranMessage + "')", true);
+                
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+               
+                objMessageInfo = null;
+                
+            }
+        }
+        protected void imgbtnfrView_Click(object sender, ImageClickEventArgs e)
+        {
+            try
+            {
+                ImageButton btndetails = sender as ImageButton;
+                GridViewRow gvrow = (GridViewRow)btndetails.NamingContainer;
+                int id = Convert.ToInt32(gvPOrder.DataKeys[gvrow.RowIndex].Value.ToString());
+                GridView gv = (GridView)gvPOrder.Rows[gvrow.RowIndex].FindControl("gvPoItem");
+                objPurchaseOrderItemList=BindPurchaseOrderItem(id);
+                gv.DataSource = objPurchaseOrderItemList;
+                gv.DataBind();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+
+                
+
             }
         }
     }
