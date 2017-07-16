@@ -82,24 +82,11 @@
 </div>
 
     </ContentTemplate>
-     <Triggers>
-         <asp:AsyncPostBackTrigger ControlID ="Gridview1" />
-         
-         
-     </Triggers>
+    
   </asp:UpdatePanel>      
 
 <br />
-<%--<asp:UpdatePanel ID="up2" UpdateMode="Conditional" runat="server">
-    
-    <Triggers>
-        <asp:AsyncPostBackTrigger ControlID="txtDicPre" EventName="TextChanged" />
-        <asp:AsyncPostBackTrigger ControlID="txtMiscCost" EventName="TextChanged" />
 
-    </Triggers>
-</asp:UpdatePanel>--%>
-    <asp:HiddenField ID="hfpo" Value="0"  runat="server" />
-    <asp:Label ID="lbl1" runat="server"></asp:Label>
 </asp:Content>
 
 

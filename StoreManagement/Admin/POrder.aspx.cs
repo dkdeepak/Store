@@ -321,9 +321,11 @@ namespace StoreManagement.Admin
             txtSHC.Text = string.Empty;
             txtTax.Text = string.Empty;
             txttotal.Text = string.Empty;
+            txtSubTotal.Text = string.Empty;
             Gridview1.DataSource = null;
             Gridview1.DataBind();
             SetInitialRow();
+            ViewState["CurrentTable"] = null;
         }
         protected void Gridview1_RowDataBound(object sender, GridViewRowEventArgs e)
         {

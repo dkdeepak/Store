@@ -181,13 +181,13 @@ namespace StoreManagement.Admin
         protected void txtItemName_TextChanged(object sender, EventArgs e)
         {
             int rows = Convert.ToInt32(((TextBox)sender).Attributes["Rowid"].ToString());
-            TextBox name = (TextBox)Gridview1.Rows[rows].Cells[1].FindControl("txtItemName");
-            TextBox dec = (TextBox)Gridview1.Rows[rows].Cells[2].FindControl("txtDis");
-            TextBox priceC = (TextBox)Gridview1.Rows[rows].Cells[3].FindControl("txtCostAmount");
-            TextBox priceS = (TextBox)Gridview1.Rows[rows].Cells[4].FindControl("txtSaleAmount");
-            TextBox dicPre = (TextBox)Gridview1.Rows[rows].Cells[5].FindControl("txtDisPer");
-            TextBox disAmt = (TextBox)Gridview1.Rows[rows].Cells[6].FindControl("txtDisAmt");
-            TextBox qut = (TextBox)Gridview1.Rows[rows].Cells[7].FindControl("txtQut");
+            TextBox name = (TextBox)Gridview1.Rows[rows].FindControl("txtItemName");
+            TextBox dec = (TextBox)Gridview1.Rows[rows].FindControl("txtDis");
+            TextBox priceS = (TextBox)Gridview1.Rows[rows].FindControl("txtSaleAmount");
+            TextBox dicPre = (TextBox)Gridview1.Rows[rows].FindControl("txtDisPer");
+            TextBox disAmt = (TextBox)Gridview1.Rows[rows].FindControl("txtDisAmt");
+            TextBox priceC = (TextBox)Gridview1.Rows[rows].FindControl("txtCostAmount");
+            TextBox qut = (TextBox)Gridview1.Rows[rows].FindControl("txtQut");
 
             string item = name.Text;
             Store.Item.BusinessObject.Item objItem = new Store.Item.BusinessObject.Item();
@@ -209,9 +209,9 @@ namespace StoreManagement.Admin
         protected void txtQut_TextChanged(object sender, EventArgs e)
         {
             int rows = Convert.ToInt32(((TextBox)sender).Attributes["Rowid"].ToString());
-            TextBox price = (TextBox)Gridview1.Rows[rows].Cells[4].FindControl("txtSaleAmount");
-            TextBox dic = (TextBox)Gridview1.Rows[rows].  Cells[6].FindControl("txtDisAmt");
-            TextBox qut = (TextBox)Gridview1.Rows[rows] . Cells[7].FindControl("txtQut");
+            TextBox price = (TextBox)Gridview1.Rows[rows].FindControl("txtSaleAmount");
+            TextBox dic = (TextBox)Gridview1.Rows[rows].FindControl("txtDisAmt");
+            TextBox qut = (TextBox)Gridview1.Rows[rows].FindControl("txtQut");
             double pri = Convert.ToDouble(price.Text) - Convert.ToDouble(dic.Text);
 
             txtPriceCT.Text = Convert.ToString(findCostTotal());
@@ -329,7 +329,19 @@ namespace StoreManagement.Admin
 
 
         }
-
+        private void reset()
+        {
+            Gridview1.DataSource = null;
+            Gridview1.DataBind();
+            txtDisT.Text = string.Empty;
+            txtMiscCost.Text = string.Empty;
+            txtPriceCT.Text = string.Empty;
+            txtPriceST.Text = string.Empty;
+            txtSHC.Text = string.Empty;
+            txtTax.Text = string.Empty;
+            SetInitialRow();
+            ViewState["CurrentTable"] = null;
+        }
 
 
 
