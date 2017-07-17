@@ -150,13 +150,11 @@
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField>
-                                            <ItemTemplate>
-                                               
-
+                                            <ItemTemplate>                                              
+                                                <%--inner grid--%>
                                                 <asp:GridView ID="gvPoItem" runat="server"  DataKeyNames="PurchaseOrderItemID" CssClass="Grid"
                                                      AlternatingRowStyle-CssClass="alt"></asp:GridView>
-                                              
-                                                
+                                                                                            
                                                    
                                             </ItemTemplate>
                                         </asp:TemplateField>
