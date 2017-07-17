@@ -63,7 +63,7 @@ namespace Store.Category.DataAccessLayer
                     }
                     if ((dr.IsDBNull(dr.GetOrdinal("ReferenceID")) == false))
                     {
-                        objCategory.ReferenceID = dr.GetInt32(dr.GetOrdinal("ReferenceID")); ;
+                        objCategory.ReferenceID = dr.GetInt32(dr.GetOrdinal("ReferenceID")); 
                     }
                     objCategoryList.Add(objCategory);
                 }

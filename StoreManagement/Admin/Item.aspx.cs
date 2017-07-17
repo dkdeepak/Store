@@ -148,7 +148,7 @@ namespace StoreManagement.Admin
             }
             catch (Exception ex)
             {
-
+                throw ex;
             }
             finally
             {

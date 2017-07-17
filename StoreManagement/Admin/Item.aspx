@@ -12,7 +12,7 @@
                     <td style="text-align: right">  
                       <asp:UpdatePanel runat="server" ID="UpdatePnl" UpdateMode="Conditional">
                             <ContentTemplate>
-                                <asp:LinkButton ID="linkButton" runat="server" OnClick="linkButton_Click"><span class="glyphicon glyphicon-plus-sign"></span> New Item</asp:LinkButton>
+                                <asp:LinkButton ID="linkButton" runat="server" OnClick="linkButton_Click"><span class="glyphicon glyphicon-plus-sign"></span>New Item</asp:LinkButton>
                             </ContentTemplate>                            
                        </asp:UpdatePanel>
 

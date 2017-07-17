@@ -30,6 +30,7 @@ namespace StoreManagement.Admin
             {
                 SetInitialRow();
                 BindPurchaseOrder();
+
             }
         }
         public Store.Common.CommandMode cmdMode
@@ -52,7 +53,7 @@ namespace StoreManagement.Admin
                     com.Connection = con;
                     con.Open();
                     Dictionary<Int32, string> objDictonr = new Dictionary<int, string>();
-                   // List<string> ItemPrefix = new List<string>();
+                    // List<string> ItemPrefix = new List<string>();
                     List<string> ItemPrefix = new List<string>();
                     string item = string.Empty;
                     using (SqlDataReader sdr = com.ExecuteReader())
@@ -78,7 +79,7 @@ namespace StoreManagement.Admin
         #endregion
         #region Event
         #region gridevent
-      
+
         protected void txtDisPre_TextChanged(object sender, EventArgs e)
         {
             int rows = Convert.ToInt32(((TextBox)sender).Attributes["RowId"].ToString());
@@ -111,8 +112,8 @@ namespace StoreManagement.Admin
         {
 
             double ttl = 0;
-           
-            for (int i = 0; i <Gridview1.Rows.Count; i++)
+
+            for (int i = 0; i < Gridview1.Rows.Count; i++)
             {
                 TextBox box5 = (TextBox)Gridview1.Rows[i].Cells[7].FindControl("txtTotal");
                 ttl += Convert.ToDouble(box5.Text);
@@ -147,7 +148,7 @@ namespace StoreManagement.Admin
             up1.Update();
             txttotal.Focus();
         }
-        
+
         #endregion
         #region grid
         private void SetInitialRow()
@@ -260,10 +261,10 @@ namespace StoreManagement.Admin
             }
         }
         //static int  i ;
-        
+
         #endregion
         #region method
-        public  string insertOrder(string subtotal, string dicpre, string dic, string tax, string shc, string misccost, string ttotal)
+        public string insertOrder(string subtotal, string dicpre, string dic, string tax, string shc, string misccost, string ttotal)
         {
 
             oblPurchaseOrder = new Store.PurchaseOrder.BusinessLogic.PurchaseOrder();
@@ -291,7 +292,7 @@ namespace StoreManagement.Admin
 
             return objMessageInfo.TranID.ToString();
         }
-        public  string insertItem(string name, string description, string unitprice, string discountper, string discount, string quantity, string total, string transId)
+        public string insertItem(string name, string description, string unitprice, string discountper, string discount, string quantity, string total, string transId)
         {
             objPurchaseOrderItem = new Store.PurchaseOrderItem.BusinessObject.PurchaseOrderItem();
             objMessageInfo = new MessageInfo();
@@ -340,9 +341,9 @@ namespace StoreManagement.Admin
                 reset();
             }
             catch (Exception ex)
-            { }
+            { throw ex; }
         }
-        private void  reset()
+        private void reset()
         {
             txtDic.Text = string.Empty;
             txtDicPre.Text = string.Empty;
@@ -363,7 +364,7 @@ namespace StoreManagement.Admin
                 TextBox txtDisPre = (TextBox)e.Row.FindControl("txtDisPre");
                 TextBox txtQut = (TextBox)e.Row.FindControl("txtQut");
 
-                txtDisPre.Attributes.Add("RowId",e.Row.RowIndex.ToString());
+                txtDisPre.Attributes.Add("RowId", e.Row.RowIndex.ToString());
                 txtQut.Attributes.Add("RowId", e.Row.RowIndex.ToString());
             }
         }
@@ -381,12 +382,15 @@ namespace StoreManagement.Admin
                 }
                 else
                 {
-                    
+                    gvPOrder.DataSource = null;
+                    gvPOrder.DataBind();
+
+
                 }
             }
             catch (Exception ex)
             {
-
+                throw ex;
             }
             finally
             {
@@ -395,6 +399,16 @@ namespace StoreManagement.Admin
             }
 
         }
+
+
+
+
+
+
+
+
+
+
         Store.PurchaseOrderItem.BusinessObject.PurchaseOrderItemList BindPurchaseOrderItem(int id)
         {
             oblPurchaseOrderItem = new Store.PurchaseOrderItem.BusinessLogic.PurchaseOrderItem();
@@ -418,6 +432,16 @@ namespace StoreManagement.Admin
 
         }
 
+
+        protected void imgbtnfrView_Click(object sender, ImageClickEventArgs e)
+        {
+           
+
+
+
+        }
+
+
         protected void imgbtn_Click(object sender, ImageClickEventArgs e)
         {
             reset();
@@ -437,42 +461,27 @@ namespace StoreManagement.Admin
                 objPurchaseOrder.PurchaseOrderID = Convert.ToInt32(gvPOrder.DataKeys[gvrow.RowIndex].Value.ToString());
                 //delete logic
                 ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alert", "alert('" + objMessageInfo.TranMessage + "')", true);
-                
+
             }
             catch (Exception ex)
             {
-
+                throw ex;
             }
             finally
             {
-               
+
                 objMessageInfo = null;
-                
-            }
-        }
-        protected void imgbtnfrView_Click(object sender, ImageClickEventArgs e)
-        {
-            try
-            {
-                ImageButton btndetails = sender as ImageButton;
-                GridViewRow gvrow = (GridViewRow)btndetails.NamingContainer;
-                int id = Convert.ToInt32(gvPOrder.DataKeys[gvrow.RowIndex].Value.ToString());
-                GridView gv = (GridView)gvPOrder.Rows[gvrow.RowIndex].FindControl("gvPoItem");
-                objPurchaseOrderItemList=BindPurchaseOrderItem(id);
-                gv.DataSource = objPurchaseOrderItemList;
-                gv.DataBind();
-
-            }
-            catch (Exception ex)
-            {
-
-            }
-            finally
-            {
-
-                
 
             }
         }
+
+
+       
+
     }
-}
+
+
+
+
+    }
+

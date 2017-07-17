@@ -120,24 +120,24 @@
         <div class="col-lg-2 col-lg-offset-10"><asp:Button ID="btnSubmit" Text="Submit" CssClass="form-control btn-primary" runat="server" OnClick="btnSubmit_Click" />
          </div>
         </div>
-      
-    
-
-
     </ContentTemplate>
-  </asp:UpdatePanel>      
+  </asp:UpdatePanel>
+      
 
 <br />
-  <asp:UpdatePanel ID="upData" runat="server">
-      <ContentTemplate>
-          <asp:GridView ID="gvPOrder" runat="server"  Width="100%" CssClass="Grid"
+    <asp:UpdatePanel id="up2" runat="server" UpdateMode="Conditional">
+        <ContentTemplate>
+            <asp:GridView ID="gvPOrder" runat="server"  Width="100%" CssClass="Grid" 
                                     AlternatingRowStyle-CssClass="alt"
                                     PagerStyle-CssClass="pgr" DataKeyNames="PurchaseOrderID">
-                                    <Columns>
+                                    <Columns>                                       
+
                                         <asp:TemplateField HeaderText="View" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" HeaderStyle-Width="5%">
                                             <ItemTemplate>
+                                                
                                                 <asp:ImageButton ID="imgbtnfrView" ImageUrl="~/Images/view.png" runat="server" Width="20" Height="20" OnClick="imgbtnfrView_Click" />
-                                            </ItemTemplate>
+                                           
+                                                     </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Edit" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" HeaderStyle-Width="5%">
                                             <ItemTemplate>
@@ -151,14 +151,21 @@
                                         </asp:TemplateField>
                                         <asp:TemplateField>
                                             <ItemTemplate>
-                                                <asp:GridView ID="gvPoItem" runat="server"  CssClass="Grid"
-                                    AlternatingRowStyle-CssClass="alt"></asp:GridView>
+                                               
+
+                                                <asp:GridView ID="gvPoItem" runat="server"  DataKeyNames="PurchaseOrderItemID" CssClass="Grid"
+                                                     AlternatingRowStyle-CssClass="alt"></asp:GridView>
+                                              
+                                                
+                                                   
                                             </ItemTemplate>
                                         </asp:TemplateField>
 
                                     </Columns>
                                 </asp:GridView>
-          
-      </ContentTemplate>
-  </asp:UpdatePanel>
+              
+        </ContentTemplate>
+
+    </asp:UpdatePanel>
+  
 </asp:Content>
