@@ -435,9 +435,13 @@ namespace StoreManagement.Admin
 
         protected void imgbtnfrView_Click(object sender, ImageClickEventArgs e)
         {
-           
-
-
+            ImageButton btndetails = sender as ImageButton;
+            GridViewRow gvrow = (GridViewRow)btndetails.NamingContainer;
+            GridView gv = (GridView)gvPOrder.Rows[gvrow.RowIndex].FindControl("gvPoItem");
+            if (gv.Visible == false)
+                gv.Visible = true;
+            else
+                gv.Visible = false;
 
         }
 
@@ -475,9 +479,16 @@ namespace StoreManagement.Admin
             }
         }
 
-
-       
-
+        protected void gvPOrder_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                int pid=Convert.ToInt32(gvPOrder.DataKeys[e.Row.RowIndex].Value.ToString());
+                GridView gv = (GridView)e.Row.FindControl("gvPoItem");
+                gv.DataSource = BindPurchaseOrderItem(pid);
+                gv.DataBind();
+            }
+        }
     }
 
 

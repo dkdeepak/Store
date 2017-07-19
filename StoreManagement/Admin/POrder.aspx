@@ -9,8 +9,76 @@
       margin: 0px;
       z-index:10000 !important;
     }
-      
-    </style>
+  .dataTable
+{
+text-align:left;
+font-size:10pt;
+font-family:Verdana, Sans-Serif;
+border:solid 1px rgb(210,210,210);
+color:gray;
+ 
+}
+.dataTable CAPTION
+{
+color:Black;
+text-align:left;
+font-size:12pt;
+font-weight:bold;
+padding-bottom:5px;
+padding-top:15px;
+}
+.dataTable TH
+{
+text-decoration:none;
+background-color:rgb(210,210,210);
+font-family:Tahoma, Sans-Serif, Arial;
+font-size:11pt;
+font-weight:normal;
+color:Black;
+border:solid 0px;
+padding:2px 4px 2px 2px;
+}
+.dataTable TD
+{
+padding-left:6px;
+border:solid 0px;
+min-width:100px;
+}
+.dataTable TR
+{
+border:solid 0px;
+ 
+}
+.dataTableAlt TD
+{
+font-size: 10pt;
+color:rgb(75,75,75);
+font-family:Verdana;
+border: solid 0px;
+padding:2px 0px 2px 8px;
+background-color:rgb(245,245,245);
+min-width:100px;
+}
+.dataTableRow
+{
+color:rgb(75,75,75);
+font-family:Verdana;
+padding:2px 0px 2px 8px;
+border:solid 0px;
+background-color:White;
+}
+.dataTable A:Link, .dataTable A:Visited
+{
+text-decoration:none;
+color:black;
+}
+.dataTable A:Hover
+{
+color:Red;
+text-decoration:none;
+}
+</style> 
+
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphContain" runat="server">
     
@@ -125,11 +193,19 @@
       
 
 <br />
-    <asp:UpdatePanel id="up2" runat="server" UpdateMode="Conditional">
+    <asp:UpdatePanel id="up2" runat="server">
         <ContentTemplate>
-            <asp:GridView ID="gvPOrder" runat="server"  Width="100%" CssClass="Grid" 
+            <div class="row">
+                <div class="col-lg-12">
+
+                
+            <asp:GridView ID="gvPOrder" runat="server"  Width="100%" 
                                     AlternatingRowStyle-CssClass="alt"
-                                    PagerStyle-CssClass="pgr" DataKeyNames="PurchaseOrderID">
+                                     DataKeyNames="PurchaseOrderID" OnRowDataBound="gvPOrder_RowDataBound">
+                <HeaderStyle CssClass="dataTable" />
+<RowStyle CssClass="dataTable" />
+<AlternatingRowStyle CssClass="dataTableAlt" />
+
                                     <Columns>                                       
 
                                         <asp:TemplateField HeaderText="View" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" HeaderStyle-Width="5%">
@@ -152,8 +228,14 @@
                                         <asp:TemplateField>
                                             <ItemTemplate>                                              
                                                 <%--inner grid--%>
-                                                <asp:GridView ID="gvPoItem" runat="server"  DataKeyNames="PurchaseOrderItemID" CssClass="Grid"
-                                                     AlternatingRowStyle-CssClass="alt"></asp:GridView>
+                                                <asp:GridView ID="gvPoItem" Visible="false" runat="server"  DataKeyNames="PurchaseOrderItemID" CssClass="Grid"
+                                                     AlternatingRowStyle-CssClass="alt">
+                                                    <HeaderStyle CssClass="dataTable" />
+<RowStyle CssClass="dataTable" />
+<AlternatingRowStyle CssClass="dataTableAlt" />
+
+
+                                                </asp:GridView>
                                                                                             
                                                    
                                             </ItemTemplate>
@@ -161,7 +243,8 @@
 
                                     </Columns>
                                 </asp:GridView>
-              
+              </div>
+            </div>
         </ContentTemplate>
 
     </asp:UpdatePanel>

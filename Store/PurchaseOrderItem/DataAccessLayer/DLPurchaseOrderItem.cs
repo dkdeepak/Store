@@ -47,8 +47,9 @@ namespace Store.PurchaseOrderItem.DataAccessLayer
                     {
                         objPurchaseOrderItem.TotalPrice = dr.GetDecimal(dr.GetOrdinal("TotalPrice"));
                     }
-                    dr.Close();
+                    
                 }
+                dr.Close();
                 return objPurchaseOrderItem;
 
             }
@@ -102,6 +103,7 @@ namespace Store.PurchaseOrderItem.DataAccessLayer
                     }
                     objPurchaseOrderItemList.Add(objPurchaseOrderItem);
                 }
+                dr.Close();
                 return objPurchaseOrderItemList;
 
             }
