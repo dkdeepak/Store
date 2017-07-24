@@ -177,6 +177,7 @@ EmptyDataText="No purchase orders item for this customer." >
         </ContentTemplate>
 
     </asp:UpdatePanel>
+    <%--javascript--%>
   <script type="text/javascript">
 function switchViews(obj, row) {
 var div = document.getElementById(obj);
