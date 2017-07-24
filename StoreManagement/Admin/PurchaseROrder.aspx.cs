@@ -14,15 +14,27 @@ namespace StoreManagement.Admin
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
-        Store.Item.BusinessLogic.Item oblItem = new Store.Item.BusinessLogic.Item();
-        Store.Item.BusinessObject.ItemList objItemList = new Store.Item.BusinessObject.ItemList();
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!Page.IsPostBack)
+            {
+                divForm.Style.Add("display", "none");
+                divSerach.Style.Add("display", "block");
+                up1.Update();
+                bindPRecived();
+            }
+        }
         Store.PurchaseOrder.BusinessLogic.PurchaseOrder odlPOrder = null;
         Store.PurchaseOrder.BusinessObject.PurchaseOrder objPOrder = null;
-        Store.PurchaseOrder.BusinessObject.PurchaseOrderList objPOrderList = new Store.PurchaseOrder.BusinessObject.PurchaseOrderList();
         Store.PurchaseOrderItem.BusinessLogic.PurchaseOrderItem oblPurchaseOrderItem = null;
-        Store.PurchaseOrderItem.BusinessObject.PurchaseOrderItem objPurchaseOrderItem = null;
         Store.PurchaseOrderItem.BusinessObject.PurchaseOrderItemList objPurchaseOrderItemList = null;
-
+        Store.PurchaseReceived.BusinessLogic.PurchaseReceived oblPurchaseReceived = null;
+        Store.Common.MessageInfo objMessageInfo = null;
+        Store.PurchaseReceived.BusinessObject.PurchaseReceived objPurchaseReceived = null;
+        Store.PurchaseReceivedItem.BusinessObject.PurchaseReceivedItem objPurchaseReceivedItem = null;
+        Store.PurchaseReceived.BusinessObject.PurchaseReceivedList objPurchaseReceivedList = null;
+        Store.PurchaseReceivedItem.BusinessObject.PurchaseReceivedItemList objPurchaseReceivedItemList = null;
+        Store.PurchaseReceivedItem.BusinessLogic.PurchaseReceivedItem oblPurchaseReceivedItem = null;
         #region Autocompelet
         //[System.Web.Script.Services.ScriptMethod()]
         [System.Web.Services.WebMethod]
@@ -75,46 +87,65 @@ namespace StoreManagement.Admin
         #endregion
 
         #endregion
-        
+
         #region webmethod
         public string insertOrder(string tax, string shc, string misccost, string ttotal)
         {
-            Store.PurchaseReceived.BusinessLogic.PurchaseReceived oblPurchaseReceived = new Store.PurchaseReceived.BusinessLogic.PurchaseReceived();
-            Store.Common.MessageInfo objMessageInfo = new MessageInfo();
-            Store.PurchaseReceived.BusinessObject.PurchaseReceived objPurchaseReceived = new Store.PurchaseReceived.BusinessObject.PurchaseReceived();
-            objPurchaseReceived.PurchaseOrderID = Convert.ToInt32(0);
-            objPurchaseReceived.PurchaseReceivedID = 0;
-            objPurchaseReceived.VendorID = 0;
-            objPurchaseReceived.PurchaseAmount = Convert.ToDecimal(ttotal);
-            objPurchaseReceived.TaxValue = Convert.ToDecimal(tax);
-            objPurchaseReceived.ShipingAndHandlingCost = Convert.ToDecimal(shc);
-            objPurchaseReceived.MiscCost = Convert.ToDecimal(misccost);
-            objPurchaseReceived.IsActive = 1;
-            objMessageInfo = oblPurchaseReceived.ManagePurchaseReceived(objPurchaseReceived, 1);
+            try
+            {
+                objPurchaseReceived = new Store.PurchaseReceived.BusinessObject.PurchaseReceived();
+                objMessageInfo = new MessageInfo();
+                oblPurchaseReceived = new Store.PurchaseReceived.BusinessLogic.PurchaseReceived();
+                objPurchaseReceived.PurchaseOrderID = Convert.ToInt32(txtPoId.Text);
+                objPurchaseReceived.PurchaseReceivedID = 0;
+                objPurchaseReceived.VendorID = 0;
+                objPurchaseReceived.PurchaseAmount = Convert.ToDecimal(ttotal);
+                objPurchaseReceived.TaxValue = Convert.ToDecimal(tax);
+                objPurchaseReceived.ShipingAndHandlingCost = Convert.ToDecimal(shc);
+                objPurchaseReceived.MiscCost = Convert.ToDecimal(misccost);
+                objPurchaseReceived.IsActive = 1;
+                objMessageInfo = oblPurchaseReceived.ManagePurchaseReceived(objPurchaseReceived, 1);
 
-            return objMessageInfo.TranID.ToString();
+                return objMessageInfo.TranID.ToString();
+            }
+            catch { throw; }
+            finally
+            {
+                objMessageInfo = null;
+                objPurchaseReceived = null;
+                oblPurchaseReceived = null;
+            }
         }
 
         public string insertItem(string name, string description, string unitprice, string quantity, string transId)
         {
+            try
+            {
+                objPurchaseReceivedItem = new Store.PurchaseReceivedItem.BusinessObject.PurchaseReceivedItem();
+                objMessageInfo = new MessageInfo();
+                oblPurchaseReceived = new Store.PurchaseReceived.BusinessLogic.PurchaseReceived();
+                objPurchaseReceivedItem.PurchaseItemReceivedID = 0;
+                objPurchaseReceivedItem.PurchaseOrderID = Convert.ToInt32(txtPoId.Text);
+                objPurchaseReceivedItem.PurchaseReceivedID = Convert.ToInt32(transId);
+                objPurchaseReceivedItem.ItemID = 0;
+                objPurchaseReceivedItem.ItemPrefix = name;
+                objPurchaseReceivedItem.ItemUnit = quantity;
+                objPurchaseReceivedItem.Description = description;
+                objPurchaseReceivedItem.ItemPrice = Convert.ToDecimal(unitprice);
+                objPurchaseReceivedItem.IsActive = 1;
+                objMessageInfo = oblPurchaseReceived.ManagePurchaseReceivedItem(objPurchaseReceivedItem, 1);
 
-            Store.PurchaseReceivedItem.BusinessObject.PurchaseReceivedItem objPurchaseReceivedItem = new Store.PurchaseReceivedItem.BusinessObject.PurchaseReceivedItem();
-            Store.Common.MessageInfo objMessageInfo = new MessageInfo();
-            Store.PurchaseReceived.BusinessLogic.PurchaseReceived oblPurchaseReceived = new Store.PurchaseReceived.BusinessLogic.PurchaseReceived();
-            objPurchaseReceivedItem.PurchaseItemReceivedID = 0;
-            objPurchaseReceivedItem.PurchaseOrderID = Convert.ToInt32(hfPoderId.Value);
-            objPurchaseReceivedItem.PurchaseReceivedID = Convert.ToInt32(transId);
-            objPurchaseReceivedItem.ItemID = 0;
-            objPurchaseReceivedItem.ItemPrefix = name;
-            objPurchaseReceivedItem.ItemUnit = quantity;
-            objPurchaseReceivedItem.Description = description;
-            objPurchaseReceivedItem.ItemPrice = Convert.ToDecimal(unitprice);
-            objPurchaseReceivedItem.IsActive = 1;
-            objMessageInfo = oblPurchaseReceived.ManagePurchaseReceivedItem(objPurchaseReceivedItem, 1);
+                //objPurchaseOrder = new Store.PurchaseOrder.BusinessObject.PurchaseOrder();
 
-            //objPurchaseOrder = new Store.PurchaseOrder.BusinessObject.PurchaseOrder();
-
-            return "";
+                return "";
+            }
+            catch { throw; }
+            finally
+            {
+                objPurchaseReceivedItem = null;
+                oblPurchaseReceived = null;
+                objMessageInfo = null;
+            }
         }
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
@@ -143,8 +174,14 @@ namespace StoreManagement.Admin
                 BindPurchaseOrder(id);
                 BindPurchaseOrderItem(id);
                 txtSubTotal.Text = findsubtotal().ToString();
-                up1.Update();
+               
                 hfPoderId.Value = id.ToString();
+                if (Gridview1.DataSource != null)
+                {
+                    divForm.Style.Add("display", "block");
+                    divSerach.Style.Add("display", "none");
+                    up1.Update();
+                }  
             }
             catch (Exception ex)
             { }
@@ -179,7 +216,7 @@ namespace StoreManagement.Admin
             finally
             {
                 odlPOrder = null;
-                objPOrderList = null;
+                objPOrder = null;
             }
             #endregion
         }
@@ -239,9 +276,162 @@ namespace StoreManagement.Admin
             Gridview1.DataSource = null;
             Gridview1.DataBind();
             hfPoderId.Value = string.Empty;
+            divForm.Style.Add("display", "none");
+            divSerach.Style.Add("display", "block");
+            up1.Update();
         }
 
-      
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            reset();
+        }
+        private void bindPRecived()
+        {
+            
+            try
+            {
+                oblPurchaseReceived = new Store.PurchaseReceived.BusinessLogic.PurchaseReceived();
+                objPurchaseReceivedList = new Store.PurchaseReceived.BusinessObject.PurchaseReceivedList();
+                objPurchaseReceivedList = oblPurchaseReceived.GetAllPurchaseReceivedList(0,0, "");
+                if (objPurchaseReceivedList != null)
+                {
+                    gvPOrder.DataSource = objPurchaseReceivedList;
+                    gvPOrder.DataBind();
+                }
+                else
+                {
+                    gvPOrder.DataSource = null;
+                    gvPOrder.DataBind();
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                oblPurchaseReceived = null;
+                objPurchaseReceivedList = null;
+            }
+        }
+        Store.PurchaseReceivedItem.BusinessObject.PurchaseReceivedItemList BindPurchaseReceivedItem(int id)
+        {
+            
+            
+            try
+            {
+                oblPurchaseReceivedItem = new Store.PurchaseReceivedItem.BusinessLogic.PurchaseReceivedItem();
+                objPurchaseReceivedItemList = new Store.PurchaseReceivedItem.BusinessObject.PurchaseReceivedItemList();
+                objPurchaseReceivedItemList = oblPurchaseReceivedItem.GetAllPurchaseReceivedItemList(id, 0, "");
+                return objPurchaseReceivedItemList;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+
+                oblPurchaseReceivedItem = null;
+                objPurchaseReceivedItemList = null;
+            }
+
+
+        }
+        protected void gvPOrder_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                int pid = Convert.ToInt32(gvPOrder.DataKeys[e.Row.RowIndex].Value.ToString());
+                GridView gv = (GridView)e.Row.FindControl("gvPoItem");
+                gv.DataSource = BindPurchaseReceivedItem(pid);
+                gv.DataBind();
+            }
+        }
+        protected void imgbtn_Click(object sender, ImageClickEventArgs e)
+        {
+            //objPurchaseOrder = new Store.PurchaseOrder.BusinessObject.PurchaseOrder();
+            //oblPurchaseOrder = new Store.PurchaseOrder.BusinessLogic.PurchaseOrder();
+            //objPurchaseOrderItem = new Store.PurchaseOrderItem.BusinessObject.PurchaseOrderItem();
+            //oblPurchaseOrderItem = new Store.PurchaseOrderItem.BusinessLogic.PurchaseOrderItem();
+            //try
+            //{
+
+            //    ImageButton btndetails = sender as ImageButton;
+            //    GridViewRow gvrow = (GridViewRow)btndetails.NamingContainer;
+            //    int id = Convert.ToInt32(gvPOrder.DataKeys[gvrow.RowIndex].Value.ToString());
+            //    int rt = checkPRvied(id);
+            //    if (rt == 1)
+            //    {
+            //        reset();
+            //        hfPId.Value = id.ToString();
+            //        objPurchaseOrder = oblPurchaseOrder.GetAllPurchaseOrder(id, 0, "");
+            //        if (objPurchaseOrder != null)
+            //        {
+            //            txtDic.Text = objPurchaseOrder.PDiscount.ToString();
+            //            txtDicPre.Text = objPurchaseOrder.PDiscountPre.ToString();
+            //            txtMiscCost.Text = objPurchaseOrder.MiscCost.ToString();
+            //            txtSHC.Text = objPurchaseOrder.ShipingAndHandlingCost.ToString();
+            //            txtTax.Text = objPurchaseOrder.TaxValue.ToString();
+            //            txttotal.Text = objPurchaseOrder.PurchaseAmount.ToString();
+            //            objPurchaseOrderItemList = oblPurchaseOrderItem.GetAllPurchaseOrderItemList(id, 0, "");
+            //            if (objPurchaseOrderItemList != null)
+            //            {
+            //                Gridview1.DataSource = null;
+            //                Gridview1.DataBind();
+            //                Gridview1.DataSource = objPurchaseOrderItemList;
+            //                Gridview1.DataBind();
+            //            }
+            //        }
+            //        upForm.Update();
+            //    }
+            //    //edit logic
+            //}
+            //catch (Exception ex)
+            //{ }
+            //finally
+            //{
+            //    objPurchaseOrder = null;
+            //    oblPurchaseOrder = null;
+            //    objPurchaseOrderItem = null;
+            //    oblPurchaseOrderItem = null;
+            //}
+            //cmdMode = CommandMode.M;
+        }
+        
+        protected void imgbtnfrDelete_Click(object sender, ImageClickEventArgs e)
+        {
+            //cmdMode = CommandMode.D;
+            //oblPurchaseOrder = new Store.PurchaseOrder.BusinessLogic.PurchaseOrder();
+            //objPurchaseOrder = new Store.PurchaseOrder.BusinessObject.PurchaseOrder();
+            //objMessageInfo = new MessageInfo();
+            //try
+            //{
+            //    ImageButton btndetails = sender as ImageButton;
+            //    GridViewRow gvrow = (GridViewRow)btndetails.NamingContainer;
+            //    objPurchaseOrder.PurchaseOrderID = Convert.ToInt32(gvPOrder.DataKeys[gvrow.RowIndex].Value.ToString());
+            //    objMessageInfo = oblPurchaseOrder.ManagePurchaseOrder(objPurchaseOrder, cmdMode);
+            //    BindPurchaseOrder();
+            //    if (objMessageInfo.TranID != 0)
+            //        ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alert", "alert('" + objMessageInfo.TranMessage + "')", true);
+            //    else if (objMessageInfo.ErrorCode == -101)
+            //        ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alert", "alert('" + objMessageInfo.ErrorMessage + "')", true);
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw ex;
+            //}
+            //finally
+            //{
+
+            //    objMessageInfo = null;
+            //    objPurchaseOrder = null;
+            //    oblPurchaseOrder = null;
+
+            //}
+        }
         protected void Gridview1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)

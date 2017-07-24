@@ -187,6 +187,19 @@ namespace Store.PurchaseOrder.DataAccessLayer
             }
         }
 
+        public DataTable runQuery(string query)
+        {
+            try
+            {
+                return ExecuteQuery.ExecuteDataTable(query);
+            }
+            catch
+            {
+                throw;
+            }
+       }
+
+        
 
         public Store.Common.MessageInfo ManagePurchase(Store.PurchaseOrder.BusinessObject.PurchaseOrder objPOrder, CommandMode cmdMode)
         {
@@ -227,7 +240,7 @@ namespace Store.PurchaseOrder.DataAccessLayer
                 throw;
             }
         }
-
+        
 
 
     }

@@ -101,7 +101,7 @@ namespace StoreManagement.Admin
             double total = pri * Convert.ToInt32(qut.Text);
             ttl.Text = Convert.ToString(total);
             txtSubTotal.Text = Convert.ToString(findSubTotal());
-            up1.Update();
+            upForm.Update();
             AddNewRowToGrid();
             ttl.Focus();
 
@@ -131,7 +131,7 @@ namespace StoreManagement.Admin
             tax = (subtotal - dic) * .125;
             txtDic.Text = Convert.ToString(dic);
             txtTax.Text = Convert.ToString(tax);
-            up1.Update();
+            upForm.Update();
             txtTax.Focus();
         }
 
@@ -145,7 +145,7 @@ namespace StoreManagement.Admin
             double total;
             total = subtotal + tax - dic + shc + miss;
             txttotal.Text = Convert.ToString(total);
-            up1.Update();
+            upForm.Update();
             txttotal.Focus();
         }
 
@@ -272,8 +272,7 @@ namespace StoreManagement.Admin
             objPurchaseOrder = new Store.PurchaseOrder.BusinessObject.PurchaseOrder();
             if (cmdMode == Store.Common.CommandMode.M)
             {
-                objPurchaseOrder.PurchaseOrderID = 1;//PurchaseOrderID which edit from data grid
-
+                objPurchaseOrder.PurchaseOrderID = Convert.ToInt32(hfPId.Value);//PurchaseOrderID which edit from data grid
             }
             else
             {
@@ -357,6 +356,7 @@ namespace StoreManagement.Admin
             SetInitialRow();
             ViewState["CurrentTable"] = null;
         }
+
         protected void Gridview1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -433,39 +433,97 @@ namespace StoreManagement.Admin
         }
 
 
-        protected void imgbtnfrView_Click(object sender, ImageClickEventArgs e)
-        {
-            ImageButton btndetails = sender as ImageButton;
-            GridViewRow gvrow = (GridViewRow)btndetails.NamingContainer;
-            GridView gv = (GridView)gvPOrder.Rows[gvrow.RowIndex].FindControl("gvPoItem");
-            if (gv.Visible == false)
-                gv.Visible = true;
-            else
-                gv.Visible = false;
-
-        }
+        
 
 
         protected void imgbtn_Click(object sender, ImageClickEventArgs e)
         {
-            reset();
-            ImageButton btndetails = sender as ImageButton;
-            GridViewRow gvrow = (GridViewRow)btndetails.NamingContainer;
-            objPurchaseOrder.PurchaseOrderID = Convert.ToInt32(gvPOrder.DataKeys[gvrow.RowIndex].Value.ToString());
-            //edit logic
+            objPurchaseOrder = new Store.PurchaseOrder.BusinessObject.PurchaseOrder();
+            oblPurchaseOrder = new Store.PurchaseOrder.BusinessLogic.PurchaseOrder();
+            objPurchaseOrderItem = new Store.PurchaseOrderItem.BusinessObject.PurchaseOrderItem();
+            oblPurchaseOrderItem = new Store.PurchaseOrderItem.BusinessLogic.PurchaseOrderItem();
+            try
+            {
+
+                ImageButton btndetails = sender as ImageButton;
+                GridViewRow gvrow = (GridViewRow)btndetails.NamingContainer;
+                int id = Convert.ToInt32(gvPOrder.DataKeys[gvrow.RowIndex].Value.ToString());
+                int rt = checkPRvied(id);
+                if (rt == 1)
+                {
+                    reset();
+                    hfPId.Value = id.ToString();
+                    objPurchaseOrder = oblPurchaseOrder.GetAllPurchaseOrder(id, 0, "");
+                    if (objPurchaseOrder != null)
+                    {
+                        txtDic.Text = objPurchaseOrder.PDiscount.ToString();
+                        txtDicPre.Text = objPurchaseOrder.PDiscountPre.ToString();
+                        txtMiscCost.Text = objPurchaseOrder.MiscCost.ToString();
+                        txtSHC.Text = objPurchaseOrder.ShipingAndHandlingCost.ToString();
+                        txtTax.Text = objPurchaseOrder.TaxValue.ToString();
+                        txttotal.Text = objPurchaseOrder.PurchaseAmount.ToString();
+                        objPurchaseOrderItemList = oblPurchaseOrderItem.GetAllPurchaseOrderItemList(id, 0, "");
+                        if (objPurchaseOrderItemList != null)
+                        {
+                            Gridview1.DataSource = null;
+                            Gridview1.DataBind();
+                            Gridview1.DataSource = objPurchaseOrderItemList;
+                            Gridview1.DataBind();
+                        }
+                    }
+                    upForm.Update();
+                }
+                //edit logic
+            }
+            catch(Exception ex)
+            { }
+            finally
+            {
+                objPurchaseOrder = null;
+                oblPurchaseOrder = null;
+                objPurchaseOrderItem = null;
+                oblPurchaseOrderItem = null;
+            }
             cmdMode = CommandMode.M;
+        }
+        int checkPRvied(int id)
+        {
+            oblPurchaseOrder = new Store.PurchaseOrder.BusinessLogic.PurchaseOrder();
+            DataTable dt = new DataTable();
+            try
+            {
+                string query = "select 1 from tbl_tPurchaseRecived where IsActive>0 and PurchaseOrderID=" + id;
+                dt = oblPurchaseOrder.RunQuery(query);
+                if (dt.Rows.Count > 0)
+                    return 1;
+                else return 0;
+            }
+
+            catch
+            { return 0; }
+            finally
+            {
+                //oblPurchaseOrder = null;
+                dt = null;
+            }
         }
         protected void imgbtnfrDelete_Click(object sender, ImageClickEventArgs e)
         {
             cmdMode = CommandMode.D;
+            oblPurchaseOrder = new Store.PurchaseOrder.BusinessLogic.PurchaseOrder();
+            objPurchaseOrder = new Store.PurchaseOrder.BusinessObject.PurchaseOrder();
+            objMessageInfo = new MessageInfo();
             try
             {
                 ImageButton btndetails = sender as ImageButton;
                 GridViewRow gvrow = (GridViewRow)btndetails.NamingContainer;
                 objPurchaseOrder.PurchaseOrderID = Convert.ToInt32(gvPOrder.DataKeys[gvrow.RowIndex].Value.ToString());
-                //delete logic
-                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alert", "alert('" + objMessageInfo.TranMessage + "')", true);
-
+                objMessageInfo=oblPurchaseOrder.ManagePurchaseOrder(objPurchaseOrder, cmdMode);
+                BindPurchaseOrder();
+                if(objMessageInfo.TranID!=0)
+                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alert", "alert('" + objMessageInfo.TranMessage + "')", true);
+                else if(objMessageInfo.ErrorCode==-101)
+                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alert", "alert('" + objMessageInfo.ErrorMessage + "')", true);
             }
             catch (Exception ex)
             {
@@ -475,6 +533,8 @@ namespace StoreManagement.Admin
             {
 
                 objMessageInfo = null;
+                objPurchaseOrder = null;
+                oblPurchaseOrder = null;
 
             }
         }

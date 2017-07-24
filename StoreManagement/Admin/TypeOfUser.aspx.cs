@@ -136,14 +136,14 @@ namespace StoreManagement.Admin
                 if (cmdMode == Store.Common.CommandMode.M)
                 {
                     objTypeOfUser.TypeofUserID = Convert.ToInt32(txtTypeofUserId.Text);
-                    objTypeOfUser.ModifiedBy = Convert.ToInt32(Session["UserId"]);
+                    //objTypeOfUser.ModifiedBy = Convert.ToInt32(Session["UserId"]);
                 }
                 else
                 {
                     objTypeOfUser.TypeofUserID = 0;
+                    //objTypeOfUser.CreatedBy = Convert.ToInt32(Session["UserId"]);
                 }
                 objTypeOfUser.TypeofUserName = Convert.ToString(txtTypeofUserName.Text);
-                objTypeOfUser.CreatedBy = Convert.ToInt32(Session["UserId"]);
                 objMessageInfo = oblTypeOfUser.ManageItemMaster(objTypeOfUser, cmdMode);
             }
             catch (Exception ex)

@@ -186,11 +186,12 @@ namespace StoreManagement.Admin
                 if (cmdMode == Store.Common.CommandMode.M)
                 {
                     objUserInfo.UserID = Convert.ToInt32(txtUserID.Text);
-                    objUserInfo.ModifiedBy = Convert.ToInt32(Session["UserId"]);
+                    //objUserInfo.ModifiedBy = Convert.ToInt32(Session["UserId"]);
                 }
                 else
                 {
                     objUserInfo.UserID = 0;
+                    //objUserInfo.CreatedBy = Convert.ToInt32(Session["UserId"]);
                 }
                 objUserInfo.UserName = Convert.ToString(txtUserName.Text);
                 objUserInfo.UserDisplayName = Convert.ToString(txtUserDisplayName.Text);
@@ -209,7 +210,7 @@ namespace StoreManagement.Admin
                     objUserInfo.IsActive = 1;
                 else
                     objUserInfo.IsActive = 0;
-                objUserInfo.CreatedBy = Convert.ToInt32(Session["UserId"]);
+                
                 objMessageInfo = oblUserInfo.ManageItemMaster(objUserInfo, cmdMode);
             }
             catch (Exception ex)

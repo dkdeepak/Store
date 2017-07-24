@@ -1,89 +1,13 @@
 ﻿<%@ Page Title="TRANSACTION| Purchase Order" Language="C#" MasterPageFile="~/Master/AdminMaster.Master" AutoEventWireup="true" CodeBehind="POrder.aspx.cs" Inherits="StoreManagement.Admin.POrder" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style type="text/css">
-            .autoCompleteList {
-      list-style: none outside none;
-      border: 5px solid #123456;
-      cursor: pointer;
-      padding: 5px;
-      margin: 0px;
-      z-index:10000 !important;
-    }
-  .dataTable
-{
-text-align:left;
-font-size:10pt;
-font-family:Verdana, Sans-Serif;
-border:solid 1px rgb(210,210,210);
-color:gray;
- 
-}
-.dataTable CAPTION
-{
-color:Black;
-text-align:left;
-font-size:12pt;
-font-weight:bold;
-padding-bottom:5px;
-padding-top:15px;
-}
-.dataTable TH
-{
-text-decoration:none;
-background-color:rgb(210,210,210);
-font-family:Tahoma, Sans-Serif, Arial;
-font-size:11pt;
-font-weight:normal;
-color:Black;
-border:solid 0px;
-padding:2px 4px 2px 2px;
-}
-.dataTable TD
-{
-padding-left:6px;
-border:solid 0px;
-min-width:100px;
-}
-.dataTable TR
-{
-border:solid 0px;
- 
-}
-.dataTableAlt TD
-{
-font-size: 10pt;
-color:rgb(75,75,75);
-font-family:Verdana;
-border: solid 0px;
-padding:2px 0px 2px 8px;
-background-color:rgb(245,245,245);
-min-width:100px;
-}
-.dataTableRow
-{
-color:rgb(75,75,75);
-font-family:Verdana;
-padding:2px 0px 2px 8px;
-border:solid 0px;
-background-color:White;
-}
-.dataTable A:Link, .dataTable A:Visited
-{
-text-decoration:none;
-color:black;
-}
-.dataTable A:Hover
-{
-color:Red;
-text-decoration:none;
-}
-</style> 
+     
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphContain" runat="server">
     
- <asp:UpdatePanel ID="up1" UpdateMode="Conditional"   runat="server">
+ <asp:UpdatePanel ID="upForm" UpdateMode="Conditional"   runat="server">
    <ContentTemplate>
+       <asp:HiddenField ID="hfPId" runat="server" />
        <center>
            <div class="panel panel-primary panel-heading">
 <b>
@@ -109,34 +33,34 @@ text-decoration:none;
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Decription">
                 <ItemTemplate>
-                    <asp:TextBox ID="txtDec" placeholder="Item Description" ToolTip="Item Description"  runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtDec" placeholder="Item Description" ToolTip="Item Description"    runat="server" CssClass="form-control"></asp:TextBox>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Unit Price">
                 <ItemTemplate>
-                    <asp:TextBox ID="txtPrice" placeholder="Unit Price" ToolTip="Unit Price"  runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtPrice" placeholder="Unit Price" ToolTip="Unit Price"    runat="server" CssClass="form-control"></asp:TextBox>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Discount(%)">
                 <ItemTemplate>
                    
-                    <asp:TextBox ID="txtDisPre" runat="server" ToolTip="Discount(%)" placeholder="Discount(%)"  OnTextChanged="txtDisPre_TextChanged" AutoPostBack="true"  CssClass="form-control"  ></asp:TextBox>
+                    <asp:TextBox ID="txtDisPre" runat="server" ToolTip="Discount(%)" placeholder="Discount(%)"    OnTextChanged="txtDisPre_TextChanged" AutoPostBack="true"  CssClass="form-control"  ></asp:TextBox>
                    
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Discount">
                 <ItemTemplate>
-                    <asp:TextBox ID="txtDis" ToolTip="Discount" placeholder="Discount"   runat="server" CssClass="form-control" ></asp:TextBox>
+                    <asp:TextBox ID="txtDis" ToolTip="Discount" placeholder="Discount"   runat="server"   CssClass="form-control" ></asp:TextBox>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Quantity">
                 <ItemTemplate>
-                    <asp:TextBox ID="txtQut" runat="server"  ToolTip="Quantity" placeholder="Quantity" CssClass="form-control" AutoPostBack="true" OnTextChanged="txtQut_TextChanged"></asp:TextBox>
+                    <asp:TextBox ID="txtQut" runat="server"  ToolTip="Quantity" placeholder="Quantity"   CssClass="form-control" AutoPostBack="true" OnTextChanged="txtQut_TextChanged"></asp:TextBox>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Total">
                 <ItemTemplate>
-                     <asp:TextBox ID="txtTotal" ToolTip="Total" placeholder="Total" runat="server" CssClass="form-control"></asp:TextBox>
+                     <asp:TextBox ID="txtTotal" ToolTip="Total" placeholder="Total" runat="server"   CssClass="form-control"></asp:TextBox>
                 </ItemTemplate>
             </asp:TemplateField>
             </Columns>
@@ -195,58 +119,76 @@ text-decoration:none;
 <br />
     <asp:UpdatePanel id="up2" runat="server">
         <ContentTemplate>
-            <div class="row">
-                <div class="col-lg-12">
+           
 
                 
-            <asp:GridView ID="gvPOrder" runat="server"  Width="100%" 
-                                    AlternatingRowStyle-CssClass="alt"
-                                     DataKeyNames="PurchaseOrderID" OnRowDataBound="gvPOrder_RowDataBound">
-                <HeaderStyle CssClass="dataTable" />
+            <asp:GridView ID="gvPOrder"
+runat="server"
+DataKeyNames="PurchaseOrderID" 
+OnRowDataBound="gvPOrder_RowDataBound" Width="80%"
+AllowPaging="True" PageSize="20" >
+<HeaderStyle CssClass="dataTable" />
 <RowStyle CssClass="dataTable" />
 <AlternatingRowStyle CssClass="dataTableAlt" />
-
-                                    <Columns>                                       
-
-                                        <asp:TemplateField HeaderText="View" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" HeaderStyle-Width="5%">
-                                            <ItemTemplate>
-                                                
-                                                <asp:ImageButton ID="imgbtnfrView" ImageUrl="~/Images/view.png" runat="server" Width="20" Height="20" OnClick="imgbtnfrView_Click" />
-                                           
-                                                     </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Edit" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" HeaderStyle-Width="5%">
-                                            <ItemTemplate>
-                                                <asp:ImageButton ID="imgbtn" ImageUrl="~/Images/edit.png" runat="server" Width="25" Height="25" OnClick="imgbtn_Click" />
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Delete" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" HeaderStyle-Width="5%">
-                                            <ItemTemplate>
-                                                <asp:ImageButton ID="imgbtnfrDelete" ImageUrl="~/Images/delete.png" runat="server" Width="20" Height="20" OnClick="imgbtnfrDelete_Click" />
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField>
-                                            <ItemTemplate>                                              
-                                                <%--inner grid--%>
-                                                <asp:GridView ID="gvPoItem" Visible="false" runat="server"  DataKeyNames="PurchaseOrderItemID" CssClass="Grid"
-                                                     AlternatingRowStyle-CssClass="alt">
-                                                    <HeaderStyle CssClass="dataTable" />
-<RowStyle CssClass="dataTable" />
+<Columns>
+<asp:TemplateField HeaderText="View">
+<ItemTemplate>
+<a href="javascript:switchViews('div<%# Eval("PurchaseOrderID") %>', 'one');">
+<img id="imgdiv<%# Eval("PurchaseOrderID") %>" alt="Click to show/hide orders" border="0" width="20px" height="20px" src="../Images/view.png" />
+</a>
+</ItemTemplate>
+<AlternatingItemTemplate>
+<a href="javascript:switchViews('div<%# Eval("PurchaseOrderID") %>', 'alt');">
+<img id="imgdiv<%# Eval("PurchaseOrderID") %>" alt="Click to show/hide orders" width="20px" height="20px" border="0" src="../Images/view.png"/>
+</a>
+</AlternatingItemTemplate>
+</asp:TemplateField>
+<asp:TemplateField HeaderText="Edit" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" HeaderStyle-Width="5%">
+    <ItemTemplate>
+        <asp:ImageButton ID="imgbtn" ImageUrl="~/Images/edit.png" runat="server" Width="25" Height="25" OnClick="imgbtn_Click" />
+    </ItemTemplate>
+</asp:TemplateField>
+<asp:TemplateField HeaderText="Delete" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" HeaderStyle-Width="5%">
+    <ItemTemplate>
+        <asp:ImageButton ID="imgbtnfrDelete" ImageUrl="~/Images/delete.png" runat="server" Width="20" Height="20" OnClick="imgbtnfrDelete_Click" />
+    </ItemTemplate>
+</asp:TemplateField>
+<asp:TemplateField>
+<ItemTemplate>
+</td></tr>
+<tr>
+<td colspan="100%" >
+<div id="div<%# Eval("PurchaseOrderID") %>" style="display:none;position:relative;left:25px;" >
+<asp:GridView ID="gvPoItem" runat="server" Width="80%"
+ DataKeyNames="PurchaseOrderItemID"
+EmptyDataText="No purchase orders item for this customer." >
+<HeaderStyle CssClass="dataTable" />
 <AlternatingRowStyle CssClass="dataTableAlt" />
+<RowStyle CssClass="dataTable" />
+</asp:GridView>
+</div>
+</td>
+</tr>
+</ItemTemplate>
+</asp:TemplateField>
+</Columns>
+</asp:GridView>
 
-
-                                                </asp:GridView>
-                                                                                            
-                                                   
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-
-                                    </Columns>
-                                </asp:GridView>
-              </div>
-            </div>
         </ContentTemplate>
 
     </asp:UpdatePanel>
-  
+  <script type="text/javascript">
+function switchViews(obj, row) {
+var div = document.getElementById(obj);
+var img = document.getElementById('img' + obj);
+ 
+if (div.style.display == "none") {
+div.style.display = "inline";
+img.src = "../Images/view.png";
+} else {
+div.style.display = "none";
+img.src = "../Images/view.png";
+}
+}
+</script>
 </asp:Content>

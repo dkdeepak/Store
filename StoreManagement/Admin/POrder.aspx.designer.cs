@@ -13,13 +13,22 @@ namespace StoreManagement.Admin {
     public partial class POrder {
         
         /// <summary>
-        /// up1 control.
+        /// upForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel up1;
+        protected global::System.Web.UI.UpdatePanel upForm;
+        
+        /// <summary>
+        /// hfPId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfPId;
         
         /// <summary>
         /// Gridview1 control.

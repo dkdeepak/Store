@@ -11,19 +11,20 @@ namespace StoreManagement.Admin
     public partial class City : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        { if (Session["UserId"] != null)
-            {
+        {
+            //if (Session["UserId"] != null)
+            //{
                 if (!Page.IsPostBack)
                 {
                     BindCity();
                     BindCountry();
 
                 }
-            }
-            else
-            {
-                Response.Redirect("../Login.aspx");
-            }
+            //}
+            //else
+            //{
+              //  Response.Redirect("../Login.aspx");
+            //}
         }
         Store.Country.BusinessLogic.Country oblCountry = null;
         Store.Country.BusinessObject.CountryList objCountrylist = null;
@@ -199,18 +200,17 @@ namespace StoreManagement.Admin
                 if (cmdMode == Store.Common.CommandMode.M)
                 {
                     objCity.CityID = Convert.ToInt32(txtCityId.Text);
-                    objCity.ModifiedBy = Convert.ToInt32(Session["UserId"].ToString());
+                    //objCity.ModifiedBy = Convert.ToInt32(Session["UserId"].ToString());
                 }
                 else
                 {
                     objCity.CityID = 0;
-                    objCity.CreatedBy = Convert.ToInt32(Session["UserId"].ToString());
+                    //objCity.CreatedBy = Convert.ToInt32(Session["UserId"].ToString());
                 }
                 objCity.CityName = Convert.ToString(txtCity.Text);
                 objCity.CountryID = Convert.ToInt32(ddlCountry.SelectedValue);
                 objCity.StateID = Convert.ToInt32(ddlState.SelectedItem.Value);
                 objCity.DistrictID = Convert.ToInt32(ddlDistrict.SelectedItem.Value);
-                objCity.CreatedBy = Convert.ToInt32(Session["UserId"].ToString());
                 objMessageInfo = oblCity.ManageItemMaster(objCity, cmdMode);
             }
             catch (Exception ex)

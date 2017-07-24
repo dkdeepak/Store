@@ -231,12 +231,13 @@ namespace StoreManagement.Admin
                 if (cmdMode == Store.Common.CommandMode.M)
                 {
                     objItem.ItemID = Convert.ToInt32(txtItemId.Text);
-                    objItem.ModifiedBy = Convert.ToInt32(Session["UserId"]);
+                    //objItem.ModifiedBy = Convert.ToInt32(Session["UserId"]);
                     //objItem.ItemPriceID = Convert.ToInt32(txtItemPriceId.Text);
                 }
                 else
                 {
                     objItem.ItemID = 0;
+                    //objItem.CreatedBy = Convert.ToInt32(Session["UserId"]);
                     //objItem.ItemPriceID = 0;
                 }
                 objItem.ItemPrefix = Convert.ToString(txtItemPrefix.Text);
@@ -253,7 +254,7 @@ namespace StoreManagement.Admin
                 //objItem.WindowTo = Convert.ToDateTime(txtTo.Text);
                 //objItem.BatchNo = Convert.ToString(txtBatchNo.Text);
                
-                objItem.CreatedBy = Convert.ToInt32(Session["UserId"]);
+                
                 objMessageInfo = oblItem.ManageItemMaster(objItem, cmdMode);
             }
             catch (Exception ex)

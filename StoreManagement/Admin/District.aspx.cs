@@ -15,14 +15,14 @@ namespace StoreManagement.Admin
          
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserId"] != null)
-            {
+            //if (Session["UserId"] != null)
+            //{
                 if (!Page.IsPostBack)
                 {
                     BindDistrict();
                     BindCountry();
                 }
-            }
+            //}
         }
         Store.State.BusinessLogic.State oblState = null;
         Store.State.BusinessObject.StateList objStatelist = null;
@@ -184,12 +184,12 @@ namespace StoreManagement.Admin
                 if (cmdMode == Store.Common.CommandMode.M)
                 {
                     objDistrict.DistrictID = Convert.ToInt32(txtDistrictId.Text);
-                    objDistrict.ModifiedBy = Convert.ToInt32(Session["UserId"].ToString());
+                    //objDistrict.ModifiedBy = Convert.ToInt32(Session["UserId"].ToString());
                 }
                 else
                 {
                     objDistrict.DistrictID = 0;
-                    objDistrict.CreatedBy = Convert.ToInt32(Session["UserId"].ToString());
+                    //objDistrict.CreatedBy = Convert.ToInt32(Session["UserId"].ToString());
                 }
                 objDistrict.DistrictName = Convert.ToString(txtDistrict.Text);
                 objDistrict.CountryID = Convert.ToInt32(ddlCountry.SelectedItem.Value);

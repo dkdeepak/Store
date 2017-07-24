@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Store.Common;
+using System.Data;
 
 namespace Store.PurchaseOrder.BusinessLogic
 {
@@ -42,6 +43,14 @@ namespace Store.PurchaseOrder.BusinessLogic
             {
                 throw;
             }
+        }
+        public DataTable RunQuery(string query)
+        {
+            try
+            {
+                return odlPurchaseOrder.runQuery(query);
+            }
+            catch { throw; }
         }
 
     }

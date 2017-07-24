@@ -12,16 +12,16 @@ namespace StoreManagement.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserId"] != null)
-            {
-                if (!Page.IsPostBack)
+            //if (Session["UserId"] != null)
+            //{
+               if (!Page.IsPostBack)
                 {
                     BindCategory();
                 }
-            }
-            else {
-                Response.Redirect("../Login.aspx");
-            }
+            //}
+            //else {
+              //  Response.Redirect("../Login.aspx");
+            //}
         }
         Store.Category.BusinessLogic.Category oblCategory = null;
         Store.Category.BusinessObject.CategoryList obCategoryList = null;
@@ -143,14 +143,14 @@ namespace StoreManagement.Admin
                 {
                    
                     objCategory.CategoryID = Convert.ToInt32(txtCategoryId.Text);
-                    objCategory.ModifiedBy = Convert.ToInt32(Session["UserId"].ToString());
+                    //objCategory.ModifiedBy = Convert.ToInt32(Session["UserId"].ToString());
                 }
                 else
                 {
                     objCategory.CategoryID = 0;
+                    //objCategory.CreatedBy = Convert.ToInt32(Session["UserId"].ToString());
                 }
                 objCategory.CategoryName = Convert.ToString(txtCategoryName.Text);
-                objCategory.CreatedBy = Convert.ToInt32(Session["UserId"].ToString());                
                 objMessageInfo = oblCategory.ManageItemMaster(objCategory, cmdMode);
             }
             catch (Exception ex)

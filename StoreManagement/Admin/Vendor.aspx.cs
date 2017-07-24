@@ -132,13 +132,14 @@ namespace StoreManagement.Admin
                 if (cmdMode == Store.Common.CommandMode.M)
                 {
                     objVendor.VendorID = Convert.ToInt32(txtVendorId.Text);
+                    //objVendor.ModifiedBy = Convert.ToInt32(Session["UserId"]);
                 }
                 else
                 {
                     objVendor.VendorID = 0;
+                    //objVendor.CreatedBy = Convert.ToInt32(Session["UserId"]);
                 }
                 objVendor.VendorName = Convert.ToString(txtVendorName.Text);
-                objVendor.CreatedBy = 1;
                 objMessageInfo = oblVendor.ManageItemMaster(objVendor, cmdMode);
                 
             }

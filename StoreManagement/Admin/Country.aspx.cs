@@ -25,17 +25,17 @@ namespace StoreManagement.Admin
         #region ControlDefindeFunction
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserId"] != null)
-            {
+            //if (Session["UserId"] != null)
+            //{
                 if (!IsPostBack)
                 {
                     BindCountry();
                 }
-            }
-            else
-            {
-                Response.Redirect("../Login.aspx");
-            }
+            //}
+            //else
+            //{
+              //  Response.Redirect("../Login.aspx");
+            //}
             
 
         }
@@ -149,12 +149,12 @@ namespace StoreManagement.Admin
                 if (cmdMode == Store.Common.CommandMode.M)
                 {
                     objCountry.CountryID = Convert.ToInt32(txtCountryId.Text);
-                    objCountry.ModifiedBy = Convert.ToInt32(Session["UserId"].ToString());
+                    //objCountry.ModifiedBy = Convert.ToInt32(Session["UserId"].ToString());
                 }
                 else
                 {
                     objCountry.CountryID = 0;
-                    objCountry.CreatedBy = Convert.ToInt32(Session["UserId"].ToString());
+                    //objCountry.CreatedBy = Convert.ToInt32(Session["UserId"].ToString());
                 }
                 objCountry.CountryName = Convert.ToString(txtCountry.Text);
                 objMessageInfo = oblCountry.ManageItemMaster(objCountry, cmdMode);

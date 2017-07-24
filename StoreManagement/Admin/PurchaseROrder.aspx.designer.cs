@@ -31,6 +31,15 @@ namespace StoreManagement.Admin {
         protected global::System.Web.UI.UpdatePanel upSearch;
         
         /// <summary>
+        /// divSerach control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSerach;
+        
+        /// <summary>
         /// txtPoId control.
         /// </summary>
         /// <remarks>
@@ -175,13 +184,31 @@ namespace StoreManagement.Admin {
         protected global::System.Web.UI.WebControls.Button btnSubmit;
         
         /// <summary>
-        /// loading control.
+        /// btnCancel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl loading;
+        protected global::System.Web.UI.WebControls.Button btnCancel;
+        
+        /// <summary>
+        /// up2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel up2;
+        
+        /// <summary>
+        /// gvPOrder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvPOrder;
         
         /// <summary>
         /// hfpo control.

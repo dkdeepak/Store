@@ -14,18 +14,18 @@ namespace StoreManagement.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserId"] != null)
-            {
+            //if (Session["UserId"] != null)
+            //{
                 if (!Page.IsPostBack)
                 {
                     BindState();
                     BindCountry();
                 }
-            }
-            else
-            {
-                Response.Redirect("../Login.aspx");
-            }
+            //}
+            //else
+            //{
+              //  Response.Redirect("../Login.aspx");
+            //}
         }
         Store.Country.BusinessLogic.Country oblCountry = null;
         Store.Country.BusinessObject.CountryList objCountrylist = null;
@@ -151,13 +151,13 @@ namespace StoreManagement.Admin
                 if (cmdMode == Store.Common.CommandMode.M)
                 {
                     objState.StateID = Convert.ToInt32(txtStateId.Text);
-                    objState.ModifiedBy = Convert.ToInt32(Session["UserId"].ToString());
+                    //objState.ModifiedBy = Convert.ToInt32(Session["UserId"].ToString());
                    
                 }
                 else
                 {
                     objState.StateID = 0;
-                    objState.CreatedBy = Convert.ToInt32(Session["UserId"].ToString());
+                    //objState.CreatedBy = Convert.ToInt32(Session["UserId"].ToString());
                 }
                 objState.StateName = Convert.ToString(txtState.Text);
                 objState.CountryID = Convert.ToInt32(ddlCountry.SelectedItem.Value);

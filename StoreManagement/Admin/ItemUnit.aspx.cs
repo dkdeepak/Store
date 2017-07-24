@@ -173,15 +173,16 @@ namespace StoreManagement.Admin
                 if (cmdMode == Store.Common.CommandMode.M)
                 {
                     objItemUnit.UnitID = Convert.ToInt32(txtUnitId.Text);
-                    objItemUnit.ModifiedBy = Convert.ToInt32(Session["UserId"]);
+                    //objItemUnit.ModifiedBy = Convert.ToInt32(Session["UserId"]);
                 }
                 else
                 {
                     objItemUnit.UnitID = 0;
+                    //objItemUnit.CreatedBy = Convert.ToInt32(Session["UserId"]);
                 }
                 objItemUnit.UnitName = Convert.ToString(txtUnitName.Text);
                 objItemUnit.CategoryID = Convert.ToInt32(ddlCategory.SelectedItem.Value);
-                objItemUnit.CreatedBy = Convert.ToInt32(Session["UserId"]);
+               
                 objMessageInfo = oblItemUnit.ManageItemMaster(objItemUnit, cmdMode);
             }
             catch (Exception ex)

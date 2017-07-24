@@ -143,16 +143,16 @@ namespace StoreManagement.Admin
                 if (cmdMode == Store.Common.CommandMode.M)
                 {
                     objTax.TaxID= Convert.ToInt32(txtTaxId.Text);
-                    objTax.ModifiedBy = Convert.ToInt32(Session["UserId"]);
+                    //objTax.ModifiedBy = Convert.ToInt32(Session["UserId"]);
                 }
                 else
                 {
                     objTax.TaxID=0;
+                    //objTax.CreatedBy = Convert.ToInt32(Session["UserId"]);
                 }
                 objTax.TaxName= Convert.ToString(txtTaxName.Text);
                 objTax.TaxDisplayName = Convert.ToString(txtTaxDisplayName.Text);
                 objTax.TaxValue = Convert.ToDecimal(txtTaxValue.Text);
-                objTax.CreatedBy = 1;
                 objMessageInfo = oblTax.ManageItemMaster(objTax, cmdMode);
             }
             catch (Exception ex)

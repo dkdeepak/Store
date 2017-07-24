@@ -12,14 +12,14 @@ namespace StoreManagement.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserId"] != null)
-            {
+            //if (Session["UserId"] != null)
+            //{
                 if (!IsPostBack)
                 {
                     BindClient();
                     BindCountry();
                 }
-            }
+            //}
 
         }
         Store.Client.BusinessLogic.Client oblClient = null;
@@ -182,15 +182,13 @@ namespace StoreManagement.Admin
                 
                 {
                    objClient.ClientID = Convert.ToInt32(txtClientId.Text);
-                   objClient.ModifiedBy = Convert.ToInt32(Session["UserId"].ToString());
+                   //objClient.ModifiedBy = Convert.ToInt32(Session["UserId"].ToString());
 
                 }
                 else
                 {
                     objClient.ClientID = 0;
-                    objClient.CreatedBy = Convert.ToInt32(Session["UserId"].ToString());
-
-                    //objExamCatg.RowID = 0;
+                    //objClient.CreatedBy = Convert.ToInt32(Session["UserId"].ToString());
                 }
                 objClient.ClientName = Convert.ToString(txtClientName.Text);
                 objClient.ClientDisplayName = Convert.ToString(txtClientDisplayName.Text);
