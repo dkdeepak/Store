@@ -49,7 +49,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AjaxControlToolkit">
-      <HintPath>E:\Store_Project\Store\StoreManagement\bin\AjaxControlToolkit.dll</HintPath>
+      <HintPath>D:\New folder\sm\StoreManagement\bin\AjaxControlToolkit.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -81,6 +81,34 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ReportSection\Purchase.aspx.cs">
+      <DependentUpon>Purchase.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportSection\Purchase.aspx.designer.cs">
+      <DependentUpon>Purchase.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportSection\PurchaseReceived.aspx.cs">
+      <DependentUpon>PurchaseReceived.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportSection\PurchaseReceived.aspx.designer.cs">
+      <DependentUpon>PurchaseReceived.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportSection\Sales.aspx.cs">
+      <DependentUpon>Sales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportSection\Sales.aspx.designer.cs">
+      <DependentUpon>Sales.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportSection\SalesReturn.aspx.cs">
+      <DependentUpon>SalesReturn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportSection\SalesReturn.aspx.designer.cs">
+      <DependentUpon>SalesReturn.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -281,6 +309,10 @@
     <Content Include="Images\logo.jpg" />
     <Content Include="Images\view.png" />
     <Content Include="Login.aspx" />
+    <Content Include="ReportSection\Purchase.aspx" />
+    <Content Include="ReportSection\PurchaseReceived.aspx" />
+    <Content Include="ReportSection\Sales.aspx" />
+    <Content Include="ReportSection\SalesReturn.aspx" />
     <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="WebForm1.aspx" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />

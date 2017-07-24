@@ -323,7 +323,12 @@
                         <li id="REPORT" runat="server">
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> REPORT<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                <li><a href="../Report/SalesOrderDetails.aspx">Sales Report</a></li>
+                                <%--<li><a href="../Report/SalesOrderDetails.aspx">Sales Report</a></li>--%>
+                                <li id="purchaseRpt" runat="server"><a href="../ReportSection/Purchase.aspx">Purchase Details</a></li>
+                                <li id="purchaseReceivedRpt" runat="server"><a href="../ReportSection/PurchaseReceived.aspx">Purchase Received Details</a></li>
+                                <li id="salesRpt" runat="server"><a href="../ReportSection/Sales.aspx">Sales details</a></li>
+                                <li id="salesReturnRpt" runat="server"><a href="../ReportSection/SalesReturn.aspx">sales Return Details</a></li>
+
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
