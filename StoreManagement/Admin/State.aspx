@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Master| State" Language="C#" MasterPageFile="~/Master/AdminMaster.Master" AutoEventWireup="true" CodeBehind="State.aspx.cs" Inherits="StoreManagement.Admin.State" %>
+﻿<%@ Page Title="Master|State" Language="C#" MasterPageFile="~/Master/AdminMaster.Master" AutoEventWireup="true" CodeBehind="State.aspx.cs" Inherits="StoreManagement.Admin.State" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -6,13 +6,14 @@
  <div style="width: 100%">
         <div>
             <table style="width: 100%">
-                <tr > <%--github.com--%>  
+                <tr > 
+                    <td align="left"><h3 style="color:#2679b5;">State</h3></td>
                     <td style="text-align: right"> 
                         <asp:Button ID="btnShowPopup"  runat="server" Style="display: none" /></td>
                     <td style="text-align: right">  
                       <asp:UpdatePanel runat="server" ID="UpdatePnl" UpdateMode="Conditional">
                             <ContentTemplate>
-                                <asp:LinkButton ID="linkButton" runat="server" OnClick="linkButton_Click"><span class="glyphicon glyphicon-plus-sign"></span> New State</asp:LinkButton>
+                                <asp:LinkButton ID="linkButton" runat="server" CssClass="btn btn-primary" OnClick="linkButton_Click"><span class="glyphicon glyphicon-pencil"></span>Add</asp:LinkButton>
                             </ContentTemplate>                            
                        </asp:UpdatePanel>
 
@@ -86,15 +87,13 @@
 <asp:Content ID="cnt2" ContentPlaceHolderID="cphData" runat="server">
     <asp:UpdatePanel ID="updateState" runat="server" UpdateMode="Conditional">
 <ContentTemplate>
-         <ajaxToolkit:Accordion ID="MyAccordion" runat="server" SelectedIndex="0" HeaderCssClass="accordionHeader" HeaderSelectedCssClass="accordionHeaderSelected" ContentCssClass="accordionContent" FadeTransitions="false" FramesPerSecond="40" TransitionDuration="250" AutoSize="None" RequireOpenedPane="false" SuppressHeaderPostbacks="true">
+       <%--  <ajaxToolkit:Accordion ID="MyAccordion" runat="server" SelectedIndex="0" HeaderCssClass="accordionHeader" HeaderSelectedCssClass="accordionHeaderSelected" ContentCssClass="accordionContent" FadeTransitions="false" FramesPerSecond="40" TransitionDuration="250" AutoSize="None" RequireOpenedPane="false" SuppressHeaderPostbacks="true">
         <Panes>
         <ajaxToolkit:AccordionPane ID="acdFaq2" runat="server">
             <Header><a href="" class="accordionLink">View Data</a></Header>
-            <Content>
+            <Content>--%>
     
-        <asp:GridView ID="dgvState" runat="server" AutoGenerateColumns="false" Width="100%" CssClass="Grid"
-                                    AlternatingRowStyle-CssClass="alt"
-                                    PagerStyle-CssClass="pgr" DataKeyNames="StateID">
+        <asp:GridView ID="dgvState" runat="server" AutoGenerateColumns="false" Width="100%" CssClass="table table-striped table-bordered table-hover" DataKeyNames="StateID">
                                     <Columns>
                                         <asp:BoundField HeaderText="State Name" ItemStyle-CssClass="text_title" DataField="StateName" ItemStyle-Width="20%" />
                                         <asp:BoundField HeaderText="Country" ItemStyle-CssClass="text_title" DataField="CountryName" ItemStyle-Width="20%" />
@@ -111,10 +110,10 @@
                                         </asp:TemplateField>
                                     </Columns>
                                 </asp:GridView>
-            </Content>
+         <%--   </Content>
         </ajaxToolkit:AccordionPane>
     </Panes>
-    </ajaxToolkit:Accordion>
+    </ajaxToolkit:Accordion>--%>
     
 </ContentTemplate>
 </asp:UpdatePanel>

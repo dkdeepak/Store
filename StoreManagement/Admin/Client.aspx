@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Master| Client" Language="C#" MasterPageFile="~/Master/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Client.aspx.cs" Inherits="StoreManagement.Admin.Client" %>
+﻿<%@ Page Title="Master|Client" Language="C#" MasterPageFile="~/Master/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Client.aspx.cs" Inherits="StoreManagement.Admin.Client" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
@@ -10,12 +10,13 @@
         <div>
             <table style="width: 100%">
                 <tr >
+                    <td align="left"><h3 style="color:#2679b5;">Client</h3></td>
                     <td style="text-align: right"> 
                         <asp:Button ID="btnShowPopup" runat="server" Style="display: none" /></td>
                     <td style="text-align: right">  
                       <asp:UpdatePanel runat="server" ID="UpdatePnl" UpdateMode="Conditional">
                             <ContentTemplate>
-                                <asp:LinkButton ID="linkButton" runat="server" OnClick="linkButton_Click">Create New Client</asp:LinkButton>
+                                <asp:LinkButton ID="linkButton" CssClass="btn btn-primary" runat="server" OnClick="linkButton_Click"> <span class="glyphicon glyphicon-pencil"></span>Add</asp:LinkButton>
                             </ContentTemplate>
                         </asp:UpdatePanel>
 
@@ -135,9 +136,7 @@
 <asp:Content ID="cnt2" ContentPlaceHolderID="cphData" runat="server">
     <asp:UpdatePanel ID="updateClient" runat="server" UpdateMode="Conditional">
                             <ContentTemplate>
-                                <asp:GridView ID="dgvClient" runat="server" AutoGenerateColumns="false" Width="100%" CssClass="Grid"
-                                    AlternatingRowStyle-CssClass="alt"
-                                    PagerStyle-CssClass="pgr" DataKeyNames="ClientID">
+                                <asp:GridView ID="dgvClient" runat="server" AutoGenerateColumns="false" Width="100%" CssClass="table table-striped table-bordered table-hover" DataKeyNames="ClientID">
                                     <Columns>
                                         <asp:BoundField HeaderText="Client Name" ItemStyle-CssClass="text_title" DataField="ClientName" ItemStyle-Width="10%" />
                                         <asp:BoundField HeaderText="Client Display Name" ItemStyle-CssClass="text_title" DataField="ClientDisplayName" ItemStyle-Width="10%" />

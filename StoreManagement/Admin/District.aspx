@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Master| District" Language="C#" MasterPageFile="~/Master/AdminMaster.Master" AutoEventWireup="true" CodeBehind="District.aspx.cs" Inherits="StoreManagement.Admin.District" %>
+﻿<%@ Page Title="Master|District" Language="C#" MasterPageFile="~/Master/AdminMaster.Master" AutoEventWireup="true" CodeBehind="District.aspx.cs" Inherits="StoreManagement.Admin.District" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -7,13 +7,14 @@
      <div style="width: 100%">
         <div>
             <table style="width: 100%">
-                <tr > <%--github.co--%>  
+                <tr > 
+                    <td align="left"><h3 style="color:#2679b5;">District</h3></td>
                     <td style="text-align: right"> 
                         <asp:Button ID="btnShowPopup"  runat="server" Style="display: none" /></td>
                     <td style="text-align: right">  
                       <asp:UpdatePanel runat="server" ID="UpdatePnl" UpdateMode="Conditional">
                             <ContentTemplate>
-                                <asp:LinkButton ID="linkButton" runat="server" OnClick="linkButton_Click"><span class="glyphicon glyphicon-plus-sign"></span> New District</asp:LinkButton>
+                                <asp:LinkButton ID="linkButton" runat="server" CssClass="btn btn-primary" OnClick="linkButton_Click"><span class="glyphicon glyphicon-pencil"></span>Add</asp:LinkButton>
                             </ContentTemplate>                            
                        </asp:UpdatePanel>
 
@@ -96,15 +97,13 @@
 <asp:Content ID="cnt2" ContentPlaceHolderID="cphData" runat="server">
 <asp:UpdatePanel ID="updateDistrict" runat="server" UpdateMode="Conditional">
 <ContentTemplate>
-    <ajaxToolkit:Accordion ID="MyAccordion" runat="server" SelectedIndex="0" HeaderCssClass="accordionHeader" HeaderSelectedCssClass="accordionHeaderSelected" ContentCssClass="accordionContent" FadeTransitions="false" FramesPerSecond="40" TransitionDuration="250" AutoSize="None" RequireOpenedPane="false" SuppressHeaderPostbacks="true">
+    <%--<ajaxToolkit:Accordion ID="MyAccordion" runat="server" SelectedIndex="0" HeaderCssClass="accordionHeader" HeaderSelectedCssClass="accordionHeaderSelected" ContentCssClass="accordionContent" FadeTransitions="false" FramesPerSecond="40" TransitionDuration="250" AutoSize="None" RequireOpenedPane="false" SuppressHeaderPostbacks="true">
         <Panes>
         <ajaxToolkit:AccordionPane ID="acdFaq2" runat="server">
             <Header><a href="" class="accordionLink">View Data</a></Header>
-            <Content>
+            <Content>--%>
          
-        <asp:GridView ID="dgvDistrict" runat="server" AutoGenerateColumns="false" Width="100%" CssClass="Grid"
-                                    AlternatingRowStyle-CssClass="alt"
-                                    PagerStyle-CssClass="pgr" DataKeyNames="DistrictID">
+        <asp:GridView ID="dgvDistrict" runat="server" AutoGenerateColumns="false" Width="100%"  CssClass="table table-striped table-bordered table-hover" DataKeyNames="DistrictID">
                                     <Columns>
                                         <asp:BoundField HeaderText="District Name" ItemStyle-CssClass="text_title" DataField="DistrictName" ItemStyle-Width="20%" />
                                         <asp:BoundField HeaderText="Country Name" ItemStyle-CssClass="text_title" DataField="CountryName" ItemStyle-Width="20%" />
@@ -122,10 +121,10 @@
                                         </asp:TemplateField>
                                     </Columns>
                                 </asp:GridView>
-           </Content>
+    <%--       </Content>
         </ajaxToolkit:AccordionPane>
     </Panes>
-    </ajaxToolkit:Accordion>
+    </ajaxToolkit:Accordion>--%>
 </ContentTemplate>
 </asp:UpdatePanel>
 </asp:Content>

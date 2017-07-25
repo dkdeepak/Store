@@ -391,24 +391,6 @@ namespace StoreManagement.Admin {
         protected global::System.Web.UI.UpdatePanel updateUserInfo;
         
         /// <summary>
-        /// MyAccordion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.Accordion MyAccordion;
-        
-        /// <summary>
-        /// acdFaq2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.AccordionPane acdFaq2;
-        
-        /// <summary>
         /// dgvUserInfo control.
         /// </summary>
         /// <remarks>
