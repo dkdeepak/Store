@@ -401,14 +401,6 @@ namespace StoreManagement.Admin
         }
 
 
-
-
-
-
-
-
-
-
         Store.PurchaseOrderItem.BusinessObject.PurchaseOrderItemList BindPurchaseOrderItem(int id)
         {
             oblPurchaseOrderItem = new Store.PurchaseOrderItem.BusinessLogic.PurchaseOrderItem();
@@ -431,9 +423,7 @@ namespace StoreManagement.Admin
 
 
         }
-
-
-        
+              
 
 
         protected void imgbtn_Click(object sender, ImageClickEventArgs e)

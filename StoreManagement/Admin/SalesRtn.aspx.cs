@@ -14,6 +14,14 @@ namespace StoreManagement.Admin
 {
     public partial class SalesRtn : System.Web.UI.Page
     {
+        
+        Store.SaleReturnItem.BusinessObject.SaleReturnItem objsalesRtnItem = null;
+        Store.SalesReturned.BusinessObject.SalesReturnedList objsalesRtnList = null;
+        Store.SaleReturnItem.BusinessObject.SaleReturnItemList objsalesRtnItemList = null;
+        Store.SaleReturnItem.BusinessLogic.SaleReturnItem oblsalesRtnItem = null;
+        Store.SalesReturned.BusinessLogic.SalesReturned oblSalesRtn = null;
+        Store.Common.MessageInfo objMessageInfo = null;
+        Store.SalesReturned.BusinessObject.SalesReturned objSalesRtn = null;
         Store.Item.BusinessLogic.Item oblItem = new Store.Item.BusinessLogic.Item();
         Store.Item.BusinessObject.ItemList objItemList = new Store.Item.BusinessObject.ItemList();
         Store.SalesOrder.BusinessObject.SalesOrder objSales = null;
@@ -151,14 +159,19 @@ namespace StoreManagement.Admin
         //        }
         //    }
         //}
-        //protected void Page_Load(object sender, EventArgs e)
-        //{
-        //    if (!Page.IsPostBack)
-        //    {
-        //        SetInitialRow();
-        //    }
-        //}
+
         //#endregion
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!Page.IsPostBack)
+            {
+                divForm.Style.Add("display", "none");
+                divSerach.Style.Add("display", "block");
+                up1.Update();
+              //  SetInitialRow();
+                BindSalesReturn();
+            }
+        }
         #region Event
 
         #region gridevent
@@ -273,9 +286,17 @@ namespace StoreManagement.Admin
                 txtSubTotal.Text = findsubtotal().ToString();
                 up1.Update();
                 hfPoderId.Value = id.ToString();
+                if (Gridview1.DataSource != null)
+                {
+                    divForm.Style.Add("display", "block");
+                    divSerach.Style.Add("display", "none");
+                    up1.Update();
+                }
             }
             catch (Exception ex)
-            { }
+            {
+                throw ex;
+            }
         }
         void bindSales(int id)
         {
@@ -343,6 +364,7 @@ namespace StoreManagement.Admin
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
+
                 TextBox txtQut = (TextBox)e.Row.FindControl("txtQut");
                 TextBox txtPrice = (TextBox)e.Row.FindControl("txtPrice");
                 TextBox txtTotal = (TextBox)e.Row.FindControl("txtTotal");
@@ -352,7 +374,127 @@ namespace StoreManagement.Admin
                 txtTotal.Text = total.ToString();
                 txtQut.Attributes.Add("RowId", e.Row.RowIndex.ToString());
 
+
             }
         }
+
+        void BindSalesRtnItem(int id)
+        {
+            oblsalesRtnItem = new Store.SaleReturnItem.BusinessLogic.SaleReturnItem();
+            
+
+            try
+            {
+                objsalesRtnItemList = oblsalesRtnItem.GetAllSaleReturnItemList(id, 0, "");
+                
+                
+
+                if (objsalesRtnItemList != null)
+                {
+                    Gridview1.DataSource = objsalesRtnItemList;
+                    Gridview1.DataBind();
+                }
+                else
+                {
+                    Gridview1.DataSource = null;
+                    Gridview1.DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                oblsalesRtnItem = null;
+                objsalesRtnItemList = null;
+            }
+
+
+        }
+        private void BindSalesReturn()
+        {
+            
+                try
+                {
+                oblSalesRtn = new Store.SalesReturned.BusinessLogic.SalesReturned();
+                objsalesRtnList = new Store.SalesReturned.BusinessObject.SalesReturnedList();
+                objsalesRtnList = oblSalesRtn.GetAllSalesReturnedList(0,0,"");
+                            
+               
+             
+                if (objsalesRtnList != null)
+                {
+                    gvSalesRtn.DataSource = objsalesRtnList;
+                    gvSalesRtn.DataBind();
+                }
+                else
+                {
+                    gvSalesRtn.DataSource = null;
+                    gvSalesRtn.DataBind();
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                oblSalesRtn = null;
+                objsalesRtnList = null;
+            }
+        }
+        protected void gvSalesRtn_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                int SRtnId = Convert.ToInt32(gvSalesRtn.DataKeys[e.Row.RowIndex].Value.ToString());
+                GridView gv = (GridView)e.Row.FindControl("gvSalesReturn");
+                gv.DataSource = BindSalesReturnItem(SRtnId);
+                gv.DataBind();
+            }
+        }
+        Store.SaleReturnItem.BusinessObject.SaleReturnItemList BindSalesReturnItem(int id)
+              
+        {
+
+
+            try
+            {
+                oblsalesRtnItem = new Store.SaleReturnItem.BusinessLogic.SaleReturnItem();
+                objsalesRtnItemList = new Store.SaleReturnItem.BusinessObject.SaleReturnItemList();
+                objsalesRtnItemList = oblsalesRtnItem.GetAllSaleReturnItemList(id, 0, "");                
+                return objsalesRtnItemList;
+            }
+            catch (Exception ex)
+            {
+                //return null;
+                throw ex;
+            }
+            finally
+            {
+
+                oblsalesRtnItem = null;
+                objsalesRtnItemList = null;
+            }
+
+
+        }
+        protected void imgbtn_Click(object sender, ImageClickEventArgs e)
+        {
+        }
+
+        protected void imgbtnfrDelete_Click(object sender, ImageClickEventArgs e)
+        {
+            
+        }
+
+
+
+
+
+
     }
 }

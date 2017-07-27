@@ -15,9 +15,9 @@ namespace Store.PurchaseOrderItem.BusinessLogic
             {
                 return odlPurchaseOrderItem.GetAllPurchaseOrderItem(PurchaseOrderItemID, Flag, FlagValue);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
         public Store.PurchaseOrderItem.BusinessObject.PurchaseOrderItemList GetAllPurchaseOrderItemList(int PurchaseOrderItemID, int Flag, string FlagValue)
@@ -26,9 +26,9 @@ namespace Store.PurchaseOrderItem.BusinessLogic
             {
                 return odlPurchaseOrderItem.GetAllPurchaseOrderItemList(PurchaseOrderItemID, Flag, FlagValue);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
         public Store.Common.MessageInfo ManageItemMaster(Store.PurchaseOrderItem.BusinessObject.PurchaseOrderItem objPurchaseOrderItem, CommandMode cmdMode)
@@ -38,9 +38,9 @@ namespace Store.PurchaseOrderItem.BusinessLogic
                 return odlPurchaseOrderItem.ManagePurchaseOrder(objPurchaseOrderItem, cmdMode);
                 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
 

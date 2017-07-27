@@ -37,10 +37,10 @@ namespace Store.SalesOrder.DataAccessLayer
                     {
                         objSalesOrder.VendorID = dr.GetInt32(dr.GetOrdinal("VendorID"));
                     }
-                    if (dr.IsDBNull(dr.GetOrdinal("VendorName")) == false)
-                    {
-                        objSalesOrder.VendorName = dr.GetString(dr.GetOrdinal("VendorName"));
-                    }
+                    //if (dr.IsDBNull(dr.GetOrdinal("VendorName")) == false)
+                    //{
+                    //    objSalesOrder.VendorName = dr.GetString(dr.GetOrdinal("VendorName"));
+                    //}
                     if (dr.IsDBNull(dr.GetOrdinal("SaleDate")) == false)
                     {
                         objSalesOrder.SaleDate = dr.GetDateTime(dr.GetOrdinal("SaleDate"));

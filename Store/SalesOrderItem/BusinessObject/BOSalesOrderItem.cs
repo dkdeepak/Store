@@ -12,6 +12,7 @@ namespace Store.SalesOrderItem.BusinessObject
         public int ItemId{ get; set; }
         public string ItemPrefix { get; set; }
         public string ItemUnit{ get; set; }
+        public decimal TotalPrice { get; set; }//newly added
         public string Description{ get; set; }
         public decimal ItemCostPrice{ get; set; }
         public decimal ItemSalePrice{ get; set; }

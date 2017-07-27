@@ -53,9 +53,9 @@ namespace Store.PurchaseOrderItem.DataAccessLayer
                 return objPurchaseOrderItem;
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
         public Store.PurchaseOrderItem.BusinessObject.PurchaseOrderItemList GetAllPurchaseOrderItemList(int PurchaseOrderItemID, int Flag, string FlagValue)
@@ -107,9 +107,9 @@ namespace Store.PurchaseOrderItem.DataAccessLayer
                 return objPurchaseOrderItemList;
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
         public Store.Common.MessageInfo ManagePurchaseOrder(Store.PurchaseOrderItem.BusinessObject.PurchaseOrderItem objPurchaseOrderItem, CommandMode cmdMode)
@@ -149,9 +149,9 @@ namespace Store.PurchaseOrderItem.DataAccessLayer
                 }
                 return objMessageInfo;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
     }

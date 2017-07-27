@@ -15,8 +15,17 @@ namespace StoreManagement.Admin
 {
     public partial class SOrder : System.Web.UI.Page
     {
+      
+
+        Store.SalesOrderItem.BusinessLogic.SalesOrderItem oblSalesOrderItem = null;
         Store.SalesOrder.BusinessLogic.SalesOrder oblSalesOrder = new Store.SalesOrder.BusinessLogic.SalesOrder();
         Store.SalesOrder.BusinessObject.SalesOrderList objSalesList = new Store.SalesOrder.BusinessObject.SalesOrderList();
+        Store.SalesOrder.BusinessObject.SalesOrder objSalesOrder = null;
+        Store.SalesOrderItem.BusinessObject.SalesOrderItem objsalesOrderItem = null;
+        Store.SalesOrder.BusinessObject.SalesOrder objSalesOrderList = null;
+        Store.SalesOrderItem.BusinessObject.SalesOrderItemList objSalesOrderItemList = null;     
+       
+       
 
         #region Autocompelet
         //[System.Web.Script.Services.ScriptMethod()]
@@ -173,6 +182,7 @@ namespace StoreManagement.Admin
                 //hfpo.Value =Convert.ToString(i);
                 //i = Convert.ToInt32( hfpo.Value);
                 SetInitialRow();
+                BindSalesOrder();
             }
         }
         #endregion
@@ -342,13 +352,6 @@ namespace StoreManagement.Admin
             SetInitialRow();
             ViewState["CurrentTable"] = null;
         }
-
-
-
-
-
-
-
         #endregion
 
 
@@ -363,6 +366,79 @@ namespace StoreManagement.Admin
                 txtQut.Attributes.Add("RowId", e.Row.RowIndex.ToString());
             }
         }
+
+        protected void gvSOrder_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                int sid = Convert.ToInt32(gvSOrder.DataKeys[e.Row.RowIndex].Value.ToString());
+                GridView gv = (GridView)e.Row.FindControl("gvSOrderItem");
+                //gv.DataSource = BindPurchaseOrderItem(pid);
+                gv.DataSource = BindSalesOrderItem(sid);
+                gv.DataBind();
+            }
+        }
+        void BindSalesOrder()
+        {
+            oblSalesOrder = new Store.SalesOrder.BusinessLogic.SalesOrder();
+           
+
+            try
+            {
+                objSalesList = oblSalesOrder.GetAllSalesOrderList(0,0,"");
+                
+                if (objSalesList != null)
+                {
+                    gvSOrder.DataSource = objSalesList;
+                    gvSOrder.DataBind();
+                   
+                }
+                else
+                {
+                    gvSOrder.DataSource = null;
+                    gvSOrder.DataBind();
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+               oblSalesOrder = null;
+              objSalesOrderList = null;
+            }
+
+
+        }
+
+        protected void imgbtn_Click(object sender, ImageClickEventArgs e)
+        { }
+        protected void imgbtnfrDelete_Click(object sender, ImageClickEventArgs e)
+        { }
+
+        Store.SalesOrderItem.BusinessObject.SalesOrderItemList BindSalesOrderItem(int id)
+        {
+            oblSalesOrderItem = new Store.SalesOrderItem.BusinessLogic.SalesOrderItem();
+            try
+            {
+                objSalesOrderItemList = oblSalesOrderItem.GetAllSalesOrderItemList(id, 0, "");
+                return objSalesOrderItemList;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                oblSalesOrderItem = null;
+                objSalesOrderItemList = null;
+            }
+        }
+
+
     }
 }
 

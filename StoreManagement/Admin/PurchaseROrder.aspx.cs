@@ -24,6 +24,11 @@ namespace StoreManagement.Admin
                 bindPRecived();
             }
         }
+        public Store.Common.CommandMode cmdMode
+        {
+            get { return ViewState["cmdMode"] != null ? (Store.Common.CommandMode)ViewState["cmdMode"] : Store.Common.CommandMode.N; }
+            set { ViewState["cmdMode"] = value; }
+        }
         Store.PurchaseOrder.BusinessLogic.PurchaseOrder odlPOrder = null;
         Store.PurchaseOrder.BusinessObject.PurchaseOrder objPOrder = null;
         Store.PurchaseOrderItem.BusinessLogic.PurchaseOrderItem oblPurchaseOrderItem = null;
@@ -184,7 +189,9 @@ namespace StoreManagement.Admin
                 }  
             }
             catch (Exception ex)
-            { }
+            {
+                throw ex;
+            }
         }
         #region UserDefinedFunction
         void BindPurchaseOrder(int id)
@@ -211,7 +218,7 @@ namespace StoreManagement.Admin
             }
             catch (Exception ex)
             {
-
+                throw ex;
             }
             finally
             {
@@ -241,7 +248,7 @@ namespace StoreManagement.Admin
             }
             catch (Exception ex)
             {
-
+                throw ex;
             }
             finally
             {
@@ -329,7 +336,8 @@ namespace StoreManagement.Admin
             }
             catch (Exception ex)
             {
-                return null;
+                //return null;
+                throw ex;
             }
             finally
             {
@@ -403,34 +411,36 @@ namespace StoreManagement.Admin
         
         protected void imgbtnfrDelete_Click(object sender, ImageClickEventArgs e)
         {
-            //cmdMode = CommandMode.D;
-            //oblPurchaseOrder = new Store.PurchaseOrder.BusinessLogic.PurchaseOrder();
-            //objPurchaseOrder = new Store.PurchaseOrder.BusinessObject.PurchaseOrder();
-            //objMessageInfo = new MessageInfo();
-            //try
-            //{
-            //    ImageButton btndetails = sender as ImageButton;
-            //    GridViewRow gvrow = (GridViewRow)btndetails.NamingContainer;
-            //    objPurchaseOrder.PurchaseOrderID = Convert.ToInt32(gvPOrder.DataKeys[gvrow.RowIndex].Value.ToString());
-            //    objMessageInfo = oblPurchaseOrder.ManagePurchaseOrder(objPurchaseOrder, cmdMode);
-            //    BindPurchaseOrder();
-            //    if (objMessageInfo.TranID != 0)
-            //        ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alert", "alert('" + objMessageInfo.TranMessage + "')", true);
-            //    else if (objMessageInfo.ErrorCode == -101)
-            //        ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alert", "alert('" + objMessageInfo.ErrorMessage + "')", true);
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw ex;
-            //}
-            //finally
-            //{
+            cmdMode = CommandMode.D;
+            oblPurchaseReceived = new Store.PurchaseReceived.BusinessLogic.PurchaseReceived();
+            objPurchaseReceived = new Store.PurchaseReceived.BusinessObject.PurchaseReceived();
+          
+            objMessageInfo = new MessageInfo();
+            try
+            {
+                ImageButton btndetails = sender as ImageButton;
+                GridViewRow gvrow = (GridViewRow)btndetails.NamingContainer;
+                objPurchaseReceived.PurchaseReceivedID= Convert.ToInt32(gvPOrder.DataKeys[gvrow.RowIndex].Value.ToString());
+                
+                //objMessageInfo = oblPurchaseReceived.ManagePurchaseReceived(objPurchaseReceived,cmdMode);
+                bindPRecived();
+                if (objMessageInfo.TranID != 0)
+                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alert", "alert('" + objMessageInfo.TranMessage + "')", true);
+                else if (objMessageInfo.ErrorCode == -101)
+                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alert", "alert('" + objMessageInfo.ErrorMessage + "')", true);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
 
-            //    objMessageInfo = null;
-            //    objPurchaseOrder = null;
-            //    oblPurchaseOrder = null;
+                objMessageInfo = null;
+                //objPurchaseOrder = null;
+                //oblPurchaseOrder = null;
 
-            //}
+            }
         }
         protected void Gridview1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
