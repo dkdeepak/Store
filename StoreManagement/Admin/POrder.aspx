@@ -63,6 +63,15 @@
                      <asp:TextBox ID="txtTotal" ToolTip="Total" placeholder="Total" runat="server"   CssClass="form-control"></asp:TextBox>
                 </ItemTemplate>
             </asp:TemplateField>
+
+                <asp:TemplateField>
+                <ItemTemplate>
+                             
+                      <asp:Button  ID="lbtnClose" ForeColor="black" Font-Bold="true" Text="X" runat="server" class="close" aria-label="Close" OnClick="lbtnClose_Click" />       
+                   <%-- <asp:TextBox ID="txtDis" ToolTip="Discount" placeholder="Discount"   runat="server"   CssClass="form-control" ></asp:TextBox>--%>
+                   
+                </ItemTemplate>
+            </asp:TemplateField>
             </Columns>
         </asp:gridview>
         <hr />
@@ -107,89 +116,30 @@
         <div class="col-lg-2 col-lg-offset-10"><asp:TextBox ID="txttotal" placeholder="Total" ToolTip="Total" CssClass="form-control" runat="server"></asp:TextBox></div>
         
 </div>
+
+
         <br />
         <div class="row">
-        <div class="col-lg-2 col-lg-offset-10"><asp:Button ID="btnSubmit" Text="Submit" CssClass="form-control btn-primary" runat="server" OnClick="btnSubmit_Click" />
+             
+        <div class="col-lg-3"></div>
+
+
+        <div class="col-lg-2"><asp:Button ID="btnSubmit" Text="Submit" CssClass="form-control btn-primary" runat="server" OnClick="btnSubmit_Click" />
+             <%--<div class="col-lg-2 col-lg-offset-10"><asp:Button ID="Button1" Text="Submit" CssClass="form-control btn-primary" runat="server" OnClick="btnSubmit_Click" />--%>
          </div>
+
+              <div class="col-lg-2"><asp:Button ID="btnCancel" Text="Cancel" CausesValidation="false" runat="server" 
+               CssClass="form-control btn-danger" OnClick="btnCancel_Click" /></div>
         </div>
+
+      
+       
     </ContentTemplate>
   </asp:UpdatePanel>
       
 
 <br />
-    <asp:UpdatePanel id="up2" runat="server">
-        <ContentTemplate>
-           
-
-                
-            <asp:GridView ID="gvPOrder"
-runat="server"
-DataKeyNames="PurchaseOrderID" 
-OnRowDataBound="gvPOrder_RowDataBound" Width="80%"
-AllowPaging="True" PageSize="20" >
-<HeaderStyle CssClass="dataTable" />
-<RowStyle CssClass="dataTable" />
-<AlternatingRowStyle CssClass="dataTableAlt" />
-<Columns>
-<asp:TemplateField HeaderText="View">
-<ItemTemplate>
-<a href="javascript:switchViews('div<%# Eval("PurchaseOrderID") %>', 'one');">
-<img id="imgdiv<%# Eval("PurchaseOrderID") %>" alt="Click to show/hide orders" border="0" width="20px" height="20px" src="../Images/view.png" />
-</a>
-</ItemTemplate>
-<AlternatingItemTemplate>
-<a href="javascript:switchViews('div<%# Eval("PurchaseOrderID") %>', 'alt');">
-<img id="imgdiv<%# Eval("PurchaseOrderID") %>" alt="Click to show/hide orders" width="20px" height="20px" border="0" src="../Images/view.png"/>
-</a>
-</AlternatingItemTemplate>
-</asp:TemplateField>
-<asp:TemplateField HeaderText="Edit" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" HeaderStyle-Width="5%">
-    <ItemTemplate>
-        <asp:ImageButton ID="imgbtn" ImageUrl="~/Images/edit.png" runat="server" Width="25" Height="25" OnClick="imgbtn_Click" />
-    </ItemTemplate>
-</asp:TemplateField>
-<asp:TemplateField HeaderText="Delete" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" HeaderStyle-Width="5%">
-    <ItemTemplate>
-        <asp:ImageButton ID="imgbtnfrDelete" ImageUrl="~/Images/delete.png" runat="server" Width="20" Height="20" OnClick="imgbtnfrDelete_Click" />
-    </ItemTemplate>
-</asp:TemplateField>
-<asp:TemplateField>
-<ItemTemplate>
-</td></tr>
-<tr>
-<td colspan="100%" >
-<div id="div<%# Eval("PurchaseOrderID") %>" style="display:none;position:relative;left:25px;" >
-<asp:GridView ID="gvPoItem" runat="server" Width="80%"
- DataKeyNames="PurchaseOrderItemID"
-EmptyDataText="No purchase orders item for this customer." >
-<HeaderStyle CssClass="dataTable" />
-<AlternatingRowStyle CssClass="dataTableAlt" />
-<RowStyle CssClass="dataTable" />
-</asp:GridView>
-</div>
-</td>
-</tr>
-</ItemTemplate>
-</asp:TemplateField>
-</Columns>
-</asp:GridView>
-
-        </ContentTemplate>
-
-    </asp:UpdatePanel>
-    <%--javascript--%>
-  <script type="text/javascript">
-function switchViews(obj, row) {
-var div = document.getElementById(obj);
-var img = document.getElementById('img' + obj);
- 
-if (div.style.display == "none") {
-div.style.display = "inline";
-img.src = "../Images/view.png";
-} else {
-div.style.display = "none";
-img.src = "../Images/view.png";
-}
-}
-</script>
+    
+   
+  
 </asp:Content>

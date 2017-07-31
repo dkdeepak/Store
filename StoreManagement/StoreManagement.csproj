@@ -116,6 +116,13 @@
     <Compile Include="WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
+    <Compile Include="WebForm2.aspx.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm2.aspx.designer.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+    </Compile>
     <Content Include="Admin\Category.aspx" />
     <Content Include="Admin\City.aspx" />
     <Content Include="Admin\Client.aspx" />
@@ -314,7 +321,9 @@
     <Content Include="ReportSection\Sales.aspx" />
     <Content Include="ReportSection\SalesReturn.aspx" />
     <Content Include="Scripts\chosen.jquery.js" />
+    <Content Include="Style\theme.css" />
     <Content Include="WebForm1.aspx" />
+    <Content Include="WebForm2.aspx" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
     <Content Include="Scripts\jquery-1.6.4.js" />
     <Content Include="Scripts\jquery-1.6.4.min.js" />

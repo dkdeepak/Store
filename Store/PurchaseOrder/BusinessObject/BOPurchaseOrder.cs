@@ -23,7 +23,9 @@ namespace Store.PurchaseOrder.BusinessObject
         public Int32 ReferenceID { get; set; }
         public Int32 IsActive { get; set; }
         public Decimal PDiscount { get; set; }
+        public Decimal Discount { get; set; }
         public Decimal PDiscountPre { get; set; }
+        public Decimal DiscountPre { get; set; }
         static PurchaseOrder()
         { }
     }

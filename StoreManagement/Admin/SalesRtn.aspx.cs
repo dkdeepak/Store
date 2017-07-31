@@ -169,7 +169,7 @@ namespace StoreManagement.Admin
                 divSerach.Style.Add("display", "block");
                 up1.Update();
               //  SetInitialRow();
-                BindSalesReturn();
+                //BindSalesReturn();
             }
         }
         #region Event
@@ -378,120 +378,138 @@ namespace StoreManagement.Admin
             }
         }
 
-        void BindSalesRtnItem(int id)
+        //    void BindSalesRtnItem(int id)
+        //    {
+        //        oblsalesRtnItem = new Store.SaleReturnItem.BusinessLogic.SaleReturnItem();
+
+
+        //        try
+        //        {
+        //            objsalesRtnItemList = oblsalesRtnItem.GetAllSaleReturnItemList(id, 0, "");
+
+
+
+        //            if (objsalesRtnItemList != null)
+        //            {
+        //                Gridview1.DataSource = objsalesRtnItemList;
+        //                Gridview1.DataBind();
+        //            }
+        //            else
+        //            {
+        //                Gridview1.DataSource = null;
+        //                Gridview1.DataBind();
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            throw ex;
+        //        }
+        //        finally
+        //        {
+        //            oblsalesRtnItem = null;
+        //            objsalesRtnItemList = null;
+        //        }
+
+
+        //    }
+        //    private void BindSalesReturn()
+        //    {
+
+        //            try
+        //            {
+        //            oblSalesRtn = new Store.SalesReturned.BusinessLogic.SalesReturned();
+        //            objsalesRtnList = new Store.SalesReturned.BusinessObject.SalesReturnedList();
+        //            objsalesRtnList = oblSalesRtn.GetAllSalesReturnedList(0,0,"");
+
+
+
+        //            if (objsalesRtnList != null)
+        //            {
+        //                gvSalesRtn.DataSource = objsalesRtnList;
+        //                gvSalesRtn.DataBind();
+        //            }
+        //            else
+        //            {
+        //                gvSalesRtn.DataSource = null;
+        //                gvSalesRtn.DataBind();
+
+
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            throw ex;
+        //        }
+        //        finally
+        //        {
+        //            oblSalesRtn = null;
+        //            objsalesRtnList = null;
+        //        }
+        //    }
+        //    protected void gvSalesRtn_RowDataBound(object sender, GridViewRowEventArgs e)
+        //    {
+        //        if (e.Row.RowType == DataControlRowType.DataRow)
+        //        {
+        //            int SRtnId = Convert.ToInt32(gvSalesRtn.DataKeys[e.Row.RowIndex].Value.ToString());
+        //            GridView gv = (GridView)e.Row.FindControl("gvSalesReturn");
+        //            gv.DataSource = BindSalesReturnItem(SRtnId);
+        //            gv.DataBind();
+        //        }
+        //    }
+        //    Store.SaleReturnItem.BusinessObject.SaleReturnItemList BindSalesReturnItem(int id)
+
+        //    {
+
+
+        //        try
+        //        {
+        //            oblsalesRtnItem = new Store.SaleReturnItem.BusinessLogic.SaleReturnItem();
+        //            objsalesRtnItemList = new Store.SaleReturnItem.BusinessObject.SaleReturnItemList();
+        //            objsalesRtnItemList = oblsalesRtnItem.GetAllSaleReturnItemList(id, 0, "");                
+        //            return objsalesRtnItemList;
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            //return null;
+        //            throw ex;
+        //        }
+        //        finally
+        //        {
+
+        //            oblsalesRtnItem = null;
+        //            objsalesRtnItemList = null;
+        //        }
+
+
+        //    }
+        //    protected void imgbtn_Click(object sender, ImageClickEventArgs e)
+        //    {
+        //    }
+
+        //    protected void imgbtnfrDelete_Click(object sender, ImageClickEventArgs e)
+        //    {
+
+        //    }
+        private void reset()
         {
-            oblsalesRtnItem = new Store.SaleReturnItem.BusinessLogic.SaleReturnItem();
-            
-
-            try
-            {
-                objsalesRtnItemList = oblsalesRtnItem.GetAllSaleReturnItemList(id, 0, "");
-                
-                
-
-                if (objsalesRtnItemList != null)
-                {
-                    Gridview1.DataSource = objsalesRtnItemList;
-                    Gridview1.DataBind();
-                }
-                else
-                {
-                    Gridview1.DataSource = null;
-                    Gridview1.DataBind();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                oblsalesRtnItem = null;
-                objsalesRtnItemList = null;
-            }
-
-
+            txtPoId.Text = string.Empty;
+            txtMiscCost.Text = string.Empty;
+            txtPoId.Text = string.Empty;
+            txtSHC.Text = string.Empty;
+            txtSubTotal.Text = string.Empty;
+            txtTax.Text = string.Empty;
+            Gridview1.DataSource = null;
+            Gridview1.DataBind();
+            hfPoderId.Value = string.Empty;
+            divForm.Style.Add("display", "none");
+            divSerach.Style.Add("display", "block");
+            up1.Update();
         }
-        private void BindSalesReturn()
+
+        protected void btnCancel_Click(object sender, EventArgs e)
         {
-            
-                try
-                {
-                oblSalesRtn = new Store.SalesReturned.BusinessLogic.SalesReturned();
-                objsalesRtnList = new Store.SalesReturned.BusinessObject.SalesReturnedList();
-                objsalesRtnList = oblSalesRtn.GetAllSalesReturnedList(0,0,"");
-                            
-               
-             
-                if (objsalesRtnList != null)
-                {
-                    gvSalesRtn.DataSource = objsalesRtnList;
-                    gvSalesRtn.DataBind();
-                }
-                else
-                {
-                    gvSalesRtn.DataSource = null;
-                    gvSalesRtn.DataBind();
-
-
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                oblSalesRtn = null;
-                objsalesRtnList = null;
-            }
+            reset();
         }
-        protected void gvSalesRtn_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                int SRtnId = Convert.ToInt32(gvSalesRtn.DataKeys[e.Row.RowIndex].Value.ToString());
-                GridView gv = (GridView)e.Row.FindControl("gvSalesReturn");
-                gv.DataSource = BindSalesReturnItem(SRtnId);
-                gv.DataBind();
-            }
-        }
-        Store.SaleReturnItem.BusinessObject.SaleReturnItemList BindSalesReturnItem(int id)
-              
-        {
-
-
-            try
-            {
-                oblsalesRtnItem = new Store.SaleReturnItem.BusinessLogic.SaleReturnItem();
-                objsalesRtnItemList = new Store.SaleReturnItem.BusinessObject.SaleReturnItemList();
-                objsalesRtnItemList = oblsalesRtnItem.GetAllSaleReturnItemList(id, 0, "");                
-                return objsalesRtnItemList;
-            }
-            catch (Exception ex)
-            {
-                //return null;
-                throw ex;
-            }
-            finally
-            {
-
-                oblsalesRtnItem = null;
-                objsalesRtnItemList = null;
-            }
-
-
-        }
-        protected void imgbtn_Click(object sender, ImageClickEventArgs e)
-        {
-        }
-
-        protected void imgbtnfrDelete_Click(object sender, ImageClickEventArgs e)
-        {
-            
-        }
-
-
 
 
 

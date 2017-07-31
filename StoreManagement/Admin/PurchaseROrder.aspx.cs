@@ -21,7 +21,7 @@ namespace StoreManagement.Admin
                 divForm.Style.Add("display", "none");
                 divSerach.Style.Add("display", "block");
                 up1.Update();
-                bindPRecived();
+                //bindPRecived();
             }
         }
         public Store.Common.CommandMode cmdMode
@@ -292,156 +292,156 @@ namespace StoreManagement.Admin
         {
             reset();
         }
-        private void bindPRecived()
-        {
+        //private void bindPRecived()
+        //{
             
-            try
-            {
-                oblPurchaseReceived = new Store.PurchaseReceived.BusinessLogic.PurchaseReceived();
-                objPurchaseReceivedList = new Store.PurchaseReceived.BusinessObject.PurchaseReceivedList();
-                objPurchaseReceivedList = oblPurchaseReceived.GetAllPurchaseReceivedList(0,0, "");
-                if (objPurchaseReceivedList != null)
-                {
-                    gvPOrder.DataSource = objPurchaseReceivedList;
-                    gvPOrder.DataBind();
-                }
-                else
-                {
-                    gvPOrder.DataSource = null;
-                    gvPOrder.DataBind();
+        //    try
+        //    {
+        //        oblPurchaseReceived = new Store.PurchaseReceived.BusinessLogic.PurchaseReceived();
+        //        objPurchaseReceivedList = new Store.PurchaseReceived.BusinessObject.PurchaseReceivedList();
+        //        objPurchaseReceivedList = oblPurchaseReceived.GetAllPurchaseReceivedList(0,0, "");
+        //        if (objPurchaseReceivedList != null)
+        //        {
+        //            gvPOrder.DataSource = objPurchaseReceivedList;
+        //            gvPOrder.DataBind();
+        //        }
+        //        else
+        //        {
+        //            gvPOrder.DataSource = null;
+        //            gvPOrder.DataBind();
 
 
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                oblPurchaseReceived = null;
-                objPurchaseReceivedList = null;
-            }
-        }
-        Store.PurchaseReceivedItem.BusinessObject.PurchaseReceivedItemList BindPurchaseReceivedItem(int id)
-        {
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //    finally
+        //    {
+        //        oblPurchaseReceived = null;
+        //        objPurchaseReceivedList = null;
+        //    }
+        //}
+        //Store.PurchaseReceivedItem.BusinessObject.PurchaseReceivedItemList BindPurchaseReceivedItem(int id)
+        //{
             
             
-            try
-            {
-                oblPurchaseReceivedItem = new Store.PurchaseReceivedItem.BusinessLogic.PurchaseReceivedItem();
-                objPurchaseReceivedItemList = new Store.PurchaseReceivedItem.BusinessObject.PurchaseReceivedItemList();
-                objPurchaseReceivedItemList = oblPurchaseReceivedItem.GetAllPurchaseReceivedItemList(id, 0, "");
-                return objPurchaseReceivedItemList;
-            }
-            catch (Exception ex)
-            {
-                //return null;
-                throw ex;
-            }
-            finally
-            {
+        //    try
+        //    {
+        //        oblPurchaseReceivedItem = new Store.PurchaseReceivedItem.BusinessLogic.PurchaseReceivedItem();
+        //        objPurchaseReceivedItemList = new Store.PurchaseReceivedItem.BusinessObject.PurchaseReceivedItemList();
+        //        objPurchaseReceivedItemList = oblPurchaseReceivedItem.GetAllPurchaseReceivedItemList(id, 0, "");
+        //        return objPurchaseReceivedItemList;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //return null;
+        //        throw ex;
+        //    }
+        //    finally
+        //    {
 
-                oblPurchaseReceivedItem = null;
-                objPurchaseReceivedItemList = null;
-            }
+        //        oblPurchaseReceivedItem = null;
+        //        objPurchaseReceivedItemList = null;
+        //    }
 
 
-        }
-        protected void gvPOrder_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                int pid = Convert.ToInt32(gvPOrder.DataKeys[e.Row.RowIndex].Value.ToString());
-                GridView gv = (GridView)e.Row.FindControl("gvPoItem");
-                gv.DataSource = BindPurchaseReceivedItem(pid);
-                gv.DataBind();
-            }
-        }
-        protected void imgbtn_Click(object sender, ImageClickEventArgs e)
-        {
-            //objPurchaseOrder = new Store.PurchaseOrder.BusinessObject.PurchaseOrder();
-            //oblPurchaseOrder = new Store.PurchaseOrder.BusinessLogic.PurchaseOrder();
-            //objPurchaseOrderItem = new Store.PurchaseOrderItem.BusinessObject.PurchaseOrderItem();
-            //oblPurchaseOrderItem = new Store.PurchaseOrderItem.BusinessLogic.PurchaseOrderItem();
-            //try
-            //{
+        //}
+        //protected void gvPOrder_RowDataBound(object sender, GridViewRowEventArgs e)
+        //{
+        //    if (e.Row.RowType == DataControlRowType.DataRow)
+        //    {
+        //        int pid = Convert.ToInt32(gvPOrder.DataKeys[e.Row.RowIndex].Value.ToString());
+        //        GridView gv = (GridView)e.Row.FindControl("gvPoItem");
+        //        gv.DataSource = BindPurchaseReceivedItem(pid);
+        //        gv.DataBind();
+        //    }
+        //}
+        //protected void imgbtn_Click(object sender, ImageClickEventArgs e)
+        //{
+        //    //objPurchaseOrder = new Store.PurchaseOrder.BusinessObject.PurchaseOrder();
+        //    //oblPurchaseOrder = new Store.PurchaseOrder.BusinessLogic.PurchaseOrder();
+        //    //objPurchaseOrderItem = new Store.PurchaseOrderItem.BusinessObject.PurchaseOrderItem();
+        //    //oblPurchaseOrderItem = new Store.PurchaseOrderItem.BusinessLogic.PurchaseOrderItem();
+        //    //try
+        //    //{
 
-            //    ImageButton btndetails = sender as ImageButton;
-            //    GridViewRow gvrow = (GridViewRow)btndetails.NamingContainer;
-            //    int id = Convert.ToInt32(gvPOrder.DataKeys[gvrow.RowIndex].Value.ToString());
-            //    int rt = checkPRvied(id);
-            //    if (rt == 1)
-            //    {
-            //        reset();
-            //        hfPId.Value = id.ToString();
-            //        objPurchaseOrder = oblPurchaseOrder.GetAllPurchaseOrder(id, 0, "");
-            //        if (objPurchaseOrder != null)
-            //        {
-            //            txtDic.Text = objPurchaseOrder.PDiscount.ToString();
-            //            txtDicPre.Text = objPurchaseOrder.PDiscountPre.ToString();
-            //            txtMiscCost.Text = objPurchaseOrder.MiscCost.ToString();
-            //            txtSHC.Text = objPurchaseOrder.ShipingAndHandlingCost.ToString();
-            //            txtTax.Text = objPurchaseOrder.TaxValue.ToString();
-            //            txttotal.Text = objPurchaseOrder.PurchaseAmount.ToString();
-            //            objPurchaseOrderItemList = oblPurchaseOrderItem.GetAllPurchaseOrderItemList(id, 0, "");
-            //            if (objPurchaseOrderItemList != null)
-            //            {
-            //                Gridview1.DataSource = null;
-            //                Gridview1.DataBind();
-            //                Gridview1.DataSource = objPurchaseOrderItemList;
-            //                Gridview1.DataBind();
-            //            }
-            //        }
-            //        upForm.Update();
-            //    }
-            //    //edit logic
-            //}
-            //catch (Exception ex)
-            //{ }
-            //finally
-            //{
-            //    objPurchaseOrder = null;
-            //    oblPurchaseOrder = null;
-            //    objPurchaseOrderItem = null;
-            //    oblPurchaseOrderItem = null;
-            //}
-            //cmdMode = CommandMode.M;
-        }
+        //    //    ImageButton btndetails = sender as ImageButton;
+        //    //    GridViewRow gvrow = (GridViewRow)btndetails.NamingContainer;
+        //    //    int id = Convert.ToInt32(gvPOrder.DataKeys[gvrow.RowIndex].Value.ToString());
+        //    //    int rt = checkPRvied(id);
+        //    //    if (rt == 1)
+        //    //    {
+        //    //        reset();
+        //    //        hfPId.Value = id.ToString();
+        //    //        objPurchaseOrder = oblPurchaseOrder.GetAllPurchaseOrder(id, 0, "");
+        //    //        if (objPurchaseOrder != null)
+        //    //        {
+        //    //            txtDic.Text = objPurchaseOrder.PDiscount.ToString();
+        //    //            txtDicPre.Text = objPurchaseOrder.PDiscountPre.ToString();
+        //    //            txtMiscCost.Text = objPurchaseOrder.MiscCost.ToString();
+        //    //            txtSHC.Text = objPurchaseOrder.ShipingAndHandlingCost.ToString();
+        //    //            txtTax.Text = objPurchaseOrder.TaxValue.ToString();
+        //    //            txttotal.Text = objPurchaseOrder.PurchaseAmount.ToString();
+        //    //            objPurchaseOrderItemList = oblPurchaseOrderItem.GetAllPurchaseOrderItemList(id, 0, "");
+        //    //            if (objPurchaseOrderItemList != null)
+        //    //            {
+        //    //                Gridview1.DataSource = null;
+        //    //                Gridview1.DataBind();
+        //    //                Gridview1.DataSource = objPurchaseOrderItemList;
+        //    //                Gridview1.DataBind();
+        //    //            }
+        //    //        }
+        //    //        upForm.Update();
+        //    //    }
+        //    //    //edit logic
+        //    //}
+        //    //catch (Exception ex)
+        //    //{ }
+        //    //finally
+        //    //{
+        //    //    objPurchaseOrder = null;
+        //    //    oblPurchaseOrder = null;
+        //    //    objPurchaseOrderItem = null;
+        //    //    oblPurchaseOrderItem = null;
+        //    //}
+        //    //cmdMode = CommandMode.M;
+        //}
         
-        protected void imgbtnfrDelete_Click(object sender, ImageClickEventArgs e)
-        {
-            cmdMode = CommandMode.D;
-            oblPurchaseReceived = new Store.PurchaseReceived.BusinessLogic.PurchaseReceived();
-            objPurchaseReceived = new Store.PurchaseReceived.BusinessObject.PurchaseReceived();
+        //protected void imgbtnfrDelete_Click(object sender, ImageClickEventArgs e)
+        //{
+        //    //cmdMode = CommandMode.D;
+        //    //oblPurchaseReceived = new Store.PurchaseReceived.BusinessLogic.PurchaseReceived();
+        //    //objPurchaseReceived = new Store.PurchaseReceived.BusinessObject.PurchaseReceived();
           
-            objMessageInfo = new MessageInfo();
-            try
-            {
-                ImageButton btndetails = sender as ImageButton;
-                GridViewRow gvrow = (GridViewRow)btndetails.NamingContainer;
-                objPurchaseReceived.PurchaseReceivedID= Convert.ToInt32(gvPOrder.DataKeys[gvrow.RowIndex].Value.ToString());
+        //    //objMessageInfo = new MessageInfo();
+        //    //try
+        //    //{
+        //    //    ImageButton btndetails = sender as ImageButton;
+        //    //    GridViewRow gvrow = (GridViewRow)btndetails.NamingContainer;
+        //    //    objPurchaseReceived.PurchaseReceivedID= Convert.ToInt32(gvPOrder.DataKeys[gvrow.RowIndex].Value.ToString());
                 
-                //objMessageInfo = oblPurchaseReceived.ManagePurchaseReceived(objPurchaseReceived,cmdMode);
-                bindPRecived();
-                if (objMessageInfo.TranID != 0)
-                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alert", "alert('" + objMessageInfo.TranMessage + "')", true);
-                else if (objMessageInfo.ErrorCode == -101)
-                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alert", "alert('" + objMessageInfo.ErrorMessage + "')", true);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
+        //    //    //objMessageInfo = oblPurchaseReceived.ManagePurchaseReceived(objPurchaseReceived,cmdMode);
+        //    //    bindPRecived();
+        //    //    if (objMessageInfo.TranID != 0)
+        //    //        ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alert", "alert('" + objMessageInfo.TranMessage + "')", true);
+        //    //    else if (objMessageInfo.ErrorCode == -101)
+        //    //        ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alert", "alert('" + objMessageInfo.ErrorMessage + "')", true);
+        //    //}
+        //    //catch (Exception ex)
+        //    //{
+        //    //    throw ex;
+        //    //}
+        //    //finally
+        //    //{
 
-                objMessageInfo = null;
-                //objPurchaseOrder = null;
-                //oblPurchaseOrder = null;
+        //    //    objMessageInfo = null;
+        //    //    //objPurchaseOrder = null;
+        //    //    //oblPurchaseOrder = null;
 
-            }
-        }
+        //    //}
+        //}
         protected void Gridview1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
