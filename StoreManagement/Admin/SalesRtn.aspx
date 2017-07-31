@@ -95,14 +95,7 @@
      <asp:HiddenField ID="hfPoderId" runat="server" />
     <asp:UpdatePanel ID="upSearch" runat="server">
         <ContentTemplate>
-            <%--<div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xm-4">
-                    <asp:TextBox ID="txtPoId" runat="server" placeholder="Enter Purchase Order No" CssClass="form-control" ValidationGroup="serach"></asp:TextBox>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xm-4">
-                    <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-primary" OnClick="btnSearch_Click" />
-                </div>
-            </div>--%>
+           
             <div class="panel panel-primary col-lg-4 col-md-4 col-sm-4 col-xm-4 col-lg-offset-4" id="divSerach"  style="margin-top:20px"  runat="server">
             <div style="height:20px" class="panel-heading"></div>
                 <div class="panel-body">
