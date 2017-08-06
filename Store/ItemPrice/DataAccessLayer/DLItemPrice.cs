@@ -202,17 +202,13 @@ namespace Store.ItemPrice.DataAccessLayer
             Store.Common.MessageInfo objMessageInfo = null;
             try
             {
-                SQL = "USP_Manage_ItemPrice";
-                param.Add(new SQLParameter("@ItemPriceID",objItemPrice.ItemPriceID));
-                param.Add(new SQLParameter("@ItemID",objItemPrice.ItemID));                
-                param.Add(new SQLParameter("@ItemCostPricePerUnit",objItemPrice.ItemCostPricePerUnit));
+                SQL = "USP_ManageItemPrice";
+               
+                param.Add(new SQLParameter("@ItemID",objItemPrice.ItemID));          
                 param.Add(new SQLParameter("@ItemSalePricePerUnit",objItemPrice.ItemSalePricePerUnit));
                 param.Add(new SQLParameter("@ItemDiscountPercentagePerUnit",objItemPrice.ItemDiscountPercentagePerUnit));
                 param.Add(new SQLParameter("@WindowFrom",objItemPrice.WindowFrom));
-                param.Add(new SQLParameter("@WindowTo",objItemPrice.WindowTo));
-                param.Add(new SQLParameter("@CategoryID",objItemPrice.CategoryID));               
-                param.Add(new SQLParameter("@BatchNo",objItemPrice.BatchNo));
-                param.Add(new SQLParameter("@UserId", objItemPrice.CreatedBy));
+                param.Add(new SQLParameter("@WindowTo",objItemPrice.WindowTo));               
                 param.Add(new SQLParameter("@ReferenceID", objItemPrice.ReferenceID));
                 param.Add(new SQLParameter("@CMDMode", cmdMode));               
                 dr = ExecuteQuery.ExecuteReader(SQL, param);
@@ -228,10 +224,15 @@ namespace Store.ItemPrice.DataAccessLayer
                 return objMessageInfo;
                
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
+        public DataTable runQuery(string query)
+        {
+             return ExecuteQuery.ExecuteDataTable(query);
+        }
+
     }
 }

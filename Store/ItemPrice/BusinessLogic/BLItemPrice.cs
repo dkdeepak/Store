@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Store.Common;
+using System.Data;
 
 namespace Store.ItemPrice.BusinessLogic
 {
@@ -37,10 +38,14 @@ namespace Store.ItemPrice.BusinessLogic
             {
                 return odlItemPrice.ManageItemPrice(objItemPrice, cmdMode);
             }
-            catch
+            catch(Exception ex)
             {
-                throw;
+                throw ex;
             }
+        }
+        public DataTable runQuery(string query)
+        {
+            return odlItemPrice.runQuery(query);
         }
     }
 }
