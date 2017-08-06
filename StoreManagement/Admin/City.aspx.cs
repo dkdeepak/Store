@@ -78,7 +78,7 @@ namespace StoreManagement.Admin
                 objCity.CityID = Convert.ToInt32(dgvCity.DataKeys[gvrow.RowIndex].Value.ToString());
                 objCity.CityName = "";
                 objCity.StateID = 0;
-                objCity.CreatedBy = Convert.ToInt32(Session["UserId"].ToString());
+                //objCity.CreatedBy = Convert.ToInt32(Session["UserId"].ToString());
                 objMessageInfo = oblCity.ManageItemMaster(objCity, cmdMode);
                 BindCity();
                 updateCityBdInfo.Update();

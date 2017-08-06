@@ -94,15 +94,6 @@ namespace StoreManagement.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtCountry;
         
         /// <summary>
-        /// rfvCountry control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCountry;
-        
-        /// <summary>
         /// revCountry control.
         /// </summary>
         /// <remarks>
@@ -110,6 +101,24 @@ namespace StoreManagement.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revCountry;
+        
+        /// <summary>
+        /// NReq control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator NReq;
+        
+        /// <summary>
+        /// NReqE control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ValidatorCalloutExtender NReqE;
         
         /// <summary>
         /// btnUpdate control.

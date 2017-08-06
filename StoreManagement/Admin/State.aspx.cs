@@ -64,7 +64,7 @@ namespace StoreManagement.Admin
                 GridViewRow gvrow = (GridViewRow)btndetails.NamingContainer;
                 objState.StateID = Convert.ToInt32(dgvState.DataKeys[gvrow.RowIndex].Value.ToString());
                 objState.StateName = "";
-                objState.CreatedBy = Convert.ToInt32(Session["UserId"].ToString());
+                //objState.CreatedBy = Convert.ToInt32(Session["UserId"].ToString());
                 objMessageInfo = oblState.ManageItemMaster(objState, cmdMode);
                 BindState();
                 updateStateBdInfo.Update();

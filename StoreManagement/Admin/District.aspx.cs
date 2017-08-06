@@ -67,7 +67,7 @@ namespace StoreManagement.Admin
                 objDistrict.DistrictID = Convert.ToInt32(dgvDistrict.DataKeys[gvrow.RowIndex].Value.ToString());
                 objDistrict.DistrictName = "";
                 objDistrict.StateID = 0;
-                objDistrict.CreatedBy = Convert.ToInt32(Session["UserId"].ToString());
+                //objDistrict.CreatedBy = Convert.ToInt32(Session["UserId"].ToString());
                 objMessageInfo = oblDistrict.ManageItemMaster(objDistrict, cmdMode);
                 BindDistrict();
                 updateDistrictBdInfo.Update();

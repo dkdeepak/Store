@@ -2,7 +2,14 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    
+    <style>
+        .validatorCalloutHighlight
+{
+    background-color: lemonchiffon;
+    display:inline;
+}
+
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphContain" runat="server">
      <div style="width: 100%">
@@ -58,10 +65,17 @@
                             <div class="row">
                                 <div class="col-md-12">
                                 <asp:TextBox ID="txtCountry" runat="server" ToolTip="Country Name" placeholder="Enter Country Name"  CssClass="form-control"/>
-                                        <asp:RequiredFieldValidator ID="rfvCountry" ControlToValidate="txtCountry" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgCountry" runat="server">
-                                        </asp:RequiredFieldValidator>
-                                         <asp:RegularExpressionValidator ID="revCountry" runat="server" ValidationGroup="vgCountry"  ControlToValidate="txtCountry" ErrorMessage="Invalid entry" ValidationExpression="[a-zA-Z ]*$"></asp:RegularExpressionValidator>
-                            </div>
+                                        <%--<asp:RequiredFieldValidator ID="rfvCountry" ControlToValidate="txtCountry" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgCountry" runat="server">
+                                        </asp:RequiredFieldValidator>--%>
+                                         <asp:RegularExpressionValidator ID="revCountry" runat="server" ValidationGroup="vgCountry" ForeColor="Red"  ControlToValidate="txtCountry" ErrorMessage="Invalid entry" ValidationExpression="[a-zA-Z ]*$"></asp:RegularExpressionValidator>
+                                        <asp:RequiredFieldValidator runat="server" ID="NReq"
+                                            ControlToValidate="txtCountry" ValidationGroup="vgCountry"
+                                                Display="None"
+                                                ErrorMessage="<b>Required Field Missing</b><br />A name is required." />
+                                            <ajaxToolkit:ValidatorCalloutExtender runat="Server" ID="NReqE"
+                                                TargetControlID="NReq"
+                                                HighlightCssClass="validatorCalloutHighlight" />
+                                </div>
                             
                             <div class="row">
                                 <div class="col-md-6"><asp:Button ID="btnUpdate"  CssClass="form-control btn-primary" CommandName="Update" runat="server" ValidationGroup="vgCat" Text="Submit" OnClick="btnUpdate_Click" /></div>
@@ -102,7 +116,7 @@
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Delete" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" HeaderStyle-Width="5%">
                                             <ItemTemplate>
-                                                <asp:ImageButton ID="imgbtnfrDelete" ImageUrl="~/Images/delete.png" runat="server" Width="20" Height="20" OnClick="imgbtnfrDelete_Click" />
+                                                <asp:ImageButton ID="imgbtnfrDelete" OnClientClick="if (!confirm('Are you sure you want delete?')) return false;" ImageUrl="~/Images/delete.png" runat="server" Width="20" Height="20" OnClick="imgbtnfrDelete_Click" />
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>

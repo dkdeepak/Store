@@ -56,13 +56,14 @@ namespace StoreManagement.Admin
             cmdMode = CommandMode.D;
             objCountry = new Store.Country.BusinessObject.Country();
             oblCountry = new Store.Country.BusinessLogic.Country();
+            objMessageInfo = new MessageInfo();
             try
             {
                 ImageButton btndetails = sender as ImageButton;
                 GridViewRow gvrow = (GridViewRow)btndetails.NamingContainer;
                 objCountry.CountryID = Convert.ToInt32(dgvCountry.DataKeys[gvrow.RowIndex].Value.ToString());
                 objCountry.CountryName = "";
-                objCountry.CreatedBy = Convert.ToInt32(Session["UserId"].ToString());
+                //objCountry.CreatedBy = Convert.ToInt32(Session["UserId"].ToString());
                 objMessageInfo = oblCountry.ManageItemMaster(objCountry, cmdMode);
                 BindCountry();
                 updateCountryBdInfo.Update();
@@ -76,6 +77,7 @@ namespace StoreManagement.Admin
             {
                 objCountry = null;
                 oblCountry = null;
+                objMessageInfo = null;
             }
         }
         protected void linkButton_Click(object sender, EventArgs e)

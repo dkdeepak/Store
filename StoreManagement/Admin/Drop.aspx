@@ -3,10 +3,9 @@
 <asp:Content ContentPlaceHolderID="head" ID="head" runat="server">
     
     <link href="../Style/chosen.css" rel="stylesheet" />
-    <script src="../Scripts/jquery-1.6.4.js" type="text/javascript"></script>
+   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="../Scripts/chosen.jquery.js" type="text/javascript"></script>
-   <%-- <script src="../Scripts/jquery-1.4.1.js" type="text/javascript"></script>
-   <%-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>--%>--%>
+  
    
     
 </asp:Content>
