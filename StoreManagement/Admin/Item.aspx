@@ -6,13 +6,14 @@
     <div style="width: 100%">
         <div>
             <table style="width: 100%">
-                <tr > <%--github.com--%>  
+                <tr > 
+                    <td align="left"><h3 style="color:#2679b5;">Item</h3></td>
                     <td style="text-align: right"> 
                         <asp:Button ID="btnShowPopup"  runat="server" Style="display: none" /></td>
                     <td style="text-align: right">  
                       <asp:UpdatePanel runat="server" ID="UpdatePnl" UpdateMode="Conditional">
                             <ContentTemplate>
-                                <asp:LinkButton ID="linkButton" runat="server" OnClick="linkButton_Click"><span class="glyphicon glyphicon-plus-sign"></span>New Item</asp:LinkButton>
+                                <asp:LinkButton ID="linkButton" runat="server" CssClass="btn btn-primary" OnClick="linkButton_Click"><span class="glyphicon glyphicon-pencil"></span>Add</asp:LinkButton>
                             </ContentTemplate>                            
                        </asp:UpdatePanel>
 
@@ -160,14 +161,12 @@
 <asp:Content ID="cnt2" runat="server" ContentPlaceHolderID="cphData">
     <asp:UpdatePanel ID="updateItem" runat="server" UpdateMode="Conditional">
                             <ContentTemplate>
-     <ajaxToolkit:Accordion ID="MyAccordion" runat="server" SelectedIndex="0" HeaderCssClass="accordionHeader" HeaderSelectedCssClass="accordionHeaderSelected" ContentCssClass="accordionContent" FadeTransitions="false" FramesPerSecond="40" TransitionDuration="250" AutoSize="None" RequireOpenedPane="false" SuppressHeaderPostbacks="true">
+    <%-- <ajaxToolkit:Accordion ID="MyAccordion" runat="server" SelectedIndex="0" HeaderCssClass="accordionHeader" HeaderSelectedCssClass="accordionHeaderSelected" ContentCssClass="accordionContent" FadeTransitions="false" FramesPerSecond="40" TransitionDuration="250" AutoSize="None" RequireOpenedPane="false" SuppressHeaderPostbacks="true">
         <Panes>
         <ajaxToolkit:AccordionPane ID="acdFaq2" runat="server">
             <Header><a href="" class="accordionLink">View Data</a></Header>
-            <Content>
-                            <asp:GridView ID="dgvItem" runat="server" AutoGenerateColumns="false" Width="100%" CssClass="Grid"
-                                    AlternatingRowStyle-CssClass="alt"
-                                    PagerStyle-CssClass="pgr" DataKeyNames="ItemID">
+            <Content>--%>
+                            <asp:GridView ID="dgvItem" runat="server" AutoGenerateColumns="false" Width="100%" CssClass="table table-striped table-bordered table-hover" DataKeyNames="ItemID">
                                     <Columns>
                                         <asp:BoundField HeaderText="Item Name" ItemStyle-CssClass="text_title" DataField="ItemPrefix" ItemStyle-Width="10%" />
                                         <asp:BoundField HeaderText="Item Code" ItemStyle-CssClass="text_title" DataField="ItemCode" ItemStyle-Width="10%" />
@@ -196,10 +195,10 @@
                                     </Columns>
                                 </asp:GridView>
 
-        </Content>
+<%--        </Content>
         </ajaxToolkit:AccordionPane>
     </Panes>
-    </ajaxToolkit:Accordion>
+    </ajaxToolkit:Accordion>--%>
                                 </ContentTemplate>
                         </asp:UpdatePanel>
 </asp:Content>
