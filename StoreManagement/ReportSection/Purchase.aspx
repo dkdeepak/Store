@@ -126,9 +126,7 @@ img.src = "../Images/view.png";
 }
 }
 </script>
-
-
-   
+    
 
 
 
