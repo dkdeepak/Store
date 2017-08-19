@@ -21,7 +21,9 @@ namespace StoreManagement.Admin
                 divForm.Style.Add("display", "none");
                 divSerach.Style.Add("display", "block");
                 up1.Update();
-               
+                BindItemPrice();
+
+
             }
 
         }
@@ -112,14 +114,57 @@ namespace StoreManagement.Admin
 
                 oblItemprice = new Store.ItemPrice.BusinessLogic.ItemPrice();
                 oblItemprice.ManageItemMaster(objItemPrice, cmdMode);
-
-
-
-
-
-
-
             }
         }
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            reset();
+        }
+        private void reset()
+        {
+            //txtSalesPrice.Text = string.Empty;
+            //txtDicPre.Text = string.Empty;
+            //txtMiscCost.Text = string.Empty;
+            //txtSHC.Text = string.Empty;
+            //txtTax.Text = string.Empty;
+            //txttotal.Text = string.Empty;
+            //txtSubTotal.Text = string.Empty;
+            //Gridview1.DataSource = null;
+            //Gridview1.DataBind();
+            //SetInitialRow();
+            //ViewState["CurrentTable"] = null;
+        }
+        void BindItemPrice()
+        {
+            oblItemprice = new Store.ItemPrice.BusinessLogic.ItemPrice();
+            //oblItem = new Store.Item.BusinessLogic.Item();
+            try
+            {
+                objItemPriceList = oblItemprice.GetAllItemPriceList(0,0,"");
+              //  objItemList = oblItem.GetAllItemList(0, 0, "");
+                if (objItemPriceList != null)
+                {
+                    gvItemPrice.DataSource = objItemPriceList;
+                    gvItemPrice.DataBind();
+                }
+                else
+                {
+                    gvItemPrice.DataSource = null;
+                    gvItemPrice.DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                oblItemprice = null;
+                objItemPriceList = null;
+            }
+
+
+        }
+
     }
 }

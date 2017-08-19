@@ -7,7 +7,7 @@
     <asp:UpdatePanel ID="upSearch" runat="server">
      <ContentTemplate>
           <div class="panel panel-primary col-lg-4 col-md-4 col-sm-4 col-xm-4 col-lg-offset-4" id="divSerach" runat="server">
-           <div class="panel-heading">xvg</div>
+           <div class="panel-heading">Item Price Info</div>
                 <div class="panel-body">
                     <asp:TextBox ID="txtPoId" runat="server" placeholder="Enter Purchase Received No" CssClass="form-control" ValidationGroup="serach"></asp:TextBox>
                     <br />    
@@ -55,16 +55,41 @@
                 </asp:TemplateField>
             </Columns>    
             </asp:gridview>
-           <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" CssClass="" Text="Submit" />
+           <div class="row">
+             
+        <div class="col-lg-3"></div>
+
+
+        <div class="col-lg-2"><asp:Button ID="Button1" Text="Submit" CssClass="form-control btn-primary" runat="server" OnClick="btnSubmit_Click" />
+             
+         </div>
+
+              <div class="col-lg-2"><asp:Button ID="btnCancel" Text="Cancel" CausesValidation="false" runat="server" 
+               CssClass="form-control btn-danger" OnClick="btnCancel_Click" /></div>
         </div>
+           <div class="row">
+             
+        <div class="col-lg-12"></div>
+                <div class="col-lg-12"></div>
+               </div>
+
+           
+           
+            <%--<asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" CssClass="form-control" Text="Submit" />--%>
+        </div>
+
+       
        </ContentTemplate>
+
         </asp:UpdatePanel>
 
-    <%--<asp:UpdatePanel id="up2"  runat="server">
+    
+    </asp:Content>
+<asp:Content ID="con4" runat="server" ContentPlaceHolderID="cphData">
+    <asp:UpdatePanel id="up2"  runat="server">
         <ContentTemplate>
-            <asp:GridView ID="gvSalesItemPrice"
-            runat="server"         
-           
+            <asp:GridView ID="gvItemPrice"
+            runat="server" 
             DataKeyNames="ItemPriceID" 
              AutoGenerateColumns="false"
              Width="80%"
@@ -100,5 +125,5 @@
             </asp:GridView>
         </ContentTemplate>
 
-    </asp:UpdatePanel>--%>
-    </asp:Content>
+    </asp:UpdatePanel>
+</asp:Content>

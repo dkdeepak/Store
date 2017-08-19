@@ -111,10 +111,10 @@ namespace Store.Item.DataAccessLayer
                     {
                         objItem.ReferenceID = dr.GetInt32(dr.GetOrdinal("ReferenceID"));
                     }
-                    if (dr.IsDBNull(dr.GetOrdinal("IsActive")) == false)
-                    {
-                        objItem.IsActive = dr.GetInt32(dr.GetOrdinal("IsActive"));
-                    }
+                    //if (dr.IsDBNull(dr.GetOrdinal("IsActive")) == false)
+                    //{
+                    //    objItem.IsActive = dr.GetInt32(dr.GetOrdinal("IsActive"));
+                    //}
                     objItemList.Add(objItem);
 
                 }

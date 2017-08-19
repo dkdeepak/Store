@@ -7,27 +7,45 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace StoreManagement {
+namespace StoreManagement.ReportSection {
     
     
     public partial class WebForm1 {
         
         /// <summary>
-        /// form1 control.
+        /// up2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.UpdatePanel up2;
         
         /// <summary>
-        /// GridView1 control.
+        /// gvPOrder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView gvPOrder;
+        
+        /// <summary>
+        /// pnl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnl;
+        
+        /// <summary>
+        /// gv1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gv1;
     }
 }
