@@ -55,7 +55,7 @@
                 </asp:TemplateField>
             </Columns>    
             </asp:gridview>
-           <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" CssClass="form-control" Text="Submit" />
+           <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" CssClass="" Text="Submit" />
         </div>
        </ContentTemplate>
         </asp:UpdatePanel>
