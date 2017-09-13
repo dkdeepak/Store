@@ -66,7 +66,6 @@
     <Reference Include="System.Web.ApplicationServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="About.aspx" />
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
@@ -76,7 +75,6 @@
     <Content Include="Scripts\jquery-1.6.4.js" />
     <Content Include="Scripts\jquery-1.6.4.min.js" />
     <Content Include="Styles\Site.css" />
-    <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
@@ -90,13 +88,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="About.aspx.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="About.aspx.designer.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Account\ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -125,6 +116,9 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Currency\BusinessLogic\BLCurrency.cs" />
+    <Compile Include="Currency\BusinessObject\BOCurrency.cs" />
+    <Compile Include="Currency\DataAccessLayer\DLCurrency.cs" />
     <Compile Include="Category\BusinessLogic\BLCategory.cs" />
     <Compile Include="Category\BusinessObject\BOCategory.cs" />
     <Compile Include="Category\DataAccessLayer\DLCategory.cs" />
@@ -134,9 +128,10 @@
     <Compile Include="Client\BusinessLogic\BLClient.cs" />
     <Compile Include="Client\BusinessObject\BOClient.cs" />
     <Compile Include="Client\DataAccessLayer\DLClient.cs" />
-    <Compile Include="Vendor\BusinessLogic\BLVendor.cs" />
-    <Compile Include="Vendor\BusinessObject\BOVendor.cs" />
-    <Compile Include="Vendor\DataAccessLayer\DLVendor.cs" />
+    <Compile Include="TypeOfVendor\BusinessLogic\BLTypeOfVendor.cs" />
+    <Compile Include="TypeOfVendor\BusinessObject\BOTypeOfVendor.cs" />
+    <Compile Include="TypeOfVendor\BusinessObject\TypeOfUserList.cs" />
+    <Compile Include="TypeOfVendor\DataAccessLayer\DLTypeOfVendor.cs" />
     <Compile Include="SalesOrderItem\BusinessLogic\BLSalesOrderItem.cs" />
     <Compile Include="SalesOrderItem\BusinessObject\BOSalesOrderItem.cs" />
     <Compile Include="SalesOrderItem\DataAccessLayer\DLSalesOrderItem.cs" />
@@ -146,6 +141,9 @@
     <Compile Include="SaleReturnItem\BusinessLogic\BLSaleReturnItem.cs" />
     <Compile Include="SaleReturnItem\BusinessObject\BOSaleReturnItem.cs" />
     <Compile Include="SaleReturnItem\DataAccessLayer\DlSaleReturnItem.cs" />
+    <Compile Include="VendorInfo\BusinessLogic\BLVendorInfo.cs" />
+    <Compile Include="VendorInfo\BusinessObject\BOVendorInfo.cs" />
+    <Compile Include="VendorInfo\DataAccessLayer\DLVendorInfo.cs" />
     <Compile Include="UserInfo\BusinessLogic\BLUserInfo.cs" />
     <Compile Include="UserInfo\BusinessObject\BOUserInfo.cs" />
     <Compile Include="UserInfo\DataAccessLayer\DLUserInfo.cs" />
@@ -162,13 +160,6 @@
     <Compile Include="Country\BusinessObject\BOCountry.cs" />
     <Compile Include="Country\DataAccessLayer\DLCountry.cs" />
     <Compile Include="DatabaseHelper\DatabaseHelper.cs" />
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
     <Compile Include="District\BusinessLogic\BLDistrict.cs" />
     <Compile Include="District\BusinessObject\BODistrict.cs" />
     <Compile Include="District\DataAccessLayer\DLDistrict.cs" />
@@ -194,13 +185,6 @@
     <Compile Include="SalesReturned\BusinessLogic\BLSalesReturned.cs" />
     <Compile Include="SalesReturned\BusinessObject\BOSalesReturned.cs" />
     <Compile Include="SalesReturned\DataAccessLayer\DLSalesReturned.cs" />
-    <Compile Include="Site.Master.cs">
-      <DependentUpon>Site.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Site.Master.designer.cs">
-      <DependentUpon>Site.Master</DependentUpon>
-    </Compile>
     <Compile Include="State\BusinessLogic\BLState.cs" />
     <Compile Include="State\BusinessObject\BOState.cs" />
     <Compile Include="State\DataAcessLayer\DLState.cs" />
@@ -224,7 +208,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
-    <Content Include="Site.Master" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

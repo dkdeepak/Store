@@ -3,67 +3,53 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Store.ItemUnit.BusinessObject
+namespace Store.TypeOfVendor.BusinessObject
 {
-    public class ItemUnit
+    public class TypeOfVendor
     {
-        private int _UnitID;
-        public int UnitID
+        private int _TypeofVendorID;
+        public int TypeofVendorID
         {
             get
             {
-                try { return _UnitID; }
-                catch(Exception err) { throw new Exception("Error getting UnitID",err); }
+                try { return _TypeofVendorID; }
+                catch(System.Exception err) { throw new Exception("Error getting TypeofVendorID", err); }
             }
             set
             {
-                try { _UnitID = value; }
-                catch(Exception err) { throw new Exception("Error setting UnitID", err); }
+                try { _TypeofVendorID = value; }
+                catch(System.Exception err) { throw new Exception("Error gettting TypeofVendorID", err); }
+            }
+        }
+        private string _TypeofVendorName;
+        public string TypeofVendorName
+        {
+            get
+            {
+                try { return _TypeofVendorName; }
+                catch (System.Exception err) { throw new Exception("Error getting TypeofVendorName", err); }
+            }
+            set
+            {
+                try { _TypeofVendorName = value; }
+                catch (System.Exception err) { throw new Exception("Error gettting TypeofVendorName", err); }
+            }
+        }
+        private int _ClientID;
+        public int ClientID
+        {
+            get
+            {
+                try { return _ClientID; }
+                catch (System.Exception err) { throw new Exception("Error getting ClientID", err); }
+            }
+            set
+            {
+                try { _ClientID = value; }
+                catch (System.Exception err) { throw new Exception("Error gettting ClientID", err); }
             }
         }
 
-        private string _UnitName;
-        public string UnitName
-        {
-            get
-            {
-                try { return _UnitName; }
-                catch (Exception err) { throw new Exception("Error getting UnitName", err); }
-            }
-            set
-            {
-                try { _UnitName = value; }
-                catch (Exception err) { throw new Exception("Error setting UnitName", err); }
-            }
-        }
-        //private int _CategoryID;
-        //public int CategoryID
-        //{
-        //    get
-        //    {
-        //        try { return _CategoryID; }
-        //        catch (Exception err) { throw new Exception("Error getting CategoryID", err); }
-        //    }
-        //    set
-        //    {
-        //        try { _CategoryID = value; }
-        //        catch (Exception err) { throw new Exception("Error setting CategoryID", err); }
-        //    }
-        //}
-        //private string _CategoryName;
-        //public string CategoryName
-        //{
-        //    get
-        //    {
-        //        try { return _CategoryName; }
-        //        catch (Exception err) { throw new Exception("Error getting CategoryName", err); }
-        //    }
-        //    set
-        //    {
-        //        try { _CategoryName = value; }
-        //        catch (Exception err) { throw new Exception("Error setting CategoryName", err); }
-        //    }
-        //}
 
         private int _CreatedBy;
         public int CreatedBy
@@ -197,8 +183,7 @@ namespace Store.ItemUnit.BusinessObject
             }
         }
     }
-    public class ItemUnitList : List<ItemUnit>
+    public class TypeOfVendorList : List<TypeOfVendor>
     { 
-    
     }
 }

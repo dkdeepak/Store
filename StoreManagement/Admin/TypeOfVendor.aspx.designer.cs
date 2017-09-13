@@ -10,7 +10,7 @@
 namespace StoreManagement.Admin {
     
     
-    public partial class ItemUnit {
+    public partial class TypeOfVendor {
         
         /// <summary>
         /// btnShowPopup control.
@@ -58,13 +58,13 @@ namespace StoreManagement.Admin {
         protected global::System.Web.UI.WebControls.Panel pnlpopup;
         
         /// <summary>
-        /// updateItemUnitBdInfo control.
+        /// updateTypeofUserBdInfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updateItemUnitBdInfo;
+        protected global::System.Web.UI.UpdatePanel updateTypeofUserBdInfo;
         
         /// <summary>
         /// lbtnClose control.
@@ -76,40 +76,40 @@ namespace StoreManagement.Admin {
         protected global::System.Web.UI.WebControls.LinkButton lbtnClose;
         
         /// <summary>
-        /// txtUnitId control.
+        /// txtTypeofVendorId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUnitId;
+        protected global::System.Web.UI.WebControls.TextBox txtTypeofVendorId;
         
         /// <summary>
-        /// txtUnitName control.
+        /// txtTypeofVendorName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUnitName;
+        protected global::System.Web.UI.WebControls.TextBox txtTypeofVendorName;
         
         /// <summary>
-        /// rfvUnitName control.
+        /// rfvTypeofVendorName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvUnitName;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTypeofVendorName;
         
         /// <summary>
-        /// revUnitName control.
+        /// revTypeofVendorName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator revUnitName;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revTypeofVendorName;
         
         /// <summary>
         /// btnUpdate control.
@@ -130,21 +130,21 @@ namespace StoreManagement.Admin {
         protected global::System.Web.UI.WebControls.Button btnCancel;
         
         /// <summary>
-        /// updateItemUnit control.
+        /// updateTypeofUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updateItemUnit;
+        protected global::System.Web.UI.UpdatePanel updateTypeofUser;
         
         /// <summary>
-        /// dgvItemUnit control.
+        /// dgvTypeofVendor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgvItemUnit;
+        protected global::System.Web.UI.WebControls.GridView dgvTypeofVendor;
     }
 }

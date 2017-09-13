@@ -13,8 +13,8 @@ namespace Store.ItemPrice.BusinessObject
         public decimal ItemCostPricePerUnit { get; set; }
         public decimal ItemSalePricePerUnit { get; set; }
         public decimal ItemDiscountPercentagePerUnit { get; set; }
-        public DateTime WindowFrom { get; set; }
-        public DateTime WindowTo { get; set; }
+        public DateTime ApplicableFrom { get; set; }
+        public DateTime ApplicableTo { get; set; }
         public int CategoryID { get; set; }
         public string CategoryName { get; set; }
         public int CreatedBy { get; set; }

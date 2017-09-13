@@ -1,8 +1,6 @@
-﻿<%@ Page Title="Master|Category" Language="C#" MasterPageFile="~/Master/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Category.aspx.cs" Inherits="StoreManagement.Admin.Category" %>
+﻿<%@ Page Title="Master|Currency" Language="C#" MasterPageFile="~/Master/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Currency.aspx.cs" Inherits="StoreManagement.Admin.Currency" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-  
-
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphContain" runat="server">
  <div style="width: 100%">
@@ -10,7 +8,7 @@
             <asp:HiddenField ID="rid" runat="server" />
             <table style="width: 100%">
                 <tr>
-                    <td align="left"><h3 style="color:#2679b5;">Category</h3></td>
+                    <td align="left"><h3 style="color:#2679b5;">Currency</h3></td>
                     <td style="text-align: right"> 
                         <asp:Button ID="btnShowPopup"  runat="server" Style="display: none" /></td>
                     <td style="text-align: right">  
@@ -34,14 +32,14 @@
         CancelControlID="btnCancel" BackgroundCssClass="modalBackground">
     </ajaxToolkit:ModalPopupExtender>
     <asp:Panel ID="pnlpopup" runat="server" CssClass="modalPopup"  DefaultButton="btnUpdate">
-       <asp:UpdatePanel ID="updateCategoryBdInfo" runat="server" UpdateMode="Conditional">
+       <asp:UpdatePanel ID="updateCurrencyBdInfo" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
             <div class="col-md-12">
             <div class="panel panel-primary">
                     <div class="panel-heading">
                         <table width="100%">
                                 <tr>
-                                    <td align="left">Category Information</td>
+                                    <td align="left">Currency Information</td>
                                     <td align="right"><asp:LinkButton ID="lbtnClose" ForeColor="White" Font-Bold="true" runat="server" OnClick="lbtnClose_Click" >X</asp:LinkButton></td>
                                 </tr>
                             </table>
@@ -49,24 +47,21 @@
                     <div class="panel-body">
                             <div class="col-md-12">
                             <div class="row" style="display:none">
-                                <div class="col-md-6">Category Id:</div>
-                                <div class="col-md-6"><asp:TextBox ID="txtCategoryId" runat="server" CssClass="form-control" /></div>
+                                <div class="col-md-6">Currency Id:</div>
+                                <div class="col-md-6"><asp:TextBox ID="txtCurrencyId" runat="server" CssClass="form-control" /></div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                <asp:TextBox ID="txtCategoryName" placeholder="Enter Category Name"  ToolTip="Category Name"  runat="server" CssClass="form-control" />
-                                <asp:RequiredFieldValidator ID="rfvtCategoryName" ControlToValidate="txtCategoryName" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgCat" runat="server">
+                                <asp:TextBox ID="txtCurrencyName" placeholder="Enter Currency Name"  ToolTip="Currency Name"  runat="server" CssClass="form-control" />
+                                <asp:RequiredFieldValidator ID="rfvtCurrencyName" ControlToValidate="txtCurrencyName" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgCat" runat="server">
                                 </asp:RequiredFieldValidator>
-                                <asp:RegularExpressionValidator ID="revCategory" runat="server"
-                                                         ControlToValidate="txtCategoryName" ValidationGroup="vgCat" ErrorMessage="Invalid entry"
+                                <asp:RegularExpressionValidator ID="revCurrency" runat="server"
+                                                         ControlToValidate="txtCurrencyName" ValidationGroup="vgCat" ErrorMessage="Invalid entry"
                                                          ValidationExpression="[a-zA-Z ]*$"></asp:RegularExpressionValidator></div>
                             </div>
-                            <div class="row" style="display:block">
-                                <div class="col-md-2">
-                                    <asp:CheckBox ID="cbParant" runat="server" OnCheckedChanged="cbParant_CheckedChanged" AutoPostBack="true" />Parent
-                                </div>
-                                <div class="col-md-12" id="divCategory" runat="server">
-                                    <asp:DropDownList ID="ddlCategory"  runat="server" CssClass="form-control"></asp:DropDownList>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <asp:FileUpload ID="fuSign" runat="server" CssClass="form-control" />
                                 </div>
                             </div>
                             <div class="row">
@@ -84,7 +79,7 @@
     </asp:Panel>
 </asp:Content>
 <asp:Content ID="con" ContentPlaceHolderID="cphData" runat="server">
-    <asp:UpdatePanel ID="updateCategory" runat="server" UpdateMode="Conditional">
+    <asp:UpdatePanel ID="updateCurrency" runat="server" UpdateMode="Conditional">
                             <ContentTemplate>
                             <%--<ajaxToolkit:Accordion ID="MyAccordion" runat="server" SelectedIndex="0" HeaderCssClass="accordionHeader" HeaderSelectedCssClass="accordionHeaderSelected" ContentCssClass="accordionContent" FadeTransitions="false" FramesPerSecond="40" TransitionDuration="250" AutoSize="None" RequireOpenedPane="false" SuppressHeaderPostbacks="true">
         <Panes>
@@ -93,11 +88,11 @@
             <Content>
          --%>
 
-                                
-                                <asp:GridView ID="dgvCategory" runat="server" AutoGenerateColumns="false" Width="100%" CssClass="table table-striped table-bordered table-hover" DataKeyNames="CategoryID">
+
+                                <asp:GridView ID="dgvCurrency" runat="server" AutoGenerateColumns="false" Width="100%" CssClass="table table-striped table-bordered table-hover" DataKeyNames="CurrencyID">
                                     <Columns>
-                                        <asp:BoundField HeaderText="Category Name" DataField="CategoryName" ItemStyle-Width="25%"  ItemStyle-CssClass="text_title"/>
-                                        <asp:BoundField HeaderText="Parent Category Name" DataField="ParentCategory" ItemStyle-Width="25%"  ItemStyle-CssClass="text_title"/>
+                                        <asp:BoundField HeaderText="Currency Name" DataField="CurrencyName" ItemStyle-Width="25%"  ItemStyle-CssClass="text_title"/>
+                                        <asp:BoundField HeaderText="Parent Currency Name" DataField="ParentCurrency" ItemStyle-Width="25%"  ItemStyle-CssClass="text_title"/>
                                         <asp:BoundField HeaderText="Created Date" DataField="CreatedOn" DataFormatString="{0:dd-MMM-yyyy}" ItemStyle-Width="25%" />
                                         <asp:TemplateField HeaderText="Edit" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" HeaderStyle-Width="5%">
                                             <ItemTemplate>
@@ -111,7 +106,6 @@
                                         </asp:TemplateField>
                                     </Columns>
                                 </asp:GridView>
-   
     <%--     </Content>
          </ajaxToolkit:AccordionPane>
          </Panes>

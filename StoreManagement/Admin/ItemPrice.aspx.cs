@@ -100,16 +100,16 @@ namespace StoreManagement.Admin
                 HiddenField hfid = (HiddenField)Gridview1.Rows[i].FindControl("hfItemId");
                 
                 TextBox txtSalesPrice = (TextBox)Gridview1.Rows[i].FindControl("txtSalesPrice");
-                TextBox txtWindowFrom = (TextBox)Gridview1.Rows[i].FindControl("txtWindowFrom");
-                TextBox txtWindowTo = (TextBox)Gridview1.Rows[i].FindControl("txtWindowTo");
+                TextBox txtApplicableFrom = (TextBox)Gridview1.Rows[i].FindControl("txtApplicableFrom");
+                TextBox txtApplicableTo = (TextBox)Gridview1.Rows[i].FindControl("txtApplicableTo");
                 TextBox txtDiscount = (TextBox)Gridview1.Rows[i].FindControl("txtDiscount");
                 objItemPrice = new Store.ItemPrice.BusinessObject.ItemPrice();
 
                 objItemPrice.BatchNo = Convert.ToString(txtPoId.Text);
                 objItemPrice.ItemID = Convert.ToInt32(hfid.Value);
                 objItemPrice.ItemSalePricePerUnit = Convert.ToInt32(txtSalesPrice.Text);
-                objItemPrice.WindowFrom = Convert.ToDateTime(txtWindowFrom.Text);
-                objItemPrice.WindowTo = Convert.ToDateTime(txtWindowTo.Text);
+                objItemPrice.ApplicableFrom = Convert.ToDateTime(txtApplicableFrom.Text);
+                objItemPrice.ApplicableTo = Convert.ToDateTime(txtApplicableTo.Text);
                 objItemPrice.ItemDiscountPercentagePerUnit = Convert.ToInt32(txtDiscount.Text);
 
                 oblItemprice = new Store.ItemPrice.BusinessLogic.ItemPrice();

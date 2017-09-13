@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Store.Common;
+using System.Web.UI.HtmlControls;
 
 namespace StoreManagement.Admin
 {
@@ -14,13 +15,14 @@ namespace StoreManagement.Admin
         {
             //if (Session["UserId"] != null)
             //{
-               if (!Page.IsPostBack)
-                {
-                    BindCategory();
-                }
+            if (!Page.IsPostBack)
+            {
+                BindCategory();
+                divCategory.Style.Add("display", "none");
+            }
             //}
             //else {
-              //  Response.Redirect("../Login.aspx");
+            //  Response.Redirect("../Login.aspx");
             //}
         }
         Store.Category.BusinessLogic.Category oblCategory = null;
@@ -40,6 +42,13 @@ namespace StoreManagement.Admin
             GridViewRow gvrow = (GridViewRow)btndetails.NamingContainer;
             txtCategoryId.Text = dgvCategory.DataKeys[gvrow.RowIndex].Value.ToString();
             txtCategoryName.Text = gvrow.Cells[0].Text;
+            if(gvrow.Cells[0].Text!="")
+            {
+                cbParant.Checked = true;
+                ddlCategory.SelectedItem.Selected = false;
+                ddlCategory.Items.FindByText(gvrow.Cells[1].Text.ToString()).Selected = true;
+                divCategory.Style.Add("display", "block");
+            }
             updateCategoryBdInfo.Update();
             this.ModalPopupExtender1.Show();
             cmdMode = CommandMode.M;
@@ -114,12 +123,18 @@ namespace StoreManagement.Admin
                 {
                     dgvCategory.DataSource = obCategoryList;
                     dgvCategory.DataBind();
+                    ddlCategory.DataSource = obCategoryList;
+                    ddlCategory.DataTextField = "CategoryName";
+                    ddlCategory.DataValueField = "CategoryID";
+                    ddlCategory.DataBind();
+
                 }
                 else
                 {
                     dgvCategory.DataSource = null;
                     dgvCategory.DataBind();
                 }
+                
             }
             catch (Exception ex)
             {
@@ -141,7 +156,7 @@ namespace StoreManagement.Admin
             {
                 if (cmdMode == Store.Common.CommandMode.M)
                 {
-                   
+
                     objCategory.CategoryID = Convert.ToInt32(txtCategoryId.Text);
                     //objCategory.ModifiedBy = Convert.ToInt32(Session["UserId"].ToString());
                 }
@@ -150,6 +165,10 @@ namespace StoreManagement.Admin
                     objCategory.CategoryID = 0;
                     //objCategory.CreatedBy = Convert.ToInt32(Session["UserId"].ToString());
                 }
+                if (cbParant.Checked)
+                    objCategory.ParentCategoryID = Convert.ToInt32(ddlCategory.SelectedValue);
+                else
+                    objCategory.ParentCategoryID = 0;
                 objCategory.CategoryName = Convert.ToString(txtCategoryName.Text);
                 objMessageInfo = oblCategory.ManageItemMaster(objCategory, cmdMode);
             }
@@ -169,6 +188,7 @@ namespace StoreManagement.Admin
             txtCategoryId.Text = "";
             txtCategoryName.Text = "";
             txtCategoryName.Focus();
+            divCategory.Style.Add("display", "none");
         }
         #endregion
 
@@ -184,5 +204,13 @@ namespace StoreManagement.Admin
             this.ModalPopupExtender1.Hide();
         }
 
+        protected void cbParant_CheckedChanged(object sender, EventArgs e)
+        {
+            if(cbParant.Checked)
+                divCategory.Style.Add("display", "block");
+            else
+                divCategory.Style.Add("display", "none");
+
+        }
     }
 }

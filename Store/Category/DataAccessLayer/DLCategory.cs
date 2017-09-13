@@ -41,6 +41,10 @@ namespace Store.Category.DataAccessLayer
                     {
                         objCategory.ParentCategoryID = dr.GetInt32(dr.GetOrdinal("ParentCategoryID"));
                     }
+                    if ((dr.IsDBNull(dr.GetOrdinal("ParentCategory")) == false))
+                    {
+                        objCategory.ParentCategory = dr.GetString(dr.GetOrdinal("ParentCategory"));
+                    }
                     if ((dr.IsDBNull(dr.GetOrdinal("ClientID")) == false))
                     {
                         objCategory.ClientID = dr.GetInt32(dr.GetOrdinal("ClientID"));
@@ -104,6 +108,10 @@ namespace Store.Category.DataAccessLayer
                     {
                         objCategory.ParentCategoryID = dr.GetInt32(dr.GetOrdinal("ParentCategoryID"));
                     }
+                    if ((dr.IsDBNull(dr.GetOrdinal("ParentCategory")) == false))
+                    {
+                        objCategory.ParentCategory = dr.GetString(dr.GetOrdinal("ParentCategory"));
+                    }
                     if ((dr.IsDBNull(dr.GetOrdinal("ClientID")) == false))
                     {
                         objCategory.ClientID = dr.GetInt32(dr.GetOrdinal("ClientID"));
@@ -150,7 +158,8 @@ namespace Store.Category.DataAccessLayer
                 SQL = "USP_ManageCategory";
                 param.Add(new SQLParameter("@CategoryID", objCategory.CategoryID));
                 param.Add(new SQLParameter("@CategoryName", objCategory.CategoryName));
-                if(cmdMode==CommandMode.N)
+                param.Add(new SQLParameter("@ParentCategoryID", objCategory.ParentCategoryID));
+                if (cmdMode==CommandMode.N)
                     param.Add(new SQLParameter("@UserId", objCategory.CreatedBy));
                 else
                     param.Add(new SQLParameter("@UserId", objCategory.ModifiedBy));

@@ -34,17 +34,17 @@
                     <asp:TextBox ID="txtSalesPrice"   runat="server" CssClass="form-control"></asp:TextBox>
                 </ItemTemplate>
             </asp:TemplateField>
-                <asp:TemplateField HeaderText="WindowFrom">
+                <asp:TemplateField HeaderText="ApplicableFrom">
                     <ItemTemplate>
-                        <asp:TextBox ID="txtWindowFrom"   runat="server" CssClass="form-control"></asp:TextBox>
-                        <ajaxToolkit:CalendarExtender ID="windowfrom" runat="server" TargetControlID="txtWindowFrom"></ajaxToolkit:CalendarExtender>
+                        <asp:TextBox ID="txtApplicableFrom"   runat="server" CssClass="form-control"></asp:TextBox>
+                        <ajaxToolkit:CalendarExtender ID="Applicablefrom" runat="server" TargetControlID="txtApplicableFrom"></ajaxToolkit:CalendarExtender>
                     </ItemTemplate>
                 </asp:TemplateField>
 
-                <asp:TemplateField HeaderText="WindowTo">
+                <asp:TemplateField HeaderText="ApplicableTo">
                     <ItemTemplate>
-                        <asp:TextBox ID="txtWindowTo"   runat="server" CssClass="form-control"></asp:TextBox>
-                         <ajaxToolkit:CalendarExtender ID="windowTo" runat="server" TargetControlID="txtWindowTo"></ajaxToolkit:CalendarExtender>
+                        <asp:TextBox ID="txtApplicableTo"   runat="server" CssClass="form-control"></asp:TextBox>
+                         <ajaxToolkit:CalendarExtender ID="ApplicableTo" runat="server" TargetControlID="txtApplicableTo"></ajaxToolkit:CalendarExtender>
                     </ItemTemplate>
                 </asp:TemplateField>
 
@@ -109,14 +109,14 @@
         </ItemTemplate>
     </asp:TemplateField>
 
-                <asp:TemplateField HeaderText="WindowFrom" >
+                <asp:TemplateField HeaderText="ApplicableFrom" >
         <ItemTemplate>            
-           <asp:Label ID="lblWindowFrom" runat="server" Text='<%# Eval("WindowFrom") %>' ></asp:Label>
+           <asp:Label ID="lblApplicableFrom" runat="server" Text='<%# Eval("ApplicableFrom") %>' ></asp:Label>
         </ItemTemplate>
     </asp:TemplateField>
-                <asp:TemplateField HeaderText="WindowTo" >
+                <asp:TemplateField HeaderText="ApplicableTo" >
         <ItemTemplate>            
-           <asp:Label ID="lblWindowTo" runat="server" Text='<%# Eval("WindowTo") %>' ></asp:Label>
+           <asp:Label ID="lblApplicableTo" runat="server" Text='<%# Eval("ApplicableTo") %>' ></asp:Label>
         </ItemTemplate>
     </asp:TemplateField>
 

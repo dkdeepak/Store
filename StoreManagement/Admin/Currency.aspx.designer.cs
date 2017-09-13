@@ -10,7 +10,16 @@
 namespace StoreManagement.Admin {
     
     
-    public partial class Vendor {
+    public partial class Currency {
+        
+        /// <summary>
+        /// rid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField rid;
         
         /// <summary>
         /// btnShowPopup control.
@@ -58,6 +67,15 @@ namespace StoreManagement.Admin {
         protected global::System.Web.UI.WebControls.Panel pnlpopup;
         
         /// <summary>
+        /// updateCurrencyBdInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updateCurrencyBdInfo;
+        
+        /// <summary>
         /// lbtnClose control.
         /// </summary>
         /// <remarks>
@@ -67,49 +85,49 @@ namespace StoreManagement.Admin {
         protected global::System.Web.UI.WebControls.LinkButton lbtnClose;
         
         /// <summary>
-        /// updateVendorBdInfo control.
+        /// txtCurrencyId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updateVendorBdInfo;
+        protected global::System.Web.UI.WebControls.TextBox txtCurrencyId;
         
         /// <summary>
-        /// txtVendorId control.
+        /// txtCurrencyName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtVendorId;
+        protected global::System.Web.UI.WebControls.TextBox txtCurrencyName;
         
         /// <summary>
-        /// txtVendorName control.
+        /// rfvtCurrencyName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtVendorName;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtCurrencyName;
         
         /// <summary>
-        /// rfvVendorName control.
+        /// revCurrency control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvVendorName;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revCurrency;
         
         /// <summary>
-        /// revVendor control.
+        /// fuSign control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator revVendor;
+        protected global::System.Web.UI.WebControls.FileUpload fuSign;
         
         /// <summary>
         /// btnUpdate control.
@@ -130,21 +148,21 @@ namespace StoreManagement.Admin {
         protected global::System.Web.UI.WebControls.Button btnCancel;
         
         /// <summary>
-        /// updateVendor control.
+        /// updateCurrency control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updateVendor;
+        protected global::System.Web.UI.UpdatePanel updateCurrency;
         
         /// <summary>
-        /// dgvVendor control.
+        /// dgvCurrency control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgvVendor;
+        protected global::System.Web.UI.WebControls.GridView dgvCurrency;
     }
 }

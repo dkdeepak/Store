@@ -53,13 +53,13 @@ namespace Store.ItemPrice.DataAccessLayer
                     {
                         objItemPrice.ItemDiscountPercentagePerUnit = dr.GetDecimal(dr.GetOrdinal("ItemDiscountPercentagePerUnit"));
                     }
-                    if (dr.IsDBNull(dr.GetOrdinal("WindowFrom")) == false)
+                    if (dr.IsDBNull(dr.GetOrdinal("ApplicableFrom")) == false)
                     {
-                        objItemPrice.WindowFrom = dr.GetDateTime(dr.GetOrdinal("WindowFrom"));
+                        objItemPrice.ApplicableFrom = dr.GetDateTime(dr.GetOrdinal("ApplicableFrom"));
                     }
-                    if (dr.IsDBNull(dr.GetOrdinal("WindowTo")) == false)
+                    if (dr.IsDBNull(dr.GetOrdinal("ApplicableTo")) == false)
                     {
-                        objItemPrice.WindowTo = dr.GetDateTime(dr.GetOrdinal("WindowTo"));
+                        objItemPrice.ApplicableTo = dr.GetDateTime(dr.GetOrdinal("ApplicableTo"));
                     }
                     if (dr.IsDBNull(dr.GetOrdinal("CategoryID")) == false)
                     {
@@ -143,13 +143,13 @@ namespace Store.ItemPrice.DataAccessLayer
                     {
                         objItemPrice.ItemDiscountPercentagePerUnit = dr.GetDecimal(dr.GetOrdinal("ItemDiscountPercentagePerUnit"));
                     }
-                    if (dr.IsDBNull(dr.GetOrdinal("WindowFrom")) == false)
+                    if (dr.IsDBNull(dr.GetOrdinal("ApplicableFrom")) == false)
                     {
-                        objItemPrice.WindowFrom = dr.GetDateTime(dr.GetOrdinal("WindowFrom"));
+                        objItemPrice.ApplicableFrom = dr.GetDateTime(dr.GetOrdinal("ApplicableFrom"));
                     }
-                    if (dr.IsDBNull(dr.GetOrdinal("WindowTo")) == false)
+                    if (dr.IsDBNull(dr.GetOrdinal("ApplicableTo")) == false)
                     {
-                        objItemPrice.WindowTo = dr.GetDateTime(dr.GetOrdinal("WindowTo"));
+                        objItemPrice.ApplicableTo = dr.GetDateTime(dr.GetOrdinal("ApplicableTo"));
                     }
                     if (dr.IsDBNull(dr.GetOrdinal("CategoryID")) == false)
                     {
@@ -207,8 +207,8 @@ namespace Store.ItemPrice.DataAccessLayer
                 param.Add(new SQLParameter("@ItemID",objItemPrice.ItemID));          
                 param.Add(new SQLParameter("@ItemSalePricePerUnit",objItemPrice.ItemSalePricePerUnit));
                 param.Add(new SQLParameter("@ItemDiscountPercentagePerUnit",objItemPrice.ItemDiscountPercentagePerUnit));
-                param.Add(new SQLParameter("@WindowFrom",objItemPrice.WindowFrom));
-                param.Add(new SQLParameter("@WindowTo",objItemPrice.WindowTo));               
+                param.Add(new SQLParameter("@ApplicableFrom",objItemPrice.ApplicableFrom));
+                param.Add(new SQLParameter("@ApplicableTo",objItemPrice.ApplicableTo));               
                 param.Add(new SQLParameter("@ReferenceID", objItemPrice.ReferenceID));
                 param.Add(new SQLParameter("@CMDMode", cmdMode));               
                 dr = ExecuteQuery.ExecuteReader(SQL, param);

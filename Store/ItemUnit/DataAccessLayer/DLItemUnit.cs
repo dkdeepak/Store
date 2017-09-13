@@ -36,14 +36,14 @@ namespace Store.ItemUnit.DataAccessLayer
                     {
                         objItemUnit.UnitName = dr.GetString(dr.GetOrdinal("UnitName"));
                     }
-                    if (dr.IsDBNull(dr.GetOrdinal("CategoryID")) == false)
-                    {
-                        objItemUnit.CategoryID = dr.GetInt32(dr.GetOrdinal("CategoryID"));
-                    }
-                    if (dr.IsDBNull(dr.GetOrdinal("CategoryName")) == false)
-                    {
-                        objItemUnit.CategoryName = dr.GetString(dr.GetOrdinal("CategoryName"));
-                    }
+                    //if (dr.IsDBNull(dr.GetOrdinal("CategoryID")) == false)
+                    //{
+                    //    objItemUnit.CategoryID = dr.GetInt32(dr.GetOrdinal("CategoryID"));
+                    //}
+                    //if (dr.IsDBNull(dr.GetOrdinal("CategoryName")) == false)
+                    //{
+                    //    objItemUnit.CategoryName = dr.GetString(dr.GetOrdinal("CategoryName"));
+                    //}
 
                     if (dr.IsDBNull(dr.GetOrdinal("CreatedBy")) == false)
                     {
@@ -99,14 +99,14 @@ namespace Store.ItemUnit.DataAccessLayer
                     {
                         objItemUnit.UnitName = dr.GetString(dr.GetOrdinal("UnitName"));
                     }
-                    if (dr.IsDBNull(dr.GetOrdinal("CategoryID")) == false)
-                    {
-                        objItemUnit.CategoryID = dr.GetInt32(dr.GetOrdinal("CategoryID"));
-                    }
-                    if (dr.IsDBNull(dr.GetOrdinal("CategoryName")) == false)
-                    {
-                        objItemUnit.CategoryName = dr.GetString(dr.GetOrdinal("CategoryName"));
-                    }
+                    //if (dr.IsDBNull(dr.GetOrdinal("CategoryID")) == false)
+                    //{
+                    //    objItemUnit.CategoryID = dr.GetInt32(dr.GetOrdinal("CategoryID"));
+                    //}
+                    //if (dr.IsDBNull(dr.GetOrdinal("CategoryName")) == false)
+                    //{
+                    //    objItemUnit.CategoryName = dr.GetString(dr.GetOrdinal("CategoryName"));
+                    //}
 
                     if (dr.IsDBNull(dr.GetOrdinal("CreatedBy")) == false)
                     {
@@ -151,7 +151,7 @@ namespace Store.ItemUnit.DataAccessLayer
                 SQL = "USP_ManageItemMeasurementUnit";
                 param.Add(new SQLParameter("@UnitID",objItemUnit.UnitID));
                 param.Add(new SQLParameter("@UnitName", objItemUnit.UnitName));
-                param.Add(new SQLParameter("@CategoryID", objItemUnit.CategoryID)); 
+                //param.Add(new SQLParameter("@CategoryID", objItemUnit.CategoryID)); 
                 if(cmdMode==CommandMode.N)              
                     param.Add(new SQLParameter("@UserId", objItemUnit.CreatedBy));
                 else

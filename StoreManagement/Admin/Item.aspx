@@ -76,7 +76,7 @@
                             </asp:RequiredFieldValidator>
                         </div>
                         <div class="col-lg-6">
-                            <asp:TextBox ID="txtItemDecription" placeholder="Enter Discription" runat="server"  CssClass="form-control" />
+                            <asp:TextBox ID="txtItemDecription" placeholder="Enter Discription" TextMode="MultiLine" runat="server"  CssClass="form-control" />
                                         <asp:RequiredFieldValidator ID="rfvItemDecription" ControlToValidate="txtItemDecription" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgItem" runat="server">
                                         </asp:RequiredFieldValidator>
                                          <asp:RegularExpressionValidator ID="revItemDiscription" runat="server" ControlToValidate="txtItemDecription" ValidationGroup="vgItem"  ForeColor="Red"

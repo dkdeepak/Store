@@ -8,16 +8,25 @@ using Store.Common;
 
 namespace StoreManagement.Admin
 {
-    public partial class Vendor : System.Web.UI.Page
+    public partial class Currency : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //if (Session["UserId"] != null)
+            //{
             if (!Page.IsPostBack)
-                BindVendor();
+            {
+                BindCurrency();
+                
+            }
+            //}
+            //else {
+            //  Response.Redirect("../Login.aspx");
+            //}
         }
-        Store.Vendor.BusinessLogic.Vendor oblVendor = null;
-        Store.Vendor.BusinessObject.VendorList obVendorList = null;
-        Store.Vendor.BusinessObject.Vendor objVendor = null;
+        Store.Currency.BusinessLogic.Currency oblCurrency = null;
+        Store.Currency.BusinessObject.CurrencyList obCurrencyList = null;
+        Store.Currency.BusinessObject.Currency objCurrency = null;
         Store.Common.MessageInfo objMessageInfo = null;
         public Store.Common.CommandMode cmdMode
         {
@@ -30,28 +39,29 @@ namespace StoreManagement.Admin
             ResetForm();
             ImageButton btndetails = sender as ImageButton;
             GridViewRow gvrow = (GridViewRow)btndetails.NamingContainer;
-            txtVendorId.Text = dgvVendor.DataKeys[gvrow.RowIndex].Value.ToString();
-            txtVendorName.Text = gvrow.Cells[0].Text;
-            updateVendorBdInfo.Update();
+            txtCurrencyId.Text = dgvCurrency.DataKeys[gvrow.RowIndex].Value.ToString();
+            txtCurrencyName.Text = gvrow.Cells[0].Text;
+           
+            updateCurrencyBdInfo.Update();
             this.ModalPopupExtender1.Show();
             cmdMode = CommandMode.M;
         }
         protected void imgbtnfrDelete_Click(object sender, ImageClickEventArgs e)
         {
             cmdMode = CommandMode.D;
-            objVendor = new Store.Vendor.BusinessObject.Vendor();
-            oblVendor = new Store.Vendor.BusinessLogic.Vendor();
+            objCurrency = new Store.Currency.BusinessObject.Currency();
+            oblCurrency = new Store.Currency.BusinessLogic.Currency();
             try
             {
                 ImageButton btndetails = sender as ImageButton;
                 GridViewRow gvrow = (GridViewRow)btndetails.NamingContainer;
-                objVendor.VendorID = Convert.ToInt32(dgvVendor.DataKeys[gvrow.RowIndex].Value.ToString());
-                objVendor.VendorName = "";
-                objVendor.CreatedBy = 1;
-                objMessageInfo = oblVendor.ManageItemMaster(objVendor, cmdMode);
-                BindVendor();
-                updateVendorBdInfo.Update();
+                objCurrency.CurrencyID = Convert.ToInt32(dgvCurrency.DataKeys[gvrow.RowIndex].Value.ToString());
+                objCurrency.CurrencyName = "";
+                objCurrency.CreatedBy = 1;
+                objMessageInfo = oblCurrency.ManageItemMaster(objCurrency, cmdMode);
                 ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alert", "alert('" + objMessageInfo.TranMessage + "')", true);
+                BindCurrency();
+                updateCurrencyBdInfo.Update();
             }
             catch (Exception ex)
             {
@@ -59,56 +69,60 @@ namespace StoreManagement.Admin
             }
             finally
             {
-                objVendor = null;
+                objCurrency = null;
                 objMessageInfo = null;
-                oblVendor = null;
+                oblCurrency = null;
             }
         }
         protected void linkButton_Click(object sender, EventArgs e)
         {
             cmdMode = CommandMode.N;
             ResetForm();
-            updateVendorBdInfo.Update();
+            updateCurrencyBdInfo.Update();
             this.ModalPopupExtender1.Show();
         }
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
-            Page.Validate("vgVendor");
+            objMessageInfo = new MessageInfo();
+            Page.Validate("vgCat");
             if (Page.IsValid)
             {
-                ManageVendor();
+                ManageCurrency();
                 if (objMessageInfo.ErrorCode == -101)
                 {
-                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alert", "alert('" + objMessageInfo.TranMessage + "')", true);
+                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alert", "alert('" + objMessageInfo.ErrorMessage + "')", true);
                 }
                 if (objMessageInfo.TranID > 0)
                 {
+                    ResetForm();
                     ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alert", "alert('" + objMessageInfo.TranMessage + "')", true);
                 }
                 this.ModalPopupExtender1.Hide();
-                BindVendor();
-                updateVendorBdInfo.Update();
-                updateVendor.Update();
+                BindCurrency();
+                updateCurrencyBdInfo.Update();
+                updateCurrency.Update();
                 this.ModalPopupExtender1.Show();
             }
         }
         #endregion
         #region UserDefindeFunction
-        void BindVendor()
+        void BindCurrency()
         {
-            oblVendor = new Store.Vendor.BusinessLogic.Vendor();
+            oblCurrency = new Store.Currency.BusinessLogic.Currency();
             try
             {
-                obVendorList = oblVendor.GetAllVendorList(0, 0, "");
-                if (obVendorList != null)
+                obCurrencyList = oblCurrency.GetAllCurrencyList(0, 0, "");
+                if (obCurrencyList != null)
                 {
-                    dgvVendor.DataSource = obVendorList;
-                    dgvVendor.DataBind();
+                    dgvCurrency.DataSource = obCurrencyList;
+                    dgvCurrency.DataBind();
+                    
+
                 }
                 else
                 {
-                    dgvVendor.DataSource = null;
-                    dgvVendor.DataBind();
+                    dgvCurrency.DataSource = null;
+                    dgvCurrency.DataBind();
                 }
             }
             catch (Exception ex)
@@ -117,31 +131,32 @@ namespace StoreManagement.Admin
             }
             finally
             {
-                oblVendor = null;
-                obVendorList = null;
+                oblCurrency = null;
+                obCurrencyList = null;
             }
 
 
         }
-        void ManageVendor()
+        void ManageCurrency()
         {
-            objVendor = new Store.Vendor.BusinessObject.Vendor();
-            oblVendor = new Store.Vendor.BusinessLogic.Vendor();
+            objCurrency = new Store.Currency.BusinessObject.Currency();
+            oblCurrency = new Store.Currency.BusinessLogic.Currency();
             try
             {
                 if (cmdMode == Store.Common.CommandMode.M)
                 {
-                    objVendor.VendorID = Convert.ToInt32(txtVendorId.Text);
-                    //objVendor.ModifiedBy = Convert.ToInt32(Session["UserId"]);
+
+                    objCurrency.CurrencyID = Convert.ToInt32(txtCurrencyId.Text);
+                    //objCurrency.ModifiedBy = Convert.ToInt32(Session["UserId"].ToString());
                 }
                 else
                 {
-                    objVendor.VendorID = 0;
-                    //objVendor.CreatedBy = Convert.ToInt32(Session["UserId"]);
+                    objCurrency.CurrencyID = 0;
+                    //objCurrency.CreatedBy = Convert.ToInt32(Session["UserId"].ToString());
                 }
-                objVendor.VendorName = Convert.ToString(txtVendorName.Text);
-                objMessageInfo = oblVendor.ManageItemMaster(objVendor, cmdMode);
-                
+                objCurrency.Sign = "";
+                objCurrency.CurrencyName = Convert.ToString(txtCurrencyName.Text);
+                objMessageInfo = oblCurrency.ManageItemMaster(objCurrency, cmdMode);
             }
             catch (Exception ex)
             {
@@ -149,17 +164,17 @@ namespace StoreManagement.Admin
             }
             finally
             {
-                objVendor = null;
-                //objMessageInfo = null;
-                oblVendor = null;
+                objCurrency = null;
+                oblCurrency = null;
             }
 
         }
         void ResetForm()
         {
-            txtVendorId.Text = "";
-            txtVendorName.Text = "";
-            txtVendorName.Focus();
+            txtCurrencyId.Text = "";
+            txtCurrencyName.Text = "";
+            txtCurrencyName.Focus();
+            
         }
         #endregion
 
@@ -167,6 +182,7 @@ namespace StoreManagement.Admin
         {
             ResetForm();
             this.ModalPopupExtender1.Hide();
+
         }
         protected void lbtnClose_Click(object sender, EventArgs e)
         {
@@ -174,5 +190,6 @@ namespace StoreManagement.Admin
             this.ModalPopupExtender1.Hide();
         }
 
+       
     }
 }

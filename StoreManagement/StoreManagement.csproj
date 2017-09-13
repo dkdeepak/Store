@@ -81,6 +81,27 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\Currency.aspx.cs">
+      <DependentUpon>Currency.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Currency.aspx.designer.cs">
+      <DependentUpon>Currency.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\TypeOfVendor.aspx.cs">
+      <DependentUpon>TypeOfVendor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\TypeOfVendor.aspx.designer.cs">
+      <DependentUpon>TypeOfVendor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\VendorInfo.aspx.cs">
+      <DependentUpon>VendorInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\VendorInfo.aspx.designer.cs">
+      <DependentUpon>VendorInfo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ReportSection\Purchase.aspx.cs">
       <DependentUpon>Purchase.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -109,6 +130,7 @@
     <Compile Include="ReportSection\SalesReturn.aspx.designer.cs">
       <DependentUpon>SalesReturn.aspx</DependentUpon>
     </Compile>
+    <Content Include="Admin\Currency.aspx" />
     <Content Include="Admin\Category.aspx" />
     <Content Include="Admin\City.aspx" />
     <Content Include="Admin\Client.aspx" />
@@ -119,6 +141,7 @@
     <Content Include="Admin\ItemPrice.aspx" />
     <Content Include="Admin\ItemUnit.aspx" />
     <Content Include="Admin\MangePanle.aspx" />
+    <Content Include="Admin\myFile.js" />
     <Content Include="Admin\POrder.aspx" />
     <Content Include="Admin\Sales.aspx" />
     <Content Include="Admin\SalesRtn.aspx" />
@@ -126,9 +149,10 @@
     <Content Include="Admin\State.aspx" />
     <Content Include="Admin\Stock.aspx" />
     <Content Include="Admin\Tax.aspx" />
+    <Content Include="Admin\TypeOfVendor.aspx" />
     <Content Include="Admin\TypeOfUser.aspx" />
+    <Content Include="Admin\VendorInfo.aspx" />
     <Content Include="Admin\UserInfo.aspx" />
-    <Content Include="Admin\Vendor.aspx" />
     <Content Include="Admin\PurchaseROrder.aspx" />
     <Content Include="Default.aspx" />
     <Compile Include="Admin\Category.aspx.cs">
@@ -264,13 +288,6 @@
     <Compile Include="Admin\UserInfo.aspx.designer.cs">
       <DependentUpon>UserInfo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Vendor.aspx.cs">
-      <DependentUpon>Vendor.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Vendor.aspx.designer.cs">
-      <DependentUpon>Vendor.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Admin\PurchaseROrder.aspx.cs">
       <DependentUpon>PurchaseROrder.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -300,6 +317,8 @@
     <Content Include="Images\grid-header.png" />
     <Content Include="Images\grid-pgr.png" />
     <Content Include="Images\logo.jpg" />
+    <Content Include="Images\search.png" />
+    <Content Include="Images\select.png" />
     <Content Include="Images\view.png" />
     <Content Include="Login.aspx" />
     <Content Include="ReportSection\Purchase.aspx" />

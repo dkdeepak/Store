@@ -49,6 +49,20 @@ namespace Store.Category.BusinessObject
                 catch (Exception err) { throw new Exception("Error setting ParentCategoryID", err); }
             }
         }
+        private string _ParentCategory;
+        public string ParentCategory
+        {
+            get
+            {
+                try { return _ParentCategory; }
+                catch (Exception err) { throw new Exception("Error getting ParentCategory", err); }
+            }
+            set
+            {
+                try { _ParentCategory = value; }
+                catch (Exception err) { throw new Exception("Error setting ParentCategory", err); }
+            }
+        }
         private int _ClientID;
         public int ClientID
         {

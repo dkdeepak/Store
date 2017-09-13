@@ -31,11 +31,11 @@ namespace Store.PurchaseOrderItem.BusinessLogic
                 throw ex;
             }
         }
-        public Store.Common.MessageInfo ManageItemMaster(Store.PurchaseOrderItem.BusinessObject.PurchaseOrderItem objPurchaseOrderItem, CommandMode cmdMode)
+        public Store.Common.MessageInfo ManageItemMaster(Store.PurchaseOrderItem.BusinessObject.PurchaseOrderItemList objPurchaseOrderItemList, CommandMode cmdMode)
         {
             try
             {
-                return odlPurchaseOrderItem.ManagePurchaseOrder(objPurchaseOrderItem, cmdMode);
+                return odlPurchaseOrderItem.ManagePurchaseOrder(objPurchaseOrderItemList, cmdMode);
                 
             }
             catch (Exception ex)

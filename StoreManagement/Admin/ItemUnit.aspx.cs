@@ -15,7 +15,7 @@ namespace StoreManagement.Admin
             if (!Page.IsPostBack)
             {
                 BindItemUnit();
-                BindCategory();
+                //BindCategory();
             }
         }
         Store.Category.BusinessLogic.Category oblCategory = null;
@@ -37,8 +37,8 @@ namespace StoreManagement.Admin
             GridViewRow gvrow = (GridViewRow)btndetails.NamingContainer;
             txtUnitId.Text = dgvItemUnit.DataKeys[gvrow.RowIndex].Value.ToString();
             txtUnitName.Text = gvrow.Cells[0].Text;
-            ddlCategory.SelectedItem.Selected = false;
-            ddlCategory.Items.FindByText(gvrow.Cells[1].Text.ToString()).Selected = true;
+            //ddlCategory.SelectedItem.Selected = false;
+            //ddlCategory.Items.FindByText(gvrow.Cells[1].Text.ToString()).Selected = true;
             updateItemUnitBdInfo.Update();
             this.ModalPopupExtender1.Show();
             cmdMode = CommandMode.M;
@@ -54,7 +54,7 @@ namespace StoreManagement.Admin
                 GridViewRow gvrow = (GridViewRow)btndetails.NamingContainer;
                 objItemUnit.UnitID = Convert.ToInt32(dgvItemUnit.DataKeys[gvrow.RowIndex].Value.ToString());
                 objItemUnit.UnitName = "";
-                objItemUnit.CategoryID = 1;
+                //objItemUnit.CategoryID = 1;
                 objItemUnit.CreatedBy = 1;
                 objMessageInfo = oblItemUnit.ManageItemMaster(objItemUnit, cmdMode);
                 BindItemUnit();
@@ -132,38 +132,38 @@ namespace StoreManagement.Admin
 
 
         }
-        void BindCategory()
-        {
-            oblCategory = new Store.Category.BusinessLogic.Category();
-            try
-            {
-                obCategoryList = oblCategory.GetAllCategoryList(0, 0, "");
-                if (obCategoryList != null)
-                {
-                    ddlCategory.DataSource = obCategoryList;
-                    ddlCategory.DataTextField = "CategoryName";
-                    ddlCategory.DataValueField = "CategoryID";
-                    ddlCategory.DataBind();
-                    ddlCategory.Items.Insert(0, "<--Select Category-->");
-                }
-                else
-                {
-                    ddlCategory.DataSource = null;
-                    ddlCategory.DataBind();
-                }
-            }
-            catch (Exception ex)
-            {
+        //void BindCategory()
+        //{
+        //    oblCategory = new Store.Category.BusinessLogic.Category();
+        //    try
+        //    {
+        //        obCategoryList = oblCategory.GetAllCategoryList(0, 0, "");
+        //        if (obCategoryList != null)
+        //        {
+        //            ddlCategory.DataSource = obCategoryList;
+        //            ddlCategory.DataTextField = "CategoryName";
+        //            ddlCategory.DataValueField = "CategoryID";
+        //            ddlCategory.DataBind();
+        //            ddlCategory.Items.Insert(0, "<--Select Category-->");
+        //        }
+        //        else
+        //        {
+        //            ddlCategory.DataSource = null;
+        //            ddlCategory.DataBind();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-            }
-            finally
-            {
-                oblCategory = null;
-                obCategoryList = null;
-            }
+        //    }
+        //    finally
+        //    {
+        //        oblCategory = null;
+        //        obCategoryList = null;
+        //    }
 
 
-        }
+        //}
         void ManageItemUnit()
         {
             objItemUnit = new Store.ItemUnit.BusinessObject.ItemUnit();
@@ -181,7 +181,7 @@ namespace StoreManagement.Admin
                     //objItemUnit.CreatedBy = Convert.ToInt32(Session["UserId"]);
                 }
                 objItemUnit.UnitName = Convert.ToString(txtUnitName.Text);
-                objItemUnit.CategoryID = Convert.ToInt32(ddlCategory.SelectedItem.Value);
+                //objItemUnit.CategoryID = Convert.ToInt32(ddlCategory.SelectedItem.Value);
                
                 objMessageInfo = oblItemUnit.ManageItemMaster(objItemUnit, cmdMode);
             }
@@ -201,8 +201,9 @@ namespace StoreManagement.Admin
         {
             txtUnitId.Text = "";
             txtUnitName.Text = "";
-            ddlCategory.ClearSelection();
-            ddlCategory.Focus();
+            txtUnitName.Focus();
+            //ddlCategory.ClearSelection();
+            //ddlCategory.Focus();
         }
         #endregion
         protected void btnCancel_Click(object sender, EventArgs e)

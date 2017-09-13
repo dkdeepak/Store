@@ -3,67 +3,68 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Store.ItemUnit.BusinessObject
+namespace Store.Currency.BusinessObject
 {
-    public class ItemUnit
+    public class Currency
     {
-        private int _UnitID;
-        public int UnitID
+        private int _CurrencyID;
+        public int CurrencyID
         {
             get
             {
-                try { return _UnitID; }
-                catch(Exception err) { throw new Exception("Error getting UnitID",err); }
+                try { return _CurrencyID; }
+                catch(Exception err) { throw new Exception("Error getting CurrencyID", err); }
             }
             set
             {
-                try { _UnitID = value; }
-                catch(Exception err) { throw new Exception("Error setting UnitID", err); }
+                try { _CurrencyID = value; }
+                catch(Exception err) { throw new Exception("Error setting CurrencyID",err); }
+            }
+        }
+        private string _CurrencyName;
+        public string CurrencyName
+        {
+            get
+            {
+                try { return _CurrencyName; }
+                catch (Exception err) { throw new Exception("Error getting CurrencyName", err); }
+            }
+            set
+            {
+                try { _CurrencyName = value; }
+                catch (Exception err) { throw new Exception("Error setting CurrencyName", err); }
+            }
+        }
+        
+        private string _Sign;
+        public string Sign
+        {
+            get
+            {
+                try { return _Sign; }
+                catch (Exception err) { throw new Exception("Error getting Sign", err); }
+            }
+            set
+            {
+                try { _Sign = value; }
+                catch (Exception err) { throw new Exception("Error setting Sign", err); }
+            }
+        }
+        private int _ClientID;
+        public int ClientID
+        {
+            get
+            {
+                try { return _ClientID; }
+                catch (System.Exception err) { throw new Exception("Error getting ClientID", err); }
+            }
+            set
+            {
+                try { _ClientID = value; }
+                catch (System.Exception err) { throw new Exception("Error gettting ClientID", err); }
             }
         }
 
-        private string _UnitName;
-        public string UnitName
-        {
-            get
-            {
-                try { return _UnitName; }
-                catch (Exception err) { throw new Exception("Error getting UnitName", err); }
-            }
-            set
-            {
-                try { _UnitName = value; }
-                catch (Exception err) { throw new Exception("Error setting UnitName", err); }
-            }
-        }
-        //private int _CategoryID;
-        //public int CategoryID
-        //{
-        //    get
-        //    {
-        //        try { return _CategoryID; }
-        //        catch (Exception err) { throw new Exception("Error getting CategoryID", err); }
-        //    }
-        //    set
-        //    {
-        //        try { _CategoryID = value; }
-        //        catch (Exception err) { throw new Exception("Error setting CategoryID", err); }
-        //    }
-        //}
-        //private string _CategoryName;
-        //public string CategoryName
-        //{
-        //    get
-        //    {
-        //        try { return _CategoryName; }
-        //        catch (Exception err) { throw new Exception("Error getting CategoryName", err); }
-        //    }
-        //    set
-        //    {
-        //        try { _CategoryName = value; }
-        //        catch (Exception err) { throw new Exception("Error setting CategoryName", err); }
-        //    }
-        //}
 
         private int _CreatedBy;
         public int CreatedBy
@@ -197,8 +198,7 @@ namespace Store.ItemUnit.BusinessObject
             }
         }
     }
-    public class ItemUnitList : List<ItemUnit>
+    public class CurrencyList : List<Currency>
     { 
-    
     }
 }

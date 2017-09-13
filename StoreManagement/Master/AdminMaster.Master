@@ -303,6 +303,8 @@
 
                                 <li id="TypeOfUser" runat="server"><a href="../Admin/TypeOfUser.aspx">Type Of User</a></li>
                                 <li id="User" runat="server"><a href="../Admin/UserInfo.aspx">User Info</a></li>
+                                <li id="TypeOfVendor" runat="server"><a href="../Admin/TypeOfVendor.aspx">Type Of Vendor</a></li>
+                                <li id="Li1" runat="server"><a href="../Admin/VendorInfo.aspx">Vendor Info</a></li>
                                 <li id="Category" runat="server"><a href="../Admin/Category.aspx">Category</a></li>
                                 <li id="Unit" runat="server"><a href="../Admin/ItemUnit.aspx">Item Unit</a></li>
                                 <li id="Item" runat="server"><a href="../Admin/Item.aspx">Item</a></li>

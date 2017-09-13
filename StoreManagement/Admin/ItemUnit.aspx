@@ -50,13 +50,13 @@
                                 <div class="col-md-6">Unit Id:</div>
                                 <div class="col-md-6"><asp:TextBox ID="txtUnitId" runat="server" CssClass="form-control" /></div>
                             </div>
-                            <div class="row">
+                            <%--<div class="row">
                                 <div class="col-md-12">
                                     <asp:DropDownList ID="ddlCategory" CssClass="form-control" ToolTip="Category" runat="server"></asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="rfvCategory" ControlToValidate="ddlCategory" InitialValue="0" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgItemUnit" runat="server">
                                         </asp:RequiredFieldValidator>
                                 </div>
-                            </div>
+                            </div>--%>
                             <div class="row">
                                 <div class="col-md-12">
                                 <asp:TextBox ID="txtUnitName" placeholder="Enter Unit Name" ToolTip="Unit Name" runat="server"  CssClass="form-control" />
@@ -96,7 +96,7 @@
         <asp:GridView ID="dgvItemUnit" runat="server" AutoGenerateColumns="false" Width="100%" CssClass="table table-striped table-bordered table-hover" DataKeyNames="UnitID">
                                     <Columns>
                                         <asp:BoundField HeaderText="Item Unit Name" ItemStyle-CssClass="text_title" DataField="UnitName" ItemStyle-Width="20%" />                                       
-                                        <asp:BoundField HeaderText="Category Name" ItemStyle-CssClass="text_title" DataField="CategoryName" ItemStyle-Width="20%" />
+                                        <%--<asp:BoundField HeaderText="Category Name" ItemStyle-CssClass="text_title" DataField="CategoryName" ItemStyle-Width="20%" />--%>
                                         <asp:BoundField HeaderText="Created Date" DataField="CreatedOn" DataFormatString="{0:dd-MMM-yyyy}" ItemStyle-Width="20%" />
                                         <asp:TemplateField HeaderText="Edit" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" HeaderStyle-Width="5%">
                                             <ItemTemplate>
