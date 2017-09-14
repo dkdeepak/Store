@@ -472,6 +472,7 @@ namespace StoreManagement.Admin
                     objPurchaseOrderItem.TotalPrice = Convert.ToDecimal(txtTotals.Text);
                     objPurchaseOrderItemList.Add(objPurchaseOrderItem);
                 }
+                oblPurchaseOrderItem = new Store.PurchaseOrderItem.BusinessLogic.PurchaseOrderItem();
                 objMessageInfo = oblPurchaseOrderItem.ManageItemMaster(objPurchaseOrderItemList, cmdMode);
                 reset();
             }

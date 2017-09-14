@@ -170,7 +170,7 @@
                             <div class="col-md-12">
                                 <asp:GridView ID="dgvVendorInfo" runat="server"   OnRowDeleting="dgvVendorInfo_RowDeleting" AutoGenerateColumns="false" Width="100%" CssClass="table table-striped table-bordered table-hover" DataKeyNames="VendorID">
                                     <Columns>
-                                        <asp:BoundField HeaderText="Vendor ID" Visible="false" ItemStyle-CssClass="text_title" DataField="VendorID" ItemStyle-Width="5%" />
+                                        <asp:BoundField HeaderText="Vendor ID"  ItemStyle-CssClass="text_title" DataField="VendorID" ItemStyle-Width="5%" />
                                         <asp:BoundField HeaderText="Vendor Name" ItemStyle-CssClass="text_title" DataField="VendorName" ItemStyle-Width="5%" />
                                         <asp:BoundField HeaderText="Address" ItemStyle-CssClass="text_title" DataField="Address" ItemStyle-Width="5%" />
                                         <asp:BoundField HeaderText="Country" ItemStyle-CssClass="text_title" DataField="CountryName" ItemStyle-Width="5%" />
