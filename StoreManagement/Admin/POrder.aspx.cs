@@ -346,6 +346,18 @@ namespace StoreManagement.Admin
             Gridview1.DataBind();
             SetInitialRow();
             ViewState["CurrentTable"] = null;
+            hfVendor.Value = "";
+            txtVendor.Text = "";
+            txtAddress.Text ="";
+            txtCountry.Text = "";
+            txtState.Text = "";
+            txtCity.Text = "";
+            txtPin.Text = "";
+            txtMobile.Text ="";
+            txtEmail.Text = "";
+            this.mpopSummary.Hide();
+            upForm.Update();
+
         }
 
         protected void Gridview1_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -364,22 +376,7 @@ namespace StoreManagement.Admin
         {
             reset();
         }
-       void ResetForm()
-        {
-            TextBox txtItemNames = (TextBox)Gridview1.FindControl("txtItemName");
-            TextBox txtDecs = (TextBox)Gridview1.FindControl("txtDec");
-            TextBox txtPrices = (TextBox)Gridview1.FindControl("txtPrice");
-            TextBox txtDisPres = (TextBox)Gridview1.FindControl("txtDisPre");
-            TextBox txtDiss = (TextBox)Gridview1.FindControl("txtDis");
-            TextBox txtQuts = (TextBox)Gridview1.FindControl("txtQut");
-            TextBox txtTotals = (TextBox)Gridview1.FindControl("txtTotal");
-            Gridview1.DataSource = null;
-            Gridview1.DataBind();
-            SetInitialRow();
-            ViewState["CurrentTable"] = null;
-
-
-        }
+      
 
         protected void ibtnSearch_Click(object sender, ImageClickEventArgs e)
         {
@@ -470,6 +467,7 @@ namespace StoreManagement.Admin
                     objPurchaseOrderItem.Discount = Convert.ToDecimal(txtDiss.Text);
                     objPurchaseOrderItem.ItemUnit = txtQuts.Text;
                     objPurchaseOrderItem.TotalPrice = Convert.ToDecimal(txtTotals.Text);
+                    objPurchaseOrderItem.PurchaseOrderID = Convert.ToInt32(transid);
                     objPurchaseOrderItemList.Add(objPurchaseOrderItem);
                 }
                 oblPurchaseOrderItem = new Store.PurchaseOrderItem.BusinessLogic.PurchaseOrderItem();

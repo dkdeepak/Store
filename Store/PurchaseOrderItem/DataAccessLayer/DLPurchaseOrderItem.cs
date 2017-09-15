@@ -115,8 +115,7 @@ namespace Store.PurchaseOrderItem.DataAccessLayer
         public Store.Common.MessageInfo ManagePurchaseOrder(Store.PurchaseOrderItem.BusinessObject.PurchaseOrderItemList objPurchaseOrderItemlist, CommandMode cmdMode)
         {
             string SQL = "";
-            ParameterList param = new ParameterList();
-            DataTableReader dr;
+            ParameterList param = null;
             Store.Common.MessageInfo objMessageInfo = null;
 
             try
@@ -124,6 +123,8 @@ namespace Store.PurchaseOrderItem.DataAccessLayer
                 SQL = "USP_ManagePurchaseOrderItem";
                 foreach (Store.PurchaseOrderItem.BusinessObject.PurchaseOrderItem objPurchaseOrderItem in objPurchaseOrderItemlist)
                 {
+                    param = new ParameterList();
+                    DataTableReader dr;
                     param.Add(new SQLParameter("@PurchaseOrderID", objPurchaseOrderItem.PurchaseOrderID));
                     param.Add(new SQLParameter("@PurchaseOrderItemID", objPurchaseOrderItem.PurchaseOrderItemID));
                     param.Add(new SQLParameter("@ItemID", objPurchaseOrderItem.ItemID));
