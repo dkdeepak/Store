@@ -110,7 +110,8 @@ namespace StoreManagement.Admin
             txtSubTotal.Text = Convert.ToString(findSubTotal());
             upForm.Update();
             upSummary.Update();
-            if (rows == 4)
+            int row = rows + 1;
+            if (row%5==0)
             {
                 for (int i = 0; i < 5; i++)
                 {

@@ -183,7 +183,7 @@ namespace Store.PurchaseReceivedItem.DataAccessLayer
             }
         }
 
-        public Store.Common.MessageInfo ManagePurchaseReceived(Store.PurchaseReceivedItem.BusinessObject.PurchaseReceivedItem objPurchaseReceivedItem, CommandMode cmdMode)
+        public Store.Common.MessageInfo ManagePurchaseReceived(Store.PurchaseReceivedItem.BusinessObject.PurchaseReceivedItemList objPurchaseReceivedItemList, CommandMode cmdMode)
         {
             string SQL = "";
             ParameterList param = new ParameterList();
@@ -193,29 +193,33 @@ namespace Store.PurchaseReceivedItem.DataAccessLayer
             try
             {
                 SQL = "USP_PurchaseReceivedItem";
-                param.Add(new SQLParameter("@PurchaseItemReceivedID", objPurchaseReceivedItem.PurchaseItemReceivedID));
-                param.Add(new SQLParameter("@PurchaseReceivedID", objPurchaseReceivedItem.PurchaseReceivedID));
-                param.Add(new SQLParameter("@PurchaseOrderID", objPurchaseReceivedItem.PurchaseOrderID));
-                param.Add(new SQLParameter("@ItemID", objPurchaseReceivedItem.ItemID));
-                param.Add(new SQLParameter("@ItemUnit", objPurchaseReceivedItem.ItemUnit));
-                param.Add(new SQLParameter("@Description", objPurchaseReceivedItem.Description));
-                param.Add(new SQLParameter("@ItemPrice", objPurchaseReceivedItem.ItemPrice));
-                param.Add(new SQLParameter("@TotalPrice", objPurchaseReceivedItem.TotalPrice));
-
-                param.Add(new SQLParameter("@UserId", objPurchaseReceivedItem.CreatedBy));
-                param.Add(new SQLParameter("@ReferenceID", objPurchaseReceivedItem.ReferenceID));
-                param.Add(new SQLParameter("@IsActive", objPurchaseReceivedItem.IsActive));
-
-                param.Add(new SQLParameter("@CMDMode", cmdMode));
-                dr = ExecuteQuery.ExecuteReader(SQL, param);
-                if (dr.Read())
+                foreach (Store.PurchaseReceivedItem.BusinessObject.PurchaseReceivedItem objPurchaseReceivedItem in objPurchaseReceivedItemList)
                 {
-                    objMessageInfo = new Store.Common.MessageInfo();
-                    objMessageInfo.ErrorCode = Convert.ToInt32(dr["ErrorCode"]);
-                    objMessageInfo.ErrorMessage = Convert.ToString(dr["ErrorMessage"]);
-                    objMessageInfo.TranID = Convert.ToInt32(dr["TranID"]);
-                    objMessageInfo.TranCode = Convert.ToString(dr["TranCode"]);
-                    objMessageInfo.TranMessage = Convert.ToString(dr["TranMessage"]);
+                    param.Add(new SQLParameter("@PurchaseItemReceivedID", objPurchaseReceivedItem.PurchaseItemReceivedID));
+                    param.Add(new SQLParameter("@PurchaseReceivedID", objPurchaseReceivedItem.PurchaseReceivedID));
+                    param.Add(new SQLParameter("@PurchaseOrderID", objPurchaseReceivedItem.PurchaseOrderID));
+                    param.Add(new SQLParameter("@ItemID", objPurchaseReceivedItem.ItemID));
+                    param.Add(new SQLParameter("@ItemUnit", objPurchaseReceivedItem.ItemUnit));
+                    param.Add(new SQLParameter("@Description", objPurchaseReceivedItem.Description));
+                    param.Add(new SQLParameter("@ItemPrice", objPurchaseReceivedItem.ItemPrice));
+                    param.Add(new SQLParameter("@TotalPrice", objPurchaseReceivedItem.TotalPrice));
+
+                    param.Add(new SQLParameter("@UserId", objPurchaseReceivedItem.CreatedBy));
+                    param.Add(new SQLParameter("@ReferenceID", objPurchaseReceivedItem.ReferenceID));
+                    param.Add(new SQLParameter("@IsActive", objPurchaseReceivedItem.IsActive));
+
+                    param.Add(new SQLParameter("@CMDMode", cmdMode));
+                    dr = ExecuteQuery.ExecuteReader(SQL, param);
+
+                    if (dr.Read())
+                    {
+                        objMessageInfo = new Store.Common.MessageInfo();
+                        objMessageInfo.ErrorCode = Convert.ToInt32(dr["ErrorCode"]);
+                        objMessageInfo.ErrorMessage = Convert.ToString(dr["ErrorMessage"]);
+                        objMessageInfo.TranID = Convert.ToInt32(dr["TranID"]);
+                        objMessageInfo.TranCode = Convert.ToString(dr["TranCode"]);
+                        objMessageInfo.TranMessage = Convert.ToString(dr["TranMessage"]);
+                    }
                 }
                 return objMessageInfo;
             }

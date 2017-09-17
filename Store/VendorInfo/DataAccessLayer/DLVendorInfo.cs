@@ -167,7 +167,7 @@ namespace Store.VendorInfo.DataAccessLayer
             try
             {
                 SQL = "proc_VendorInfo";
-                paramList.Add(new SQLParameter("@VendorInfoID", VendorInfoID));
+                paramList.Add(new SQLParameter("@VendorID", VendorInfoID));
                 paramList.Add(new SQLParameter("@Flag", Flag));
                 paramList.Add(new SQLParameter("@FlagValue", FlagValue));
                 dr = ExecuteQuery.ExecuteReader(SQL, paramList);
@@ -198,13 +198,25 @@ namespace Store.VendorInfo.DataAccessLayer
                     {
                         objVendorInfo.CityID = dr.GetInt32(dr.GetOrdinal("CityID"));
                     }
+                    if (dr.IsDBNull(dr.GetOrdinal("CityName")) == false)
+                    {
+                        objVendorInfo.CityName = dr.GetString(dr.GetOrdinal("CityName"));
+                    }
                     if (dr.IsDBNull(dr.GetOrdinal("StateID")) == false)
                     {
                         objVendorInfo.StateID = dr.GetInt32(dr.GetOrdinal("StateID"));
                     }
+                    if (dr.IsDBNull(dr.GetOrdinal("StateName")) == false)
+                    {
+                        objVendorInfo.StateName = dr.GetString(dr.GetOrdinal("StateName"));
+                    }
                     if (dr.IsDBNull(dr.GetOrdinal("CountryID")) == false)
                     {
                         objVendorInfo.CountryID = dr.GetInt32(dr.GetOrdinal("CountryID"));
+                    }
+                    if (dr.IsDBNull(dr.GetOrdinal("CountryName")) == false)
+                    {
+                        objVendorInfo.CountryName = dr.GetString(dr.GetOrdinal("CountryName"));
                     }
                     if (dr.IsDBNull(dr.GetOrdinal("PinID")) == false)
                     {

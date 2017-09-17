@@ -88,6 +88,13 @@
     <Compile Include="Admin\Currency.aspx.designer.cs">
       <DependentUpon>Currency.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\PReceived.aspx.cs">
+      <DependentUpon>PReceived.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\PReceived.aspx.designer.cs">
+      <DependentUpon>PReceived.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\TypeOfVendor.aspx.cs">
       <DependentUpon>TypeOfVendor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -141,7 +148,7 @@
     <Content Include="Admin\ItemPrice.aspx" />
     <Content Include="Admin\ItemUnit.aspx" />
     <Content Include="Admin\MangePanle.aspx" />
-    <Content Include="Admin\myFile.js" />
+    <Content Include="Admin\PReceived.aspx" />
     <Content Include="Admin\POrder.aspx" />
     <Content Include="Admin\Sales.aspx" />
     <Content Include="Admin\SalesRtn.aspx" />

@@ -316,7 +316,7 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i>TRANSACTION<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li id="Purchase" runat="server"><a href="../Admin/POrder.aspx">Purchase Order</a></li>
-                                <li id="Received" runat="server"><a href="../Admin/PurchaseROrder.aspx">Purchase Received</a></li>
+                                <li id="Received" runat="server"><a href="../Admin/PReceived.aspx">Purchase Received</a></li>
                                 <li id="Sales" runat="server"><a href="../Admin/SOrder.aspx">Sales Order</a></li>
                                 <li id="Return" runat="server"><a href="../Admin/SalesRtn.aspx">Sales Return</a></li>
                             </ul>

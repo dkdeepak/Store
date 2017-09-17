@@ -121,10 +121,10 @@ namespace Store.PurchaseOrder.DataAccessLayer
                     {
                         objPOrder.VendorID = dr.GetInt32(dr.GetOrdinal("VendorID"));
                     }
-                    //if (dr.IsDBNull(dr.GetOrdinal("VendorName")) == false)
-                    //{
-                    //    objPOrder.VendorName = dr.GetString(dr.GetOrdinal("VendorName"));
-                    //}
+                    if (dr.IsDBNull(dr.GetOrdinal("VendorName")) == false)
+                    {
+                        objPOrder.VendorName = dr.GetString(dr.GetOrdinal("VendorName"));
+                    }
                     if (dr.IsDBNull(dr.GetOrdinal("PurchaseDate")) == false)
                     {
                         objPOrder.PurchaseDate = dr.GetDateTime(dr.GetOrdinal("PurchaseDate"));

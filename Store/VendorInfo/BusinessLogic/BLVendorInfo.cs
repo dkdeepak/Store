@@ -20,11 +20,11 @@ namespace Store.VendorInfo.BusinessLogic
                 throw;
             }
         }
-        public Store.VendorInfo.BusinessObject.VendorInfo GetAllVendorInfo(int VendorInfoId, int Flag, string FlagValue)
+        public Store.VendorInfo.BusinessObject.VendorInfo GetAllVendorInfo(int VendorId, int Flag, string FlagValue)
         {
             try
             {
-                return odlVendorInfo.GetAllVendorInfo(VendorInfoId, Flag, FlagValue);
+                return odlVendorInfo.GetAllVendorInfo(VendorId, Flag, FlagValue);
             }
             catch
             {

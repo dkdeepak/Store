@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Store.Common;
+using Store.PurchaseReceived.BusinessObject;
+
 namespace Store.PurchaseReceived.BusinessLogic
 {
     public class PurchaseReceived
@@ -52,6 +54,11 @@ namespace Store.PurchaseReceived.BusinessLogic
             {
                 throw;
             }
+        }
+
+        public MessageInfo ManagePurchaseReceived(BusinessObject.PurchaseReceived objPurchaseReceived, CommandMode cmdMode)
+        {
+            throw new NotImplementedException();
         }
     }
 }
