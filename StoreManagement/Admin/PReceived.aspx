@@ -21,7 +21,7 @@
         </center>
        <hr />
        <div class="row" id="divData" runat="server">
-           <asp:GridView ID="gvPOrder" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-bReceiveded table-hover" OnRowDeleting="gvPOrder_RowDeleting">
+           <asp:GridView ID="gvPOrder" runat="server" AutoGenerateColumns="false" CssClass="table table-striped table-bordered table-hover" OnRowDeleting="gvPOrder_RowDeleting">
                <Columns>
                     <asp:BoundField HeaderText="Vendor Name" ItemStyle-CssClass="text_title" DataField="VendorName" ItemStyle-Width="5%" />
                     <asp:BoundField HeaderText="Purchase Date" DataFormatString="{0:dd-MMM-yyyy}" ItemStyle-CssClass="text_title" DataField="PurchaseDate" ItemStyle-Width="5%" />
@@ -93,7 +93,7 @@
     </div>
        <hr />
        <asp:HiddenField ID="hfPOrder" runat="server" />
-        <asp:gridview ID="Gridview1" runat="server" ShowFooter="true"  CssClass="table table-striped table-bReceiveded table-hover" AutoGenerateColumns="false"  GridLines="None" OnRowDataBound="Gridview1_RowDataBound">
+        <asp:gridview ID="Gridview1" runat="server" ShowFooter="true"  CssClass="table table-striped table-bordered table-hover" AutoGenerateColumns="false"  GridLines="None" OnRowDataBound="Gridview1_RowDataBound">
             <HeaderStyle HorizontalAlign="Right" />
             <Columns>
             <asp:TemplateField HeaderText="Item Name">
