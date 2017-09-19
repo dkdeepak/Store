@@ -312,15 +312,17 @@ namespace StoreManagement.Admin
                         break;
                     TextBox txtDecs = (TextBox)Gridview1.Rows[i].FindControl("txtDec");
                     TextBox txtPrices = (TextBox)Gridview1.Rows[i].FindControl("txtPrice");
-                    TextBox txtDisPres = (TextBox)Gridview1.Rows[i].FindControl("txtDisPre");
-                    TextBox txtDiss = (TextBox)Gridview1.Rows[i].FindControl("txtDis");
+                  //  TextBox txtDisPres = (TextBox)Gridview1.Rows[i].FindControl("txtDisPre");
+                    // TextBox txtDiss = (TextBox)Gridview1.Rows[i].FindControl("txtDis");
                     TextBox txtQuts = (TextBox)Gridview1.Rows[i].FindControl("txtQut");
                     TextBox txtTotals = (TextBox)Gridview1.Rows[i].FindControl("txtTotal");
                     objPurchaseReceivedItem.ItemPrefix = txtItemNames.Text;
                     objPurchaseReceivedItem.Description = txtDecs.Text;
                     objPurchaseReceivedItem.ItemPrice = Convert.ToDecimal(txtPrices.Text);
-                    objPurchaseReceivedItem.DiscountPre = Convert.ToDecimal(txtDisPres.Text);
-                    objPurchaseReceivedItem.Discount = Convert.ToDecimal(txtDiss.Text);
+                   
+
+                    // objPurchaseReceivedItem.DiscountPre = Convert.ToDecimal(txtDisPres.Text);
+                    //objPurchaseReceivedItem.Discount = Convert.ToDecimal(txtDiss.Text);
                     objPurchaseReceivedItem.ItemUnit = txtQuts.Text;
                     objPurchaseReceivedItem.TotalPrice = Convert.ToDecimal(txtTotals.Text);
                     objPurchaseReceivedItem.PurchaseReceivedID = Convert.ToInt32(transid);

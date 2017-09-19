@@ -192,18 +192,18 @@ namespace Store.PurchaseReceivedItem.DataAccessLayer
 
             try
             {
-                SQL = "USP_PurchaseReceivedItem";
+               // 'USP_PurchaseReceivedItem'.
+                   SQL = "USP_ManagePurchaseReceivedItem";
                 foreach (Store.PurchaseReceivedItem.BusinessObject.PurchaseReceivedItem objPurchaseReceivedItem in objPurchaseReceivedItemList)
                 {
                     param.Add(new SQLParameter("@PurchaseItemReceivedID", objPurchaseReceivedItem.PurchaseItemReceivedID));
                     param.Add(new SQLParameter("@PurchaseReceivedID", objPurchaseReceivedItem.PurchaseReceivedID));
                     param.Add(new SQLParameter("@PurchaseOrderID", objPurchaseReceivedItem.PurchaseOrderID));
                     param.Add(new SQLParameter("@ItemID", objPurchaseReceivedItem.ItemID));
+                    param.Add(new SQLParameter("@TotalPrice", objPurchaseReceivedItem.TotalPrice));
                     param.Add(new SQLParameter("@ItemUnit", objPurchaseReceivedItem.ItemUnit));
                     param.Add(new SQLParameter("@Description", objPurchaseReceivedItem.Description));
                     param.Add(new SQLParameter("@ItemPrice", objPurchaseReceivedItem.ItemPrice));
-                    param.Add(new SQLParameter("@TotalPrice", objPurchaseReceivedItem.TotalPrice));
-
                     param.Add(new SQLParameter("@UserId", objPurchaseReceivedItem.CreatedBy));
                     param.Add(new SQLParameter("@ReferenceID", objPurchaseReceivedItem.ReferenceID));
                     param.Add(new SQLParameter("@IsActive", objPurchaseReceivedItem.IsActive));

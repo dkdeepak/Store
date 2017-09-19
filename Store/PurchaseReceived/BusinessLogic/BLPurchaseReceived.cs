@@ -32,7 +32,7 @@ namespace Store.PurchaseReceived.BusinessLogic
                 throw;
             }
         }
-        public Store.Common.MessageInfo ManagePurchaseReceivedItem(Store.PurchaseReceivedItem.BusinessObject.PurchaseReceivedItem objPurchaseReceivedItem, int cmdMode)
+        public Store.Common.MessageInfo ManagePurchaseReceivedItem(Store.PurchaseReceivedItem.BusinessObject.PurchaseReceivedItem objPurchaseReceivedItem, CommandMode cmdMode)
         {
             try
             {
@@ -44,11 +44,12 @@ namespace Store.PurchaseReceived.BusinessLogic
             }
         }
 
-        public Store.Common.MessageInfo ManagePurchaseReceived(Store.PurchaseReceived.BusinessObject.PurchaseReceived objPurchaseROrder, int cmdMode)
+        //public Store.Common.MessageInfo ManagePurchaseReceived(Store.PurchaseReceived.BusinessObject.PurchaseReceived objPurchaseROrder, int cmdMode)
+        public Store.Common.MessageInfo ManagePurchaseReceived(Store.PurchaseReceived.BusinessObject.PurchaseReceived objPurchaseROrder, CommandMode cmdMode)
         {
             try
             {
-                return odlPurchaseReceived.ManagePurchaseReceived(objPurchaseROrder, cmdMode);
+                return odlPurchaseReceived.ManagePurchaseReceived(objPurchaseROrder,cmdMode);
             }
             catch (Exception)
             {
@@ -56,9 +57,10 @@ namespace Store.PurchaseReceived.BusinessLogic
             }
         }
 
-        public MessageInfo ManagePurchaseReceived(BusinessObject.PurchaseReceived objPurchaseReceived, CommandMode cmdMode)
-        {
-            throw new NotImplementedException();
-        }
+
+        //public MessageInfo ManagePurchaseReceived(BusinessObject.PurchaseReceived objPurchaseReceived, CommandMode cmdMode)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

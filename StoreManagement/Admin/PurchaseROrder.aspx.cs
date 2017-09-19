@@ -109,7 +109,8 @@ namespace StoreManagement.Admin
                 objPurchaseReceived.ShipingAndHandlingCost = Convert.ToDecimal(shc);
                 objPurchaseReceived.MiscCost = Convert.ToDecimal(misccost);
                 objPurchaseReceived.IsActive = 1;
-                objMessageInfo = oblPurchaseReceived.ManagePurchaseReceived(objPurchaseReceived, 1);
+                //objMessageInfo = oblPurchaseReceived.ManagePurchaseReceived(objPurchaseReceived,1);by depk
+                objMessageInfo = oblPurchaseReceived.ManagePurchaseReceived(objPurchaseReceived,cmdMode);
 
                 return objMessageInfo.TranID.ToString();
             }
@@ -138,7 +139,7 @@ namespace StoreManagement.Admin
                 objPurchaseReceivedItem.Description = description;
                 objPurchaseReceivedItem.ItemPrice = Convert.ToDecimal(unitprice);
                 objPurchaseReceivedItem.IsActive = 1;
-                objMessageInfo = oblPurchaseReceived.ManagePurchaseReceivedItem(objPurchaseReceivedItem, 1);
+                objMessageInfo = oblPurchaseReceived.ManagePurchaseReceivedItem(objPurchaseReceivedItem, cmdMode);
 
                 //objPurchaseOrder = new Store.PurchaseOrder.BusinessObject.PurchaseOrder();
 

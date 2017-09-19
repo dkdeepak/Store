@@ -191,7 +191,8 @@ namespace Store.PurchaseReceived.DataAccessLayer
                 throw;
             }
         }
-        public Store.Common.MessageInfo ManagePurchaseReceived(Store.PurchaseReceived.BusinessObject.PurchaseReceived objPurchaseReceived, int cmdMode)
+        //public Store.Common.MessageInfo ManagePurchaseReceived(Store.PurchaseReceived.BusinessObject.PurchaseReceived objPurchaseReceived, int cmdMode) by depk
+        public Store.Common.MessageInfo ManagePurchaseReceived(Store.PurchaseReceived.BusinessObject.PurchaseReceived objPurchaseReceived, CommandMode cmdMode)
         {
             string SQL = "";
             ParameterList param = new ParameterList();
@@ -229,7 +230,7 @@ namespace Store.PurchaseReceived.DataAccessLayer
                 throw;
             }
         }
-        public Store.Common.MessageInfo ManagePurchaseReceivedItem(Store.PurchaseReceivedItem.BusinessObject.PurchaseReceivedItem objPurchaseReceivedItem, int cmdMode)
+        public Store.Common.MessageInfo ManagePurchaseReceivedItem(Store.PurchaseReceivedItem.BusinessObject.PurchaseReceivedItem objPurchaseReceivedItem, CommandMode cmdMode)
         {
 
             string SQL = "";
@@ -238,7 +239,8 @@ namespace Store.PurchaseReceived.DataAccessLayer
             Store.Common.MessageInfo objMessageInfo = null;
             try
             {
-                SQL = "USP_ManagePurchaseReceivedItem";
+                SQL = "USP_ManagePurchaseReceived";
+               // SQL = "USP_ManagePurchaseReceivedItem";
                 param.Add(new SQLParameter("@PurchaseItemReceivedID", objPurchaseReceivedItem.PurchaseReceivedID));
                 param.Add(new SQLParameter("@PurchaseReceivedID", objPurchaseReceivedItem.PurchaseReceivedID));
                 param.Add(new SQLParameter("@PurchaseOrderID", objPurchaseReceivedItem.PurchaseOrderID));
