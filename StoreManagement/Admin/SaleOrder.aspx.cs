@@ -122,7 +122,7 @@ namespace StoreManagement.Admin
             }
 
             //Set Previous Data on Postbacks
-            SetPreviousData();
+          SetPreviousData();
         }
         private void SetPreviousData()
         {

@@ -318,8 +318,7 @@ namespace StoreManagement.Admin
                     TextBox txtTotals = (TextBox)Gridview1.Rows[i].FindControl("txtTotal");
                     objPurchaseReceivedItem.ItemPrefix = txtItemNames.Text;
                     objPurchaseReceivedItem.Description = txtDecs.Text;
-                    objPurchaseReceivedItem.ItemPrice = Convert.ToDecimal(txtPrices.Text);
-                   
+                    objPurchaseReceivedItem.ItemPrice = Convert.ToDecimal(txtPrices.Text);               
 
                     // objPurchaseReceivedItem.DiscountPre = Convert.ToDecimal(txtDisPres.Text);
                     //objPurchaseReceivedItem.Discount = Convert.ToDecimal(txtDiss.Text);
