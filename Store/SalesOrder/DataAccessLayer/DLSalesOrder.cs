@@ -212,7 +212,7 @@ namespace Store.SalesOrder.DataAccessLayer
             }
 
         }
-        public Store.Common.MessageInfo ManageSalesOrder(Store.SalesOrder.BusinessObject.SalesOrder objSalesOrder, int cmdMode)
+        public Store.Common.MessageInfo ManageSalesOrder(Store.SalesOrder.BusinessObject.SalesOrder objSalesOrder, CommandMode cmdMode)
         {
             string SQL = "USP_ManageSales";
             ParameterList param = new ParameterList();

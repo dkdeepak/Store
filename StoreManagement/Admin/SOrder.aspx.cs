@@ -292,7 +292,7 @@ namespace StoreManagement.Admin
             objSalesOrder.TotalTaxValue = Convert.ToDecimal(tax);
             objSalesOrder.ShipingAndHandlingCost = Convert.ToDecimal(shc);
             objSalesOrder.MiscSaleAmount = Convert.ToDecimal(misccost);
-            objMessageInfo = oblSalesOrder.ManageSaleOrder(objSalesOrder, 1);
+           // objMessageInfo = oblSalesOrder.ManageSaleOrder(objSalesOrder,cmdMode);
             return objMessageInfo.TranID.ToString();
         }
 

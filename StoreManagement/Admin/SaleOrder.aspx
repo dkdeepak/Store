@@ -1,21 +1,21 @@
-﻿<%@ Page Title="TRANSACTION| Purchase Order" Language="C#" MasterPageFile="~/Master/AdminMaster.Master" AutoEventWireup="true" CodeBehind="POrder.aspx.cs" Inherits="StoreManagement.Admin.POrder" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/AdminMaster.Master" AutoEventWireup="true" CodeBehind="SaleOrder.aspx.cs" Inherits="StoreManagement.Admin.SaleOrder" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
      <style>
          .leftmargin{
              margin-left:-7%;
          }
      </style>
-
 </asp:Content>
+
 <asp:Content ID="Content3" ContentPlaceHolderID="cphContain" runat="server">
     <asp:Button ID="btnShowVendor"  runat="server" Style="display: none" />
     <asp:Button ID="btnShowSummary"  runat="server" Style="display: none" />
- <asp:UpdatePanel ID="upForm" UpdateMode="Conditional"   runat="server">
+    <asp:UpdatePanel ID="upForm" UpdateMode="Conditional"   runat="server">
    <ContentTemplate>
        <asp:HiddenField ID="hfPId" runat="server" />
        <center>
            <div class="panel panel-primary panel-heading">
-                <b>Purchase Order</b>
+                <b>Sales Order</b>
            </div>       
         </center>
        <hr />
@@ -26,7 +26,7 @@
                        <label  class="form-control">Name</label>
                    </div>
                    <div class="col-lg-7 leftmargin">
-                        <asp:TextBox ID="txtVendor" CssClass="form-control" ReadOnly="true" runat="server" required placeholder="Enter the Supplier Name"></asp:TextBox>
+                        <asp:TextBox ID="txtVendor" CssClass="form-control" ReadOnly="true" runat="server"  placeholder="Enter the Supplier Name"></asp:TextBox>
                        <asp:HiddenField ID="hfVendor" runat="server" />
                    </div>
                    <div class="col-lg-2 margin">
@@ -95,14 +95,23 @@
                     Total:
                 </FooterTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Unit Price">
+            <asp:TemplateField HeaderText="Cost Price">
                 <ItemTemplate>
-                    <asp:TextBox ID="txtPrice" placeholder="Unit Price" ToolTip="Unit Price"    runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtCPrice" placeholder="cost Price" ToolTip="Cost Price"    runat="server" CssClass="form-control"></asp:TextBox>
                 </ItemTemplate>
                 <FooterTemplate>
-                    <asp:TextBox ID="txtPriceT" placeholder="00.00" ToolTip="Unit Price"  ReadOnly="true" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtCPriceT" placeholder="00.00" ToolTip="cost Price"  ReadOnly="true" runat="server" CssClass="form-control"></asp:TextBox>
                 </FooterTemplate>
             </asp:TemplateField>
+                <asp:TemplateField HeaderText="sale Price">
+                <ItemTemplate>
+                    <asp:TextBox ID="txtSPrice" placeholder="Sales Price" ToolTip="sales Price"    runat="server" CssClass="form-control"></asp:TextBox>
+                </ItemTemplate>
+                <FooterTemplate>
+                    <asp:TextBox ID="txtSPriceT" placeholder="00.00" ToolTip="sales Price"  ReadOnly="true" runat="server" CssClass="form-control"></asp:TextBox>
+                </FooterTemplate>
+            </asp:TemplateField>
+
             <asp:TemplateField HeaderText="Discount(%)">
                 <ItemTemplate>                   
                     <asp:TextBox ID="txtDisPre" runat="server" ToolTip="Discount(%)" placeholder="Discount(%)"    OnTextChanged="txtDisPre_TextChanged" AutoPostBack="true"  CssClass="form-control"  ></asp:TextBox>
@@ -149,9 +158,11 @@
         </div>
     </ContentTemplate>
   </asp:UpdatePanel>
-   <ajaxToolkit:ModalPopupExtender ID="mpopVendor" runat="server" TargetControlID="btnShowVendor" PopupControlID="pnlVendor"
+
+    <ajaxToolkit:ModalPopupExtender ID="mpopVendor" runat="server" TargetControlID="btnShowVendor" PopupControlID="pnlVendor"
         CancelControlID="lbtnClose" BackgroundCssClass="modalBackground">
     </ajaxToolkit:ModalPopupExtender>
+
     <asp:Panel ID="pnlVendor" runat="server" CssClass="modalPopup"  >
        <asp:UpdatePanel ID="updateSupplierBdInfo" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
@@ -207,16 +218,21 @@
                     <div class="panel-heading">
                         <table width="100%">
                                 <tr>
-                                    <td align="left"><b>Purchase Order Summary</b></td>
+                                    <td align="left"><b>Sales Order Summary</b></td>
                                     <td align="right"><asp:LinkButton ID="ibtnCloseSummary" Font-Bold="true" Font-Size="Large" runat="server" OnClick="ibtnCloseSummary_Click" >X</asp:LinkButton></td>
                                 </tr>
                             </table>
                     </div>
                      <div class="panel-body">
                          <div class="row">
-                             <div class="col-lg-6"><label class="form-control">Sub Total</label></div>
-                             <div class="col-lg-6 leftmargin"><asp:TextBox ID="txtSubTotal" placeholder="Sub Total" ToolTip="Sub Total" runat="server" CssClass="form-control"></asp:TextBox></div>
+                             <div class="col-lg-6"><label class="form-control"> Cost Price Sub Total</label></div>
+                             <div class="col-lg-6 leftmargin"><asp:TextBox ID="txtCPSubTotal" placeholder="Cost Price sub Total" ToolTip="Cost Price sub Total" runat="server" CssClass="form-control"></asp:TextBox></div>
                          </div>
+                         <div class="row">
+                             <div class="col-lg-6"><label class="form-control"> Sales Price Sub Total</label></div>
+                             <div class="col-lg-6 leftmargin"><asp:TextBox ID="txtSPSubTotal" placeholder="Sale price Sub Total" ToolTip="Sale price Sub Total" runat="server" CssClass="form-control"></asp:TextBox></div>
+                         </div>
+
                          <div class="row">
                              <div class="col-lg-6"><label class="form-control">Discount(%)</label></div>
                              <div class="col-lg-6 leftmargin"><asp:TextBox ID="txtDicPre" placeholder="Discount(%)" ToolTip="Discount(%)" runat="server" AutoPostBack="true" CssClass="form-control" OnTextChanged="txtDicPre_TextChanged1"></asp:TextBox></div>
@@ -255,8 +271,5 @@
         </ContentTemplate>
         </asp:UpdatePanel>
     </asp:Panel>
-<br />
-    
-   
-  
 </asp:Content>
+

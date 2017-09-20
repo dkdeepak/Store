@@ -300,7 +300,7 @@
                                 <li id="District" runat="server"><a href="../Admin/District.aspx">District</a></li>
                                 <li id="City" runat="server"><a href="../Admin/City.aspx">City</a></li>   
                                 <li id="Client" runat="server"><a href="../Admin/Client.aspx">Client</a></li>
-
+                                
                                 <li id="TypeOfUser" runat="server"><a href="../Admin/TypeOfUser.aspx">Type Of User</a></li>
                                 <li id="User" runat="server"><a href="../Admin/UserInfo.aspx">User Info</a></li>
                                 <li id="TypeOfVendor" runat="server"><a href="../Admin/TypeOfVendor.aspx">Type Of Vendor</a></li>
@@ -317,7 +317,7 @@
                             <ul class="nav nav-second-level">
                                 <li id="Purchase" runat="server"><a href="../Admin/POrder.aspx">Purchase Order</a></li>
                                 <li id="Received" runat="server"><a href="../Admin/PReceived.aspx">Purchase Received</a></li>
-                                <li id="Sales" runat="server"><a href="../Admin/SOrder.aspx">Sales Order</a></li>
+                                <li id="Sales" runat="server"><a href="../Admin/SaleOrder.aspx">Sales Order</a></li>
                                 <li id="Return" runat="server"><a href="../Admin/SalesRtn.aspx">Sales Return</a></li>
                             </ul>
                             <!-- /.nav-second-level -->

@@ -95,6 +95,13 @@
     <Compile Include="Admin\PReceived.aspx.designer.cs">
       <DependentUpon>PReceived.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\SaleOrder.aspx.cs">
+      <DependentUpon>SaleOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\SaleOrder.aspx.designer.cs">
+      <DependentUpon>SaleOrder.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\TypeOfVendor.aspx.cs">
       <DependentUpon>TypeOfVendor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -150,6 +157,7 @@
     <Content Include="Admin\MangePanle.aspx" />
     <Content Include="Admin\PReceived.aspx" />
     <Content Include="Admin\POrder.aspx" />
+    <Content Include="Admin\SaleOrder.aspx" />
     <Content Include="Admin\Sales.aspx" />
     <Content Include="Admin\SalesRtn.aspx" />
     <Content Include="Admin\SOrder.aspx" />
