@@ -136,8 +136,8 @@ namespace StoreManagement.Admin
                     {
                         TextBox box1 = (TextBox)Gridview1.Rows[rowIndex].Cells[1].FindControl("txtItemName");
                         TextBox box2 = (TextBox)Gridview1.Rows[rowIndex].Cells[2].FindControl("txtDec");
-                        TextBox box3 = (TextBox)Gridview1.Rows[rowIndex].Cells[3].FindControl("txtCPriceT");
-                        TextBox box4 = (TextBox)Gridview1.Rows[rowIndex].Cells[4].FindControl("txtSPriceT");
+                        TextBox box3 = (TextBox)Gridview1.Rows[rowIndex].Cells[3].FindControl("txtCPrice");
+                        TextBox box4 = (TextBox)Gridview1.Rows[rowIndex].Cells[4].FindControl("txtSPrice");
                         TextBox box5 = (TextBox)Gridview1.Rows[rowIndex].Cells[5].FindControl("txtDisPre");
                         TextBox box6 = (TextBox)Gridview1.Rows[rowIndex].Cells[6].FindControl("txtDis");
                         TextBox box7 = (TextBox)Gridview1.Rows[rowIndex].Cells[7].FindControl("txtQut");

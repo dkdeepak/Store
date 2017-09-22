@@ -304,7 +304,7 @@ namespace StoreManagement.Admin
                 string transid = "";
                 transid = insertReceived(txtSubTotal.Text,txtTax.Text, txtSHC.Text, txtMiscCost.Text, txttotal.Text);
                 objPurchaseReceivedItemList = new Store.PurchaseReceivedItem.BusinessObject.PurchaseReceivedItemList();
-                for (int i = 0; i < Gridview1.Rows.Count - 1; i++)
+                for (int i = 0; i < Gridview1.Rows.Count ; i++)
                 {
                     objPurchaseReceivedItem = new Store.PurchaseReceivedItem.BusinessObject.PurchaseReceivedItem();
                     TextBox txtItemNames = (TextBox)Gridview1.Rows[i].FindControl("txtItemName");
@@ -325,6 +325,7 @@ namespace StoreManagement.Admin
                     objPurchaseReceivedItem.ItemUnit = txtQuts.Text;
                     objPurchaseReceivedItem.TotalPrice = Convert.ToDecimal(txtTotals.Text);
                     objPurchaseReceivedItem.PurchaseReceivedID = Convert.ToInt32(transid);
+                    objPurchaseReceivedItem.PurchaseOrderID = Convert.ToInt32(hfPOrder.Value);
                     objPurchaseReceivedItemList.Add(objPurchaseReceivedItem);
                 }
                 oblPurchaseReceivedItem = new Store.PurchaseReceivedItem.BusinessLogic.PurchaseReceivedItem();
