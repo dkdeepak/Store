@@ -203,7 +203,7 @@ namespace Store.SalesReturned.DataAccessLayer
                 throw;
             }  
         }
-        public Store.Common.MessageInfo ManageSaleRetuned(Store.SalesReturned.BusinessObject.SalesReturned objSalesReturned, int cmdMode)
+        public Store.Common.MessageInfo ManageSaleRetuned(Store.SalesReturned.BusinessObject.SalesReturned objSalesReturned, CommandMode cmdMode)
         {
             string SQL = "USP_SalesReturned";
             ParameterList param = new ParameterList();

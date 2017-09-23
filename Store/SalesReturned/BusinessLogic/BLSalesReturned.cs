@@ -42,7 +42,7 @@ namespace Store.SalesReturned.BusinessLogic
                 throw;
             }
         }
-        public Store.Common.MessageInfo ManageSalesRetuned(Store.SalesReturned.BusinessObject.SalesReturned objSalesReturned, int cmdMode)
+        public Store.Common.MessageInfo ManageSalesRetuned(Store.SalesReturned.BusinessObject.SalesReturned objSalesReturned, CommandMode cmdMode)
         {
             try
             {

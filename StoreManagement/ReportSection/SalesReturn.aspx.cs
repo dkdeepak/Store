@@ -119,36 +119,36 @@ namespace StoreManagement.ReportSection
         }
         protected void imgbtnfrDelete_Click(object sender, ImageClickEventArgs e)
         {
-            cmdMode = CommandMode.D;
-            objSalesRtn =new Store.SalesReturned.BusinessObject.SalesReturned();
-            oblSalesRtn =new Store.SalesReturned.BusinessLogic.SalesReturned();
-            objMessageInfo = new MessageInfo();
-            try
-            {
+    //        cmdMode = CommandMode.D;
+    //        objSalesRtn =new Store.SalesReturned.BusinessObject.SalesReturned();
+    //        oblSalesRtn =new Store.SalesReturned.BusinessLogic.SalesReturned();
+    //        objMessageInfo = new MessageInfo();
+    //        try
+    //        {
 
-                ImageButton btndetails = sender as ImageButton;
-                GridViewRow gvrow = (GridViewRow)btndetails.NamingContainer;
-                objSalesRtn.SalesReturnedID = Convert.ToInt32(gvSalesRtn.DataKeys[gvrow.RowIndex].Value.ToString());
-                objMessageInfo = oblSalesRtn.ManageSalesRetuned(objSalesRtn,Convert.ToInt32(cmdMode));
-                BindSalesReturn();
-                if (objMessageInfo.TranID != 0)
+    //            ImageButton btndetails = sender as ImageButton;
+    //            GridViewRow gvrow = (GridViewRow)btndetails.NamingContainer;
+    //            objSalesRtn.SalesReturnedID = Convert.ToInt32(gvSalesRtn.DataKeys[gvrow.RowIndex].Value.ToString());
+    //            objMessageInfo = oblSalesRtn.ManageSalesRetuned(objSalesRtn,Convert.ToInt32(cmdMode));
+    //            BindSalesReturn();
+    //            if (objMessageInfo.TranID != 0)
 
-                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alert", "alert('" + objMessageInfo.TranMessage + "')", true);
-                else if (objMessageInfo.ErrorCode == -101)
-                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alert", "alert('" + objMessageInfo.ErrorMessage + "')", true);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
+    //                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alert", "alert('" + objMessageInfo.TranMessage + "')", true);
+    //            else if (objMessageInfo.ErrorCode == -101)
+    //                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alert", "alert('" + objMessageInfo.ErrorMessage + "')", true);
+    //        }
+    //        catch (Exception ex)
+    //        {
+    //            throw ex;
+    //        }
+    //        finally
+    //        {
 
-                objMessageInfo = null;
-                oblSalesRtn = null;
-                objSalesRtn = null;
+    //            objMessageInfo = null;
+    //            oblSalesRtn = null;
+    //            objSalesRtn = null;
 
-            }
+    //        }
 
 
         }

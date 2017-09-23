@@ -318,7 +318,7 @@
                                 <li id="Purchase" runat="server"><a href="../Admin/POrder.aspx">Purchase Order</a></li>
                                 <li id="Received" runat="server"><a href="../Admin/PReceived.aspx">Purchase Received</a></li>
                                 <li id="Sales" runat="server"><a href="../Admin/SaleOrder.aspx">Sales Order</a></li>
-                                <li id="Return" runat="server"><a href="../Admin/SalesRtn.aspx">Sales Return</a></li>
+                                <li id="Return" runat="server"><a href="../Admin/SalesReturn.aspx">Sales Return</a></li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>

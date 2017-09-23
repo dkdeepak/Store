@@ -341,6 +341,7 @@
     <Content Include="ReportSection\Sales.aspx" />
     <Content Include="ReportSection\SalesReturn.aspx" />
     <Content Include="ReportSection\WebForm1.aspx" />
+    <Content Include="Admin\SalesReturn.aspx" />
     <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Style\theme.css" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
@@ -368,6 +369,13 @@
     </Compile>
     <Compile Include="ReportSection\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\SalesReturn.aspx.cs">
+      <DependentUpon>SalesReturn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\SalesReturn.aspx.designer.cs">
+      <DependentUpon>SalesReturn.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.master.cs">
       <DependentUpon>Site.master</DependentUpon>
