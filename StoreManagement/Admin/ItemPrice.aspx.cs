@@ -8,7 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Web.Services;
-using System.Data;
+
 
 namespace StoreManagement.Admin
 {
@@ -18,139 +18,29 @@ namespace StoreManagement.Admin
         {
             if (!Page.IsPostBack)
             {
-                divForm.Style.Add("display", "none");
-                divSerach.Style.Add("display", "block");
-                up1.Update();
-                BindItemPrice();
 
-
+                BindItem();
             }
 
         }
-       
-
-
-        Store.Category.BusinessLogic.Category oblCategory = null;
-        Store.Category.BusinessObject.CategoryList obCategoryList = null;
         Store.Item.BusinessLogic.Item oblItem = null;
-        Store.Item.BusinessObject.ItemList obItemList = null;
-        Store.ItemPrice.BusinessObject.ItemPrice objItemPrice = null;
-        Store.ItemPrice.BusinessObject.ItemPriceList objItemPriceList = null;
-        Store.ItemPrice.BusinessLogic.ItemPrice oblItemprice = null;
-        Store.Common.MessageInfo objMessageInfo = null;
-        public Store.Common.CommandMode cmdMode
+        Store.Item.BusinessObject.ItemList objItemList = null;
+        Store.ItemPrice.BusinessLogic.ItemPrice oblItemPrice = null;
+        void BindItem()
         {
-            get { return ViewState["cmdMode"] != null ? (Store.Common.CommandMode)ViewState["cmdMode"] : Store.Common.CommandMode.N; }
-            set { ViewState["cmdMode"] = value; }
-        }
-        #region ControlDefindeFunction
-
-
-
-
-        #endregion
-        #region UserDefindeFunction
-        protected void btnSearch_Click(object sender, EventArgs e)
-        {
+            oblItem = new Store.Item.BusinessLogic.Item();
             try
             {
-                int id = Convert.ToInt32(txtPoId.Text);
-                bindGrid(id);
-
-                hfPoderId.Value = id.ToString();
-                if (Gridview1.DataSource != null)
+                objItemList = oblItem.GetAllItemList(0, 0, "");
+                if (objItemList != null)
                 {
-                    divForm.Style.Add("display", "block");
-                    divSerach.Style.Add("display", "none");
-                    up1.Update();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        void bindGrid(int id)
-        {
-            try
-            {
-                oblItemprice = new Store.ItemPrice.BusinessLogic.ItemPrice();
-                string query = "select i.ItemPrefix, i.ItemID from tbl_tPurchaseReceivedItem p inner join tbl_mItem i on p.ItemId = i.ItemID where p.PurchaseReceivedID = " + id;
-                DataTable dt = new DataTable();
-                dt = oblItemprice.runQuery(query);
-                Gridview1.DataSource = dt;
-                Gridview1.DataBind();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                oblItemprice = null;
-            }
-
-        }
-        #endregion
-
-        protected void btnSubmit_Click(object sender, EventArgs e)
-        {
-            for(int i=0;i<Gridview1.Rows.Count;i++)
-            {
-                HiddenField hfid = (HiddenField)Gridview1.Rows[i].FindControl("hfItemId");
-                
-                TextBox txtSalesPrice = (TextBox)Gridview1.Rows[i].FindControl("txtSalesPrice");
-                TextBox txtApplicableFrom = (TextBox)Gridview1.Rows[i].FindControl("txtApplicableFrom");
-                TextBox txtApplicableTo = (TextBox)Gridview1.Rows[i].FindControl("txtApplicableTo");
-                TextBox txtDiscount = (TextBox)Gridview1.Rows[i].FindControl("txtDiscount");
-                objItemPrice = new Store.ItemPrice.BusinessObject.ItemPrice();
-
-                objItemPrice.BatchNo = Convert.ToString(txtPoId.Text);
-                objItemPrice.ItemID = Convert.ToInt32(hfid.Value);
-                objItemPrice.ItemSalePricePerUnit = Convert.ToInt32(txtSalesPrice.Text);
-                objItemPrice.ApplicableFrom = Convert.ToDateTime(txtApplicableFrom.Text);
-                objItemPrice.ApplicableTo = Convert.ToDateTime(txtApplicableTo.Text);
-                objItemPrice.ItemDiscountPercentagePerUnit = Convert.ToInt32(txtDiscount.Text);
-
-                oblItemprice = new Store.ItemPrice.BusinessLogic.ItemPrice();
-                oblItemprice.ManageItemMaster(objItemPrice, cmdMode);
-            }
-        }
-        protected void btnCancel_Click(object sender, EventArgs e)
-        {
-            reset();
-        }
-        private void reset()
-        {
-            //txtSalesPrice.Text = string.Empty;
-            //txtDicPre.Text = string.Empty;
-            //txtMiscCost.Text = string.Empty;
-            //txtSHC.Text = string.Empty;
-            //txtTax.Text = string.Empty;
-            //txttotal.Text = string.Empty;
-            //txtSubTotal.Text = string.Empty;
-            //Gridview1.DataSource = null;
-            //Gridview1.DataBind();
-            //SetInitialRow();
-            //ViewState["CurrentTable"] = null;
-        }
-        void BindItemPrice()
-        {
-            oblItemprice = new Store.ItemPrice.BusinessLogic.ItemPrice();
-            //oblItem = new Store.Item.BusinessLogic.Item();
-            try
-            {
-                objItemPriceList = oblItemprice.GetAllItemPriceList(0,0,"");
-              //  objItemList = oblItem.GetAllItemList(0, 0, "");
-                if (objItemPriceList != null)
-                {
-                    gvItemPrice.DataSource = objItemPriceList;
-                    gvItemPrice.DataBind();
+                    dgvItem.DataSource = objItemList;
+                    dgvItem.DataBind();
                 }
                 else
                 {
-                    gvItemPrice.DataSource = null;
-                    gvItemPrice.DataBind();
+                    dgvItem.DataSource = null;
+                    dgvItem.DataBind();
                 }
             }
             catch (Exception ex)
@@ -159,12 +49,67 @@ namespace StoreManagement.Admin
             }
             finally
             {
-                oblItemprice = null;
-                objItemPriceList = null;
+                oblItem = null;
+                objItemList = null;
             }
 
 
         }
 
+        protected void dgvItem_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            HiddenField hfItemId = (HiddenField)dgvItem.Rows[e.RowIndex].FindControl("hfItemId");
+            bindBatch(Convert.ToInt32(hfItemId.Value));
+            
+        }
+        void bindBatch(int ItemId)
+        {
+            oblItemPrice = new Store.ItemPrice.BusinessLogic.ItemPrice();
+            DataSet ds = new DataSet();
+            try
+            {
+               
+                ds = oblItemPrice.getBatch(ItemId);
+                if (ds.Tables[0].Rows.Count >0)
+                {
+                    dgvBatch.DataSource = ds;
+                    dgvBatch.DataBind();
+                    this.mpopBatch.Show();
+                }
+                else
+                {
+                    dgvBatch.DataSource = null;
+                    dgvBatch.DataBind();
+                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alert", "alert('There is no batch for select item')", true);
+
+                }
+                upBatch.Update();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                oblItemPrice = null;
+                ds = null;
+            }
+        }
+
+        protected void ibtnCloseBatch_Click(object sender, EventArgs e)
+        {
+            this.mpopBatch.Hide();
+        }
+
+        protected void ibtnCloseForm_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void dgvBatch_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            this.mpopBatch.Hide();
+            this.mpopForm.Show();
+        }
     }
 }

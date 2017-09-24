@@ -279,10 +279,11 @@ namespace StoreManagement.Admin
             txtPin.Text = "";
             txtMobile.Text ="";
             txtEmail.Text = "";
-            this.mpopSummary.Hide();
+            this.mpopSummary.Hide();            
+            upSummary.Update();
+            divFrom.Style.Add("display", "none");
+            divData.Style.Add("display", "block");
             upForm.Update();
-            divFrom.Style.Add("display", "block");
-            divData.Style.Add("display", "none");
 
         }
         protected void Gridview1_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -312,16 +313,11 @@ namespace StoreManagement.Admin
                         break;
                     TextBox txtDecs = (TextBox)Gridview1.Rows[i].FindControl("txtDec");
                     TextBox txtPrices = (TextBox)Gridview1.Rows[i].FindControl("txtPrice");
-                  //  TextBox txtDisPres = (TextBox)Gridview1.Rows[i].FindControl("txtDisPre");
-                    // TextBox txtDiss = (TextBox)Gridview1.Rows[i].FindControl("txtDis");
                     TextBox txtQuts = (TextBox)Gridview1.Rows[i].FindControl("txtQut");
                     TextBox txtTotals = (TextBox)Gridview1.Rows[i].FindControl("txtTotal");
                     objPurchaseReceivedItem.ItemPrefix = txtItemNames.Text;
                     objPurchaseReceivedItem.Description = txtDecs.Text;
                     objPurchaseReceivedItem.ItemPrice = Convert.ToDecimal(txtPrices.Text);               
-
-                    // objPurchaseReceivedItem.DiscountPre = Convert.ToDecimal(txtDisPres.Text);
-                    //objPurchaseReceivedItem.Discount = Convert.ToDecimal(txtDiss.Text);
                     objPurchaseReceivedItem.ItemUnit = txtQuts.Text;
                     objPurchaseReceivedItem.TotalPrice = Convert.ToDecimal(txtTotals.Text);
                     objPurchaseReceivedItem.PurchaseReceivedID = Convert.ToInt32(transid);

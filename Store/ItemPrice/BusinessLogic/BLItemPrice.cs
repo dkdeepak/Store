@@ -47,5 +47,9 @@ namespace Store.ItemPrice.BusinessLogic
         {
             return odlItemPrice.runQuery(query);
         }
+        public DataSet getBatch(int itemId)
+        {
+            return odlItemPrice.getBatch(itemId);
+        }
     }
 }

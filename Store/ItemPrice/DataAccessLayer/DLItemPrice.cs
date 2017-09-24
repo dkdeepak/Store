@@ -234,5 +234,23 @@ namespace Store.ItemPrice.DataAccessLayer
              return ExecuteQuery.ExecuteDataTable(query);
         }
 
+        public DataSet getBatch(int itemId)
+        {
+            string SQL = "";
+            ParameterList param = new ParameterList();
+            DataTableReader dr;
+            DataSet ds = new DataSet();
+            Store.Common.MessageInfo objMessageInfo = null;
+            try
+            {
+                SQL = "proc_getBatch";
+                param.Add(new SQLParameter("@ItemID", itemId));
+                ds=ExecuteQuery.ExecuteDataSet(SQL, param);
+            }
+            catch (Exception ex) {
+                
+            }
+            return ds;
+        }
     }
 }

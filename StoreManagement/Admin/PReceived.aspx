@@ -8,7 +8,6 @@
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphContain" runat="server">
-    <asp:Button ID="btnShowVendor"  runat="server" Style="display: none" />
     <asp:Button ID="btnShowSummary"  runat="server" Style="display: none" />
 
  <asp:UpdatePanel ID="upForm" UpdateMode="Conditional"   runat="server">

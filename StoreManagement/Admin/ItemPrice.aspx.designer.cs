@@ -13,111 +13,120 @@ namespace StoreManagement.Admin {
     public partial class ItemPrice {
         
         /// <summary>
-        /// hfPoderId control.
+        /// btnShowBatch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfPoderId;
+        protected global::System.Web.UI.WebControls.Button btnShowBatch;
         
         /// <summary>
-        /// upSearch control.
+        /// btnShowForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upSearch;
+        protected global::System.Web.UI.WebControls.Button btnShowForm;
         
         /// <summary>
-        /// divSerach control.
+        /// mpopBatch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSerach;
+        protected global::AjaxControlToolkit.ModalPopupExtender mpopBatch;
         
         /// <summary>
-        /// txtPoId control.
+        /// pnlBatch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPoId;
+        protected global::System.Web.UI.WebControls.Panel pnlBatch;
         
         /// <summary>
-        /// btnSearch control.
+        /// upBatch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearch;
+        protected global::System.Web.UI.UpdatePanel upBatch;
         
         /// <summary>
-        /// up1 control.
+        /// ibtnCloseBatch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel up1;
+        protected global::System.Web.UI.WebControls.LinkButton ibtnCloseBatch;
         
         /// <summary>
-        /// divForm control.
+        /// dgvBatch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divForm;
+        protected global::System.Web.UI.WebControls.GridView dgvBatch;
         
         /// <summary>
-        /// Gridview1 control.
+        /// mpopForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView Gridview1;
+        protected global::AjaxControlToolkit.ModalPopupExtender mpopForm;
         
         /// <summary>
-        /// Button1 control.
+        /// pnlForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Panel pnlForm;
         
         /// <summary>
-        /// btnCancel control.
+        /// upForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancel;
+        protected global::System.Web.UI.UpdatePanel upForm;
         
         /// <summary>
-        /// up2 control.
+        /// ibtnCloseForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel up2;
+        protected global::System.Web.UI.WebControls.LinkButton ibtnCloseForm;
         
         /// <summary>
-        /// gvItemPrice control.
+        /// upData control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvItemPrice;
+        protected global::System.Web.UI.UpdatePanel upData;
+        
+        /// <summary>
+        /// dgvItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView dgvItem;
     }
 }
