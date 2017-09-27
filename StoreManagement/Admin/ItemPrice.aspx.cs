@@ -23,9 +23,13 @@ namespace StoreManagement.Admin
             }
 
         }
+        Store.Common.MessageInfo objMessageInfo = null;
         Store.Item.BusinessLogic.Item oblItem = null;
         Store.Item.BusinessObject.ItemList objItemList = null;
-        Store.ItemPrice.BusinessLogic.ItemPrice oblItemPrice = null;
+        Store.ItemPrice.BusinessLogic.ItemPrice oblItemPrice = new Store.ItemPrice.BusinessLogic.ItemPrice();
+        Store.ItemPrice.BusinessLogic.ItemPrice objItemprice = new Store.ItemPrice.BusinessLogic.ItemPrice();
+        Store.ItemPrice.BusinessObject.ItemPrice objItemPrice = new Store.ItemPrice.BusinessObject.ItemPrice();
+        Store.ItemPrice.BusinessObject.ItemPriceList objItemPriceList = new Store.ItemPrice.BusinessObject.ItemPriceList();
         void BindItem()
         {
             oblItem = new Store.Item.BusinessLogic.Item();
@@ -46,6 +50,9 @@ namespace StoreManagement.Admin
             catch (Exception ex)
             {
                 throw ex;
+
+                // Global.WriteErrorLog("Error Occured" +ex.ToString());
+
             }
             finally
             {
@@ -60,7 +67,7 @@ namespace StoreManagement.Admin
         {
             HiddenField hfItemId = (HiddenField)dgvItem.Rows[e.RowIndex].FindControl("hfItemId");
             bindBatch(Convert.ToInt32(hfItemId.Value));
-            
+
         }
         void bindBatch(int ItemId)
         {
@@ -68,9 +75,9 @@ namespace StoreManagement.Admin
             DataSet ds = new DataSet();
             try
             {
-               
+
                 ds = oblItemPrice.getBatch(ItemId);
-                if (ds.Tables[0].Rows.Count >0)
+                if (ds.Tables[0].Rows.Count > 0)
                 {
                     dgvBatch.DataSource = ds;
                     dgvBatch.DataBind();
@@ -111,5 +118,66 @@ namespace StoreManagement.Admin
             this.mpopBatch.Hide();
             this.mpopForm.Show();
         }
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            HiddenField hfItemPriceID = (HiddenField)pnlForm.FindControl("hfItemPriceId");
+            if (Page.IsValid)
+            {
+                UpdateItemPrice();
+                if (objMessageInfo.ErrorCode == -101)
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alert", "alert('" + objMessageInfo.TranMessage + "')", true);
+                }
+                if (objMessageInfo.TranID > 0)
+                {
+                   // ResetForm();
+                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alert", "alert('" + objMessageInfo.TranMessage + "')", true);
+                }
+                this.mpopForm.Hide();
+                BindItem();
+                upForm.Update();
+                upBatch.Update();
+                this.mpopForm.Show();
+            }
+
+
+        }
+        void UpdateItemPrice()
+        {
+            objItemPrice = new Store.ItemPrice.BusinessObject.ItemPrice();
+            oblItemPrice = new Store.ItemPrice.BusinessLogic.ItemPrice();
+              Store.Common.CommandMode   cmdMode = new Store.Common.CommandMode();
+           
+            try
+            {
+                if (cmdMode == Store.Common.CommandMode.M)
+                {
+                    objItemPrice.ItemPriceID = Convert.ToInt32(hfItemPriceId.Value);
+                    
+                }
+                else
+                {
+                    objItemPrice.ItemPriceID = 0;
+                    
+                }
+                objItemPrice.ItemSalePricePerUnit = Convert.ToDecimal(txtSP.Text);
+                objItemPrice.ItemDiscountPercentagePerUnit = Convert.ToDecimal(txtDisPerUnit.Text);
+                objItemPrice.ApplicableFrom = Convert.ToDateTime(txtApplicableFrom.Text);
+                objItemPrice.ApplicableTo = Convert.ToDateTime(txtApplicableTo.Text);
+               objMessageInfo = oblItemPrice.ManageItemMaster(objItemPrice, cmdMode);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objItemPrice = null;
+                oblItemPrice = null;
+            }
+
+        }
+
     }
 }

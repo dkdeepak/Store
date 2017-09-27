@@ -43,6 +43,8 @@ namespace Store.ItemPrice.BusinessLogic
                 throw ex;
             }
         }
+
+        
         public DataTable runQuery(string query)
         {
             return odlItemPrice.runQuery(query);
@@ -51,5 +53,6 @@ namespace Store.ItemPrice.BusinessLogic
         {
             return odlItemPrice.getBatch(itemId);
         }
+       
     }
 }

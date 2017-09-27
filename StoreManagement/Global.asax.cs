@@ -4,6 +4,9 @@ using System.Web;
 using System.Web.DynamicData;
 using System.Web.Routing;
 using System.Configuration;
+using System.IO;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace StoreManagement
 {
@@ -60,6 +63,40 @@ namespace StoreManagement
             Store.DatabaseHelper.Database.DatabaseHelper.ExecuteQuery.ConnectionString = ConfigurationManager.ConnectionStrings["ShopDB"].ToString();
             //Pareeksha.Database.DatabaseHelper.ExecuteQuery.ConnectionString = ConfigurationManager.ConnectionStrings["MyDbCon"].ToString();
         }
+        //public static void WriteErrorLog(string strError)
+        //{
+        //    try
+        //    {
+        //        string strLogPath = HttpContext.Current.Server.MapPath("~/Log/");
+        //        using (SqlConnection con = new SqlConnection())
+        //        {
+        //            con.ConnectionString = ConfigurationManager.ConnectionStrings["ShopDB"].ConnectionString;
+        //            SqlCommand cmd = new SqlCommand("Sp_LogException", con);
+        //            cmd.CommandType = CommandType.StoredProcedure;
 
+
+        //            string strFileNameSuffix = DateTime.Today.Date.Day.ToString() + "_" + DateTime.Today.Date.Month.ToString() + "_" + DateTime.Today.Date.Year.ToString() + ".log";
+        //            string strLine;
+
+        //            string strFileName = strLogPath + strFileNameSuffix;
+
+        //            strLine = DateTime.Now.ToString() + "|" + strError;
+        //            StreamWriter sw;
+
+        //            sw = new StreamWriter(strFileName, true);
+        //            using (sw)
+        //            {
+        //                sw.WriteLine(strLine);
+        //                sw.Close();
+        //            }
+        //        }
+        //    }
+        //    catch
+        //    {
+        //        //string ErrMsg = ex.Message ;
+        //    }
+
+
+        //}
     }
 }

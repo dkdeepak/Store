@@ -164,9 +164,10 @@ namespace StoreManagement.Admin
                 objState.CreatedBy = Convert.ToInt32(Session["UserId"].ToString());
                 objMessageInfo = oblState.ManageItemMaster(objState, cmdMode);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
+             //   Global.WriteErrorLog("Error Occured" + ex.ToString());
             }
             finally
             {

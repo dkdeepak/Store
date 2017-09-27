@@ -131,7 +131,7 @@ namespace StoreManagement.Admin
             }
             catch (Exception ex)
             {
-                throw;
+                //Global.WriteErrorLog("Error Occured" + ex.ToString());
 
             }
             finally

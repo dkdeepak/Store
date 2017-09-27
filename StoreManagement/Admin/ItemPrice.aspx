@@ -51,10 +51,69 @@
         <div class="panel panel-default">
                 <div class="panel-heading">
                     <table width="100%">
+                        
                             <tr>
                                 <td align="left"><b>Item Price</b></td>
                                 <td align="right"><asp:LinkButton ID="ibtnCloseForm" Font-Bold="true" Font-Size="Large" runat="server" OnClick="ibtnCloseForm_Click" >X</asp:LinkButton></td>
                             </tr>
+                        <tr>
+                            <td>
+                                <div class="row">
+                   
+                   <div class="col-lg-12 leftmargin">
+                        <asp:TextBox ID="txtSP" CssClass="form-control"  runat="server"  placeholder="Enter the sale price "></asp:TextBox>
+                      
+                   </div>
+                   
+               </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="row">
+                   
+                   <div class="col-lg-12 leftmargin">
+                        <asp:TextBox ID="txtDisPerUnit" CssClass="form-control"  runat="server"  placeholder="Enter the discount % per unit"></asp:TextBox>
+                      
+                   </div>
+                   
+               </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="row">
+                   
+                   <div class="col-lg-12 leftmargin">
+                        <asp:TextBox ID="txtApplicableFrom" CssClass="form-control" runat="server"  placeholder="Enter The Date"></asp:TextBox>
+                      <ajaxToolkit:CalendarExtender ID="cal1" TargetControlID="txtApplicableFrom" runat="server"></ajaxToolkit:CalendarExtender> 
+                      
+                   </div>
+                   
+               </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="row">
+                   
+                   <div class="col-lg-12 leftmargin">
+                        <asp:TextBox ID="txtApplicableTo" CssClass="form-control" runat="server"  placeholder="Enter the Date"></asp:TextBox>
+                      <ajaxToolkit:CalendarExtender ID="cal2" TargetControlID="txtApplicableTo" runat="server"></ajaxToolkit:CalendarExtender> 
+                   </div>
+                   
+               </div>
+                            </td>
+                        </tr>                      
+
+                 <tr> 
+                     <td>
+                          <asp:HiddenField ID="hfItemPriceId" runat="server" Value='<%# Bind("ItemPriceID") %>' />
+                         <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Submit" CssClass="form-control btn-primary" />
+                         <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="form-control btn-danger" />
+                     </td>
+                     
+                 </tr>
                         </table>
                 </div>
                  <div class="panel-body">
@@ -65,6 +124,8 @@
     </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Panel>
+
+  
 </asp:Content>
 <asp:Content ID="con4" runat="server" ContentPlaceHolderID="cphData">
     <asp:UpdatePanel ID="upData" runat="server">

@@ -204,7 +204,7 @@ namespace Store.ItemPrice.DataAccessLayer
             {
                 SQL = "USP_ManageItemPrice";
                
-                param.Add(new SQLParameter("@ItemID",objItemPrice.ItemID));          
+                param.Add(new SQLParameter("@ItemPriceID", objItemPrice.ItemPriceID));          
                 param.Add(new SQLParameter("@ItemSalePricePerUnit",objItemPrice.ItemSalePricePerUnit));
                 param.Add(new SQLParameter("@ItemDiscountPercentagePerUnit",objItemPrice.ItemDiscountPercentagePerUnit));
                 param.Add(new SQLParameter("@ApplicableFrom",objItemPrice.ApplicableFrom));
@@ -229,6 +229,42 @@ namespace Store.ItemPrice.DataAccessLayer
                 throw ex;
             }
         }
+
+        //public Store.Common.MessageInfo ManageUpdadeItemPrice(Store.ItemPrice.BusinessObject.ItemPrice objItemPrice, CommandMode cmdMode)
+        //{
+        //    string SQL = "";
+        //    ParameterList param = new ParameterList();
+        //    DataTableReader dr;
+        //    Store.Common.MessageInfo objMessageInfo = null;
+        //    try
+        //    {
+        //        SQL = "USP_ManageItemPrice";
+
+        //        param.Add(new SQLParameter("@ItemID", objItemPrice.ItemID));
+        //        param.Add(new SQLParameter("@ItemSalePricePerUnit", objItemPrice.ItemSalePricePerUnit));
+        //        param.Add(new SQLParameter("@ItemDiscountPercentagePerUnit", objItemPrice.ItemDiscountPercentagePerUnit));
+        //        param.Add(new SQLParameter("@ApplicableFrom", objItemPrice.ApplicableFrom));
+        //        param.Add(new SQLParameter("@ApplicableTo", objItemPrice.ApplicableTo));
+        //        param.Add(new SQLParameter("@ReferenceID", objItemPrice.ReferenceID));
+        //        param.Add(new SQLParameter("@CMDMode", cmdMode));
+        //        dr = ExecuteQuery.ExecuteReader(SQL, param);
+        //        if (dr.Read())
+        //        {
+        //            objMessageInfo = new Store.Common.MessageInfo();
+        //            objMessageInfo.ErrorCode = Convert.ToInt32(dr["ErrorCode"]);
+        //            objMessageInfo.ErrorMessage = Convert.ToString(dr["ErrorMessage"]);
+        //            objMessageInfo.TranID = Convert.ToInt32(dr["TranID"]);
+        //            objMessageInfo.TranCode = Convert.ToString(dr["TranCode"]);
+        //            objMessageInfo.TranMessage = Convert.ToString(dr["TranMessage"]);
+        //        }
+        //        return objMessageInfo;
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
         public DataTable runQuery(string query)
         {
              return ExecuteQuery.ExecuteDataTable(query);

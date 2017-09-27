@@ -211,16 +211,17 @@ namespace Store.SalesOrderItem.DataAccessLayer
         }
         public Store.Common.MessageInfo ManageSalesOrderItem(Store.SalesOrderItem.BusinessObject.SalesOrderItem objSalesOrderItem, CommandMode cmdMode)
         {
-            string SQL = "USP_ManageSalesOrderItem";
+            string SQL = "";
             ParameterList param = new ParameterList();
             DataTableReader dr;
             Store.Common.MessageInfo objMessageInfo = null;
             try
             {
-                SQL = "USP_ManageSalesOrderItem";
+                SQL = "USP_ManageSalesItem";                
                 param.Add(new SQLParameter("@SaleOrderItemID", objSalesOrderItem.SaleOrderItemID));
                 param.Add(new SQLParameter("@SalesOrderID", objSalesOrderItem.SalesOrderID));
                 param.Add(new SQLParameter("@ItemId", objSalesOrderItem.ItemId));
+                param.Add(new SQLParameter("@ItemPrefix", objSalesOrderItem.ItemPrefix));
                 param.Add(new SQLParameter("@ItemUnit", objSalesOrderItem.ItemUnit));
                 param.Add(new SQLParameter("@Description", objSalesOrderItem.Description));
                 param.Add(new SQLParameter("@ItemCostPrice", objSalesOrderItem.ItemCostPrice));
