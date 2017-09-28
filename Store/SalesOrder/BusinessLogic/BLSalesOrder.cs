@@ -42,17 +42,17 @@ namespace Store.SalesOrder.BusinessLogic
                 throw;            
             }
         }
-        public Store.Common.MessageInfo ManageSaleOrderItem(Store.SalesOrderItem.BusinessObject.SalesOrderItem objSalesOrderItem, int cmdMode)
-        {
-            try
-            {
-                return odlSalesOrder.ManageSalesOrderItem(objSalesOrderItem, cmdMode);
-            }
-            catch
-            {
-                throw;
-            }
-        }
+        //public Store.Common.MessageInfo ManageSaleOrderItem(Store.SalesOrderItem.BusinessObject.SalesOrderItem objSalesOrderItem, int cmdMode)
+        //{
+        //    try
+        //    {
+        //        return odlSalesOrder.ManageSalesOrderItem(objSalesOrderItem, cmdMode);
+        //    }
+        //    catch
+        //    {
+        //        throw;
+        //    }
+        //}
 
 
     }

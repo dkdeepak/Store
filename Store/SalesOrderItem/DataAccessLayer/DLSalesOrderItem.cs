@@ -209,45 +209,50 @@ namespace Store.SalesOrderItem.DataAccessLayer
             }
 
         }
-        public Store.Common.MessageInfo ManageSalesOrderItem(Store.SalesOrderItem.BusinessObject.SalesOrderItem objSalesOrderItem, CommandMode cmdMode)
+                                                               
+        public Store.Common.MessageInfo ManageSalesOrderItem(Store.SalesOrderItem.BusinessObject.SalesOrderItemList objSalesOrderItemList, CommandMode cmdMode)
         {
             string SQL = "";
-            ParameterList param = new ParameterList();
-            DataTableReader dr;
+            ParameterList param = new ParameterList();           
             Store.Common.MessageInfo objMessageInfo = null;
             try
             {
-                SQL = "USP_ManageSalesItem";                
-                param.Add(new SQLParameter("@SaleOrderItemID", objSalesOrderItem.SaleOrderItemID));
-                param.Add(new SQLParameter("@SalesOrderID", objSalesOrderItem.SalesOrderID));
-                param.Add(new SQLParameter("@ItemId", objSalesOrderItem.ItemId));
-                param.Add(new SQLParameter("@ItemPrefix", objSalesOrderItem.ItemPrefix));
-                param.Add(new SQLParameter("@ItemUnit", objSalesOrderItem.ItemUnit));
-                param.Add(new SQLParameter("@Description", objSalesOrderItem.Description));
-                param.Add(new SQLParameter("@ItemCostPrice", objSalesOrderItem.ItemCostPrice));
-                param.Add(new SQLParameter("@ItemSalePrice", objSalesOrderItem.ItemSalePrice));
-                param.Add(new SQLParameter("@ItemDiscountPercentage", objSalesOrderItem.ItemDiscountPercentage));
-                param.Add(new SQLParameter("@ItemDiscount", objSalesOrderItem.ItemDiscount));
-                param.Add(new SQLParameter("@IsActive", objSalesOrderItem.IsActive));
-                param.Add(new SQLParameter("@ReferenceID", objSalesOrderItem.ReferenceID));
-                param.Add(new SQLParameter("@UserId", objSalesOrderItem.CreatedBy));
-                param.Add(new SQLParameter("@CMDMode", cmdMode));
-                dr = ExecuteQuery.ExecuteReader(SQL, param);
-                if (dr.Read())
+                SQL = "USP_ManageSalesItem";
+                foreach (Store.SalesOrderItem.BusinessObject.SalesOrderItem objSalesOrderItem in objSalesOrderItemList)
                 {
-                    objMessageInfo = new Store.Common.MessageInfo();
-                    objMessageInfo.ErrorCode = Convert.ToInt32(dr["ErrorCode"]);
-                    objMessageInfo.ErrorMessage = Convert.ToString(dr["ErrorMessage"]);
-                    objMessageInfo.TranID = Convert.ToInt32(dr["TranID"]);
-                    objMessageInfo.TranCode = Convert.ToString(dr["TranCode"]);
-                    objMessageInfo.TranMessage = Convert.ToString(dr["TranMessage"]);
+                  //  param = new ParameterList();
+                    DataTableReader dr;
+                    param.Add(new SQLParameter("@SaleOrderItemID", objSalesOrderItem.SaleOrderItemID));
+                    param.Add(new SQLParameter("@SalesOrderID", objSalesOrderItem.SalesOrderID));
+                    param.Add(new SQLParameter("@ItemId", objSalesOrderItem.ItemId));
+                    param.Add(new SQLParameter("@ItemPrefix", objSalesOrderItem.ItemPrefix));
+                    param.Add(new SQLParameter("@ItemUnit", objSalesOrderItem.ItemUnit));
+                    param.Add(new SQLParameter("@Description", objSalesOrderItem.Description));
+                    param.Add(new SQLParameter("@ItemCostPrice", objSalesOrderItem.ItemCostPrice));
+                    param.Add(new SQLParameter("@ItemSalePrice", objSalesOrderItem.ItemSalePrice));
+                    param.Add(new SQLParameter("@ItemDiscountPercentage", objSalesOrderItem.ItemDiscountPercentage));
+                    param.Add(new SQLParameter("@ItemDiscount", objSalesOrderItem.ItemDiscount));
+                    param.Add(new SQLParameter("@IsActive", objSalesOrderItem.IsActive));
+                    param.Add(new SQLParameter("@ReferenceID", objSalesOrderItem.ReferenceID));
+                    param.Add(new SQLParameter("@UserId", objSalesOrderItem.CreatedBy));
+                    param.Add(new SQLParameter("@CMDMode", cmdMode));
+                    dr = ExecuteQuery.ExecuteReader(SQL, param);
+                    if (dr.Read())
+                    {
+                        objMessageInfo = new Store.Common.MessageInfo();
+                        objMessageInfo.ErrorCode = Convert.ToInt32(dr["ErrorCode"]);
+                        objMessageInfo.ErrorMessage = Convert.ToString(dr["ErrorMessage"]);
+                        objMessageInfo.TranID = Convert.ToInt32(dr["TranID"]);
+                        objMessageInfo.TranCode = Convert.ToString(dr["TranCode"]);
+                        objMessageInfo.TranMessage = Convert.ToString(dr["TranMessage"]);
+                    }
+                    
                 }
                 return objMessageInfo;
-               
             }
-            catch
+            catch(Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
     }

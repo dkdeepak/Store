@@ -16,13 +16,16 @@ namespace StoreManagement.Admin
 {
     public partial class SaleOrder : System.Web.UI.Page
     {
+        Store.SalesOrderItem.BusinessObject.SalesOrderItemList objSalesOrderItemList = new Store.SalesOrderItem.BusinessObject.SalesOrderItemList();
+        //Store.PurchaseOrderItem.BusinessObject.PurchaseOrderItemList objPurchaseOrderItemList = null;
         Store.SalesOrderItem.BusinessLogic.SalesOrderItem oblSalesOrderItem = null;
         Store.SalesOrder.BusinessLogic.SalesOrder oblSalesOrder = new Store.SalesOrder.BusinessLogic.SalesOrder();
         Store.SalesOrder.BusinessObject.SalesOrderList objSalesList = new Store.SalesOrder.BusinessObject.SalesOrderList();
         Store.SalesOrder.BusinessObject.SalesOrder objSalesOrder = null;
         Store.SalesOrderItem.BusinessObject.SalesOrderItem objsalesOrderItem = null;
         Store.SalesOrder.BusinessObject.SalesOrder objSalesOrderList = null;
-        Store.SalesOrderItem.BusinessObject.SalesOrderItemList objSalesOrderItemList = null;
+      //  Store.SalesOrderItem.BusinessObject.SalesOrderItemList objSalesOrderItemList = null;
+        
         Store.Common.MessageInfo objMessageInfo = null;
 
         Store.VendorInfo.BusinessLogic.VendorInfo oblVendorInfo = null;
@@ -470,11 +473,12 @@ namespace StoreManagement.Admin
                     objsalesOrderItem.ItemUnit = txtQuts.Text;
                     objsalesOrderItem.TotalPrice = Convert.ToDecimal(txtTotals.Text);
                     objsalesOrderItem.SalesOrderID = Convert.ToInt32(transid);
+                    //objPurchaseOrderItemList.Add(objPurchaseOrderItem);
                     objSalesOrderItemList.Add(objsalesOrderItem);
                 }
-
-                oblSalesOrderItem=new Store.SalesOrderItem.BusinessLogic.SalesOrderItem();
-                objMessageInfo =oblSalesOrderItem.ManageItemMaster(objsalesOrderItem, cmdMode);
+                
+                oblSalesOrderItem =new Store.SalesOrderItem.BusinessLogic.SalesOrderItem();
+                objMessageInfo = oblSalesOrderItem.ManageItemMaster(objSalesOrderItemList, cmdMode);
                 reset();
             }
             catch (Exception ex)

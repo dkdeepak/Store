@@ -311,7 +311,7 @@ namespace StoreManagement.Admin
             objSalesOrderItem.ItemDiscountPercentage = Convert.ToDecimal(discountper);
             objSalesOrderItem.ItemDiscount = Convert.ToDecimal(discount);
             objSalesOrderItem.ItemUnit = quantity;
-            objMessageInfo = oblSalesOrder.ManageSaleOrderItem(objSalesOrderItem, 1);
+            //objMessageInfo = oblSalesOrder.ManageSaleOrderItem(objSalesOrderItem, cmdMode);
 
 
             return "";

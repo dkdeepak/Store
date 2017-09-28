@@ -62,7 +62,11 @@ namespace StoreManagement.Admin
 
 
         }
-
+        public Store.Common.CommandMode cmdMode
+        {
+            get { return ViewState["cmdMode"] != null ? (Store.Common.CommandMode)ViewState["cmdMode"] : Store.Common.CommandMode.N; }
+            set { ViewState["cmdMode"] = value; }
+        }
         protected void dgvItem_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             HiddenField hfItemId = (HiddenField)dgvItem.Rows[e.RowIndex].FindControl("hfItemId");
@@ -147,7 +151,7 @@ namespace StoreManagement.Admin
         {
             objItemPrice = new Store.ItemPrice.BusinessObject.ItemPrice();
             oblItemPrice = new Store.ItemPrice.BusinessLogic.ItemPrice();
-              Store.Common.CommandMode   cmdMode = new Store.Common.CommandMode();
+             
            
             try
             {
@@ -161,11 +165,15 @@ namespace StoreManagement.Admin
                     objItemPrice.ItemPriceID = 0;
                     
                 }
+                //TextBox txt1 = (TextBox)pnlForm.FindControl("txtSP");
+                //TextBox txt2 = (TextBox)pnlForm.FindControl("txtDisPerUnit");
+                //TextBox txt3 = (TextBox)pnlForm.FindControl("txtApplicableFrom");
+                //TextBox txt4 = (TextBox)pnlForm.FindControl("txtApplicableTo");
                 objItemPrice.ItemSalePricePerUnit = Convert.ToDecimal(txtSP.Text);
                 objItemPrice.ItemDiscountPercentagePerUnit = Convert.ToDecimal(txtDisPerUnit.Text);
                 objItemPrice.ApplicableFrom = Convert.ToDateTime(txtApplicableFrom.Text);
                 objItemPrice.ApplicableTo = Convert.ToDateTime(txtApplicableTo.Text);
-               objMessageInfo = oblItemPrice.ManageItemMaster(objItemPrice, cmdMode);
+                objMessageInfo = oblItemPrice.ManageItemMaster(objItemPrice, cmdMode);
             }
             catch (Exception ex)
             {

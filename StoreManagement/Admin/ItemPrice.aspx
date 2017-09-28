@@ -86,7 +86,7 @@
                    
                    <div class="col-lg-12 leftmargin">
                         <asp:TextBox ID="txtApplicableFrom" CssClass="form-control" runat="server"  placeholder="Enter The Date"></asp:TextBox>
-                      <ajaxToolkit:CalendarExtender ID="cal1" TargetControlID="txtApplicableFrom" runat="server"></ajaxToolkit:CalendarExtender> 
+                     <%-- <ajaxToolkit:CalendarExtender ID="cal1" TargetControlID="txtApplicableFrom" runat="server"></ajaxToolkit:CalendarExtender> --%>
                       
                    </div>
                    
@@ -99,7 +99,7 @@
                    
                    <div class="col-lg-12 leftmargin">
                         <asp:TextBox ID="txtApplicableTo" CssClass="form-control" runat="server"  placeholder="Enter the Date"></asp:TextBox>
-                      <ajaxToolkit:CalendarExtender ID="cal2" TargetControlID="txtApplicableTo" runat="server"></ajaxToolkit:CalendarExtender> 
+                     <%-- <ajaxToolkit:CalendarExtender ID="cal2" TargetControlID="txtApplicableTo" runat="server"></ajaxToolkit:CalendarExtender> --%>
                    </div>
                    
                </div>

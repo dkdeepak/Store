@@ -31,11 +31,12 @@ namespace Store.SalesOrderItem.BusinessLogic
                 throw;
             }
         }
-        public Store.Common.MessageInfo ManageItemMaster(Store.SalesOrderItem.BusinessObject.SalesOrderItem objSalesOrderItem, CommandMode cmdMode)
+      
+        public Store.Common.MessageInfo ManageItemMaster(Store.SalesOrderItem.BusinessObject.SalesOrderItemList objSalesOrderItemList, CommandMode cmdMode)
         {
             try
             {
-                return odlSalesOrderItem.ManageSalesOrderItem(objSalesOrderItem, cmdMode);
+                return odlSalesOrderItem.ManageSalesOrderItem(objSalesOrderItemList, cmdMode);
             }
             catch
             {

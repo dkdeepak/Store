@@ -133,10 +133,10 @@ namespace Store.SalesReturned.DataAccessLayer
                     {
                         objSalesReturned.VendorID = dr.GetInt32(dr.GetOrdinal("VendorID"));
                     }
-                    //if (dr.IsDBNull(dr.GetOrdinal("VendorName")) == false)
-                    //{
-                    //    objSalesReturned.VendorName = dr.GetString(dr.GetOrdinal("VendorName"));
-                    //}
+                    if (dr.IsDBNull(dr.GetOrdinal("VendorName")) == false)
+                    {
+                        objSalesReturned.VendorName = dr.GetString(dr.GetOrdinal("VendorName"));
+                    }
                     if (dr.IsDBNull(dr.GetOrdinal("SalesReturnDate")) == false)
                     {
                         objSalesReturned.SalesReturnDate = dr.GetDateTime(dr.GetOrdinal("SalesReturnDate"));

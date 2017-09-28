@@ -197,9 +197,7 @@ namespace Store.PurchaseOrder.DataAccessLayer
             {
                 throw;
             }
-       }
-
-        
+       }        
 
         public Store.Common.MessageInfo ManagePurchase(Store.PurchaseOrder.BusinessObject.PurchaseOrder objPOrder, CommandMode cmdMode)
         {

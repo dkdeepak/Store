@@ -62,7 +62,7 @@ namespace StoreManagement
             }
             catch (Exception ex)
             {
-
+                throw ex;
             }
             finally
             {

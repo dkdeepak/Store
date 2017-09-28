@@ -139,15 +139,6 @@ namespace StoreManagement.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtApplicableFrom;
         
         /// <summary>
-        /// cal1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender cal1;
-        
-        /// <summary>
         /// txtApplicableTo control.
         /// </summary>
         /// <remarks>
@@ -155,15 +146,6 @@ namespace StoreManagement.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtApplicableTo;
-        
-        /// <summary>
-        /// cal2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender cal2;
         
         /// <summary>
         /// hfItemPriceId control.

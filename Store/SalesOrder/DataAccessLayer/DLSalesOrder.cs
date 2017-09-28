@@ -252,46 +252,46 @@ namespace Store.SalesOrder.DataAccessLayer
                 throw;
             }
         }
-        public Store.Common.MessageInfo ManageSalesOrderItem(Store.SalesOrderItem.BusinessObject.SalesOrderItem objSalesOrderItem, int cmdMode)
-        {
-                string SQL = "";
-            //string SQL = "USP_ManageSalesOrder";
-            ParameterList param = new ParameterList();
-            DataTableReader dr;
-            Store.Common.MessageInfo objMessageInfo = null;
-            try
-            {
-                SQL = "USP_ManageSalesItem";
-                param.Add(new SQLParameter("@SaleOrderItemID", objSalesOrderItem.SaleOrderItemID));
-                param.Add(new SQLParameter("@SalesOrderID", objSalesOrderItem.SalesOrderID));
-                param.Add(new SQLParameter("@ItemPrefix", objSalesOrderItem.ItemPrefix));
-                param.Add(new SQLParameter("@ItemUnit", objSalesOrderItem.ItemUnit));
-                param.Add(new SQLParameter("@Description", objSalesOrderItem.Description));
-                param.Add(new SQLParameter("@ItemCostPrice", objSalesOrderItem.ItemCostPrice));
-                param.Add(new SQLParameter("@ItemSalePrice", objSalesOrderItem.ItemSalePrice));
-                param.Add(new SQLParameter("@ItemDiscountPercentage", objSalesOrderItem.ItemDiscountPercentage));
-                param.Add(new SQLParameter("@ItemDiscount", objSalesOrderItem.ItemDiscount));
-                param.Add(new SQLParameter("@IsActive", objSalesOrderItem.IsActive));
-                param.Add(new SQLParameter("@ReferenceID", objSalesOrderItem.ReferenceID));
-                param.Add(new SQLParameter("@UserId", objSalesOrderItem.CreatedBy));
-                param.Add(new SQLParameter("@CMDMode", cmdMode));
-                dr = ExecuteQuery.ExecuteReader(SQL, param);
-                if (dr.Read())
-                {
-                    objMessageInfo = new Store.Common.MessageInfo();
-                    objMessageInfo.ErrorCode = Convert.ToInt32(dr["ErrorCode"]);
-                    objMessageInfo.ErrorMessage = Convert.ToString(dr["ErrorMessage"]);
-                    objMessageInfo.TranID = Convert.ToInt32(dr["TranID"]);
-                    objMessageInfo.TranCode = Convert.ToString(dr["TranCode"]);
-                    objMessageInfo.TranMessage = Convert.ToString(dr["TranMessage"]);
-                }
-                return objMessageInfo;
+        //public Store.Common.MessageInfo ManageSalesOrderItem(Store.SalesOrderItem.BusinessObject.SalesOrderItem objSalesOrderItem, int cmdMode)
+        //{
+        //        string SQL = "";
+        //    //string SQL = "USP_ManageSalesOrder";
+        //    ParameterList param = new ParameterList();
+        //    DataTableReader dr;
+        //    Store.Common.MessageInfo objMessageInfo = null;
+        //    try
+        //    {
+        //        SQL = "USP_ManageSalesItem";
+        //        param.Add(new SQLParameter("@SaleOrderItemID", objSalesOrderItem.SaleOrderItemID));
+        //        param.Add(new SQLParameter("@SalesOrderID", objSalesOrderItem.SalesOrderID));
+        //        param.Add(new SQLParameter("@ItemPrefix", objSalesOrderItem.ItemPrefix));
+        //        param.Add(new SQLParameter("@ItemUnit", objSalesOrderItem.ItemUnit));
+        //        param.Add(new SQLParameter("@Description", objSalesOrderItem.Description));
+        //        param.Add(new SQLParameter("@ItemCostPrice", objSalesOrderItem.ItemCostPrice));
+        //        param.Add(new SQLParameter("@ItemSalePrice", objSalesOrderItem.ItemSalePrice));
+        //        param.Add(new SQLParameter("@ItemDiscountPercentage", objSalesOrderItem.ItemDiscountPercentage));
+        //        param.Add(new SQLParameter("@ItemDiscount", objSalesOrderItem.ItemDiscount));
+        //        param.Add(new SQLParameter("@IsActive", objSalesOrderItem.IsActive));
+        //        param.Add(new SQLParameter("@ReferenceID", objSalesOrderItem.ReferenceID));
+        //        param.Add(new SQLParameter("@UserId", objSalesOrderItem.CreatedBy));
+        //        param.Add(new SQLParameter("@CMDMode", cmdMode));
+        //        dr = ExecuteQuery.ExecuteReader(SQL, param);
+        //        if (dr.Read())
+        //        {
+        //            objMessageInfo = new Store.Common.MessageInfo();
+        //            objMessageInfo.ErrorCode = Convert.ToInt32(dr["ErrorCode"]);
+        //            objMessageInfo.ErrorMessage = Convert.ToString(dr["ErrorMessage"]);
+        //            objMessageInfo.TranID = Convert.ToInt32(dr["TranID"]);
+        //            objMessageInfo.TranCode = Convert.ToString(dr["TranCode"]);
+        //            objMessageInfo.TranMessage = Convert.ToString(dr["TranMessage"]);
+        //        }
+        //        return objMessageInfo;
 
-            }
-            catch
-            {
-                throw;
-            }
-        }
+        //    }
+        //    catch
+        //    {
+        //        throw;
+        //    }
+        //}
     }
 }
