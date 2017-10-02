@@ -161,7 +161,7 @@ namespace StoreManagement.Admin
                 }
                 objState.StateName = Convert.ToString(txtState.Text);
                 objState.CountryID = Convert.ToInt32(ddlCountry.SelectedItem.Value);
-                objState.CreatedBy = Convert.ToInt32(Session["UserId"].ToString());
+                //objState.CreatedBy = Convert.ToInt32(Session["UserId"].ToString());
                 objMessageInfo = oblState.ManageItemMaster(objState, cmdMode);
             }
             catch (Exception ex)
