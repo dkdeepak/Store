@@ -114,11 +114,16 @@ namespace StoreManagement.Admin
 
         protected void ibtnCloseForm_Click(object sender, EventArgs e)
         {
-
+            this.mpopForm.Hide();
+            hfItemPriceId.Value = "";
+            upForm.Update();
         }
 
         protected void dgvBatch_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
+            HiddenField hfItemPrice = (HiddenField)dgvBatch.Rows[e.RowIndex].FindControl("hfItemPriceId");
+            hfItemPriceId.Value = hfItemPrice.Value;
+            upForm.Update();
             this.mpopBatch.Hide();
             this.mpopForm.Show();
         }
@@ -135,7 +140,7 @@ namespace StoreManagement.Admin
                 }
                 if (objMessageInfo.TranID > 0)
                 {
-                   // ResetForm();
+                    reset();
                     ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alert", "alert('" + objMessageInfo.TranMessage + "')", true);
                 }
                 this.mpopForm.Hide();
@@ -155,20 +160,7 @@ namespace StoreManagement.Admin
            
             try
             {
-                if (cmdMode == Store.Common.CommandMode.M)
-                {
-                    objItemPrice.ItemPriceID = Convert.ToInt32(hfItemPriceId.Value);
-                    
-                }
-                else
-                {
-                    objItemPrice.ItemPriceID = 0;
-                    
-                }
-                //TextBox txt1 = (TextBox)pnlForm.FindControl("txtSP");
-                //TextBox txt2 = (TextBox)pnlForm.FindControl("txtDisPerUnit");
-                //TextBox txt3 = (TextBox)pnlForm.FindControl("txtApplicableFrom");
-                //TextBox txt4 = (TextBox)pnlForm.FindControl("txtApplicableTo");
+                objItemPrice.ItemPriceID = Convert.ToInt32(hfItemPriceId.Value);
                 objItemPrice.ItemSalePricePerUnit = Convert.ToDecimal(txtSP.Text);
                 objItemPrice.ItemDiscountPercentagePerUnit = Convert.ToDecimal(txtDisPerUnit.Text);
                 objItemPrice.ApplicableFrom = Convert.ToDateTime(txtApplicableFrom.Text);
@@ -186,6 +178,17 @@ namespace StoreManagement.Admin
             }
 
         }
-
+        void reset()
+        {
+            this.mpopForm.Hide();
+            txtSP.Text = "";
+            txtDisPerUnit.Text = "";
+            txtApplicableFrom.Text = "";
+            txtApplicableTo.Text = "";
+        }
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {  
+            reset();
+        }
     }
 }

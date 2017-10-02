@@ -209,7 +209,6 @@ namespace Store.ItemPrice.DataAccessLayer
                 param.Add(new SQLParameter("@ItemDiscountPercentagePerUnit",objItemPrice.ItemDiscountPercentagePerUnit));
                 param.Add(new SQLParameter("@ApplicableFrom",objItemPrice.ApplicableFrom));
                 param.Add(new SQLParameter("@ApplicableTo",objItemPrice.ApplicableTo));               
-                param.Add(new SQLParameter("@ReferenceID", objItemPrice.ReferenceID));
                 param.Add(new SQLParameter("@CMDMode", cmdMode));               
                 dr = ExecuteQuery.ExecuteReader(SQL, param);
                 if (dr.Read())

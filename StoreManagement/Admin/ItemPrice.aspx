@@ -29,7 +29,7 @@
                             <asp:BoundField HeaderText="Vendor Name" ItemStyle-CssClass="text_title" DataField="VendorName" ItemStyle-Width="10%" />
                             <asp:TemplateField HeaderText="Select" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" HeaderStyle-Width="5%">                                            
                                 <ItemTemplate>
-                                    <asp:HiddenField ID="hfItemPriceId" runat="server" Value='<%Eval("ItemPriceID") %>' />
+                                    <asp:HiddenField ID="hfItemPriceId" runat="server" Value='<%#Eval("ItemPriceID") %>' />
                                     <asp:ImageButton ID="imgbtnfrDelete"  ImageUrl="~/Images/select.png" runat="server" CommandName="Delete" Width="20" Height="20"  />
                                 </ItemTemplate>
                             </asp:TemplateField>
@@ -48,76 +48,47 @@
    <asp:UpdatePanel ID="upForm" runat="server" UpdateMode="Conditional">
     <ContentTemplate>
         <div class="col-md-12">
-        <div class="panel panel-default">
+        <div class="panel panel-primary">
                 <div class="panel-heading">
                     <table width="100%">
-                        
                             <tr>
                                 <td align="left"><b>Item Price</b></td>
                                 <td align="right"><asp:LinkButton ID="ibtnCloseForm" Font-Bold="true" Font-Size="Large" runat="server" OnClick="ibtnCloseForm_Click" >X</asp:LinkButton></td>
                             </tr>
-                        <tr>
-                            <td>
-                                <div class="row">
-                   
-                   <div class="col-lg-12 leftmargin">
-                        <asp:TextBox ID="txtSP" CssClass="form-control"  runat="server"  placeholder="Enter the sale price "></asp:TextBox>
-                      
-                   </div>
-                   
-               </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="row">
-                   
-                   <div class="col-lg-12 leftmargin">
-                        <asp:TextBox ID="txtDisPerUnit" CssClass="form-control"  runat="server"  placeholder="Enter the discount % per unit"></asp:TextBox>
-                      
-                   </div>
-                   
-               </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="row">
-                   
-                   <div class="col-lg-12 leftmargin">
-                        <asp:TextBox ID="txtApplicableFrom" CssClass="form-control" runat="server"  placeholder="Enter The Date"></asp:TextBox>
-                     <%-- <ajaxToolkit:CalendarExtender ID="cal1" TargetControlID="txtApplicableFrom" runat="server"></ajaxToolkit:CalendarExtender> --%>
-                      
-                   </div>
-                   
-               </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="row">
-                   
-                   <div class="col-lg-12 leftmargin">
-                        <asp:TextBox ID="txtApplicableTo" CssClass="form-control" runat="server"  placeholder="Enter the Date"></asp:TextBox>
-                     <%-- <ajaxToolkit:CalendarExtender ID="cal2" TargetControlID="txtApplicableTo" runat="server"></ajaxToolkit:CalendarExtender> --%>
-                   </div>
-                   
-               </div>
-                            </td>
-                        </tr>                      
-
-                 <tr> 
-                     <td>
-                          <asp:HiddenField ID="hfItemPriceId" runat="server" Value='<%# Bind("ItemPriceID") %>' />
-                         <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Submit" CssClass="form-control btn-primary" />
-                         <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="form-control btn-danger" />
-                     </td>
-                     
-                 </tr>
-                        </table>
-                </div>
-                 <div class="panel-body">
-                     
+                       </table>
+                </div>   
+                  <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <asp:TextBox ID="txtSP" CssClass="form-control"  runat="server"  placeholder="Enter the sale price "></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <asp:TextBox ID="txtDisPerUnit" CssClass="form-control"  runat="server"  placeholder="Enter the discount % per unit"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <asp:TextBox ID="txtApplicableFrom" CssClass="form-control" runat="server"  placeholder="Enter The Date"></asp:TextBox>
+                            <%-- <ajaxToolkit:CalendarExtender ID="cal1" TargetControlID="txtApplicableFrom" runat="server"></ajaxToolkit:CalendarExtender> --%>
+                        </div>
+                    </div>
+                     <div class="row">
+                        <div class="col-md-12">
+                            <asp:TextBox ID="txtApplicableTo" CssClass="form-control" runat="server"  placeholder="Enter the Date"></asp:TextBox>
+                            <%-- <ajaxToolkit:CalendarExtender ID="cal2" TargetControlID="txtApplicableTo" runat="server"></ajaxToolkit:CalendarExtender> --%>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                             <asp:HiddenField ID="hfItemPriceId" runat="server"  />
+                             <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Submit" CssClass="form-control btn-primary" />
+                        </div>
+                        <div class="col-md-6">
+                            <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" CssClass="form-control btn-danger" />
+                        </div>
+                    </div>
                  </div>
             </div>
         </div>

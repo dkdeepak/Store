@@ -213,14 +213,14 @@ namespace Store.SalesOrderItem.DataAccessLayer
         public Store.Common.MessageInfo ManageSalesOrderItem(Store.SalesOrderItem.BusinessObject.SalesOrderItemList objSalesOrderItemList, CommandMode cmdMode)
         {
             string SQL = "";
-            ParameterList param = new ParameterList();           
+                    
             Store.Common.MessageInfo objMessageInfo = null;
             try
             {
                 SQL = "USP_ManageSalesItem";
                 foreach (Store.SalesOrderItem.BusinessObject.SalesOrderItem objSalesOrderItem in objSalesOrderItemList)
                 {
-                  //  param = new ParameterList();
+                    ParameterList param = new ParameterList();
                     DataTableReader dr;
                     param.Add(new SQLParameter("@SaleOrderItemID", objSalesOrderItem.SaleOrderItemID));
                     param.Add(new SQLParameter("@SalesOrderID", objSalesOrderItem.SalesOrderID));
