@@ -2,6 +2,8 @@ using System;
 using System.Data;
 using System.Configuration;
 using System.Web;
+using Store.DatabaseHelper.Database.Common;
+using Store.DatabaseHelper.Database.DatabaseHelper;
 
 namespace Store
 {
@@ -36,6 +38,33 @@ namespace Store
                     _sbScript.Length = 0;
                 }
             }
+            public static class ExceptionLog
+            {
+              public static void Exceptionlogs(string msg, string loc, string page, int userId)
+                {
+                    string SQL = "";
+                    ParameterList param = new ParameterList();
+                    SQL = "proc_ExceptionLog";
+                    param.Add(new SQLParameter("@msg", msg));
+                    param.Add(new SQLParameter("@loc", loc));
+                    param.Add(new SQLParameter("@page", page));
+                    param.Add(new SQLParameter("@UserId", userId));
+                    ExecuteQuery.ExecuteNonQuery(SQL, param);
+                }
+                public static string LineNumber(this Exception e)
+                {
+                    string linenum = "";
+                    try
+                    {
+                        linenum = Convert.ToString(e.StackTrace.Substring(e.StackTrace.LastIndexOf(' ')));
+                    }
+                    catch
+                    {
+                    }
+                    return linenum;
+                }
+            }
         }
     }
 }
+

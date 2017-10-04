@@ -72,7 +72,7 @@ namespace StoreManagement.Admin
             }
             catch (Exception ex)
             {
-
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Category).FullName, 1);
             }
             finally
             {
@@ -124,7 +124,7 @@ namespace StoreManagement.Admin
                     dgvCategory.DataSource = obCategoryList;
                     dgvCategory.DataBind();
                     ddlCategory.DataSource = obCategoryList;
-                    ddlCategory.DataTextField = "CategoryName";
+                    ddlCategory.DataTextField = "CategoryNam";
                     ddlCategory.DataValueField = "CategoryID";
                     ddlCategory.DataBind();
 
@@ -138,7 +138,7 @@ namespace StoreManagement.Admin
             }
             catch (Exception ex)
             {
-
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Category).FullName, 1);
             }
             finally
             {
@@ -174,7 +174,7 @@ namespace StoreManagement.Admin
             }
             catch (Exception ex)
             {
-
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Category).FullName, 1);
             }
             finally
             {

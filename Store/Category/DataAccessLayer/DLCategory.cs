@@ -21,7 +21,7 @@ namespace Store.Category.DataAccessLayer
             try
             {
                 SQL = "proc_Category";
-                paramList.Add(new SQLParameter("@CategoryID", CategoryID));
+                paramList.Add(new SQLParameter("@CategoryI", CategoryID));
                 paramList.Add(new SQLParameter("@Flag", Flag));
                 paramList.Add(new SQLParameter("@FlagValue", Flag));
                 dr = ExecuteQuery.ExecuteReader(SQL, paramList);
@@ -72,12 +72,14 @@ namespace Store.Category.DataAccessLayer
                     objCategoryList.Add(objCategory);
                 }
                 dr.Close();
-                return objCategoryList;
+                
             }
-            catch (Exception)
+
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Category).FullName, 1);
             }
+            return objCategoryList;
         }
         public Store.Category.BusinessObject.Category GetAllCategory(int CategoryID, int Flag, string FlagValue)
         {
@@ -139,12 +141,13 @@ namespace Store.Category.DataAccessLayer
                     
                 }
                 dr.Close();
-                return objCategory;
-            }
-            catch (Exception)
+                
+            }           
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Category).FullName, 1);
             }
+            return objCategory;
 
         }
         public Store.Common.MessageInfo ManageCategory(Store.Category.BusinessObject.Category objCategory, CommandMode cmdMode)
@@ -156,7 +159,7 @@ namespace Store.Category.DataAccessLayer
             try
             {
                 SQL = "USP_ManageCategory";
-                param.Add(new SQLParameter("@CategoryID", objCategory.CategoryID));
+                param.Add(new SQLParameter("@CategoryI", objCategory.CategoryID));
                 param.Add(new SQLParameter("@CategoryName", objCategory.CategoryName));
                 param.Add(new SQLParameter("@ParentCategoryID", objCategory.ParentCategoryID));
                 if (cmdMode==CommandMode.N)
@@ -175,13 +178,13 @@ namespace Store.Category.DataAccessLayer
                     objMessageInfo.TranCode = Convert.ToString(dr["TranCode"]);
                     objMessageInfo.TranMessage = Convert.ToString(dr["TranMessage"]);
                 }
-                return objMessageInfo;
+                
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Category).FullName, 1);
             }
-
+            return objMessageInfo;
         }
     }
 }
