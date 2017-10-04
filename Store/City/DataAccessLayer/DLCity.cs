@@ -88,7 +88,7 @@ namespace Store.City.DataAccessLayer
             catch (Exception ex)
             {
                 Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(City).FullName, 1);
- +          }
+           }
              return objCityList;
         }
         public Store.City.BusinessObject.City GetAllCity(int CityID, int Flag, string FlagValue)
@@ -159,7 +159,7 @@ namespace Store.City.DataAccessLayer
             catch (Exception ex)
             {
                 Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(City).FullName, 1);
- +          }
+          }
             return objCity;
         }
         public Store.Common.MessageInfo ManageCity(Store.City.BusinessObject.City objCity, CommandMode cmdMode)
@@ -196,7 +196,7 @@ namespace Store.City.DataAccessLayer
             catch (Exception ex)
             {
                 Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(City).FullName, 1);
- +          }
+           }
             return objMessageInfo;
         }
     }
