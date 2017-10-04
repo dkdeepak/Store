@@ -16,9 +16,10 @@ namespace Store.PurchaseOrder.BusinessLogic
             {
                 return odlPurchaseOrder.GetAllPurchaseOrder(PurchaseOrderID, Flag, FlagValue);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(PurchaseOrder).FullName, 1);
+                return null;
             }
         }
         public Store.PurchaseOrder.BusinessObject.PurchaseOrderList GetAllPurchaseOrderList(int PurchaseOrderID, int Flag, string FlagValue)
@@ -27,9 +28,10 @@ namespace Store.PurchaseOrder.BusinessLogic
             {
                 return odlPurchaseOrder.GetAllPurchaseOrderList(PurchaseOrderID, Flag, FlagValue);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(PurchaseOrder).FullName, 1);
+                return null;
             }
         }
         
@@ -39,9 +41,10 @@ namespace Store.PurchaseOrder.BusinessLogic
             {
                 return odlPurchaseOrder.ManagePurchase(objPOrder, cmdMode);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(PurchaseOrder).FullName, 1);
+                return null;
             }
         }
         public DataTable RunQuery(string query)
@@ -50,7 +53,11 @@ namespace Store.PurchaseOrder.BusinessLogic
             {
                 return odlPurchaseOrder.runQuery(query);
             }
-            catch { throw; }
+            catch (Exception ex)
+            {
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(PurchaseOrder).FullName, 1);
+                return null;
+            }
         }
 
     }

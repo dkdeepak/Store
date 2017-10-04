@@ -87,13 +87,15 @@ namespace Store.PurchaseOrder.DataAccessLayer
                     
                 }
                 dr.Close();
-                return objPOrder;
+                
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(PurchaseOrder).FullName, 1);
+               
             }
+            return objPOrder;
         }
         public Store.PurchaseOrder.BusinessObject.PurchaseOrderList GetAllPurchaseOrderList(int PurchaseOrderID, int Flag, string FlagValue)
         {
@@ -178,13 +180,15 @@ namespace Store.PurchaseOrder.DataAccessLayer
 
                 }
                 dr.Close();
-                return objPOrderList;
+
 
             }
             catch (Exception ex)
             {
-                throw ex;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(PurchaseOrder).FullName, 1);
+                
             }
+            return objPOrderList;
         }
 
         public DataTable runQuery(string query)
@@ -193,11 +197,12 @@ namespace Store.PurchaseOrder.DataAccessLayer
             {
                 return ExecuteQuery.ExecuteDataTable(query);
             }
-            catch
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(PurchaseOrder).FullName, 1);
+                return null;
             }
-       }        
+        }        
 
         public Store.Common.MessageInfo ManagePurchase(Store.PurchaseOrder.BusinessObject.PurchaseOrder objPOrder, CommandMode cmdMode)
         {
@@ -231,12 +236,14 @@ namespace Store.PurchaseOrder.DataAccessLayer
                     objMessageInfo.TranCode = Convert.ToString(dr["TranCode"]);
                     objMessageInfo.TranMessage = Convert.ToString(dr["TranMessage"]);
                 }
-                return objMessageInfo;
+                
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(PurchaseOrder).FullName, 1);
+                
             }
+            return objMessageInfo;
         }
         
 

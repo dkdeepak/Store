@@ -68,12 +68,14 @@ namespace Store.ItemUnit.DataAccessLayer
                     objItemUnitList.Add(objItemUnit);
                 }
                 dr.Close();
-                return objItemUnitList;
+                
             }
-            catch
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(ItemUnit).FullName, 1);
+                
             }
+            return objItemUnitList;
         }
         public Store.ItemUnit.BusinessObject.ItemUnit GetAllItemUnit(int UnitID, int Flag, string FlagValue)
         {
@@ -131,14 +133,15 @@ namespace Store.ItemUnit.DataAccessLayer
                     dr.Close();
                 }
                 
-                return objItemUnit;
+                
 
             }
-            catch
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(ItemUnit).FullName, 1);
+                
             }
-
+            return objItemUnit;
         }
         public Store.Common.MessageInfo ManageItemUnit(Store.ItemUnit.BusinessObject.ItemUnit objItemUnit, CommandMode cmdMode)
         {
@@ -168,13 +171,15 @@ namespace Store.ItemUnit.DataAccessLayer
                     objMessageInfo.TranCode = Convert.ToString(dr["TranCode"]);
                     objMessageInfo.TranMessage = Convert.ToString(dr["TranMessage"]);
                 }
-                return objMessageInfo;
+               
                
             }
-            catch
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(ItemUnit).FullName, 1);
+                
             }
+            return objMessageInfo;
         }
     }
 }

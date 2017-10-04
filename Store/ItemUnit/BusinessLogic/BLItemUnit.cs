@@ -15,9 +15,10 @@ namespace Store.ItemUnit.BusinessLogic
             {
                 return odlItemUnit.GetAllItemUnitList(UnitId, Flag, FlagValue);
             }
-            catch 
+            catch(Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(ItemUnit).FullName, 1);
+                return null;
             }
         }
         public Store.ItemUnit.BusinessObject.ItemUnit GetAllItemUnit(int UnitId, int Flag, string FlagValue)
@@ -26,9 +27,10 @@ namespace Store.ItemUnit.BusinessLogic
             {
                 return odlItemUnit.GetAllItemUnit(UnitId, Flag, FlagValue);
             }
-            catch
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(ItemUnit).FullName, 1);
+                return null;
             }
         }
         public Store.Common.MessageInfo ManageItemMaster(Store.ItemUnit.BusinessObject.ItemUnit objItemUnit, CommandMode cmdMode)
@@ -37,9 +39,10 @@ namespace Store.ItemUnit.BusinessLogic
             {
                 return odlItemUnit.ManageItemUnit(objItemUnit, cmdMode);
             }
-            catch
+            catch (Exception ex)
             {
-                throw;            
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(ItemUnit).FullName, 1);
+                return null;
             }
         }
 

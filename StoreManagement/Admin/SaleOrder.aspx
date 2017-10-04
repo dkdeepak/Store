@@ -80,7 +80,7 @@
             <asp:BoundField DataField="RowNumber"/>
             <asp:TemplateField HeaderText="Item Name">
                 <ItemTemplate>
-                    <asp:TextBox ID="txtItemName" placeholder="Enter Item Name" ToolTip="Item Name"     runat="server"  CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtItemName" OnTextChanged="txtItemName_TextChanged" AutoPostBack="true" placeholder="Enter Item Name" ToolTip="Item Name"     runat="server"  CssClass="form-control"></asp:TextBox>
                     <ajaxToolkit:AutoCompleteExtender ServiceMethod="GetCompletionList" CompletionListCssClass="autoCompleteList" MinimumPrefixLength="1"  
                     CompletionInterval="10" EnableCaching="false"  CompletionSetCount="1" TargetControlID="txtItemName"  
                     ID="AutoCompleteExtender1" runat="server" FirstRowSelected="true">  
@@ -114,7 +114,7 @@
 
             <asp:TemplateField HeaderText="Discount(%)">
                 <ItemTemplate>                   
-                    <asp:TextBox ID="txtDisPre" runat="server" ToolTip="Discount(%)" placeholder="Discount(%)"    OnTextChanged="txtDisPre_TextChanged" AutoPostBack="true"  CssClass="form-control"  ></asp:TextBox>
+                    <asp:TextBox ID="txtDisPre" runat="server" ToolTip="Discount(%)" placeholder="Discount(%)"    AutoPostBack="true"  CssClass="form-control"  ></asp:TextBox>
                 </ItemTemplate>
                 <FooterTemplate>
                     <asp:TextBox ID="txtDisPreT" placeholder="00.00 %" ToolTip="Discount(%)" ReadOnly="true"   runat="server" CssClass="form-control"></asp:TextBox>

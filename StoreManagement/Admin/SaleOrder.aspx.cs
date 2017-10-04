@@ -24,8 +24,13 @@ namespace StoreManagement.Admin
         Store.SalesOrder.BusinessObject.SalesOrder objSalesOrder = null;
         Store.SalesOrderItem.BusinessObject.SalesOrderItem objsalesOrderItem = null;
         Store.SalesOrder.BusinessObject.SalesOrder objSalesOrderList = null;
-      //  Store.SalesOrderItem.BusinessObject.SalesOrderItemList objSalesOrderItemList = null;
-        
+        //  Store.SalesOrderItem.BusinessObject.SalesOrderItemList objSalesOrderItemList = null;
+        Store.Item.BusinessObject.Item objItem = null;
+        Store.Item.BusinessLogic.Item oblItem = null;
+        Store.ItemPrice.BusinessObject.ItemPrice objItemPrice = null;
+        Store.ItemPrice.BusinessLogic.ItemPrice oblItemPrice=null;
+
+
         Store.Common.MessageInfo objMessageInfo = null;
 
         Store.VendorInfo.BusinessLogic.VendorInfo oblVendorInfo = null;
@@ -203,10 +208,10 @@ namespace StoreManagement.Admin
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                TextBox txtDisPre = (TextBox)e.Row.FindControl("txtDisPre");
+                TextBox txtItemName = (TextBox)e.Row.FindControl("txtItemName");
                 TextBox txtQut = (TextBox)e.Row.FindControl("txtQut");
 
-                txtDisPre.Attributes.Add("RowId", e.Row.RowIndex.ToString());
+                txtItemName.Attributes.Add("RowId", e.Row.RowIndex.ToString());
                 txtQut.Attributes.Add("RowId", e.Row.RowIndex.ToString());
             }
         }
@@ -259,17 +264,17 @@ namespace StoreManagement.Admin
             this.mpopVendor.Show();
 
         }
-        protected void txtDisPre_TextChanged(object sender, EventArgs e)
-        {
-            int rows = Convert.ToInt32(((TextBox)sender).Attributes["RowId"].ToString());
-            TextBox costprice = (TextBox)Gridview1.Rows[rows].FindControl("txtCPrice");
-            TextBox saleprice = (TextBox)Gridview1.Rows[rows].FindControl("txtSPrice");
-            TextBox dicpre = (TextBox)Gridview1.Rows[rows].FindControl("txtDisPre");
-            TextBox dic = (TextBox)Gridview1.Rows[rows].FindControl("txtDis");
-            TextBox qty = (TextBox)Gridview1.Rows[rows].FindControl("txtQut");
-            dic.Text = Convert.ToString(((Convert.ToDouble(saleprice.Text)) * (Convert.ToDouble(dicpre.Text))) / 100);
-            qty.Focus();
-        }
+        //protected void txtDisPre_TextChanged(object sender, EventArgs e)
+        //{
+        //    int rows = Convert.ToInt32(((TextBox)sender).Attributes["RowId"].ToString());
+        //    TextBox costprice = (TextBox)Gridview1.Rows[rows].FindControl("txtCPrice");
+        //    TextBox saleprice = (TextBox)Gridview1.Rows[rows].FindControl("txtSPrice");
+        //    TextBox dicpre = (TextBox)Gridview1.Rows[rows].FindControl("txtDisPre");
+        //    TextBox dic = (TextBox)Gridview1.Rows[rows].FindControl("txtDis");
+        //    TextBox qty = (TextBox)Gridview1.Rows[rows].FindControl("txtQut");
+        //    dic.Text = Convert.ToString(((Convert.ToDouble(saleprice.Text)) * (Convert.ToDouble(dicpre.Text))) / 100);
+        //    qty.Focus();
+        //}
         protected void txtQut_TextChanged(object sender, EventArgs e)
         {
             int rows = Convert.ToInt32(((TextBox)sender).Attributes["RowId"].ToString());
@@ -485,5 +490,29 @@ namespace StoreManagement.Admin
             { throw ex; }
         }
 
+        protected void txtItemName_TextChanged(object sender, EventArgs e)
+        {
+            int rows = Convert.ToInt32(((TextBox)sender).Attributes["Rowid"].ToString());
+            TextBox name = (TextBox)Gridview1.Rows[rows].FindControl("txtItemName");
+            TextBox dec = (TextBox)Gridview1.Rows[rows].FindControl("txtDec");
+            TextBox priceS = (TextBox)Gridview1.Rows[rows].FindControl("txtSPrice");
+            TextBox dicPre = (TextBox)Gridview1.Rows[rows].FindControl("txtDisPre");
+            TextBox disAmt = (TextBox)Gridview1.Rows[rows].FindControl("txtDis");
+            TextBox priceC = (TextBox)Gridview1.Rows[rows].FindControl("txtCPrice");
+            TextBox qut = (TextBox)Gridview1.Rows[rows].FindControl("txtQut");
+            string item = name.Text;
+            objItem = new Store.Item.BusinessObject.Item();
+            oblItem= new Store.Item.BusinessLogic.Item();
+            objItem = oblItem.GetAllItem(item, 0, "");
+            dec.Text = objItem.ItemDescription;
+            objItemPrice = new Store.ItemPrice.BusinessObject.ItemPrice();
+            oblItemPrice = new Store.ItemPrice.BusinessLogic.ItemPrice();
+            objItemPrice = oblItemPrice.GetAllItemPrice(objItem.ItemID, 0, "");
+            priceC.Text = Convert.ToString(objItemPrice.ItemCostPricePerUnit);
+            priceS.Text = Convert.ToString(objItemPrice.ItemSalePricePerUnit);
+            dicPre.Text = Convert.ToString(objItemPrice.ItemDiscountPercentagePerUnit);
+            disAmt.Text = Convert.ToString((Convert.ToDouble(priceS.Text) * Convert.ToDouble(dicPre.Text)) / 100);
+            qut.Focus();
+        }
     }
 }

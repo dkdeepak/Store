@@ -137,7 +137,7 @@ namespace Store.Item.DataAccessLayer
             try
             {
                 // SQL = "proc_Item";
-                SQL = "proc_ItemDetial";
+                SQL = "proc_ItemDetail";
                 paramList.Add(new SQLParameter("@Item", Item));
                 dr = ExecuteQuery.ExecuteReader(SQL, paramList);
                 while (dr.Read())
@@ -147,6 +147,10 @@ namespace Store.Item.DataAccessLayer
                     if (dr.IsDBNull(dr.GetOrdinal("ItemDescription")) == false)
                     {
                         objItem.ItemDescription = dr.GetString(dr.GetOrdinal("ItemDescription"));
+                    }
+                    if (dr.IsDBNull(dr.GetOrdinal("ItemID")) == false)
+                    {
+                        objItem.ItemID = dr.GetInt32(dr.GetOrdinal("ItemID"));
                     }
 
                     //if (dr.IsDBNull(dr.GetOrdinal("ItemCostPricePerUnit")) == false)

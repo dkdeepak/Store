@@ -128,10 +128,6 @@ namespace Store.ItemPrice.DataAccessLayer
                     {
                         objItemPrice.ItemID = dr.GetInt32(dr.GetOrdinal("ItemID"));
                     }
-                    if (dr.IsDBNull(dr.GetOrdinal("ItemPrefix")) == false)
-                    {
-                        objItemPrice.ItemPrefix = dr.GetString(dr.GetOrdinal("ItemPrefix"));
-                    }
                     if (dr.IsDBNull(dr.GetOrdinal("ItemCostPricePerUnit")) == false)
                     {
                         objItemPrice.ItemCostPricePerUnit = dr.GetDecimal(dr.GetOrdinal("ItemCostPricePerUnit"));
@@ -152,16 +148,7 @@ namespace Store.ItemPrice.DataAccessLayer
                     {
                         objItemPrice.ApplicableTo = dr.GetDateTime(dr.GetOrdinal("ApplicableTo"));
                     }
-                    if (dr.IsDBNull(dr.GetOrdinal("CategoryID")) == false)
-                    {
-                        objItemPrice.CategoryID = dr.GetInt32(dr.GetOrdinal("CategoryID"));
-                    }
-                    if (dr.IsDBNull(dr.GetOrdinal("CategoryName")) == false)
-                    {
-                        objItemPrice.CategoryName = dr.GetString(dr.GetOrdinal("CategoryName"));
-                    }
-
-                    if ((dr.IsDBNull(dr.GetOrdinal("CreatedOn")) == false))
+                   if ((dr.IsDBNull(dr.GetOrdinal("CreatedOn")) == false))
                     {
                         objItemPrice.CreatedOn = dr.GetDateTime(dr.GetOrdinal("CreatedOn"));                        
                     }
@@ -286,7 +273,7 @@ namespace Store.ItemPrice.DataAccessLayer
                 ds=ExecuteQuery.ExecuteDataSet(SQL, param);
             }
             catch (Exception ex) {
-                
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(ItemPrice).FullName, 1);
             }
             return ds;
         }
