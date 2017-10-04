@@ -99,13 +99,12 @@ namespace Store.Client.DataAccessLayer
 
                 }
                 dr.Close();
-                return objClient;
             }
             catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Client).FullName, 1);
             }
-        
+              return objClient;
         }
         public Store.Client.BusinessObject.ClientList GetAllClientList(int ClientID, int Flag, string FlagValue)
         {
@@ -196,13 +195,13 @@ namespace Store.Client.DataAccessLayer
                     objClientList.Add(objClient);
                 }
                 dr.Close();
-                return objClientList;
+                
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Client).FullName, 1);
             }
- 
+            return objClientList;
         }
         public Store.Common.MessageInfo ManageClient(Store.Client.BusinessObject.Client objClient, CommandMode cmdMode)
         {
@@ -239,12 +238,13 @@ namespace Store.Client.DataAccessLayer
                     objMessageInfo.TranCode = Convert.ToString(dr["TranCode"]);
                     objMessageInfo.TranMessage = Convert.ToString(dr["TranMessage"]);
                 }
-                return objMessageInfo;
+                
             }
             catch (Exception)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Client).FullName, 1);
             }
+            return objMessageInfo;
         }
     }
 }
