@@ -60,12 +60,14 @@ namespace Store.Country.DataAccessLayer
       
                 }
                 dr.Close();
-                return objCountryList;
+                
             }
             catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Country).FullName, 1);
+                
             }
+            return objCountryList;
         }
         public Store.Country.BusinessObject.Country GetAllCountry(int CountryID, int Flag, string FlagValue)
         {
@@ -114,13 +116,13 @@ namespace Store.Country.DataAccessLayer
                 }
                 dr.Close();
 
-                return objCountry;
+               
             }
             catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Country).FullName, 1);
             }
-
+             return objCountry;
         }
         public Store.Common.MessageInfo ManageCountry(Store.Country.BusinessObject.Country objCountry, CommandMode cmdMode)
         {
@@ -149,13 +151,13 @@ namespace Store.Country.DataAccessLayer
                     objMessageInfo.TranCode = Convert.ToString(dr["TranCode"]);
                     objMessageInfo.TranMessage = Convert.ToString(dr["TranMessage"]);
                 }
-                return objMessageInfo;
+                
             }
             catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Country).FullName, 1);
             }
-
+            return objMessageInfo;
         }
     }
 }
