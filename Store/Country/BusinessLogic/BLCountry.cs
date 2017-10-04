@@ -17,7 +17,8 @@ namespace Store.Country.BusinessLogic
             }
             catch (Exception ex)
             {
-                throw;
+               Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Category).FullName, 1);
+                return null;
             }
         }public Store.Country.BusinessObject.Country GetAllCountry(int CountryID, int Flag, string FlagValue)
         {
@@ -27,7 +28,8 @@ namespace Store.Country.BusinessLogic
             }
             catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Category).FullName, 1);
+                return null;
             }
         }
         public Store.Common.MessageInfo ManageItemMaster(Store.Country.BusinessObject.Country objCountry, CommandMode cmdMode)
@@ -38,7 +40,8 @@ namespace Store.Country.BusinessLogic
             }
             catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Category).FullName, 1);
+                return null;
             }
 
         }
