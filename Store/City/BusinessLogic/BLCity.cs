@@ -17,7 +17,8 @@ namespace Store.City.BusinessLogic
             }
             catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(City).FullName, 1);
+                return null;
             }
         }
         public Store.City.BusinessObject.City GetAllCity(int CityID, int Flag, string FlagValue)
@@ -28,7 +29,8 @@ namespace Store.City.BusinessLogic
             }
             catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(City).FullName, 1);
+                return null;
             }
         }
         public Store.Common.MessageInfo ManageItemMaster(Store.City.BusinessObject.City objCity, CommandMode cmdMode)
@@ -39,7 +41,8 @@ namespace Store.City.BusinessLogic
             }
             catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(City).FullName, 1);
+                return null;
             }
         }
     }
