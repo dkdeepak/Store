@@ -17,7 +17,8 @@ namespace Store.District.BusinessLogic
             }
             catch(Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(District).FullName, 1);
+                return null;
             }
             
         }
@@ -29,7 +30,8 @@ namespace Store.District.BusinessLogic
             }
             catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(District).FullName, 1);
+                return null;
             }
         }
         public Store.Common.MessageInfo ManageItemMaster(Store.District.BusinessObject.District objDistrict, CommandMode cmdMode)
@@ -40,7 +42,8 @@ namespace Store.District.BusinessLogic
             }
             catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(District).FullName, 1);
+                return null;
             }
         }
     }

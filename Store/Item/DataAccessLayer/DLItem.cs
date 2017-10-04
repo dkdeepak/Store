@@ -19,17 +19,17 @@ namespace Store.Item.DataAccessLayer
             string SQL = string.Empty;
             ParameterList paramList = new ParameterList();
             DataTableReader dr;
-            try 
+            try
             {
-                SQL = "proc_Item";               
-                paramList.Add(new SQLParameter("@ItemID",ItemID));
+                SQL = "proc_Item";
+                paramList.Add(new SQLParameter("@ItemID", ItemID));
                 paramList.Add(new SQLParameter("@Flag", Flag));
                 paramList.Add(new SQLParameter("@FlagValue", FlagValue));
                 dr = ExecuteQuery.ExecuteReader(SQL, paramList);
                 while (dr.Read())
                 {
-                    objItem =new BusinessObject.Item();
-                   
+                    objItem = new BusinessObject.Item();
+
                     if (dr.IsDBNull(dr.GetOrdinal("ItemId")) == false)
                     {
                         objItem.ItemID = dr.GetInt32(dr.GetOrdinal("ItemID"));
@@ -119,12 +119,13 @@ namespace Store.Item.DataAccessLayer
 
                 }
                 dr.Close();
-                return objItemList;
+
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Item).FullName, 1);
             }
+            return objItemList;
         }
         public Store.Item.BusinessObject.Item GetAllItem(string Item, int Flag, string FlagValue)
         {
@@ -163,13 +164,13 @@ namespace Store.Item.DataAccessLayer
 
                 }
                 dr.Close();
-                return objItem;
+                
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Item).FullName, 1);
             }
-
+            return objItem;
         }
         public Store.Common.MessageInfo ManageItem(Store.Item.BusinessObject.Item objItem, CommandMode cmdMode)
         {
@@ -211,14 +212,14 @@ namespace Store.Item.DataAccessLayer
                     objMessageInfo.TranCode = Convert.ToString(dr["TranCode"]);
                     objMessageInfo.TranMessage = Convert.ToString(dr["TranMessage"]);
                 }
-                return objMessageInfo;
+                
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Item).FullName, 1);
             }
-            
+            return objMessageInfo;
         }
     }
 }

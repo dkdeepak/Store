@@ -78,13 +78,13 @@ namespace Store.District.DataAccessLayer
                     objDistrictList.Add(objDistrict);
                 }
                 dr.Close();
-                return objDistrictList;
+                
             }
             catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(District).FullName, 1);
             }
-
+            return objDistrictList;
         }
         public Store.District.BusinessObject.District GetAllDistrict(int DistrictID, int Flag, string FlagValue)
         {
@@ -152,12 +152,13 @@ namespace Store.District.DataAccessLayer
                     
                 }
                 dr.Close();
-                return objDistrict;
+                
             }
             catch (Exception ex)
             {
-                throw;
-            }        
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(District).FullName, 1);
+            }
+            return objDistrict;
         }
         public Store.Common.MessageInfo ManageDistrict(Store.District.BusinessObject.District objDistrict, CommandMode cmdMode)
         {
@@ -188,12 +189,13 @@ namespace Store.District.DataAccessLayer
                     objMessageInfo.TranCode = Convert.ToString(dr["TranCode"]);
                     objMessageInfo.TranMessage = Convert.ToString(dr["TranMessage"]);
                 }
-                return objMessageInfo;
+               
             }
             catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(District).FullName, 1);
             }
+            return objMessageInfo;
         }
     }
 }

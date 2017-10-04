@@ -240,7 +240,7 @@ namespace Store.Client.DataAccessLayer
                 }
                 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Client).FullName, 1);
             }

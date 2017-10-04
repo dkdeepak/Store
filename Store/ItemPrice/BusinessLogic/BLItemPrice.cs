@@ -16,9 +16,10 @@ namespace Store.ItemPrice.BusinessLogic
             {
                 return odlItemPrice.GetAllItemPriceList(ItemPriceID, Flag, FlagValue);
             }
-            catch
+            catch(Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(ItemPrice).FullName, 1);
+                return null;
             }
         }
         public Store.ItemPrice.BusinessObject.ItemPrice GetAllItemPrice(int ItemPriceID, int Flag, string FlagValue)
@@ -27,9 +28,10 @@ namespace Store.ItemPrice.BusinessLogic
             {
                 return odlItemPrice.GetAllItemPrice(ItemPriceID, Flag, FlagValue);
             }
-            catch
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(ItemPrice).FullName, 1);
+                return null;
             }
         }
         public Store.Common.MessageInfo ManageItemMaster(Store.ItemPrice.BusinessObject.ItemPrice objItemPrice, CommandMode cmdMode)
@@ -38,9 +40,10 @@ namespace Store.ItemPrice.BusinessLogic
             {
                 return odlItemPrice.ManageItemPrice(objItemPrice, cmdMode);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                throw ex;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(ItemPrice).FullName, 1);
+                return null;
             }
         }
 

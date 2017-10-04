@@ -96,12 +96,13 @@ namespace Store.ItemPrice.DataAccessLayer
                     objItemPriceList.Add(objItemPrice);
                 }
                 dr.Close();
-                return objItemPriceList;
+                
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(ItemPrice).FullName, 1);
             }
+            return objItemPriceList;
         }
         public Store.ItemPrice.BusinessObject.ItemPrice GetAllItemPrice(int ItemPriceID, int Flag, string FlagValue)
         {
@@ -187,12 +188,13 @@ namespace Store.ItemPrice.DataAccessLayer
                     
                 }
                 dr.Close();
-                return objItemPrice;
+                
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(ItemPrice).FullName, 1);
             }
+            return objItemPrice;
         }
         public Store.Common.MessageInfo ManageItemPrice(Store.ItemPrice.BusinessObject.ItemPrice objItemPrice, CommandMode cmdMode)
         {
@@ -220,13 +222,14 @@ namespace Store.ItemPrice.DataAccessLayer
                     objMessageInfo.TranCode = Convert.ToString(dr["TranCode"]);
                     objMessageInfo.TranMessage = Convert.ToString(dr["TranMessage"]);
                 }
-                return objMessageInfo;
+                
                
             }
             catch (Exception ex)
             {
-                throw ex;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(ItemPrice).FullName, 1);
             }
+            return objMessageInfo;
         }
 
         //public Store.Common.MessageInfo ManageUpdadeItemPrice(Store.ItemPrice.BusinessObject.ItemPrice objItemPrice, CommandMode cmdMode)

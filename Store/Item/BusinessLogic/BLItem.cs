@@ -16,9 +16,10 @@ namespace Store.Item.BusinessLogic
              {
                  return odlItem.GetAllItemList(ItemID, Flag, FlagValue);
              }
-             catch(Exception)
+             catch(Exception ex)
              {
-                 throw;
+                 Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Item).FullName, 1);
+                 return null;
              }
 
          }
@@ -28,9 +29,10 @@ namespace Store.Item.BusinessLogic
              {
                  return odlItem.GetAllItem(Item, Flag, FlagValue);
              }
-             catch (Exception)
+             catch (Exception ex)
              {
-                 throw;
+                 Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Item).FullName, 1);
+                 return null;
              }
          }
          public Store.Common.MessageInfo ManageItemMaster(Store.Item.BusinessObject.Item objItem, CommandMode cmdMode)
@@ -39,9 +41,10 @@ namespace Store.Item.BusinessLogic
              {
                  return odlItem.ManageItem(objItem,cmdMode);
              }
-             catch (Exception)
+             catch (Exception ex)
              {
-                 throw;
+                 Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Item).FullName, 1);
+                 return null;
              }
          
          }
