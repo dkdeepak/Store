@@ -15,9 +15,10 @@ namespace Store.Client.BusinessLogic
             {
                 return odlClient.GetAllClient(ClientID, Flag, FlagValue);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Client).FullName, 1);
+                return null;
             }
         }
         public Store.Client.BusinessObject.ClientList GetAllClientList(int ClientID, int Flag, string FlagValue)
@@ -26,9 +27,10 @@ namespace Store.Client.BusinessLogic
             {
                 return odlClient.GetAllClientList(ClientID, Flag, FlagValue);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Client).FullName, 1);
+                return null;
             }
         }
         public Store.Common.MessageInfo ManageClientMaster(Store.Client.BusinessObject.Client objClient, CommandMode cmdMode)
@@ -37,9 +39,10 @@ namespace Store.Client.BusinessLogic
             {
                 return odlClient.ManageClient(objClient, cmdMode);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw; 
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Client).FullName, 1);
+                return null;
             }
         }
     }
