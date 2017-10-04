@@ -87,7 +87,8 @@ namespace Store.City.DataAccessLayer
             }
             catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Category).FullName, 1);
+ +              return null;
             }
 
         }
@@ -159,7 +160,8 @@ namespace Store.City.DataAccessLayer
             }
             catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Category).FullName, 1);
+ +              return null;
             }
         }
         public Store.Common.MessageInfo ManageCity(Store.City.BusinessObject.City objCity, CommandMode cmdMode)
@@ -196,7 +198,8 @@ namespace Store.City.DataAccessLayer
             }
             catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Category).FullName, 1);
+ +              return null;
             }
         }
     }
