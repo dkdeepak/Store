@@ -83,14 +83,13 @@ namespace Store.City.DataAccessLayer
                     objCityList.Add(objCity);
                 }
                 dr.Close();
-                return objCityList;
+               
             }
             catch (Exception ex)
             {
-                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Category).FullName, 1);
- +              return null;
-            }
-
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(City).FullName, 1);
+ +          }
+             return objCityList;
         }
         public Store.City.BusinessObject.City GetAllCity(int CityID, int Flag, string FlagValue)
         {
@@ -156,13 +155,12 @@ namespace Store.City.DataAccessLayer
                     
                 }
                 dr.Close();
-                return objCity;
             }
             catch (Exception ex)
             {
-                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Category).FullName, 1);
- +              return null;
-            }
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(City).FullName, 1);
+ +          }
+            return objCity;
         }
         public Store.Common.MessageInfo ManageCity(Store.City.BusinessObject.City objCity, CommandMode cmdMode)
         {
@@ -194,13 +192,12 @@ namespace Store.City.DataAccessLayer
                     objMessageInfo.TranCode = Convert.ToString(dr["TranCode"]);
                     objMessageInfo.TranMessage = Convert.ToString(dr["TranMessage"]);
                 }
-                return objMessageInfo;
             }
             catch (Exception ex)
             {
-                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Category).FullName, 1);
- +              return null;
-            }
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(City).FullName, 1);
+ +          }
+            return objMessageInfo;
         }
     }
 }
