@@ -15,9 +15,10 @@ namespace Store.TypeOfUser.BusinessLogic
             {
                 return odlTypeOfUser.GetAllTypeOfUserList(TypeofUserId, Flag, FlagValue);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(TypeOfUser).FullName, 1);
+                return null;
             }
         }
         public Store.TypeOfUser.BusinessObject.TypeOfUser GetAllTypeOfUser(int TypeofUserID, int Flag, string FlagValue)
@@ -26,9 +27,10 @@ namespace Store.TypeOfUser.BusinessLogic
             {
                 return odlTypeOfUser.GetAllTypeOfUser(TypeofUserID, Flag, FlagValue);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(TypeOfUser).FullName, 1);
+                return null;
             }
         }
         public Store.Common.MessageInfo ManageItemMaster(Store.TypeOfUser.BusinessObject.TypeOfUser objTypeOfUser, CommandMode cmdMode)
@@ -37,9 +39,10 @@ namespace Store.TypeOfUser.BusinessLogic
             {
                 return odlTypeOfUser.ManageTypeOfUser(objTypeOfUser, cmdMode);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(TypeOfUser).FullName, 1);
+                return null;
             }
 
         }

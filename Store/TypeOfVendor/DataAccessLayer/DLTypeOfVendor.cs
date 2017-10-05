@@ -63,12 +63,14 @@ namespace Store.TypeOfVendor.DataAccessLayer
                     objTypeOfVendorList.Add(objTypeOfVendor);
                 }
                 dr.Close();
-                return objTypeOfVendorList;
+               
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(TypeOfVendor).FullName, 1);
+                
             }
+            return objTypeOfVendorList;
         }
         public Store.TypeOfVendor.BusinessObject.TypeOfVendor GetAllTypeOfVendor(int TypeofVendorID, int Flag, string FlagValue)
         {
@@ -121,12 +123,14 @@ namespace Store.TypeOfVendor.DataAccessLayer
                     
                 }
                 dr.Close();
-                return objTypeOfVendor;
+               
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(TypeOfVendor).FullName, 1);
+                
             }
+            return objTypeOfVendor;
 
         }
         public Store.Common.MessageInfo ManageTypeOfVendor(Store.TypeOfVendor.BusinessObject.TypeOfVendor objTypeOfVendor, CommandMode cmdMode)
@@ -156,12 +160,14 @@ namespace Store.TypeOfVendor.DataAccessLayer
                     objMessageInfo.TranCode = Convert.ToString(dr["TranCode"]);
                     objMessageInfo.TranMessage = Convert.ToString(dr["TranMessage"]);
                 }
-                return objMessageInfo;
+                
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(TypeOfVendor).FullName, 1);
+                
             }
+            return objMessageInfo;
 
         }
     }

@@ -71,7 +71,7 @@ namespace StoreManagement.Admin
             }
             catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Country).FullName, 1);
             }
             finally
             {
@@ -131,7 +131,7 @@ namespace StoreManagement.Admin
             }
             catch (Exception ex)
             {
-                //Global.WriteErrorLog("Error Occured" + ex.ToString());
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Country).FullName, 1);
 
             }
             finally
@@ -163,7 +163,7 @@ namespace StoreManagement.Admin
             }
             catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Country).FullName, 1);
             }
             finally
             {

@@ -151,12 +151,14 @@ namespace Store.VendorInfo.DataAccessLayer
                     objVendorInfoList.Add(objVendorInfo);
                 }
                 dr.Close();
-                return objVendorInfoList;
+               
             }
-            catch
+            catch(Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(VendorInfo).FullName, 1);
+                
             }
+            return objVendorInfoList;
         }
         public Store.VendorInfo.BusinessObject.VendorInfo GetAllVendorInfo(int VendorInfoID, int Flag, string FlagValue)
         {
@@ -293,13 +295,15 @@ namespace Store.VendorInfo.DataAccessLayer
                    
                 }
                 dr.Close();
-                return objVendorInfo;
+                
             }
 
-            catch
+            catch(Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(VendorInfo).FullName, 1);
+                
             }
+            return objVendorInfo;
 
         }
         public Store.Common.MessageInfo ManageVendorInfo(Store.VendorInfo.BusinessObject.VendorInfo objVendorInfo, CommandMode cmdMode)
@@ -341,13 +345,15 @@ namespace Store.VendorInfo.DataAccessLayer
                     objMessageInfo.TranCode = Convert.ToString(dr["TranCode"]);
                     objMessageInfo.TranMessage = Convert.ToString(dr["TranMessage"]);
                 }
-                return objMessageInfo;
+                
                
             }
-            catch
+            catch(Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(VendorInfo).FullName, 1);
+                
             }
+            return objMessageInfo;
         }
     }
 }

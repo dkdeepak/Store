@@ -114,7 +114,9 @@ namespace StoreManagement.Admin
 
                 return objMessageInfo.TranID.ToString();
             }
-            catch { throw; }
+            catch(Exception ex)
+            { //Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(WebForm1).FullName, 1);
+            }
             finally
             {
                 objMessageInfo = null;
@@ -145,7 +147,9 @@ namespace StoreManagement.Admin
 
                 return "";
             }
-            catch { throw; }
+            catch(Exception ex)
+            {// Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(WebForm1).FullName, 1); 
+            }
             finally
             {
                 objPurchaseReceivedItem = null;
@@ -191,7 +195,7 @@ namespace StoreManagement.Admin
             }
             catch (Exception ex)
             {
-                throw ex;
+                //Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(WebForm1).FullName, 1);
             }
         }
         #region UserDefinedFunction
@@ -249,7 +253,7 @@ namespace StoreManagement.Admin
             }
             catch (Exception ex)
             {
-                throw ex;
+                //Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(WebForm1).FullName, 1);
             }
             finally
             {

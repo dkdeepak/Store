@@ -42,12 +42,14 @@ namespace Store.Stock.DataAccessLayer
                     dr.Close();
 
                 }
-                return objstock;
+               
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Stock).FullName, 1);
+                
             }
+            return objstock;
 
 
 
@@ -94,13 +96,15 @@ namespace Store.Stock.DataAccessLayer
                 }
                 dr.Close();
 
-                return objstockList;
+                
             }
 
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Stock).FullName, 1);
+                
             }
+            return objstockList;
         }
         public Store.Common.MessageInfo ManageStock(Store.Stock.BusinessObject.Stock objstock, CommandMode cmdMode)
         {
@@ -125,12 +129,14 @@ namespace Store.Stock.DataAccessLayer
                     objMessageInfo.TranCode = Convert.ToString(dr["TranCode"]);
                     objMessageInfo.TranMessage = Convert.ToString(dr["TranMessage"]);
                 }
-                return objMessageInfo;
+                
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Stock).FullName, 1);
+                
             }
+            return objMessageInfo;
         
         }
     }

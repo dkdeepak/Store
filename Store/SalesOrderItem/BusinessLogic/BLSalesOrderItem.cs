@@ -15,9 +15,10 @@ namespace Store.SalesOrderItem.BusinessLogic
             {
                 return odlSalesOrderItem.GetAllSalesOrderItemList(SalesOrderItemId, Flag, FlagValue);
             }
-            catch 
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SalesOrderItem).FullName, 1);
+                return null;
             }
         }
         public Store.SalesOrderItem.BusinessObject.SalesOrderItem GetAllSalesOrderItem(int SalesOrderItemId, int Flag, string FlagValue)
@@ -26,9 +27,10 @@ namespace Store.SalesOrderItem.BusinessLogic
             {
                 return odlSalesOrderItem.GetAllSalesOrderItem(SalesOrderItemId, Flag, FlagValue);
             }
-            catch
+            catch(Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SalesOrderItem).FullName, 1);
+                return null;
             }
         }
       
@@ -38,9 +40,10 @@ namespace Store.SalesOrderItem.BusinessLogic
             {
                 return odlSalesOrderItem.ManageSalesOrderItem(objSalesOrderItemList, cmdMode);
             }
-            catch
+            catch(Exception ex)
             {
-                throw;            
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SalesOrderItem).FullName, 1);
+                return null;
             }
         }
 

@@ -295,7 +295,7 @@ namespace StoreManagement.Admin
             }
             catch (Exception ex)
             {
-                throw ex;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SalesRtn).FullName, 1);
             }
         }
         void bindSales(int id)
@@ -323,6 +323,7 @@ namespace StoreManagement.Admin
             }
             catch (Exception ex)
             {
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SalesRtn).FullName, 1);
 
             }
             finally
@@ -352,7 +353,7 @@ namespace StoreManagement.Admin
             }
             catch (Exception ex)
             {
-
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SalesRtn).FullName, 1);
             }
             finally
             {

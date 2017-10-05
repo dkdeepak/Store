@@ -72,12 +72,14 @@ namespace Store.Tax.DataAccessLayer
                     objTaxList.Add(objTax);
                 }
                 dr.Close();
-                return objTaxList;
+               
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Tax).FullName, 1);
+                
             }
+            return objTaxList;
         }
         public Store.Tax.BusinessObject.Tax GetAllTax(int TaxID, int Flag, string FlagValue)
         {
@@ -139,13 +141,14 @@ namespace Store.Tax.DataAccessLayer
                     dr.Close();
 
                 }
-                return objTax;
+                
            }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Tax).FullName, 1);
+                
             }
-
+            return objTax;
         }
         public Store.Common.MessageInfo ManageTax(Store.Tax.BusinessObject.Tax objTax, CommandMode cmdMode)
         {
@@ -177,12 +180,14 @@ namespace Store.Tax.DataAccessLayer
                     objMessageInfo.TranCode = Convert.ToString(dr["TranCode"]);
                     objMessageInfo.TranMessage = Convert.ToString(dr["TranMessage"]);
                 }
-                return objMessageInfo;
+                
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Tax).FullName, 1);
+                
             }
+            return objMessageInfo;
 
         }
     }

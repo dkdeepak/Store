@@ -17,7 +17,8 @@ namespace Store.State.BusinessLogic
             }
             catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(State).FullName, 1);
+                return null;
             }
         }
         public Store.State.BusinessObject.StateList GetAllStateList(int StateID, int Flag, string FlagValue)

@@ -95,12 +95,14 @@ namespace Store.SaleReturnItem.DataAccessLayer
                     objSaleReturnItemList.Add(objSaleReturnItem);
                 }
                 dr.Close();
-                return objSaleReturnItemList;
+                
             }
-            catch
+            catch(Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SaleReturnItem).FullName, 1);
+                
             }
+            return objSaleReturnItemList;
         }
         public Store.SaleReturnItem.BusinessObject.SaleReturnItem GetAllSaleReturnItem(int SaleReturnItemID, int Flag, string FlagValue)
         {
@@ -184,13 +186,15 @@ namespace Store.SaleReturnItem.DataAccessLayer
                     }
                     dr.Close();
                 }
-                return objSaleReturnItem;
+                
             }
 
-            catch
+            catch(Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SaleReturnItem).FullName, 1);
+                
             }
+            return objSaleReturnItem;
 
         }
         public Store.Common.MessageInfo ManageSaleReturnItem(Store.SaleReturnItem.BusinessObject.SaleReturnItem objSaleReturnItem, CommandMode cmdMode)
@@ -223,13 +227,15 @@ namespace Store.SaleReturnItem.DataAccessLayer
                     objMessageInfo.TranCode = Convert.ToString(dr["TranCode"]);
                     objMessageInfo.TranMessage = Convert.ToString(dr["TranMessage"]);
                 }
-                return objMessageInfo;
+               
                
             }
-            catch
+            catch(Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SaleReturnItem).FullName, 1);
+                
             }
+            return objMessageInfo;
         }
     }
 }

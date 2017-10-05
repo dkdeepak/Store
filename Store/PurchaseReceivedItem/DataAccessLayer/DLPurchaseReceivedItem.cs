@@ -85,13 +85,15 @@ namespace Store.PurchaseReceivedItem.DataAccessLayer
                     }
                     dr.Close();
                 }
-                return objPurchaseReceivedItem;
+                
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(PurchaseReceivedItem).FullName, 1);
+                
             }
+            return objPurchaseReceivedItem;
         }
         public Store.PurchaseReceivedItem.BusinessObject.PurchaseReceivedItemList GetAllPurchaseReceivedItemList(int PurchaseItemReceivedID, int Flag, string FlagValue)
         {
@@ -174,13 +176,15 @@ namespace Store.PurchaseReceivedItem.DataAccessLayer
                     objPurchaseReceivedItemList.Add(objPurchaseReceivedItem);
                 }
                 dr.Close();
-                return objPurchaseReceivedItemList;
+                
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(PurchaseReceivedItem).FullName, 1);
+                
             }
+            return objPurchaseReceivedItemList;
         }
 
         public Store.Common.MessageInfo ManagePurchaseReceived(Store.PurchaseReceivedItem.BusinessObject.PurchaseReceivedItemList objPurchaseReceivedItemList, CommandMode cmdMode)
@@ -223,13 +227,15 @@ namespace Store.PurchaseReceivedItem.DataAccessLayer
                         objMessageInfo.TranMessage = Convert.ToString(dr["TranMessage"]);
                     }
                 }
-                return objMessageInfo;
+               
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(PurchaseReceivedItem).FullName, 1);
+                
             }
-      
+            return objMessageInfo;
+
         }
     }
 }

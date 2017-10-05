@@ -83,12 +83,14 @@ namespace Store.Login.DataAccessLayer
                     objLoginList.Add(objLogin);
                 }
                 dr.Close();
-                return objLoginList;
+                
             }
-            catch
+            catch(Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Login).FullName, 1);
+                
             }
+            return objLoginList;
         }
         public Store.Login.BusinessObject.Login GetAllLogin(int LoginID, int Flag, string FlagValue)
         {
@@ -160,13 +162,15 @@ namespace Store.Login.DataAccessLayer
                     }
                     dr.Close();
                 }
-                return objLogin;
+                
             }
 
-            catch
+            catch(Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Login).FullName, 1);
+                
             }
+            return objLogin;
 
         }
         public Store.Common.MessageInfo ManageLogin(Store.Login.BusinessObject.Login objLogin, CommandMode cmdMode)
@@ -198,13 +202,15 @@ namespace Store.Login.DataAccessLayer
                     objMessageInfo.TranCode = Convert.ToString(dr["TranCode"]);
                     objMessageInfo.TranMessage = Convert.ToString(dr["TranMessage"]);
                 }
-                return objMessageInfo;
+               
                
             }
-            catch
+            catch(Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Login).FullName, 1);
+                
             }
+            return objMessageInfo;
         }
     }
 }

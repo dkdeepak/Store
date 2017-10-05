@@ -103,12 +103,14 @@ namespace Store.SalesOrderItem.DataAccessLayer
                     objSalesOrderItemList.Add(objSalesOrderItem);
                 }
                 dr.Close();
-                return objSalesOrderItemList;
+               
             }
-            catch
+            catch(Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SalesOrderItem).FullName, 1);
+                
             }
+            return objSalesOrderItemList;
         }
         public Store.SalesOrderItem.BusinessObject.SalesOrderItem GetAllSalesOrderItem(int SalesOrderItemID, int Flag, string FlagValue)
         {
@@ -200,13 +202,15 @@ namespace Store.SalesOrderItem.DataAccessLayer
                     }
                     dr.Close();
                 }
-                return objSalesOrderItem;
+                
             }
 
-            catch
+            catch(Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SalesOrderItem).FullName, 1);
+                
             }
+            return objSalesOrderItem;
 
         }
                                                                
@@ -248,12 +252,14 @@ namespace Store.SalesOrderItem.DataAccessLayer
                     }
                     
                 }
-                return objMessageInfo;
+               
             }
             catch(Exception ex)
             {
-                throw ex;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SalesOrderItem).FullName, 1);
+                
             }
+            return objMessageInfo;
         }
     }
 }

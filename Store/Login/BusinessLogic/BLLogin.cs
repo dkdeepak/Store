@@ -15,9 +15,10 @@ namespace Store.Login.BusinessLogic
             {
                 return odlLogin.GetAllLoginList(LoginId, Flag, FlagValue);
             }
-            catch 
+            catch(Exception ex) 
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Login).FullName, 1);
+                return null;
             }
         }
         public Store.Login.BusinessObject.Login GetAllLogin(int LoginId, int Flag, string FlagValue)
@@ -26,9 +27,10 @@ namespace Store.Login.BusinessLogic
             {
                 return odlLogin.GetAllLogin(LoginId, Flag, FlagValue);
             }
-            catch
+            catch(Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Login).FullName, 1);
+                return null;
             }
         }
         public Store.Common.MessageInfo ManageItemMaster(Store.Login.BusinessObject.Login objLogin, CommandMode cmdMode)
@@ -37,9 +39,10 @@ namespace Store.Login.BusinessLogic
             {
                 return odlLogin.ManageLogin(objLogin, cmdMode);
             }
-            catch
+            catch(Exception ex)
             {
-                throw;            
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Login).FullName, 1);
+                return null;
             }
         }
 

@@ -89,13 +89,15 @@ namespace Store.PurchaseReceived.DataAccessLayer
                     }
                     dr.Close();  
                 }
-                return objPurchaseReceived;
+               
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(PurchaseReceived).FullName, 1);
+                
             }
+            return objPurchaseReceived;
         }
         public Store.PurchaseReceived.BusinessObject.PurchaseReceivedList GetAllPurchaseReceivedList(int PurchaseReceivedID, int Flag, string FlagValue)
         {
@@ -183,13 +185,15 @@ namespace Store.PurchaseReceived.DataAccessLayer
                     
                 }
                 dr.Close();
-                return objPurchaseReceivedList;
+                
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(PurchaseReceived).FullName, 1);
+                
             }
+            return objPurchaseReceivedList;
         }
         //public Store.Common.MessageInfo ManagePurchaseReceived(Store.PurchaseReceived.BusinessObject.PurchaseReceived objPurchaseReceived, int cmdMode) by depk
         public Store.Common.MessageInfo ManagePurchaseReceived(Store.PurchaseReceived.BusinessObject.PurchaseReceived objPurchaseReceived, CommandMode cmdMode)
@@ -222,13 +226,15 @@ namespace Store.PurchaseReceived.DataAccessLayer
                     objMessageInfo.TranCode = Convert.ToString(dr["TranCode"]);
                     objMessageInfo.TranMessage = Convert.ToString(dr["TranMessage"]);
                 }
-                return objMessageInfo;
+               
 
             }
-            catch
+            catch(Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(PurchaseReceived).FullName, 1);
+                
             }
+            return objMessageInfo;
         }
         public Store.Common.MessageInfo ManagePurchaseReceivedItem(Store.PurchaseReceivedItem.BusinessObject.PurchaseReceivedItem objPurchaseReceivedItem, CommandMode cmdMode)
         {
@@ -263,13 +269,15 @@ namespace Store.PurchaseReceived.DataAccessLayer
                     objMessageInfo.TranCode = Convert.ToString(dr["TranCode"]);
                     objMessageInfo.TranMessage = Convert.ToString(dr["TranMessage"]);
                 }
-                return objMessageInfo;
+               
 
             }
-            catch
+            catch(Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(PurchaseReceived).FullName, 1);
+                
             }
+            return objMessageInfo;
         }
             }
 }

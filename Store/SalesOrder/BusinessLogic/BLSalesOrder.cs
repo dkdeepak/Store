@@ -15,9 +15,10 @@ namespace Store.SalesOrder.BusinessLogic
             {
                 return odlSalesOrder.GetAllSalesOrderList(SalesOrderId, Flag, FlagValue);
             }
-            catch 
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SalesOrder).FullName, 1);
+                return null;
             }
         }
         public Store.SalesOrder.BusinessObject.SalesOrder GetAllSalesOrder(int SalesOrderId, int Flag, string FlagValue)
@@ -26,9 +27,10 @@ namespace Store.SalesOrder.BusinessLogic
             {
                 return odlSalesOrder.GetAllSalesOrder(SalesOrderId, Flag, FlagValue);
             }
-            catch
+            catch(Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SalesOrder).FullName, 1);
+                return null;
             }
         }
         public Store.Common.MessageInfo ManageSaleOrder(Store.SalesOrder.BusinessObject.SalesOrder objSalesOrder, CommandMode cmdMode)
@@ -37,9 +39,10 @@ namespace Store.SalesOrder.BusinessLogic
             {
                 return odlSalesOrder.ManageSalesOrder(objSalesOrder,cmdMode);
             }
-            catch
+            catch(Exception ex)
             {
-                throw;            
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SalesOrder).FullName, 1);
+                return null;
             }
         }
         //public Store.Common.MessageInfo ManageSaleOrderItem(Store.SalesOrderItem.BusinessObject.SalesOrderItem objSalesOrderItem, int cmdMode)

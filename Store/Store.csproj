@@ -147,7 +147,7 @@
     <Compile Include="UserInfo\BusinessLogic\BLUserInfo.cs" />
     <Compile Include="UserInfo\BusinessObject\BOUserInfo.cs" />
     <Compile Include="UserInfo\DataAccessLayer\DLUserInfo.cs" />
-    <Compile Include="Login\BusinessLogic\BLItemUnit.cs" />
+    <Compile Include="Login\BusinessLogic\BLLogin.cs" />
     <Compile Include="Login\BusinessObject\BOLogin.cs" />
     <Compile Include="Login\DataAccessLayer\DLLogin.cs" />
     <Compile Include="PurchaseReceivedItem\BusinessLogic\BLPurchaseReceivedItem.cs" />

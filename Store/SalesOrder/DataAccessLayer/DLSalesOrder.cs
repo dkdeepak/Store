@@ -104,12 +104,14 @@ namespace Store.SalesOrder.DataAccessLayer
                     objSalesOrderList.Add(objSalesOrder);
                 }
                 dr.Close();
-                return objSalesOrderList;
+               
             }
-            catch
+            catch(Exception ex )
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SalesOrder).FullName, 1);
+                
             }
+            return objSalesOrderList;
         }
         public Store.SalesOrder.BusinessObject.SalesOrder GetAllSalesOrder(int SalesOrderID, int Flag, string FlagValue)
         {
@@ -203,13 +205,15 @@ namespace Store.SalesOrder.DataAccessLayer
                     
                 }
                 dr.Close();
-                return objSalesOrder;
+               
             }
 
-            catch
+            catch(Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SalesOrder).FullName, 1);
+                
             }
+            return objSalesOrder;
 
         }
         public Store.Common.MessageInfo ManageSalesOrder(Store.SalesOrder.BusinessObject.SalesOrder objSalesOrder, CommandMode cmdMode)
@@ -244,13 +248,15 @@ namespace Store.SalesOrder.DataAccessLayer
                     objMessageInfo.TranCode = Convert.ToString(dr["TranCode"]);
                     objMessageInfo.TranMessage = Convert.ToString(dr["TranMessage"]);
                 }
-                return objMessageInfo;
+               
                
             }
-            catch
+            catch(Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SalesOrder).FullName, 1);
+                
             }
+            return objMessageInfo;
         }
         //public Store.Common.MessageInfo ManageSalesOrderItem(Store.SalesOrderItem.BusinessObject.SalesOrderItem objSalesOrderItem, int cmdMode)
         //{

@@ -98,13 +98,15 @@ namespace Store.SalesReturned.DataAccessLayer
                     }
                     dr.Close();
                 }
-                return objSalesReturned;
+               
                 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SalesReturned).FullName, 1);
+                
             }
+            return objSalesReturned;
         }
         public Store.SalesReturned.BusinessObject.SalesReturnedList GetAllSalesReturnedList(int SalesReturnedID, int Flag, string FlagValue)
         {
@@ -195,13 +197,15 @@ namespace Store.SalesReturned.DataAccessLayer
                     objSalesReturnedList.Add(objSalesReturned);
                 }
                 dr.Close();
-                return objSalesReturnedList;
+               
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
-            }  
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SalesReturned).FullName, 1);
+                
+            }
+            return objSalesReturnedList;
         }
         public Store.Common.MessageInfo ManageSaleRetuned(Store.SalesReturned.BusinessObject.SalesReturned objSalesReturned, CommandMode cmdMode)
         {
@@ -233,13 +237,15 @@ namespace Store.SalesReturned.DataAccessLayer
                     objMessageInfo.TranCode = Convert.ToString(dr["TranCode"]);
                     objMessageInfo.TranMessage = Convert.ToString(dr["TranMessage"]);
                 }
-                return objMessageInfo;
+                
 
             }
-            catch
+            catch(Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SalesReturned).FullName, 1);
+                
             }
+            return objMessageInfo;
         }
         public Store.Common.MessageInfo ManageSaleRetunedItem(Store.SaleReturnItem.BusinessObject.SaleReturnItem objSaleReturnItem, int cmdMode)
         {
@@ -272,13 +278,15 @@ namespace Store.SalesReturned.DataAccessLayer
                     objMessageInfo.TranCode = Convert.ToString(dr["TranCode"]);
                     objMessageInfo.TranMessage = Convert.ToString(dr["TranMessage"]);
                 }
-                return objMessageInfo;
+               
 
             }
-            catch
+            catch(Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SalesReturned).FullName, 1);
+                
             }
+            return objMessageInfo;
         }
     
     }

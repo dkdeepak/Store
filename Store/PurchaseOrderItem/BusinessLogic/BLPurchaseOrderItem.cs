@@ -17,7 +17,8 @@ namespace Store.PurchaseOrderItem.BusinessLogic
             }
             catch (Exception ex)
             {
-                throw ex;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(PurchaseOrderItem).FullName, 1);
+                return null;
             }
         }
         public Store.PurchaseOrderItem.BusinessObject.PurchaseOrderItemList GetAllPurchaseOrderItemList(int PurchaseOrderItemID, int Flag, string FlagValue)
@@ -28,7 +29,8 @@ namespace Store.PurchaseOrderItem.BusinessLogic
             }
             catch (Exception ex)
             {
-                throw ex;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(PurchaseOrderItem).FullName, 1);
+                return null;
             }
         }
         public Store.Common.MessageInfo ManageItemMaster(Store.PurchaseOrderItem.BusinessObject.PurchaseOrderItemList objPurchaseOrderItemList, CommandMode cmdMode)
@@ -40,7 +42,8 @@ namespace Store.PurchaseOrderItem.BusinessLogic
             }
             catch (Exception ex)
             {
-                throw ex;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(PurchaseOrderItem).FullName, 1);
+                return null;
             }
         }
 

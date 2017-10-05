@@ -117,7 +117,7 @@ namespace StoreManagement.Admin
             }
             catch (Exception ex)
             {
-
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(VendorInfo).FullName, 1);
             }
             finally
             {
@@ -182,7 +182,7 @@ namespace StoreManagement.Admin
             }
             catch (Exception ex)
             {
-
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(VendorInfo).FullName, 1);
             }
             finally
             {
@@ -234,7 +234,7 @@ namespace StoreManagement.Admin
             }
             catch (Exception ex)
             {
-
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(VendorInfo).FullName, 1);
             }
             finally
             {
@@ -296,7 +296,7 @@ namespace StoreManagement.Admin
             }
             catch (Exception ex)
             {
-
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(VendorInfo).FullName, 1);
             }
             finally
             {
@@ -328,7 +328,7 @@ namespace StoreManagement.Admin
             }
             catch (Exception ex)
             {
-
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(VendorInfo).FullName, 1);
             }
             finally
             {
@@ -358,9 +358,9 @@ namespace StoreManagement.Admin
                     ddlStateID.DataBind();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(VendorInfo).FullName, 1);
             }
             finally
             {
@@ -389,9 +389,9 @@ namespace StoreManagement.Admin
                     ddlCityID.DataBind();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(VendorInfo).FullName, 1);
             }
             finally
             {

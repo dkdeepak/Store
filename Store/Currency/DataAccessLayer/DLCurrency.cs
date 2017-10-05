@@ -67,12 +67,14 @@ namespace Store.Currency.DataAccessLayer
                     objCurrencyList.Add(objCurrency);
                 }
                 dr.Close();
-                return objCurrencyList;
+              
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Currency).FullName, 1);
+                
             }
+            return objCurrencyList;
         }
         public Store.Currency.BusinessObject.Currency GetAllCurrency(int CurrencyID, int Flag, string FlagValue)
         {
@@ -129,12 +131,13 @@ namespace Store.Currency.DataAccessLayer
                     
                 }
                 dr.Close();
-                return objCurrency;
+               
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Currency).FullName, 1);
             }
+            return objCurrency;
 
         }
         public Store.Common.MessageInfo ManageCurrency(Store.Currency.BusinessObject.Currency objCurrency, CommandMode cmdMode)
@@ -165,12 +168,13 @@ namespace Store.Currency.DataAccessLayer
                     objMessageInfo.TranCode = Convert.ToString(dr["TranCode"]);
                     objMessageInfo.TranMessage = Convert.ToString(dr["TranMessage"]);
                 }
-                return objMessageInfo;
+              
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Currency).FullName, 1);
             }
+            return objMessageInfo;
 
         }
     }

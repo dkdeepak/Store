@@ -15,9 +15,10 @@ namespace Store.TypeOfVendor.BusinessLogic
             {
                 return odlTypeOfVendor.GetAllTypeOfVendorList(TypeofVendorId, Flag, FlagValue);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(TypeOfVendor).FullName, 1);
+                return null;
             }
         }
         public Store.TypeOfVendor.BusinessObject.TypeOfVendor GetAllTypeOfVendor(int TypeOfVendorID, int Flag, string FlagValue)
@@ -26,9 +27,10 @@ namespace Store.TypeOfVendor.BusinessLogic
             {
                 return odlTypeOfVendor.GetAllTypeOfVendor(TypeOfVendorID, Flag, FlagValue);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(TypeOfVendor).FullName, 1);
+                return null;
             }
         }
         public Store.Common.MessageInfo ManageItemMaster(Store.TypeOfVendor.BusinessObject.TypeOfVendor objTypeOfVendor, CommandMode cmdMode)
@@ -37,9 +39,10 @@ namespace Store.TypeOfVendor.BusinessLogic
             {
                 return odlTypeOfVendor.ManageTypeOfVendor(objTypeOfVendor, cmdMode);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(TypeOfVendor).FullName, 1);
+                return null; 
             }
 
         }

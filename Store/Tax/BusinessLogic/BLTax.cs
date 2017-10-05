@@ -15,9 +15,10 @@ namespace Store.Tax.BusinessLogic
             {
                 return odlTax.GetAllTaxList(TaxId, Flag, FlagValue);
              }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Tax).FullName, 1);
+                return null;
             }
         }
         public Store.Tax.BusinessObject.Tax GetAllTax(int TaxID, int Flag, string FlagValue)
@@ -26,9 +27,10 @@ namespace Store.Tax.BusinessLogic
             {
                 return odlTax.GetAllTax(TaxID, Flag, FlagValue);
              }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Tax).FullName, 1);
+                return null;
             }
         }
         public Store.Common.MessageInfo ManageItemMaster(Store.Tax.BusinessObject.Tax objTax, CommandMode cmdMode)
@@ -37,9 +39,10 @@ namespace Store.Tax.BusinessLogic
             {
                 return odlTax.ManageTax(objTax, cmdMode);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Tax).FullName, 1);
+                return null;
             }
 
         }

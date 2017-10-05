@@ -168,7 +168,6 @@
     <Content Include="Admin\TypeOfUser.aspx" />
     <Content Include="Admin\VendorInfo.aspx" />
     <Content Include="Admin\UserInfo.aspx" />
-    <Content Include="Admin\PurchaseROrder.aspx" />
     <Content Include="Default.aspx" />
     <Compile Include="Admin\Category.aspx.cs">
       <DependentUpon>Category.aspx</DependentUpon>
@@ -302,13 +301,6 @@
     </Compile>
     <Compile Include="Admin\UserInfo.aspx.designer.cs">
       <DependentUpon>UserInfo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\PurchaseROrder.aspx.cs">
-      <DependentUpon>PurchaseROrder.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\PurchaseROrder.aspx.designer.cs">
-      <DependentUpon>PurchaseROrder.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

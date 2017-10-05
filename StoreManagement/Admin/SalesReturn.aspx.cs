@@ -62,7 +62,7 @@ namespace StoreManagement
             }
             catch (Exception ex)
             {
-                throw ex;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SalesReturn).FullName, 1);
             }
             finally
             {
@@ -127,7 +127,7 @@ namespace StoreManagement
             }
             catch (Exception ex)
             {
-
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SalesReturn).FullName, 1);
             }
             finally
             {
@@ -176,7 +176,7 @@ namespace StoreManagement
             }
             catch (Exception ex)
             {
-                throw ex;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SalesReturn).FullName, 1);
             }
             finally
             {
@@ -206,7 +206,7 @@ namespace StoreManagement
             }
             catch (Exception ex)
             {
-                throw ex;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SalesReturn).FullName, 1);
             }
             finally
             {
@@ -289,7 +289,7 @@ namespace StoreManagement
                 
             }
             catch (Exception ex)
-            { throw ex; }
+            { Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SalesReturn).FullName, 1); }
         }
         protected void btnCancelsaleRtn_Click(object sender, EventArgs e)
         {

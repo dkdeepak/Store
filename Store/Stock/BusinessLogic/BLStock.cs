@@ -15,9 +15,10 @@ namespace Store.Stock.BusinessLogic
             {
                 return odlStock.GetAllStock(StockID,Flag,FlagValue); 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Stock).FullName, 1);
+                return null;
             }
        }
      public Store.Stock.BusinessObject.StockList GetAllStockList(int StockID, int Flag, string FlagValue)
@@ -26,10 +27,11 @@ namespace Store.Stock.BusinessLogic
          {
              return odlStock.GetAllStockList(StockID, Flag, FlagValue); 
          }
-         catch (Exception)
+         catch (Exception ex)
          {
-             throw;
-         }
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Stock).FullName, 1);
+                return null;
+            }
      }
      public Store.Common.MessageInfo ManageStockMaster(Store.Stock.BusinessObject.Stock objStock, CommandMode cmdMode)
      {
@@ -37,10 +39,11 @@ namespace Store.Stock.BusinessLogic
          {
              return odlStock.ManageStock(objStock, cmdMode);
          }
-         catch (Exception)
-         { 
-             throw;
-         }
+         catch (Exception ex)
+         {
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(Stock).FullName, 1);
+                return null;
+            }
      }
 
 

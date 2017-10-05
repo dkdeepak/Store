@@ -15,9 +15,10 @@ namespace Store.SaleReturnItem.BusinessLogic
             {
                 return odlSaleReturnItem.GetAllSaleReturnItemList(SaleReturnItemId, Flag, FlagValue);
             }
-            catch 
+            catch(Exception ex) 
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SaleReturnItem).FullName, 1);
+                return null; 
             }
         }
         public Store.SaleReturnItem.BusinessObject.SaleReturnItem GetAllSaleReturnItem(int SaleReturnItemId, int Flag, string FlagValue)
@@ -26,9 +27,10 @@ namespace Store.SaleReturnItem.BusinessLogic
             {
                 return odlSaleReturnItem.GetAllSaleReturnItem(SaleReturnItemId, Flag, FlagValue);
             }
-            catch
+            catch(Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SaleReturnItem).FullName, 1);
+                return null;
             }
         }
         public Store.Common.MessageInfo ManageItemMaster(Store.SaleReturnItem.BusinessObject.SaleReturnItem objSaleReturnItem, CommandMode cmdMode)
@@ -37,9 +39,10 @@ namespace Store.SaleReturnItem.BusinessLogic
             {
                 return odlSaleReturnItem.ManageSaleReturnItem(objSaleReturnItem, cmdMode);
             }
-            catch
+            catch(Exception ex)
             {
-                throw;            
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SaleReturnItem).FullName, 1);
+                return null;
             }
         }
 

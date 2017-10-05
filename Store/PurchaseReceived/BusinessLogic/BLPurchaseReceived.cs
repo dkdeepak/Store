@@ -16,9 +16,10 @@ namespace Store.PurchaseReceived.BusinessLogic
             {
                 return odlPurchaseReceived.GetAllPurchaseReceived(PurchaseReceivedID, Flag, FlagValue); 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(PurchaseReceived).FullName, 1);
+                return null;
             }
         }
         public Store.PurchaseReceived.BusinessObject.PurchaseReceivedList GetAllPurchaseReceivedList(int PurchaseReceivedID, int Flag, string FlagValue)
@@ -38,9 +39,10 @@ namespace Store.PurchaseReceived.BusinessLogic
             {
                 return odlPurchaseReceived.ManagePurchaseReceivedItem(objPurchaseReceivedItem,cmdMode);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(PurchaseReceived).FullName, 1);
+                return null;
             }
         }
 
@@ -51,9 +53,10 @@ namespace Store.PurchaseReceived.BusinessLogic
             {
                 return odlPurchaseReceived.ManagePurchaseReceived(objPurchaseROrder,cmdMode);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(PurchaseReceived).FullName, 1);
+                return null;
             }
         }
 

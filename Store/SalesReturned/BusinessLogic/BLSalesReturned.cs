@@ -15,9 +15,10 @@ namespace Store.SalesReturned.BusinessLogic
             {
                 return odlSalesReturned.GetAllSalesReturned(SalesReturnedID, Flag, FlagValue);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SalesReturned).FullName, 1);
+                return null;
             }
         }
         public Store.SalesReturned.BusinessObject.SalesReturnedList GetAllSalesReturnedList(int SalesReturnedID, int Flag, string FlagValue)
@@ -26,9 +27,10 @@ namespace Store.SalesReturned.BusinessLogic
             {
                 return odlSalesReturned.GetAllSalesReturnedList(SalesReturnedID, Flag, FlagValue);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SalesReturned).FullName, 1);
+                return null;
             }
         }
         public Store.Common.MessageInfo ManageSalesRetunedItem(Store.SaleReturnItem.BusinessObject.SaleReturnItem objSaleReturnItem, int cmdMode)
@@ -37,9 +39,10 @@ namespace Store.SalesReturned.BusinessLogic
             {
                 return odlSalesReturned.ManageSaleRetunedItem(objSaleReturnItem, cmdMode);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SalesReturned).FullName, 1);
+                return null;
             }
         }
         public Store.Common.MessageInfo ManageSalesRetuned(Store.SalesReturned.BusinessObject.SalesReturned objSalesReturned, CommandMode cmdMode)
@@ -48,9 +51,10 @@ namespace Store.SalesReturned.BusinessLogic
             {
                 return odlSalesReturned.ManageSaleRetuned(objSalesReturned, cmdMode);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(SalesReturned).FullName, 1);
+                return null;
             }
         }
     }

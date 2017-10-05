@@ -58,7 +58,7 @@ namespace StoreManagement.Admin
             }
             catch (Exception ex)
             {
-
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(TypeOfUser).FullName, 1);
             }
             finally
             {
@@ -117,7 +117,7 @@ namespace StoreManagement.Admin
             }
             catch (Exception ex)
             {
-
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(TypeOfUser).FullName, 1);
             }
             finally
             {
@@ -148,7 +148,7 @@ namespace StoreManagement.Admin
             }
             catch (Exception ex)
             {
-
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(TypeOfUser).FullName, 1);
             }
             finally
             {

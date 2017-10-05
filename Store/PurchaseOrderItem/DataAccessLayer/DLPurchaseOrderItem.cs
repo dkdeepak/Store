@@ -50,13 +50,15 @@ namespace Store.PurchaseOrderItem.DataAccessLayer
                     
                 }
                 dr.Close();
-                return objPurchaseOrderItem;
+               
 
             }
             catch (Exception ex)
             {
-                throw ex;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(PurchaseOrderItem).FullName, 1);
+                
             }
+            return objPurchaseOrderItem;
         }
         public Store.PurchaseOrderItem.BusinessObject.PurchaseOrderItemList GetAllPurchaseOrderItemList(int PurchaseOrderItemID, int Flag, string FlagValue)
         {
@@ -104,13 +106,15 @@ namespace Store.PurchaseOrderItem.DataAccessLayer
                     objPurchaseOrderItemList.Add(objPurchaseOrderItem);
                 }
                 dr.Close();
-                return objPurchaseOrderItemList;
+               
 
             }
             catch (Exception ex)
             {
-                throw ex;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(PurchaseOrderItem).FullName, 1);
+                
             }
+            return objPurchaseOrderItemList;
         }
         public Store.Common.MessageInfo ManagePurchaseOrder(Store.PurchaseOrderItem.BusinessObject.PurchaseOrderItemList objPurchaseOrderItemlist, CommandMode cmdMode)
         {
@@ -151,12 +155,14 @@ namespace Store.PurchaseOrderItem.DataAccessLayer
                         objMessageInfo.TranMessage = Convert.ToString(dr["TranMessage"]);
                     }
                 }
-                return objMessageInfo;
+                
             }
             catch (Exception ex)
             {
-                throw ex;
+                Store.Common.Utility.ExceptionLog.Exceptionlogs(ex.Message, Store.Common.Utility.ExceptionLog.LineNumber(ex), typeof(PurchaseOrderItem).FullName, 1);
+                
             }
+            return objMessageInfo;
         }
     }
 
