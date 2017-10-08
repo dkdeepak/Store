@@ -59,7 +59,7 @@
                             </div>--%>
                             <div class="row">
                                 <div class="col-md-12">
-                                <asp:TextBox ID="txtUnitName" placeholder="Enter Unit Name" ToolTip="Unit Name" runat="server"  CssClass="form-control" />
+                                <asp:TextBox ID="txtUnitName" placeholder="Enter Unit Name" ToolTip="Unit Name" runat="server"  CssClass="form-control required" />
                                         <asp:RequiredFieldValidator ID="rfvUnitName" ControlToValidate="txtUnitName" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgItemUnit" runat="server">
                                         </asp:RequiredFieldValidator>
                                         <asp:RegularExpressionValidator ID="revUnitName" runat="server" ValidationGroup="vgItemUnit" ForeColor="Red"

@@ -166,11 +166,12 @@ namespace StoreManagement.Admin
                 objCategorylist = oblCategory.GetAllCategoryList(0, 0, "");
                 if (objCategorylist != null)
                 {
+                    ListItem al = new ListItem("<-Select Category->", "0", true);
                     ddlCategoryId.DataSource = objCategorylist;
                     ddlCategoryId.DataTextField = "CategoryName";
                     ddlCategoryId.DataValueField = "CategoryID";
                     ddlCategoryId.DataBind();
-                    ddlCategoryId.Items.Insert(0, "<--Select Category-->");
+                    ddlCategoryId.Items.Insert(0, al);
                 }
                 else
                 {
@@ -198,11 +199,12 @@ namespace StoreManagement.Admin
                 objItemUnitlist = oblItemUnit.GetAllItemUnitList(0, 0, "");
                 if (objItemUnitlist != null)
                 {
+                    ListItem al = new ListItem("<-Select Item Unit->", "0", true);
                     ddlItemUnitId.DataSource = objItemUnitlist;
                     ddlItemUnitId.DataTextField = "UnitName";
                     ddlItemUnitId.DataValueField = "UnitID";
                     ddlItemUnitId.DataBind();
-                    ddlItemUnitId.Items.Insert(0, "<--Select Item Unit-->");
+                    ddlItemUnitId.Items.Insert(0, al);
                 }
                 else
                 {

@@ -50,11 +50,11 @@
                             <div class="col-md-12">
                             <div class="row" style="display:none">
                                 <div class="col-md-6">Category Id:</div>
-                                <div class="col-md-6"><asp:TextBox ID="txtCategoryId" runat="server" CssClass="form-control" /></div>
+                                <div class="col-md-6"><asp:TextBox ID="txtCategoryId" runat="server" CssClass="form-control required" /></div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                <asp:TextBox ID="txtCategoryName" placeholder="Enter Category Name"  ToolTip="Category Name"  runat="server" CssClass="form-control" />
+                                <asp:TextBox ID="txtCategoryName" placeholder="Enter Category Name"  ToolTip="Category Name"  runat="server" CssClass="form-control required" />
                                 <asp:RequiredFieldValidator ID="rfvtCategoryName" ControlToValidate="txtCategoryName" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgCat" runat="server">
                                 </asp:RequiredFieldValidator>
                                 <asp:RegularExpressionValidator ID="revCategory" runat="server"
@@ -66,7 +66,7 @@
                                     <asp:CheckBox ID="cbParant" runat="server" OnCheckedChanged="cbParant_CheckedChanged" AutoPostBack="true" />Parent
                                 </div>
                                 <div class="col-md-12" id="divCategory" runat="server">
-                                    <asp:DropDownList ID="ddlCategory"  runat="server" CssClass="form-control"></asp:DropDownList>
+                                    <asp:DropDownList ID="ddlCategory"  runat="server" CssClass="form-control ddl"></asp:DropDownList>
                                 </div>
                             </div>
                             <div class="row">

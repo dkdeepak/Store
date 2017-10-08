@@ -54,7 +54,7 @@
                             <div class="row" >
                                 
                                 <div class="col-md-12">
-                                    <asp:DropDownList ID="ddlCountry" ToolTip="Country" CssClass="form-control" runat="server"></asp:DropDownList>
+                                    <asp:DropDownList ID="ddlCountry" ToolTip="Country" CssClass="form-control required ddl" runat="server"></asp:DropDownList>
                                         <asp:RequiredFieldValidator ID="rfvCountry" ControlToValidate="ddlCountry" InitialValue="0" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgState" runat="server">
                                         </asp:RequiredFieldValidator>
                                     
@@ -63,7 +63,7 @@
 
                             <div class="row" >
                                 
-                                <div class="col-md-12"><asp:TextBox ID="txtState" ToolTip="State" placeholder="Enter State" CssClass="form-control"  runat="server"/>
+                                <div class="col-md-12"><asp:TextBox ID="txtState" ToolTip="State" placeholder="Enter State" CssClass="form-control required"  runat="server"/>
                                         <asp:RequiredFieldValidator ID="rfvState" ControlToValidate="txtState" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgState" runat="server">
                                         </asp:RequiredFieldValidator>
                                          <asp:RegularExpressionValidator ID="revState" runat="server" ValidationGroup="vgState" ForeColor="Red" ControlToValidate="txtState" ErrorMessage="Invalid entry" ValidationExpression="[a-zA-Z ]*$"></asp:RegularExpressionValidator></div>

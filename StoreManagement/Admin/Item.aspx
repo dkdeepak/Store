@@ -50,13 +50,11 @@
                 <div class="panel-body">
                     <div class="row" style="display:none">
                          <div class="col-lg-3">Item Id:</div>
-                         <div class="col-lg-3">"><asp:TextBox ID="txtItemId" runat="server" CssClass="form-control" /></div>
-                        <div class="col-lg-3">Item Price Id:</div>
-                         <div class="col-lg-3"><asp:TextBox ID="txtItemPriceId" CssClass="form-control" runat="server"/></div>
+                         <div class="col-lg-3">"><asp:TextBox ID="txtItemId" runat="server" CssClass="form-control" /></div>                        
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
-                            <asp:TextBox ID="txtItemPrefix" placeholder="Enter Name" runat="server" CssClass="form-control" />
+                            <asp:TextBox ID="txtItemPrefix" placeholder="Enter Name" runat="server" CssClass="form-control required" />
                             <asp:RequiredFieldValidator ID="rfvgItemPrefix" ControlToValidate="txtItemPrefix" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgItem" runat="server">
                             </asp:RequiredFieldValidator>
                             <asp:RegularExpressionValidator ID="revItemPrefix" runat="server" ValidationGroup="vgItem" ForeColor="Red"
@@ -64,19 +62,19 @@
                              ErrorMessage="Invalid entry" ValidationExpression="[a-zA-Z ]*$"></asp:RegularExpressionValidator>
                         </div>
                         <div class="col-lg-6">
-                           <asp:TextBox ID="txtItemCode" placeholder="Enter Code" runat="server" CssClass="form-control" />
+                           <asp:TextBox ID="txtItemCode" placeholder="Enter Code" runat="server" CssClass="form-control required" />
                            <asp:RequiredFieldValidator ID="rfvItemCode" ControlToValidate="txtItemCode" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgItem" runat="server">
                            </asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
-                            <asp:TextBox ID="txtBarcode" placeholder="Enter BarCode" runat="server"  CssClass="form-control" />
+                            <asp:TextBox ID="txtBarcode" placeholder="Enter BarCode" runat="server"  CssClass="form-control required" />
                             <asp:RequiredFieldValidator ID="rfvBarcode" ControlToValidate="txtBarcode" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgItem" runat="server">
                             </asp:RequiredFieldValidator>
                         </div>
                         <div class="col-lg-6">
-                            <asp:TextBox ID="txtItemDecription" placeholder="Enter Discription" TextMode="MultiLine" runat="server"  CssClass="form-control" />
+                            <asp:TextBox ID="txtItemDecription" placeholder="Enter Discription" TextMode="MultiLine" runat="server"  CssClass="form-control required" />
                                         <asp:RequiredFieldValidator ID="rfvItemDecription" ControlToValidate="txtItemDecription" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgItem" runat="server">
                                         </asp:RequiredFieldValidator>
                                          <asp:RegularExpressionValidator ID="revItemDiscription" runat="server" ControlToValidate="txtItemDecription" ValidationGroup="vgItem"  ForeColor="Red"
@@ -86,12 +84,12 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6"> 
-                                <asp:DropDownList ID="ddlItemUnitId" CssClass="form-control" runat="server"></asp:DropDownList>
+                                <asp:DropDownList ID="ddlItemUnitId" CssClass="form-control required ddl" runat="server"></asp:DropDownList>
                             <asp:RequiredFieldValidator ID="rfvItemUnitId" ControlToValidate="ddlItemUnitId" InitialValue="0" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgUserInfo" runat="server">
                                         </asp:RequiredFieldValidator>
                         </div>
                         <div class="col-lg-6">
-                            <asp:DropDownList ID="ddlCategoryId" CssClass="form-control" runat="server"></asp:DropDownList>
+                            <asp:DropDownList ID="ddlCategoryId" CssClass="form-control required ddl" runat="server"></asp:DropDownList>
                             <asp:RequiredFieldValidator ID="rfvCategoryId" ControlToValidate="ddlCategoryId" InitialValue="0" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgUserInfo" runat="server">
                                         </asp:RequiredFieldValidator>
                             

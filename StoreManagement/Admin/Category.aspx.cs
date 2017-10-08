@@ -121,12 +121,14 @@ namespace StoreManagement.Admin
                 obCategoryList = oblCategory.GetAllCategoryList(0, 0, "");
                 if (obCategoryList != null)
                 {
+                    ListItem al = new ListItem("<-Select City->", "0", true);
                     dgvCategory.DataSource = obCategoryList;
                     dgvCategory.DataBind();
                     ddlCategory.DataSource = obCategoryList;
-                    ddlCategory.DataTextField = "CategoryNam";
+                    ddlCategory.DataTextField = "CategoryName";
                     ddlCategory.DataValueField = "CategoryID";
                     ddlCategory.DataBind();
+                    ddlCategory.Items.Insert(0, al);
 
                 }
                 else
