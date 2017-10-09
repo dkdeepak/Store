@@ -54,9 +54,9 @@
                             <div class="row" >
                                 
                                 <div class="col-md-12">
-                                    <asp:DropDownList ID="ddlCountry" ToolTip="Country" CssClass="form-control" runat="server"></asp:DropDownList>
-                                        <asp:RequiredFieldValidator ID="rfvCountry" ControlToValidate="ddlCountry" InitialValue="0" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgState" runat="server">
-                                        </asp:RequiredFieldValidator>
+                                    <asp:DropDownList ID="ddlCountry" ToolTip="Country" CssClass="form-control" onchange="JSFunctionValidate();"  runat="server"></asp:DropDownList>
+                                       <%-- <asp:RequiredFieldValidator ID="rfvCountry" ControlToValidate="ddlCountry"   InitialValue="0" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgState" runat="server">
+                                        </asp:RequiredFieldValidator>--%>
                                     
                                 </div>
                             </div>
@@ -82,7 +82,18 @@
                     </asp:UpdatePanel>
 
     </asp:Panel>
-    
+    <script type="text/javascript">
+        function JSFunctionValidate()
+{
+          
+            if (document.getElementById("cphContain_ModalPopupExtender1_backgroundElement").value == "") {
+                    alert("Please select value"); // prompt user
+                    document.getElementById("ddlCountry").focus(); //set focus back to control
+                    return false;
+                
+            }
+}
+    </script>
 </asp:Content>
 <asp:Content ID="cnt2" ContentPlaceHolderID="cphData" runat="server">
     <asp:UpdatePanel ID="updateState" runat="server" UpdateMode="Conditional">
