@@ -60,7 +60,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
-                                <asp:TextBox ID="txtClientName" placeholder="Enter Name" ToolTip="Client Name" runat="server" CssClass="form-control" />
+                                <asp:TextBox ID="txtClientName" placeholder="Enter Name" ToolTip="Client Name" runat="server" CssClass="form-control required" />
                                 <asp:RequiredFieldValidator ID="rfvClientName" ControlToValidate="txtClientName" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgClient" runat="server">
                                         </asp:RequiredFieldValidator>
                                         <asp:RegularExpressionValidator ID="revClientName" runat="server" ValidationGroup="vgClient" ControlToValidate="txtClientName" ErrorMessage="Invalid entry" 
@@ -73,19 +73,19 @@
                                         ValidationExpression="[a-zA-Z ]*$"></asp:RegularExpressionValidator></div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12"><asp:TextBox ID="txtAddress" placeholder="Enter Address" ToolTip="Address" TextMode="MultiLine" runat="server" CssClass="form-control"/>
+                                <div class="col-md-12"><asp:TextBox ID="txtAddress" placeholder="Enter Address" ToolTip="Address" TextMode="MultiLine" runat="server" CssClass="form-control required"/>
                                         <asp:RequiredFieldValidator ID="rfvAddress" ControlToValidate="txtAddress" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgClient" runat="server">
                                         </asp:RequiredFieldValidator></div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <asp:DropDownList ID="ddlCountry" AutoPostBack="true" CssClass="form-control" ToolTip="Country"
+                                    <asp:DropDownList ID="ddlCountry" AutoPostBack="true" CssClass="form-control required ddl" ToolTip="Country"
                                          onselectedindexchanged="ddlCountryID_SelectedIndexChanged" runat="server"></asp:DropDownList>
                                      <asp:RequiredFieldValidator ID="rfvCountry" ControlToValidate="ddlCountry" InitialValue="0" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgDistrict" runat="server">
                                         </asp:RequiredFieldValidator>
                                 </div>
                                 <div class="col-lg-6">
-                                    <asp:DropDownList ID="ddlState" AutoPostBack="true" CssClass="form-control" ToolTip="State" 
+                                    <asp:DropDownList ID="ddlState" AutoPostBack="true" CssClass="form-control required ddl" ToolTip="State" 
                                         onselectedindexchanged="ddlStateID_SelectedIndexChanged" runat="server"></asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="rfvState" ControlToValidate="ddlState" InitialValue="0" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgDistrict" runat="server">
                                         </asp:RequiredFieldValidator>
@@ -93,11 +93,11 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <asp:DropDownList ID="ddlCity" CssClass="form-control" runat="server" ToolTip="City"></asp:DropDownList>
+                                    <asp:DropDownList ID="ddlCity" CssClass="form-control required ddl" runat="server" ToolTip="City"></asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="rfvCity" ControlToValidate="ddlCity" InitialValue="0" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgDistrict" runat="server">
                                         </asp:RequiredFieldValidator>
                                 </div>
-                                <div class="col-lg-6"><asp:TextBox ID="txtPinId" ToolTip="Pin No" placeholder="Enter Pin No" runat="server" CssClass="form-control" />
+                                <div class="col-lg-6"><asp:TextBox ID="txtPinId" ToolTip="Pin No" placeholder="Enter Pin No" runat="server" CssClass="form-control required ddl" />
                                         <asp:RequiredFieldValidator ID="rfvPinId" ControlToValidate="txtPinId" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgClient" runat="server">
                                         </asp:RequiredFieldValidator></div>
                             </div>

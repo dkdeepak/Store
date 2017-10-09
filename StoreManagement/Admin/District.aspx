@@ -55,7 +55,7 @@
                                
                                 <div class="col-md-12">
                                     <asp:DropDownList ID="ddlCountry" runat="server" ToolTip="Country"
-                                        CssClass="form-control" 
+                                        CssClass="form-control required ddl" 
                                         onselectedindexchanged="ddlCountry_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="rfvCountry" ControlToValidate="ddlCountry" InitialValue="0" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgDistrict" runat="server">
                                         </asp:RequiredFieldValidator>
@@ -64,14 +64,14 @@
                             <div class="row">
                                
                                 <div class="col-md-12">
-                                    <asp:DropDownList ID="ddlState" ToolTip="State"  CssClass="form-control" runat="server"></asp:DropDownList>
+                                    <asp:DropDownList ID="ddlState" ToolTip="State"  CssClass="form-control required ddl" runat="server"></asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="rfvState" ControlToValidate="ddlState" InitialValue="0" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgDistrict" runat="server">
                                         </asp:RequiredFieldValidator>
                                 </div>
                             </div>
                             <div class="row">
                                 
-                                <div class="col-md-12"><asp:TextBox ID="txtDistrict" placeholder="Enter District" ToolTip="District" runat="server"  CssClass="form-control" />
+                                <div class="col-md-12"><asp:TextBox ID="txtDistrict" placeholder="Enter District" ToolTip="District" runat="server"  CssClass="form-control required" />
                                         <asp:RequiredFieldValidator ID="rfvDistrict" ControlToValidate="txtDistrict" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgDistrict" runat="server">
                                         </asp:RequiredFieldValidator>
                                         <asp:RegularExpressionValidator ID="revDistrict" runat="server" ValidationGroup="vgDistrict" ForeColor="Red"

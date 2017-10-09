@@ -335,6 +335,7 @@
     <Content Include="ReportSection\WebForm1.aspx" />
     <Content Include="Admin\SalesReturn.aspx" />
     <Content Include="Scripts\chosen.jquery.js" />
+    <Content Include="Style\custom.css" />
     <Content Include="Style\theme.css" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
     <Content Include="Scripts\jquery-1.6.4.js" />

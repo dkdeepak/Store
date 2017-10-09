@@ -238,11 +238,12 @@ namespace StoreManagement.Admin
                 objCountrylist = oblCountry.GetAllCountryList(0, 0, "");
                 if (objCountrylist != null)
                 {
+                    ListItem al = new ListItem("<-Select Country->", "0", true);
                     ddlCountry.DataSource = objCountrylist;
                     ddlCountry.DataTextField = "CountryName";
                     ddlCountry.DataValueField = "CountryID";
                     ddlCountry.DataBind();
-                    ddlCountry.Items.Insert(0, "<--Select Country-->");
+                    ddlCountry.Items.Insert(0, al);
                 }
                 else
                 {
@@ -270,11 +271,12 @@ namespace StoreManagement.Admin
                 objCitylist = oblCity.GetAllCityList(id, 0, "");
                 if (objCitylist != null)
                 {
+                    ListItem al = new ListItem("<-Select City->", "0", true);
                     ddlCity.DataSource = objCitylist;
                     ddlCity.DataTextField = "CityName";
                     ddlCity.DataValueField = "CityID";
                     ddlCity.DataBind();
-                    ddlCity.Items.Insert(0, "<--Select City-->");
+                    ddlCity.Items.Insert(0, al);
                 }
                 else
                 {
@@ -302,11 +304,12 @@ namespace StoreManagement.Admin
                 objStatelist = oblState.GetAllStateList(id, 0, "");
                 if (objStatelist != null)
                 {
+                    ListItem al = new ListItem("<-Select State->", "0", true);
                     ddlState.DataSource = objStatelist;
                     ddlState.DataTextField = "StateName";
                     ddlState.DataValueField = "StateID";
                     ddlState.DataBind();
-                    ddlState.Items.Insert(0, "<--Select State-->");
+                    ddlState.Items.Insert(0, al);
                 }
                 else
                 {

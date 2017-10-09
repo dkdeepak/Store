@@ -139,13 +139,13 @@ namespace StoreManagement.Master {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl TypeOfVendor;
         
         /// <summary>
-        /// Li1 control.
+        /// VendorInfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl VendorInfo;
         
         /// <summary>
         /// Category control.
@@ -173,6 +173,15 @@ namespace StoreManagement.Master {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Item;
+        
+        /// <summary>
+        /// ItemPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ItemPrice;
         
         /// <summary>
         /// Tax control.

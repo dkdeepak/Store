@@ -31,7 +31,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <link href="../Style/custom.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
      </asp:ContentPlaceHolder>
 </head>
@@ -304,10 +304,11 @@
                                 <li id="TypeOfUser" runat="server"><a href="../Admin/TypeOfUser.aspx">Type Of User</a></li>
                                 <li id="User" runat="server"><a href="../Admin/UserInfo.aspx">User Info</a></li>
                                 <li id="TypeOfVendor" runat="server"><a href="../Admin/TypeOfVendor.aspx">Type Of Vendor</a></li>
-                                <li id="Li1" runat="server"><a href="../Admin/VendorInfo.aspx">Vendor Info</a></li>
+                                <li id="VendorInfo" runat="server"><a href="../Admin/VendorInfo.aspx">Vendor Info</a></li>
                                 <li id="Category" runat="server"><a href="../Admin/Category.aspx">Category</a></li>
                                 <li id="Unit" runat="server"><a href="../Admin/ItemUnit.aspx">Item Unit</a></li>
                                 <li id="Item" runat="server"><a href="../Admin/Item.aspx">Item</a></li>
+                                <li id="ItemPrice" runat="server"><a href="../Admin/ItemPrice.aspx">Item Price</a></li>
                                 <li id="Tax" runat="server"><a href="../Admin/Tax.aspx">Tax</a></li>
                           </ul>
                             <!-- /.nav-second-level -->

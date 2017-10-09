@@ -53,33 +53,39 @@
                     <table width="100%">
                             <tr>
                                 <td align="left"><b>Item Price</b></td>
-                                <td align="right"><asp:LinkButton ID="ibtnCloseForm" Font-Bold="true" Font-Size="Large" runat="server" OnClick="ibtnCloseForm_Click" >X</asp:LinkButton></td>
+                                <td align="right"><asp:LinkButton ID="ibtnCloseForm" Font-Bold="true" ForeColor="White" Font-Size="Large" runat="server" OnClick="ibtnCloseForm_Click" >X</asp:LinkButton></td>
                             </tr>
                        </table>
                 </div>   
                   <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <asp:TextBox ID="txtSP" CssClass="form-control"  runat="server"  placeholder="Enter the sale price "></asp:TextBox>
+                            <asp:TextBox ID="txtSP" CssClass="form-control required"  runat="server"  placeholder="Enter the sale price "></asp:TextBox>
+                             <asp:RequiredFieldValidator ID="rfvtxtSP" ControlToValidate="txtSP" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgItemPrice" runat="server">
+                            </asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <asp:TextBox ID="txtDisPerUnit" CssClass="form-control"  runat="server"  placeholder="Enter the discount % per unit"></asp:TextBox>
+
                         </div>
                     </div>
+            <br />
                     <div class="row">
                         <div class="col-md-12">
                             <asp:TextBox ID="txtApplicableFrom" CssClass="form-control" runat="server"  placeholder="Enter The Date"></asp:TextBox>
                             <%-- <ajaxToolkit:CalendarExtender ID="cal1" TargetControlID="txtApplicableFrom" runat="server"></ajaxToolkit:CalendarExtender> --%>
                         </div>
                     </div>
+                      <br />
                      <div class="row">
                         <div class="col-md-12">
                             <asp:TextBox ID="txtApplicableTo" CssClass="form-control" runat="server"  placeholder="Enter the Date"></asp:TextBox>
                             <%-- <ajaxToolkit:CalendarExtender ID="cal2" TargetControlID="txtApplicableTo" runat="server"></ajaxToolkit:CalendarExtender> --%>
                         </div>
                     </div>
+                      <br />
                     <div class="row">
                         <div class="col-md-6">
                              <asp:HiddenField ID="hfItemPriceId" runat="server"  />

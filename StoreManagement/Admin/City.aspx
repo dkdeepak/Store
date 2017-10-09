@@ -53,7 +53,7 @@
                                 <div class="row">
                                    
                                     <div class="col-lg-12">
-                                        <asp:DropDownList ID="ddlCountry" CssClass="form-control" ToolTip="Country" 
+                                        <asp:DropDownList ID="ddlCountry" CssClass="form-control required ddl" ToolTip="Country" 
                                             runat="server"  AutoPostBack="true" 
                                             onselectedindexchanged="ddlCountry_SelectedIndexChanged"></asp:DropDownList>
                                         <asp:RequiredFieldValidator ID="rfvCountry" ControlToValidate="ddlCountry" InitialValue="0" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgCity" runat="server">
@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <asp:DropDownList ID="ddlState" CssClass="form-control" runat="server" ToolTip="State"
+                                        <asp:DropDownList ID="ddlState" CssClass="form-control required ddl" runat="server" ToolTip="State"
                                             OnSelectedIndexChanged="ddlState_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
                                         <asp:RequiredFieldValidator ID="rfvState" ControlToValidate="ddlState" InitialValue="0" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgCity" runat="server">
                                         </asp:RequiredFieldValidator>
@@ -70,7 +70,7 @@
                                 </div>
                                 <div class="row">
                                    
-                                    <div class="col-lg-12"><asp:DropDownList ID="ddlDistrict" ToolTip="District" CssClass="form-control" 
+                                    <div class="col-lg-12"><asp:DropDownList ID="ddlDistrict" ToolTip="District" CssClass="form-control required ddl" 
                                             runat="server" ></asp:DropDownList>
                                         <asp:RequiredFieldValidator ID="rfvDistrict" ControlToValidate="ddlDistrict" InitialValue="0" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgCity" runat="server">
                                         </asp:RequiredFieldValidator>
@@ -78,7 +78,7 @@
                                 </div>
                                 <div class="row">
                                     
-                                    <div class="col-lg-12"><asp:TextBox ID="txtCity" ToolTip="City" placeholder="Enter City" runat="server" CssClass="form-control" />
+                                    <div class="col-lg-12"><asp:TextBox ID="txtCity" ToolTip="City" placeholder="Enter City" runat="server" CssClass="form-control required" />
                                          <asp:RequiredFieldValidator ID="rfvCity" ControlToValidate="txtCity" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgCity" runat="server">
                                         </asp:RequiredFieldValidator>
                                         <asp:RegularExpressionValidator ID="revCity" runat="server" ControlToValidate="txtCity" ErrorMessage="Invalid entry" ValidationExpression="[a-zA-Z ]*$"></asp:RegularExpressionValidator>

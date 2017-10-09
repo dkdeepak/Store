@@ -261,11 +261,12 @@ namespace StoreManagement.Admin
                 objCountrylist = oblCountry.GetAllCountryList(0, 0, "");
                 if (objCountrylist != null)
                 {
+                    ListItem al = new ListItem("<-Select Country->", "0", true);
                     ddlCountryID.DataSource = objCountrylist;
                     ddlCountryID.DataTextField = "CountryName";
                     ddlCountryID.DataValueField = "CountryID";
                     ddlCountryID.DataBind();
-                    ddlCountryID.Items.Insert(0, "<--Select Country-->");
+                    ddlCountryID.Items.Insert(0, al);
 
                 }
                 else
@@ -294,11 +295,12 @@ namespace StoreManagement.Admin
                 obTypeOfUserList = oblTypeOfUser.GetAllTypeOfUserList(0, 0, "");
                 if (obTypeOfUserList != null)
                 {
+                    ListItem al = new ListItem("<-Select User Type->", "0", true);
                     ddlTypeofUserID.DataSource = obTypeOfUserList;
                     ddlTypeofUserID.DataTextField = "TypeofUserName";
                     ddlTypeofUserID.DataValueField = "TypeOfUserID";
                     ddlTypeofUserID.DataBind();
-                    ddlTypeofUserID.Items.Insert(0, "<--Select User Type-->");
+                    ddlTypeofUserID.Items.Insert(0, al);
                 }
                 else
                 {
@@ -326,11 +328,12 @@ namespace StoreManagement.Admin
                 objStatelist = oblState.GetAllStateList(id, 0, "");
                 if (objStatelist != null)
                 {
+                    ListItem al = new ListItem("<-Select State->", "0", true);
                     ddlStateID.DataSource = objStatelist;
                     ddlStateID.DataTextField = "StateName";
                     ddlStateID.DataValueField = "StateID";
                     ddlStateID.DataBind();
-                    ddlStateID.Items.Insert(0, "<--Select State-->");
+                    ddlStateID.Items.Insert(0, al);
                 }
                 else
                 {
@@ -357,11 +360,12 @@ namespace StoreManagement.Admin
                 objCitylist = oblCity.GetAllCityList(id, 0, "");
                 if (objCitylist != null)
                 {
+                    ListItem al = new ListItem("<-Select City->", "0", true);
                     ddlCityID.DataSource = objCitylist;
                     ddlCityID.DataValueField = "CityID";
                     ddlCityID.DataTextField = "CityName";
                     ddlCityID.DataBind();
-                    ddlCityID.Items.Insert(0, "<--Select City-->");
+                    ddlCityID.Items.Insert(0, al);
                 }
                 else
                 {

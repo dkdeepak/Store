@@ -53,7 +53,7 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-md-12"> <asp:TextBox ID="txtTypeofVendorName" ToolTip="Type Of User" placeholder="Enter Type of User Name" runat="server" CssClass="form-control" />
+                                <div class="col-md-12"> <asp:TextBox ID="txtTypeofVendorName" ToolTip="Type Of User" placeholder="Enter Type of User Name" runat="server" CssClass="form-control required" />
                                         <asp:RequiredFieldValidator ID="rfvTypeofVendorName" ControlToValidate="txtTypeofVendorName" ErrorMessage="*" ForeColor="Red" ValidationGroup="vgTVendor" runat="server">
                                         </asp:RequiredFieldValidator>
                                         <asp:RegularExpressionValidator ID="revTypeofVendorName" runat="server" ValidationGroup="vgTVendor" ForeColor="Red" ControlToValidate="txtTypeofVendorName" ErrorMessage="Invalid entry"

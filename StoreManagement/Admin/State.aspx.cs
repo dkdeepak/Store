@@ -185,12 +185,12 @@ namespace StoreManagement.Admin
                 objCountrylist = oblCountry.GetAllCountryList(0, 0, "");
                 if (objCountrylist != null)
                 {
-                    //ddlCountry.Items.Add(new ListItem("Select", "-1", true));
+                    ListItem al = new ListItem("<-Select Country->", "0", true);
                     ddlCountry.DataSource = objCountrylist;
                     ddlCountry.DataValueField = "CountryID";
                     ddlCountry.DataTextField = "CountryName";
                     ddlCountry.DataBind();
-                    ddlCountry.Items.Insert(0, "<--Select Country-->");
+                    ddlCountry.Items.Insert(0, al);
                     //ddlCountry.Items.Add()
                 }
                 else

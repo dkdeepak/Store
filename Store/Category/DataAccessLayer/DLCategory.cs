@@ -21,7 +21,7 @@ namespace Store.Category.DataAccessLayer
             try
             {
                 SQL = "proc_Category";
-                paramList.Add(new SQLParameter("@CategoryI", CategoryID));
+                paramList.Add(new SQLParameter("@CategoryID", CategoryID));
                 paramList.Add(new SQLParameter("@Flag", Flag));
                 paramList.Add(new SQLParameter("@FlagValue", Flag));
                 dr = ExecuteQuery.ExecuteReader(SQL, paramList);
